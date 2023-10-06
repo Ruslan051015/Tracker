@@ -19,6 +19,7 @@
 		4A81813C2ACF5F5700A3B9DF /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81813B2ACF5F5700A3B9DF /* Tracker.swift */; };
 		4A81813E2ACF5F6700A3B9DF /* TrackerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81813D2ACF5F6700A3B9DF /* TrackerCategory.swift */; };
 		4A8181402ACF5F8200A3B9DF /* TrackerRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81813F2ACF5F8200A3B9DF /* TrackerRecord.swift */; };
+		4A86C3FC2AD056450079EF4B /* NewHabitOrEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		4A81813B2ACF5F5700A3B9DF /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		4A81813D2ACF5F6700A3B9DF /* TrackerCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategory.swift; sourceTree = "<group>"; };
 		4A81813F2ACF5F8200A3B9DF /* TrackerRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecord.swift; sourceTree = "<group>"; };
+		4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitOrEventVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		4A5AD1CB2ACEF2F6000E826B /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				4A86C3FA2AD055E00079EF4B /* AddingHabits */,
 				4A81813A2ACF5F2600A3B9DF /* Models */,
 				4A8181392ACF5EFD00A3B9DF /* TabBar */,
 				4A8181382ACF5EED00A3B9DF /* MainScreen */,
@@ -166,6 +169,14 @@
 				4A81813F2ACF5F8200A3B9DF /* TrackerRecord.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4A86C3FA2AD055E00079EF4B /* AddingHabits */ = {
+			isa = PBXGroup;
+			children = (
+				4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */,
+			);
+			path = AddingHabits;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +314,7 @@
 				4A81813E2ACF5F6700A3B9DF /* TrackerCategory.swift in Sources */,
 				4A5AD1CD2ACEF2F6000E826B /* AppDelegate.swift in Sources */,
 				4A8181402ACF5F8200A3B9DF /* TrackerRecord.swift in Sources */,
+				4A86C3FC2AD056450079EF4B /* NewHabitOrEventVC.swift in Sources */,
 				4A81813C2ACF5F5700A3B9DF /* Tracker.swift in Sources */,
 				4A5AD1CF2ACEF2F6000E826B /* SceneDelegate.swift in Sources */,
 			);
