@@ -3,6 +3,7 @@ import UIKit
 
 final class HabitCreatingVC: UIViewController {
     // MARK: - Private properties:
+    private let titlesForRows: [String] = ["Категория", "Расписание"]
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text = "Новая привычка"
@@ -12,15 +13,14 @@ final class HabitCreatingVC: UIViewController {
         return label
     }()
     
-    private var textFieldTableView = UITableView()
-    
+    private var tableView = UITableView()
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         view.backgroundColor = .YPWhite
         super.viewDidLoad()
         
-        textFieldTableView.dataSource = self
-        textFieldTableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         
         configureScreenItems()
     }
@@ -30,12 +30,13 @@ final class HabitCreatingVC: UIViewController {
         topTitle.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(topTitle)
         
-        textFieldTableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textFieldTableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
         
-        textFieldTableView.register(FieldTableViewCell.self, forCellReuseIdentifier: FieldTableViewCell.reuseIdentifier)
+        tableView.register(FieldTableViewCell.self, forCellReuseIdentifier: FieldTableViewCell.reuseIdentifier)
+        tableView.register(SecondSectionCell.self, forCellReuseIdentifier: SecondSectionCell.reuseIdentifier)
         
-        textFieldTableView.separatorStyle = .none
+        tableView.separatorStyle = .none
         
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
@@ -43,30 +44,63 @@ final class HabitCreatingVC: UIViewController {
             topTitle.heightAnchor.constraint(equalToConstant: 22),
             topTitle.widthAnchor.constraint(equalToConstant: 149),
             
-            textFieldTableView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
-            textFieldTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            textFieldTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            textFieldTableView.heightAnchor.constraint(equalToConstant: 75)
+            tableView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            tableView.heightAnchor.constraint(equalToConstant: 75)
         ])
     }
 }
+
+// MARK: - UITableViewDelegate:
 extension HabitCreatingVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         75
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        24
+    }
 }
 
+// MARK: - UITbaleViewDataSource:
 extension HabitCreatingVC: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        var numberOfRows = 0
+        if section == 0 {
+            numberOfRows = 1
+        } else {
+            if section == 1 {
+                numberOfRows = 2
+            }
+        }
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FieldTableViewCell.reuseIdentifier, for: indexPath)
-        guard let textFieldCell = cell as? FieldTableViewCell else {
+        guard let textFieldCell = tableView.dequeueReusableCell(withIdentifier: FieldTableViewCell.reuseIdentifier) as? FieldTableViewCell else {
             print("Не удалось создать текстовую ячейку")
-            return UITableViewCell()}
-        return cell
+            return UITableViewCell()
+        }
+        
+        guard let settingsCell = tableView.dequeueReusableCell(withIdentifier: SecondSectionCell.reuseIdentifier) as? SecondSectionCell else {
+            print("Не удалось создать ячейку с настройками")
+            return UITableViewCell()
+        }
+        
+        if indexPath.section == 0 {
+            return textFieldCell
+        } else {
+            if indexPath.section == 1 {
+                settingsCell.label.text = titlesForRows[indexPath.row]
+                return settingsCell
+            }
+        }
+        
+        return UITableViewCell()
     }
     
     

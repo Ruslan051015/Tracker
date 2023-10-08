@@ -23,6 +23,7 @@
 		4A8181402ACF5F8200A3B9DF /* TrackerRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81813F2ACF5F8200A3B9DF /* TrackerRecord.swift */; };
 		4A86C3FC2AD056450079EF4B /* NewHabitOrEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */; };
 		4A8AF8752AD3068900807E22 /* FieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AF8742AD3068900807E22 /* FieldTableViewCell.swift */; };
+		4A8AF8772AD3517C00807E22 /* SecondSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AF8762AD3517C00807E22 /* SecondSectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		4A81813F2ACF5F8200A3B9DF /* TrackerRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecord.swift; sourceTree = "<group>"; };
 		4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitOrEventVC.swift; sourceTree = "<group>"; };
 		4A8AF8742AD3068900807E22 /* FieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTableViewCell.swift; sourceTree = "<group>"; };
+		4A8AF8762AD3517C00807E22 /* SecondSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */,
 				4A21EF4A2AD1A21B00BD40DB /* HabitCreatingVC.swift */,
 				4A8AF8742AD3068900807E22 /* FieldTableViewCell.swift */,
+				4A8AF8762AD3517C00807E22 /* SecondSectionCell.swift */,
 			);
 			path = AddingHabits;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				4A81813C2ACF5F5700A3B9DF /* Tracker.swift in Sources */,
 				4A5AD1CF2ACEF2F6000E826B /* SceneDelegate.swift in Sources */,
 				4A21EF4B2AD1A21B00BD40DB /* HabitCreatingVC.swift in Sources */,
+				4A8AF8772AD3517C00807E22 /* SecondSectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
