@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 final class NewHabitOrEventVC: UIViewController {
-    // MARK: - Properties:
+    // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
        let label = UILabel()
         label.text = "Cоздание трекера"
@@ -55,7 +55,7 @@ final class NewHabitOrEventVC: UIViewController {
         view.addSubview(topTitle)
         
         NSLayoutConstraint.activate([
-            topTitle.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 39),
+            topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             topTitle.heightAnchor.constraint(equalToConstant: 22),
             topTitle.widthAnchor.constraint(equalToConstant: 149),
