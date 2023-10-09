@@ -11,11 +11,11 @@ final class CustomUITextField: UITextField {
         
         placeholder = text
         clearButtonMode = .whileEditing
-        textColor = .YPBlack
-        font = .systemFont(ofSize: 16, weight: .medium)
+        textColor = .YPGray
+        font = .systemFont(ofSize: 17, weight: .regular)
         layer.masksToBounds = true
         layer.cornerRadius = 16
-        backgroundColor = .YPBackground
+        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {

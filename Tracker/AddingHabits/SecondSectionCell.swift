@@ -7,7 +7,7 @@ final class SecondSectionCell: UITableViewCell {
     // MARK: - Private properties:
     lazy var label: UILabel = {
         let title = UILabel()
-        title.font = .systemFont(ofSize: 16, weight: .medium)
+        title.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         title.textColor = .YPBlack
         title.backgroundColor = .clear
         return title
