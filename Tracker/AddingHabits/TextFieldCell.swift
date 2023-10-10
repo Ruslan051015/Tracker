@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class FieldTableViewCell: UITableViewCell {
+final class TextFieldCell: UITableViewCell {
     // MARK: - Properties:
     static let reuseIdentifier: String = "FieldTableViewCell"
     

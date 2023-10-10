@@ -6,6 +6,7 @@ final class HabitCreatingVC: UIViewController {
     private let titlesForRows: [String] = ["Категория", "Расписание"]
     private var textFieldTableView = UITableView()
     private var settingsTableView = UITableView()
+    private let stackView = UIStackView()
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text = "Новая привычка"
@@ -13,6 +14,32 @@ final class HabitCreatingVC: UIViewController {
         label.textColor = .YPBlack
         
         return label
+    }()
+    
+    private lazy var cancelButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Отменить", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        button.tintColor = .YPRed
+        button.backgroundColor = .clear
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.YPRed.cgColor
+        
+        return button
+    }()
+    
+    private lazy var createButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Cоздать", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        button.tintColor = .YPWhite
+        button.backgroundColor = .YPGray
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        
+        return button
     }()
     
     
@@ -29,6 +56,7 @@ final class HabitCreatingVC: UIViewController {
         
         configureTitleAndTextFieldTableView()
         configureSettingsTableView()
+        configureStackViewAndButtons()
     }
     
     // MARK: - Private methods:
@@ -39,7 +67,7 @@ final class HabitCreatingVC: UIViewController {
         textFieldTableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(textFieldTableView)
         
-        textFieldTableView.register(FieldTableViewCell.self, forCellReuseIdentifier: FieldTableViewCell.reuseIdentifier)
+        textFieldTableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         
         textFieldTableView.isScrollEnabled = false
         textFieldTableView.backgroundColor = .YPBackground
@@ -79,12 +107,48 @@ final class HabitCreatingVC: UIViewController {
             settingsTableView.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
+    
+    private func configureStackViewAndButtons() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        createButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(cancelButton)
+        stackView.addArrangedSubview(createButton)
+        stackView.spacing = 8
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        
+        NSLayoutConstraint.activate([
+            stackView.heightAnchor.constraint(equalToConstant: 60),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+//            cancelButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+//            cancelButton.topAnchor.constraint(equalTo: stackView.topAnchor),
+//            cancelButton.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
+            cancelButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 166),
+            cancelButton.heightAnchor.constraint(equalToConstant: 60),
+            
+//            createButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+//            createButton.topAnchor.constraint(equalTo: stackView.topAnchor),
+//            createButton.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
+            createButton.widthAnchor.constraint(equalToConstant: 161),
+            createButton.heightAnchor.constraint(equalToConstant: 60),
+        ])
+    }
 }
 
 // MARK: - UITableViewDelegate:
 extension HabitCreatingVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         75
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        4
     }
 }
 
@@ -102,7 +166,7 @@ extension HabitCreatingVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == textFieldTableView {
-            guard let textFieldCell = tableView.dequeueReusableCell(withIdentifier: FieldTableViewCell.reuseIdentifier) as? FieldTableViewCell else {
+            guard let textFieldCell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier) as? TextFieldCell else {
                 print("Не удалось создать текстовую ячейку")
                 return UITableViewCell()
             }
