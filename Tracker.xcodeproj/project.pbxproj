@@ -24,6 +24,7 @@
 		4A86C3FC2AD056450079EF4B /* NewHabitOrEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */; };
 		4A8AF8752AD3068900807E22 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AF8742AD3068900807E22 /* TextFieldCell.swift */; };
 		4A8AF8772AD3517C00807E22 /* SecondSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AF8762AD3517C00807E22 /* SecondSectionCell.swift */; };
+		4AC8312F2AD5D98E00F0DDE4 /* enumForSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8312E2AD5D98E00F0DDE4 /* enumForSections.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitOrEventVC.swift; sourceTree = "<group>"; };
 		4A8AF8742AD3068900807E22 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4A8AF8762AD3517C00807E22 /* SecondSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSectionCell.swift; sourceTree = "<group>"; };
+		4AC8312E2AD5D98E00F0DDE4 /* enumForSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumForSections.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				4A21EF4A2AD1A21B00BD40DB /* HabitCreatingVC.swift */,
 				4A8AF8742AD3068900807E22 /* TextFieldCell.swift */,
 				4A8AF8762AD3517C00807E22 /* SecondSectionCell.swift */,
+				4AC8312E2AD5D98E00F0DDE4 /* enumForSections.swift */,
 			);
 			path = AddingHabits;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				4A5AD1CD2ACEF2F6000E826B /* AppDelegate.swift in Sources */,
 				4A21EF4D2AD1AB3D00BD40DB /* CustomTextField.swift in Sources */,
 				4A8AF8752AD3068900807E22 /* TextFieldCell.swift in Sources */,
+				4AC8312F2AD5D98E00F0DDE4 /* enumForSections.swift in Sources */,
 				4A8181402ACF5F8200A3B9DF /* TrackerRecord.swift in Sources */,
 				4A86C3FC2AD056450079EF4B /* NewHabitOrEventVC.swift in Sources */,
 				4A81813C2ACF5F5700A3B9DF /* Tracker.swift in Sources */,

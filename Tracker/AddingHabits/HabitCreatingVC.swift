@@ -7,6 +7,7 @@ final class HabitCreatingVC: UIViewController {
     private var textFieldTableView = UITableView()
     private var settingsTableView = UITableView()
     private let stackView = UIStackView()
+    private let collectionView = UICollectionView()
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text = "Новая привычка"
@@ -48,63 +49,33 @@ final class HabitCreatingVC: UIViewController {
         view.backgroundColor = .YPWhite
         super.viewDidLoad()
         
-        textFieldTableView.dataSource = self
-        textFieldTableView.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
-        settingsTableView.dataSource = self
-        settingsTableView.delegate = self
-        
-        configureTitleAndTextFieldTableView()
-        configureSettingsTableView()
+        configureTitleAndCollectionView()
         configureStackViewAndButtons()
     }
     
     // MARK: - Private methods:
-    private func configureTitleAndTextFieldTableView() {
+    private func configureTitleAndCollectionView() {
         topTitle.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(topTitle)
         
-        textFieldTableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textFieldTableView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
         
-        textFieldTableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
-        
-        textFieldTableView.isScrollEnabled = false
-        textFieldTableView.backgroundColor = .YPBackground
-        textFieldTableView.separatorStyle = .none
-        textFieldTableView.layer.masksToBounds = true
-        textFieldTableView.layer.cornerRadius = 16
-        
+        collectionView.register(TextFieldCell.self, forCellWithReuseIdentifier: TextFieldCell.reuseIdentifier)
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             topTitle.heightAnchor.constraint(equalToConstant: 22),
             topTitle.widthAnchor.constraint(equalToConstant: 149),
             
-            textFieldTableView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
-            textFieldTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            textFieldTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            textFieldTableView.heightAnchor.constraint(equalToConstant: 75)
-        ])
-    }
-    
-    private func configureSettingsTableView() {
-        settingsTableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(settingsTableView)
-        
-        settingsTableView.register(SecondSectionCell.self, forCellReuseIdentifier: SecondSectionCell.reuseIdentifier)
-        
-        settingsTableView.isScrollEnabled = false
-        settingsTableView.backgroundColor = .YPBackground
-        settingsTableView.layer.masksToBounds = true
-        settingsTableView.layer.cornerRadius = 16
-        settingsTableView.separatorInset = UIEdgeInsets(top: 0, left: 15.95, bottom: 0, right: 15.95)
-        
-        NSLayoutConstraint.activate([
-            settingsTableView.topAnchor.constraint(equalTo: textFieldTableView.bottomAnchor, constant: 24),
-            settingsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            settingsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            settingsTableView.heightAnchor.constraint(equalToConstant: 150)
+            collectionView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -126,16 +97,10 @@ final class HabitCreatingVC: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
-//            cancelButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-//            cancelButton.topAnchor.constraint(equalTo: stackView.topAnchor),
-//            cancelButton.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
+
             cancelButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 166),
             cancelButton.heightAnchor.constraint(equalToConstant: 60),
-            
-//            createButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-//            createButton.topAnchor.constraint(equalTo: stackView.topAnchor),
-//            createButton.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
+        
             createButton.widthAnchor.constraint(equalToConstant: 161),
             createButton.heightAnchor.constraint(equalToConstant: 60),
         ])
@@ -143,47 +108,21 @@ final class HabitCreatingVC: UIViewController {
 }
 
 // MARK: - UITableViewDelegate:
-extension HabitCreatingVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        75
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        4
-    }
+extension HabitCreatingVC: UICollectionViewDelegateFlowLayout {
+    
 }
 
 // MARK: - UITableViewDataSource:
-extension HabitCreatingVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var numberOfRows = 0
-        if tableView == textFieldTableView {
-            numberOfRows = 1
-        } else if tableView == settingsTableView {
-            numberOfRows = 2
+extension HabitCreatingVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case sections.textfieldCell.rawValue: return 1
+        case sections.buttonsCell.rawValue: return 2
+        case sections.emojiCell.rawValue: return 
         }
-        return numberOfRows
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == textFieldTableView {
-            guard let textFieldCell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier) as? TextFieldCell else {
-                print("Не удалось создать текстовую ячейку")
-                return UITableViewCell()
-            }
-            textFieldCell.backgroundColor = .clear
-            
-            return textFieldCell
-        } else if tableView == settingsTableView {
-            guard let settingsCell = tableView.dequeueReusableCell(withIdentifier: SecondSectionCell.reuseIdentifier) as? SecondSectionCell else {
-                print("Не удалось создать ячейку с настройками")
-                return UITableViewCell()
-            }
-            settingsCell.backgroundColor = .clear
-            settingsCell.accessoryType = .disclosureIndicator
-            settingsCell.label.text = titlesForRows[indexPath.row]
-            return settingsCell
-        }
-        
-        return UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
     }
 }

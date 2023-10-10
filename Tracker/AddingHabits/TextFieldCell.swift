@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class TextFieldCell: UITableViewCell {
+final class TextFieldCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseIdentifier: String = "FieldTableViewCell"
     
@@ -12,16 +12,12 @@ final class TextFieldCell: UITableViewCell {
         return field
     }()
     
-    // MARK: - LifeCycle:
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-    
     // MARK: - Methods:
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         textField.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(textField)
+        
         
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
