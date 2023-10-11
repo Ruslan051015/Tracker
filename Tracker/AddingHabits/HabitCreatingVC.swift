@@ -60,9 +60,11 @@ final class HabitCreatingVC: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.allowsSelection = true
+        collectionView.allowsMultipleSelection = false
         
         configureTitleAndCollectionView()
-        //        configureSupplementaryView()
+        configureSupplementaryView()
         configureStackViewAndButtons()
     }
     
@@ -105,20 +107,22 @@ final class HabitCreatingVC: UIViewController {
         stackView.addArrangedSubview(createButton)
         stackView.spacing = 8
         stackView.axis = .horizontal
-        stackView.alignment = .center
         stackView.distribution = .fillEqually
+        
+        
         
         NSLayoutConstraint.activate([
             stackView.heightAnchor.constraint(equalToConstant: 60),
-            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
             
             cancelButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 166),
             cancelButton.heightAnchor.constraint(equalToConstant: 60),
             
-            createButton.widthAnchor.constraint(equalToConstant: 161),
+            createButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 161),
             createButton.heightAnchor.constraint(equalToConstant: 60),
+            
         ])
     }
     
@@ -179,6 +183,8 @@ extension HabitCreatingVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 1, height: 24)
         case sections.emojiCell.rawValue:
             return CGSize(width: collectionView.bounds.width, height: 50)
+        case sections.colorCell.rawValue:
+            return CGSize(width: collectionView.bounds.width, height: 34)
             
         default: return CGSize()
         }
@@ -251,25 +257,46 @@ extension HabitCreatingVC: UICollectionViewDataSource {
         default: return UICollectionViewCell()
         }
     }
-    /*
-     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-     switch indexPath.section {
-     case sections.emojiCell.rawValue:
-     let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseIdentifier, for: indexPath) as! SupplementaryView
-     headerView.titleLabel.text = "Emoji"
-     return headerView
-     default:
-     return UICollectionReusableView()
-     }
-     }
-     */
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch indexPath.section {
+        case sections.emojiCell.rawValue:
+            let emojiHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseIdentifier, for: indexPath) as! SupplementaryView
+            emojiHeaderView.titleLabel.text = "Emoji"
+            return emojiHeaderView
+            
+        case sections.colorCell.rawValue:
+            let colorHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseIdentifier, for: indexPath) as! SupplementaryView
+            colorHeaderView.titleLabel.text = "Цвет"
+            return colorHeaderView
+            
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
 }
 
 // MARK: - UICollectionViewDelegate:
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard indexPath.section == 1 else { return }
-        let cell = collectionView.cellForItem(at: indexPath) as? ButtonsCell
-        cell?.backgroundColor = .darkGray
+        switch indexPath.section {
+        case sections.buttonsCell.rawValue:
+            let buttonCell = collectionView.cellForItem(at: indexPath) as? ButtonsCell
+            buttonCell?.backgroundColor = .darkGray
+            print("DidSelect was called")
+        case sections.emojiCell.rawValue:
+            let emojiCell = collectionView.cellForItem(at: indexPath) as? EmojiCell
+            emojiCell?.layer.masksToBounds = true
+            emojiCell?.layer.cornerRadius = 16
+            emojiCell?.layer.backgroundColor = UIColor.YPLightGray.cgColor
+        case sections.colorCell.rawValue:
+            let colorCell = collectionView.cellForItem(at: indexPath) as? ColorCell
+            colorCell?.layer.masksToBounds = true
+            colorCell?.layer.borderWidth = 2
+            colorCell?.layer.borderColor = colorCell?.colorView.backgroundColor?.cgColor
+        default:
+            break
+        }
     }
 }
