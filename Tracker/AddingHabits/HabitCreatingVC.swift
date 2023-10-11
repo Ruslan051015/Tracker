@@ -57,11 +57,12 @@ final class HabitCreatingVC: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .YPWhite
         super.viewDidLoad()
-    
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
         configureTitleAndCollectionView()
+        //        configureSupplementaryView()
         configureStackViewAndButtons()
     }
     
@@ -75,8 +76,11 @@ final class HabitCreatingVC: UIViewController {
         
         collectionView.register(TextFieldCell.self, forCellWithReuseIdentifier: TextFieldCell.reuseIdentifier)
         collectionView.register(ButtonsCell.self, forCellWithReuseIdentifier: ButtonsCell.reuseIdentifier)
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "MyHeader")
-    
+        collectionView.register(EmojiCell.self, forCellWithReuseIdentifier: EmojiCell.reuseIdentifier)
+        collectionView.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.reuseIdentifier)
+        
+        collectionView.showsVerticalScrollIndicator = false
+        
         
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
@@ -87,7 +91,7 @@ final class HabitCreatingVC: UIViewController {
             collectionView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60)
         ])
     }
     
@@ -117,6 +121,10 @@ final class HabitCreatingVC: UIViewController {
             createButton.heightAnchor.constraint(equalToConstant: 60),
         ])
     }
+    
+    private func configureSupplementaryView() {
+        collectionView.register(SupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SupplementaryView.reuseIdentifier)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout:
@@ -127,10 +135,10 @@ extension HabitCreatingVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 75)
         case sections.buttonsCell.rawValue:
             return CGSize(width: collectionView.bounds.width, height: 75)
-            //        case sections.emojiCell.rawValue:
-            //            return CGSize(width: collectionView.bounds.width / 6, height: 52)
-            //        case sections.colorCell.rawValue:
-            //            return CGSize(width: collectionView.bounds.width / 6, height: 52)
+        case sections.emojiCell.rawValue:
+            return CGSize(width: collectionView.bounds.width / 7, height: 52)
+        case sections.colorCell.rawValue:
+            return CGSize(width: collectionView.bounds.width / 7, height: 52)
         default: return CGSize()
         }
     }
@@ -141,10 +149,22 @@ extension HabitCreatingVC: UICollectionViewDelegateFlowLayout {
             return 0
         case sections.buttonsCell.rawValue:
             return 0
-            //        case sections.emojiCell.rawValue:
-            //            return 5
-            //        case sections.colorCell.rawValue:
-            //            return 5
+        case sections.emojiCell.rawValue:
+            return 5
+        case sections.colorCell.rawValue:
+            return 5
+        default: return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        switch section {
+        case sections.buttonsCell.rawValue:
+            return 0
+        case sections.emojiCell.rawValue:
+            return 0
+        case sections.colorCell.rawValue:
+            return 0
         default: return 0
         }
     }
@@ -155,12 +175,27 @@ extension HabitCreatingVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch section {
-        
         case sections.buttonsCell.rawValue:
             return CGSize(width: 1, height: 24)
+        case sections.emojiCell.rawValue:
+            return CGSize(width: collectionView.bounds.width, height: 50)
+            
         default: return CGSize()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch section {
+        case sections.emojiCell.rawValue:
+            return UIEdgeInsets(top: 24, left: 2, bottom: 24, right: 2)
+        case sections.colorCell.rawValue:
+            return UIEdgeInsets(top: 24, left: 2, bottom: 24, right: 2)
+        default:
+            return UIEdgeInsets()
+        }
+    }
+    
+    
 }
 
 // MARK: - UITableViewDataSource:
@@ -169,8 +204,8 @@ extension HabitCreatingVC: UICollectionViewDataSource {
         switch section {
         case sections.textfieldCell.rawValue: return 1
         case sections.buttonsCell.rawValue: return 2
-//        case sections.emojiCell.rawValue: return emojies.count
-//        case sections.colorCell.rawValue: return colors.count
+        case sections.emojiCell.rawValue: return emojies.count
+        case sections.colorCell.rawValue: return colors.count
         default: return 0
         }
     }
@@ -187,43 +222,54 @@ extension HabitCreatingVC: UICollectionViewDataSource {
             textFieldCell.layer.masksToBounds = true
             textFieldCell.layer.cornerRadius = 16
             return textFieldCell
+            
         case sections.buttonsCell.rawValue:
-            let headerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: 1))
-            headerView?.backgroundColor = .YPBackground
-            headerView?.layer.masksToBounds = true
-            headerView?.layer.cornerRadius = 16
             guard let buttonsCell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonsCell.reuseIdentifier, for: indexPath) as? ButtonsCell else {
                 print("Couldn't create buttonsCell")
                 return UICollectionViewCell()
             }
-            if indexPath.row == 0 {
-                buttonsCell.label.text = "Категория"
-//                buttonsCell.contentView.inputAccessoryView =
-                return buttonsCell
-            } else if indexPath.row == 1 {
-                buttonsCell.label.text = "Расписание"
-                return buttonsCell
-            }
+            buttonsCell.label.text = titlesForRows[indexPath.row]
             return buttonsCell
-        /*case sections.emojiCell.rawValue:
-            guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: <#T##String#>, for: indexPath) as? EmojiCell else {
+            
+        case sections.emojiCell.rawValue:
+            guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseIdentifier, for: indexPath) as? EmojiCell else {
                 print("Couldn't create emojiCell")
                 return UICollectionViewCell()
             }
-         return emojiCell
+            emojiCell.emojiLabel.text = emojies[indexPath.row]
+            emojiCell.emojiLabel.font = .systemFont(ofSize: 32)
+            return emojiCell
+            
         case sections.colorCell.rawValue:
-            guard let colorCell = collectionView.dequeueReusableCell(withReuseIdentifier: <#T##String#>, for: indexPath) as? ColorCell else {
+            guard let colorCell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.reuseIdentifier, for: indexPath) as? ColorCell else {
                 print("Couldn't create colorCell")
                 return UICollectionViewCell()
             }
-         return colorCell
-         */
+            colorCell.colorView.backgroundColor = colors[indexPath.row]
+            return colorCell
+            
         default: return UICollectionViewCell()
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MyHeader", for: indexPath)
-            return headerView
+    /*
+     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+     switch indexPath.section {
+     case sections.emojiCell.rawValue:
+     let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseIdentifier, for: indexPath) as! SupplementaryView
+     headerView.titleLabel.text = "Emoji"
+     return headerView
+     default:
+     return UICollectionReusableView()
+     }
+     }
+     */
+}
+
+// MARK: - UICollectionViewDelegate:
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.section == 1 else { return }
+        let cell = collectionView.cellForItem(at: indexPath) as? ButtonsCell
+        cell?.backgroundColor = .darkGray
     }
 }
