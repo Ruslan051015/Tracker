@@ -259,16 +259,20 @@ extension HabitCreatingVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseIdentifier, for: indexPath) as? SupplementaryView else { return UICollectionReusableView() }
+        
         switch indexPath.section {
+        case sections.buttonsCell.rawValue:
+            supplementaryView.titleLabel.text = ""
+            return supplementaryView
+            
         case sections.emojiCell.rawValue:
-            let emojiHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseIdentifier, for: indexPath) as! SupplementaryView
-            emojiHeaderView.titleLabel.text = "Emoji"
-            return emojiHeaderView
+            supplementaryView.titleLabel.text = "Emoji"
+            return supplementaryView
             
         case sections.colorCell.rawValue:
-            let colorHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseIdentifier, for: indexPath) as! SupplementaryView
-            colorHeaderView.titleLabel.text = "Цвет"
-            return colorHeaderView
+            supplementaryView.titleLabel.text = "Цвет"
+            return supplementaryView
             
         default:
             return UICollectionReusableView()
@@ -280,18 +284,21 @@ extension HabitCreatingVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate:
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let buttonCell = collectionView.cellForItem(at: indexPath) as? ButtonsCell
+        let emojiCell = collectionView.cellForItem(at: indexPath) as? EmojiCell
+        let colorCell = collectionView.cellForItem(at: indexPath) as? ColorCell
+        
         switch indexPath.section {
         case sections.buttonsCell.rawValue:
-            let buttonCell = collectionView.cellForItem(at: indexPath) as? ButtonsCell
             buttonCell?.backgroundColor = .darkGray
             print("DidSelect was called")
+            
         case sections.emojiCell.rawValue:
-            let emojiCell = collectionView.cellForItem(at: indexPath) as? EmojiCell
             emojiCell?.layer.masksToBounds = true
             emojiCell?.layer.cornerRadius = 16
             emojiCell?.layer.backgroundColor = UIColor.YPLightGray.cgColor
+            
         case sections.colorCell.rawValue:
-            let colorCell = collectionView.cellForItem(at: indexPath) as? ColorCell
             colorCell?.layer.masksToBounds = true
             colorCell?.layer.borderWidth = 2
             colorCell?.layer.borderColor = colorCell?.colorView.backgroundColor?.cgColor
