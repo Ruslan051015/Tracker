@@ -21,6 +21,8 @@
 		4A81813C2ACF5F5700A3B9DF /* Tracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81813B2ACF5F5700A3B9DF /* Tracker.swift */; };
 		4A81813E2ACF5F6700A3B9DF /* TrackerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81813D2ACF5F6700A3B9DF /* TrackerCategory.swift */; };
 		4A8181402ACF5F8200A3B9DF /* TrackerRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81813F2ACF5F8200A3B9DF /* TrackerRecord.swift */; };
+		4A81E5422AD8398F00CF1260 /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81E5412AD8398F00CF1260 /* ScheduleVC.swift */; };
+		4A81E5442AD841F800CF1260 /* CategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81E5432AD841F800CF1260 /* CategoriesVC.swift */; };
 		4A86C3FC2AD056450079EF4B /* NewHabitOrEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */; };
 		4A8AF8752AD3068900807E22 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AF8742AD3068900807E22 /* TextFieldCell.swift */; };
 		4A8AF8772AD3517C00807E22 /* ButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AF8762AD3517C00807E22 /* ButtonsCell.swift */; };
@@ -66,6 +68,8 @@
 		4A81813B2ACF5F5700A3B9DF /* Tracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracker.swift; sourceTree = "<group>"; };
 		4A81813D2ACF5F6700A3B9DF /* TrackerCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategory.swift; sourceTree = "<group>"; };
 		4A81813F2ACF5F8200A3B9DF /* TrackerRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerRecord.swift; sourceTree = "<group>"; };
+		4A81E5412AD8398F00CF1260 /* ScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
+		4A81E5432AD841F800CF1260 /* CategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVC.swift; sourceTree = "<group>"; };
 		4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitOrEventVC.swift; sourceTree = "<group>"; };
 		4A8AF8742AD3068900807E22 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		4A8AF8762AD3517C00807E22 /* ButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsCell.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 			children = (
 				4A86C3FB2AD056450079EF4B /* NewHabitOrEventVC.swift */,
 				4A21EF4A2AD1A21B00BD40DB /* HabitCreatingVC.swift */,
+				4A81E5412AD8398F00CF1260 /* ScheduleVC.swift */,
+				4A81E5432AD841F800CF1260 /* CategoriesVC.swift */,
 				4A8AF8742AD3068900807E22 /* TextFieldCell.swift */,
 				4A8AF8762AD3517C00807E22 /* ButtonsCell.swift */,
 				4AC8312E2AD5D98E00F0DDE4 /* enumForSections.swift */,
@@ -339,8 +345,10 @@
 				4A5AD1CD2ACEF2F6000E826B /* AppDelegate.swift in Sources */,
 				4A21EF4D2AD1AB3D00BD40DB /* CustomTextField.swift in Sources */,
 				4A8AF8752AD3068900807E22 /* TextFieldCell.swift in Sources */,
+				4A81E5442AD841F800CF1260 /* CategoriesVC.swift in Sources */,
 				4AC8312F2AD5D98E00F0DDE4 /* enumForSections.swift in Sources */,
 				4A8181402ACF5F8200A3B9DF /* TrackerRecord.swift in Sources */,
+				4A81E5422AD8398F00CF1260 /* ScheduleVC.swift in Sources */,
 				4AD8773E2AD6E214007E2EE2 /* EmojiCell.swift in Sources */,
 				4AD877422AD7040A007E2EE2 /* ColorCell.swift in Sources */,
 				4A86C3FC2AD056450079EF4B /* NewHabitOrEventVC.swift in Sources */,
