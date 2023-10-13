@@ -3,24 +3,24 @@ import UIKit
 
 final class CategoriesVC: UIViewController {
     // MARK: - Properties:
-    var categories: [String] = []
+    var categories: [String] = ["Study", "Work", "Relax"]
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
-       let label = UILabel()
-        label.text = "Категория"
-        label.font = .systemFont(ofSize: 16, weight: .medium)
+        let label = UILabel()
+        label.text      = "Категория"
+        label.font      = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
         
         return label
     }()
     
-   private lazy var addButton: UIButton = {
+    private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Добавить категорию", for: .normal)
-       button.tintColor = .YPWhite
-        button.frame.size = CGSize(width: 335, height: 60)
+        button.tintColor           = .YPWhite
+        button.frame.size          = CGSize(width: 335, height: 60)
         button.layer.masksToBounds = true
-        button.layer.cornerRadius = 16
+        button.layer.cornerRadius  = 16
         button.backgroundColor = .YPBlack
         //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
         
@@ -29,35 +29,57 @@ final class CategoriesVC: UIViewController {
     
     private lazy var tableView = UITableView()
     
-   
+    private lazy var backImageView: UIImageView = {
+        let image       = UIImage(named: "StarLight")
+        let imageView   = UIImageView(image: image)
+        
+        return imageView
+    }()
+    
+    private lazy var backgroundLabel: UILabel = {
+        let label = UILabel()
+        label.text      = "Привычки и события можно\nобъединить по смыслу"
+        label.font      = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .YPBlack
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        return label
+    }()
+    
+    
     
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .YPWhite
         configureScreenItems()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.allowsMultipleSelection = false
-        tableView.backgroundView = UIImageView(image: UIImage(named: "StarLight"))
-        tableView.backgroundView?.sizeThatFits(CGSize(width: 80, height: 80))
+        showOrHideBackground()
+        
+        tableView.delegate                  = self
+        tableView.dataSource                = self
+        tableView.allowsMultipleSelection   = false
+        
     }
     
     // MARK: - Methods:
     private func configureScreenItems() {
-        topTitle.translatesAutoresizingMaskIntoConstraints = false
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        addButton.translatesAutoresizingMaskIntoConstraints = false
+        topTitle.translatesAutoresizingMaskIntoConstraints          = false
+        tableView.translatesAutoresizingMaskIntoConstraints         = false
+        addButton.translatesAutoresizingMaskIntoConstraints         = false
+        backImageView.translatesAutoresizingMaskIntoConstraints     = false
+        backgroundLabel.translatesAutoresizingMaskIntoConstraints   = false
         
         view.addSubview(topTitle)
         view.addSubview(tableView)
         view.addSubview(addButton)
+        view.addSubview(backImageView)
+        view.addSubview(backgroundLabel)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "cell")
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
-        tableView.sectionFooterHeight = 10
+        tableView.separatorStyle        = .none
+        tableView.backgroundColor       = .clear
+        tableView.sectionFooterHeight   = 10
         
         
         NSLayoutConstraint.activate([
@@ -70,13 +92,32 @@ final class CategoriesVC: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor),
             
+            backImageView.heightAnchor.constraint(equalToConstant: 80),
+            backImageView.widthAnchor.constraint(equalToConstant: 80),
+            backImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            backImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -386),
+            
+            backgroundLabel.topAnchor.constraint(equalTo: backImageView.bottomAnchor, constant: 8),
+            backgroundLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            backgroundLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            backgroundLabel.heightAnchor.constraint(equalToConstant: 36),
+            
             addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             addButton.heightAnchor.constraint(equalToConstant: 60),
             addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
             
         ])
-        
+    }
+    // MARK: - Private methods:
+    private func showOrHideBackground() {
+        if !categories.isEmpty {
+            backgroundLabel.isHidden = true
+            backImageView.isHidden = true
+        } else {
+            backgroundLabel.isHidden = false
+            backImageView.isHidden = false
+        }
     }
 }
 // MARK: - UITableViewDataSource:
