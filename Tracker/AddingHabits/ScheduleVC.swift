@@ -22,41 +22,66 @@ final class ScheduleVC: UIViewController {
         case Sunday     = "Воскресенье"
     }
     
+    private let stackView: UIStackView = {
+       let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 22
+        stack.backgroundColor = .YPBackground
+        stack.layer.masksToBounds = true
+        stack.layer.cornerRadius = 16
+        
+        return stack
+    }()
+    
+    private lazy var doneButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Готово", for: .normal)
+        button.tintColor           = .YPWhite
+        button.frame.size          = CGSize(width: 335, height: 60)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius  = 16
+        button.backgroundColor = .YPBlack
+        //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .YPWhite
-//        configureScreenItems()
+        configureScreenItems()
     }
-    /*
+    
     // MARK: - Methods:
     private func configureScreenItems() {
         topTitle.translatesAutoresizingMaskIntoConstraints = false
-        newEvent.translatesAutoresizingMaskIntoConstraints = false
-        topTitle.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(newHabit)
-        view.addSubview(newEvent)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+       
         view.addSubview(topTitle)
+        view.addSubview(stackView)
+        view.addSubview(doneButton)
         
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             topTitle.heightAnchor.constraint(equalToConstant: 22),
-            topTitle.widthAnchor.constraint(equalToConstant: 149),
+            topTitle.widthAnchor.constraint(equalToConstant: 97),
             
-            newHabit.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            newHabit.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            newHabit.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 295),
-            newHabit.heightAnchor.constraint(equalToConstant: 60),
-            newHabit.widthAnchor.constraint(equalToConstant: 335),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            stackView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 30),
+            stackView.bottomAnchor.constraint(equalTo: doneButton.topAnchor, constant: -47),
             
-            newEvent.topAnchor.constraint(equalTo: newHabit.bottomAnchor, constant: 16),
-            newEvent.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            newEvent.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            newEvent.heightAnchor.constraint(equalToConstant: 60),
-            newEvent.widthAnchor.constraint(equalToConstant: 335)
+            doneButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            doneButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            doneButton.heightAnchor.constraint(equalToConstant: 60),
+            doneButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
     }
-     */
+    
+    private func configureStackView() {
+        
+    }
 }

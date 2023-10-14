@@ -27,7 +27,16 @@ final class CategoriesVC: UIViewController {
         return button
     }()
     
-    private lazy var tableView = UITableView()
+    private lazy var tableView: UITableView = {
+       let table = UITableView()
+        table.layer.masksToBounds = true
+        table.layer.cornerRadius = 16
+        table.separatorStyle = .singleLine
+        table.backgroundColor = .YPBackground
+        table.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        
+        return table
+    }()
     
     private lazy var backImageView: UIImageView = {
         let image       = UIImage(named: "StarLight")
@@ -43,6 +52,7 @@ final class CategoriesVC: UIViewController {
         label.textColor = .YPBlack
         label.numberOfLines = 2
         label.textAlignment = .center
+        
         return label
     }()
     
@@ -77,10 +87,6 @@ final class CategoriesVC: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "cell")
-        tableView.separatorStyle        = .none
-        tableView.backgroundColor       = .clear
-        tableView.sectionFooterHeight   = 10
-        
         
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
@@ -123,21 +129,17 @@ final class CategoriesVC: UIViewController {
 // MARK: - UITableViewDataSource:
 extension CategoriesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
         categories.count
     }
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = categories[indexPath.section]
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 16
-        cell.backgroundColor = .YPBackground
-        cell.selectedBackgroundView?.layer.masksToBounds = true
-        cell.selectedBackgroundView?.layer.cornerRadius = 16
+        cell.textLabel?.text = categories[indexPath.row]
+        cell.backgroundColor = .clear
+        if indexPath.row == categories.count - 1 {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1000)
+        }
+        
         
         return cell
     }

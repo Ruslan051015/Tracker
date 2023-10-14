@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let currentScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: currentScene)
-        window?.rootViewController = CategoriesVC()
+        window?.rootViewController = HabitCreatingVC()
         window?.makeKeyAndVisible()
     }
 

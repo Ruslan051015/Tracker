@@ -15,7 +15,7 @@ final class CustomUITextField: UITextField {
         font = .systemFont(ofSize: 17, weight: .regular)
         layer.masksToBounds = true
         layer.cornerRadius = 16
-        backgroundColor = .clear
+        backgroundColor = .YPBackground
     }
     
     required init?(coder: NSCoder) {
