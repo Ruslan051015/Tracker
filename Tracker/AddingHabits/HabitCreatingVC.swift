@@ -5,7 +5,7 @@ final class HabitCreatingVC: UIViewController {
     // MARK: - Private properties:
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.contentSize = CGSize(width: scroll.frame.width, height: scroll.frame.height + 200)
+        scroll.contentSize = CGSize(width: scroll.frame.width, height: scroll.frame.height + 300)
         scroll.isMultipleTouchEnabled = true
         
         return scroll
@@ -139,12 +139,9 @@ final class HabitCreatingVC: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.allowsSelection          = true
-        collectionView.allowsMultipleSelection  = false
         
         setupToHideKeyboardOnTapOnView()
         configureTitleAndScroll()
-        
         configureSupplementaryView()
         
     }
@@ -180,6 +177,7 @@ final class HabitCreatingVC: UIViewController {
         collectionView.register(EmojiCell.self, forCellWithReuseIdentifier: EmojiCell.reuseIdentifier)
         collectionView.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.reuseIdentifier)
         collectionView.register(SupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SupplementaryView.reuseIdentifier)
+        collectionView.isScrollEnabled = false
         
         stackView.addArrangedSubview(cancelButton)
         stackView.addArrangedSubview(createButton)
@@ -226,7 +224,7 @@ final class HabitCreatingVC: UIViewController {
             collectionView.topAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 50),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 782),
+            collectionView.heightAnchor.constraint(equalToConstant: 442),
             
             stackView.heightAnchor.constraint(equalToConstant: 60),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -266,9 +264,9 @@ extension HabitCreatingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         switch section {
         case sections.emojiCell.rawValue:
-            return 5
+            return 0
         case sections.colorCell.rawValue:
-            return 5
+            return 0
         default: return 0
         }
     }
@@ -284,7 +282,7 @@ extension HabitCreatingVC: UICollectionViewDelegateFlowLayout {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        4
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -301,15 +299,13 @@ extension HabitCreatingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch section {
         case sections.emojiCell.rawValue:
-            return UIEdgeInsets(top: 24, left: 2, bottom: 24, right: 2)
+            return UIEdgeInsets(top: 24, left: 18, bottom: 24, right: 18)
         case sections.colorCell.rawValue:
             return UIEdgeInsets(top: 24, left: 2, bottom: 24, right: 2)
         default:
             return UIEdgeInsets()
         }
     }
-    
-    
 }
 
 // MARK: - UITableViewDataSource:
@@ -324,7 +320,6 @@ extension HabitCreatingVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-            
         case sections.emojiCell.rawValue:
             guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseIdentifier, for: indexPath) as? EmojiCell else {
                 print("Couldn't create emojiCell")
@@ -367,7 +362,6 @@ extension HabitCreatingVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate:
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let buttonCell = collectionView.cellForItem(at: indexPath) as? ButtonsCell
         let emojiCell = collectionView.cellForItem(at: indexPath) as? EmojiCell
         let colorCell = collectionView.cellForItem(at: indexPath) as? ColorCell
         

@@ -19,7 +19,7 @@ final class SupplementaryView: UICollectionReusableView {
         addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            titleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 28),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
