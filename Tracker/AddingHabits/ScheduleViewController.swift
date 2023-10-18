@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class ScheduleVC: UIViewController {
+final class ScheduleViewController: UIViewController {
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -80,7 +80,7 @@ final class ScheduleVC: UIViewController {
     }
 }
 
-extension ScheduleVC: UITableViewDelegate {
+extension ScheduleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         75
     }
@@ -92,7 +92,7 @@ extension ScheduleVC: UITableViewDelegate {
     }
 }
 
-extension ScheduleVC: UITableViewDataSource {
+extension ScheduleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         weekDays.count
     }

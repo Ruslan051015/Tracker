@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class NewHabitOrEventVC: UIViewController {
+final class CreatingViewController: UIViewController {
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
        let label = UILabel()

@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class CategoriesVC: UIViewController {
+final class CategoriesViewController: UIViewController {
     // MARK: - Properties:
     var categories: [String] = ["Study", "Work", "Relax"]
     // MARK: - Private properties:
@@ -127,7 +127,7 @@ final class CategoriesVC: UIViewController {
     }
 }
 // MARK: - UITableViewDataSource:
-extension CategoriesVC: UITableViewDataSource {
+extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         categories.count
     }
@@ -151,7 +151,7 @@ extension CategoriesVC: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate:
-extension CategoriesVC: UITableViewDelegate {
+extension CategoriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         75
     }

@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class HabitCreatingVC: UIViewController {
+final class HabitViewController: UIViewController {
     // MARK: - Private properties:
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -40,7 +40,7 @@ final class HabitCreatingVC: UIViewController {
         button.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         button.backgroundColor = .YPBackground
         button.addTarget(self, action: #selector(showCategories), for: .touchUpInside)
-        
+
         return button
     }()
     
@@ -203,7 +203,7 @@ final class HabitCreatingVC: UIViewController {
     
     @objc
     private func showCategories() {
-        self.present(CategoriesVC(), animated: true)
+        self.present(CategoriesViewController(), animated: true)
     }
 }
 
