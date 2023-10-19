@@ -54,9 +54,9 @@ final class TrackersViewController: ViewController, UITextFieldDelegate {
     }
     
     private func setTabBarsBorder() {
-        let line = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 1))
-        line.backgroundColor = .YPGray
-        self.tabBarController?.tabBar.addSubview(line)
+        let lineView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 1))
+        lineView.backgroundColor = .YPGray
+        self.tabBarController?.tabBar.addSubview(lineView)
         self.tabBarController?.tabBar.clipsToBounds = true
     }
 }
