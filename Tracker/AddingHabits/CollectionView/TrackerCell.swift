@@ -22,10 +22,12 @@ class TrackerCell: UICollectionViewCell {
     lazy var emojiLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .YPBackground
-        label.font = .systemFont(ofSize: 22)
+        label.font = .systemFont(ofSize: 16)
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 68
-        label.text = "🎲"
+        label.layer.cornerRadius = 14
+        label.textAlignment = .center
+        label.text = "😍"
+        
         
         return label
     }()
@@ -87,7 +89,7 @@ class TrackerCell: UICollectionViewCell {
             plusButton.imageEdgeInsets = UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11)
             plusButton.tintColor = .YPWhite
         } else {
-            plusButton.setImage(UIImage(named: "Plus"), for: .normal)
+            plusButton.setImage(plusImage, for: .normal)
             plusButton.imageEdgeInsets = UIEdgeInsets(top: 11.72, left: 11.72, bottom: 12.07, right: 11.65)
             plusButton.tintColor = .YPWhite
         }
@@ -116,8 +118,8 @@ class TrackerCell: UICollectionViewCell {
             topView.heightAnchor.constraint(equalToConstant: 90),
             emojiLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 12),
             emojiLabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 12),
-            emojiLabel.heightAnchor.constraint(equalToConstant: 24),
-            emojiLabel.widthAnchor.constraint(equalToConstant: 24),
+            emojiLabel.heightAnchor.constraint(equalToConstant: 28),
+            emojiLabel.widthAnchor.constraint(equalToConstant: 28),
             trackerNameLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 44),
             trackerNameLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -12),
             trackerNameLabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 12),

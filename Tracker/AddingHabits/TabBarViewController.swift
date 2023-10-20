@@ -3,7 +3,7 @@ import UIKit
 final class TabBarViewController: UITabBarController {
     // MARK: - Private properties:
     let datePicker: UIDatePicker = {
-       let picker = UIDatePicker()
+        let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.datePickerMode = .date
         picker.tintColor = .YPBlue
@@ -14,6 +14,7 @@ final class TabBarViewController: UITabBarController {
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTabBarsBorder()
         setupTabs()
     }
     
@@ -33,7 +34,7 @@ final class TabBarViewController: UITabBarController {
         trackersNav.viewControllers.first?.navigationItem.rightBarButtonItem = rightButton
         trackersNav.viewControllers.first?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Plus"), style: .plain, target: self, action: #selector(createHabitOrEvent))
         
-    
+        
         vc.navigationItem.title = title
         vc.navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -52,5 +53,12 @@ final class TabBarViewController: UITabBarController {
     
     @objc private func createHabitOrEvent() {
         self.present(CreatingViewController(), animated: true)
+    }
+    
+    private func setTabBarsBorder() {
+        let lineView = UIView(frame: CGRect(x: 0, y: 0, width: tabBar.frame.size.width, height: 1))
+        lineView.backgroundColor = .YPGray
+        tabBar.addSubview(lineView)
+        tabBar.clipsToBounds = true
     }
 }

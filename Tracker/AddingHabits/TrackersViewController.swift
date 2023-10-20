@@ -27,7 +27,6 @@ final class TrackersViewController: ViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
         
-        setTabBarsBorder()
         screenItemsSetup()
         
     }
@@ -53,12 +52,7 @@ final class TrackersViewController: ViewController, UITextFieldDelegate {
         ])
     }
     
-    private func setTabBarsBorder() {
-        let lineView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 1))
-        lineView.backgroundColor = .YPGray
-        self.tabBarController?.tabBar.addSubview(lineView)
-        self.tabBarController?.tabBar.clipsToBounds = true
-    }
+    
 }
 
 // MARK: - UICollectionViewDelegate:
