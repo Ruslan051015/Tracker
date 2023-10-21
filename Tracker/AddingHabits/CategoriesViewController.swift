@@ -3,7 +3,11 @@ import UIKit
 
 final class CategoriesViewController: UIViewController {
     // MARK: - Properties:
-    var categories: [String] = ["Study", "Work", "Relax"]
+    var categories: [String] = [] {
+        didSet {
+            showOrHideBackground()
+        }
+    }
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -28,7 +32,7 @@ final class CategoriesViewController: UIViewController {
     }()
     
     private lazy var tableView: UITableView = {
-       let table = UITableView()
+        let table = UITableView()
         table.layer.masksToBounds = true
         table.layer.cornerRadius = 16
         table.separatorStyle = .singleLine
@@ -125,17 +129,25 @@ final class CategoriesViewController: UIViewController {
             backImageView.isHidden = false
         }
     }
+    
+    private func addCheckmark() -> UIImageView {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 14.3, height: 14.2))
+        let image = UIImage(named: "CheckmarkBlue")
+        imageView.image = image
+        return imageView
+    }
 }
 // MARK: - UITableViewDataSource:
 extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         categories.count
     }
-   
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = categories[indexPath.row]
         cell.backgroundColor = .clear
+        cell.selectionStyle = .none
         if indexPath.row == categories.count - 1 {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1000)
         }
@@ -157,9 +169,18 @@ extension CategoriesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        //        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath)
+        let checkmark = UIImage(named: "CheckmarkBlue")
+        cell?.accessoryView = UIImageView(image: checkmark)
+        cell?.accessoryView?.bounds = CGRect(x: 0, y: 0, width: 14.3, height: 14.2)
+        
+        
+        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryView = .none
     }
 }

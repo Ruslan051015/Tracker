@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class TrackersViewController: ViewController, UITextFieldDelegate {
+final class TrackersViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
     var currentData: Date = Date()
     lazy var searchField: UISearchTextField = {

@@ -2,6 +2,12 @@ import Foundation
 import UIKit
 
 final class HabitViewController: UIViewController {
+    // MARK: - Properties:
+    var selectedDays:[String] = [] {
+        didSet{
+            
+        }
+    }
     // MARK: - Private properties:
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -78,7 +84,7 @@ final class HabitViewController: UIViewController {
         button.layer.cornerRadius  = 16
         button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         button.backgroundColor = .YPBackground
-        //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showSchedule), for: .touchUpInside)
         
         return button
     }()
@@ -115,11 +121,16 @@ final class HabitViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .YPWhite
         super.viewDidLoad()
-    
+        
         setupToHideKeyboardOnTapOnView()
         configureScreenItems()
     }
     
+    // MARK: - Methods:
+    func hideScheduleButton() {
+        scheduleButton.isHidden = true
+        dividerLine.isHidden = true
+    }
     // MARK: - Private methods:
     private func configureScreenItems() {
         topTitle.translatesAutoresizingMaskIntoConstraints       = false
@@ -201,9 +212,14 @@ final class HabitViewController: UIViewController {
         ])
     }
     
-    @objc
-    private func showCategories() {
-        self.present(CategoriesViewController(), animated: true)
+    @objc private func showCategories() {
+       let viewToPresent = CategoriesViewController()
+        self.present(viewToPresent, animated: true)
+    }
+    
+    @objc private func showSchedule() {
+        let viewToPresent = ScheduleViewController()
+        self.present(viewToPresent, animated: true)
     }
 }
 

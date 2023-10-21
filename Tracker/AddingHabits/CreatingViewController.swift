@@ -2,6 +2,8 @@ import Foundation
 import UIKit
 
 final class CreatingViewController: UIViewController {
+    // MARK: - Properties:
+   
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
        let label = UILabel()
@@ -33,7 +35,7 @@ final class CreatingViewController: UIViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
-        //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        button.addTarget(self, action: #selector(openHabitVC), for: .touchUpInside)
         
         return button
     }()
@@ -41,10 +43,11 @@ final class CreatingViewController: UIViewController {
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .YPWhite
         configureScreenItems()
     }
-    // MARK: - Methods:
+    // MARK: - Private methods:
     private func configureScreenItems() {
         newHabit.translatesAutoresizingMaskIntoConstraints = false
         newEvent.translatesAutoresizingMaskIntoConstraints = false
@@ -72,5 +75,9 @@ final class CreatingViewController: UIViewController {
             newEvent.heightAnchor.constraint(equalToConstant: 60),
             newEvent.widthAnchor.constraint(equalToConstant: 335)
         ])
+    }
+    @objc private func openHabitVC() {
+        let viewToPresent = HabitViewController()
+        self.present(viewToPresent, animated: true)
     }
 }
