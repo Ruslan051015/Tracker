@@ -1,18 +1,20 @@
 import Foundation
 import UIKit
 
+protocol ScheduleViewControllerProtocol: AnyObject {
+    func showSelectedDays()
+    var selectedDays: [String] { get set }
+}
+
 final class HabitViewController: UIViewController {
     // MARK: - Properties:
-    var selectedDays:[String] = [] {
-        didSet{
-            
-        }
-    }
+    var selectedDays: [String] = []
     // MARK: - Private properties:
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.contentSize = CGSize(width: scroll.frame.width, height: scroll.frame.height)
         scroll.isMultipleTouchEnabled = true
+        scroll.translatesAutoresizingMaskIntoConstraints = false
         
         return scroll
     }()
@@ -22,6 +24,7 @@ final class HabitViewController: UIViewController {
         label.text = "Новая привычка"
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -30,6 +33,7 @@ final class HabitViewController: UIViewController {
         let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: "Введите название трекера")
         field.backgroundColor = .YPBackground
         field.textColor = .YPBlack
+        field.translatesAutoresizingMaskIntoConstraints = false
         
         return field
     }()
@@ -46,13 +50,15 @@ final class HabitViewController: UIViewController {
         button.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         button.backgroundColor = .YPBackground
         button.addTarget(self, action: #selector(showCategories), for: .touchUpInside)
-
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
     private lazy var dividerLine: UIView = {
         let divider = UIView()
         divider.backgroundColor = .YPGray
+        divider.translatesAutoresizingMaskIntoConstraints = false
         
         return divider
     }()
@@ -61,6 +67,7 @@ final class HabitViewController: UIViewController {
         let imageView = UIImageView()
         let chevron = #imageLiteral(resourceName: "Chevron")
         imageView.image = chevron
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
@@ -69,6 +76,7 @@ final class HabitViewController: UIViewController {
         let imageView = UIImageView()
         let chevron = #imageLiteral(resourceName: "Chevron")
         imageView.image = chevron
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
@@ -85,11 +93,26 @@ final class HabitViewController: UIViewController {
         button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         button.backgroundColor = .YPBackground
         button.addTarget(self, action: #selector(showSchedule), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
-   
-    private let stackView = UIStackView()
+    
+    private lazy var selectedDaysLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.textColor = .YPGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private let stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stack
+    }()
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
@@ -101,6 +124,7 @@ final class HabitViewController: UIViewController {
         button.layer.cornerRadius = 16
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.YPRed.cgColor
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
@@ -113,6 +137,7 @@ final class HabitViewController: UIViewController {
         button.backgroundColor = .YPGray
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
@@ -133,18 +158,6 @@ final class HabitViewController: UIViewController {
     }
     // MARK: - Private methods:
     private func configureScreenItems() {
-        topTitle.translatesAutoresizingMaskIntoConstraints       = false
-        scrollView.translatesAutoresizingMaskIntoConstraints     = false
-        textField.translatesAutoresizingMaskIntoConstraints      = false
-        stackView.translatesAutoresizingMaskIntoConstraints      = false
-        cancelButton.translatesAutoresizingMaskIntoConstraints   = false
-        createButton.translatesAutoresizingMaskIntoConstraints   = false
-        categoryButton.translatesAutoresizingMaskIntoConstraints = false
-        scheduleButton.translatesAutoresizingMaskIntoConstraints = false
-        dividerLine.translatesAutoresizingMaskIntoConstraints    = false
-        chevronImage1.translatesAutoresizingMaskIntoConstraints  = false
-        chevronImage2.translatesAutoresizingMaskIntoConstraints  = false
-        
         view.addSubview(topTitle)
         view.addSubview(scrollView)
         view.addSubview(stackView)
@@ -213,14 +226,43 @@ final class HabitViewController: UIViewController {
     }
     
     @objc private func showCategories() {
-       let viewToPresent = CategoriesViewController()
+        let viewToPresent = CategoriesViewController()
         self.present(viewToPresent, animated: true)
     }
     
     @objc private func showSchedule() {
         let viewToPresent = ScheduleViewController()
+        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
 }
 
+// MARK: - Extension:
+extension HabitViewController: ScheduleViewControllerProtocol {
+    func showSelectedDays() {
+        print("show selected days was called")
+        scheduleButton.addSubview(selectedDaysLabel)
+        scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
+        NSLayoutConstraint.activate([
+            selectedDaysLabel.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
+            selectedDaysLabel.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 39),
+            selectedDaysLabel.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -56),
+            selectedDaysLabel.heightAnchor.constraint(equalToConstant: 22)
+        ])
+        
+        let weekDays: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница"]
+        let weekEnd: [String] = ["Суббота", "Воскресенье"]
+        let week: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница", "Суббота", "Воскресенье"]
+        
+        if weekDays.allSatisfy(selectedDays.contains(_:)) && weekDays.count == selectedDays.count {
+            selectedDaysLabel.text = "Будни"
+        } else if weekEnd.allSatisfy(selectedDays.contains(_:)) && weekEnd.count == selectedDays.count {
+            selectedDaysLabel.text = "Выходные дни"
+        } else if week.allSatisfy(selectedDays.contains(_:)) {
+            selectedDaysLabel.text = "Все дни"
+        } else {
+            selectedDaysLabel.text = selectedDays.map { $0.shortName() }.joined(separator: ", ")
+        }
+    }
+}
 

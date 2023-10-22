@@ -1,9 +1,9 @@
 import Foundation
 import UIKit
 
+
+
 final class CreatingViewController: UIViewController {
-    // MARK: - Properties:
-   
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
        let label = UILabel()
@@ -56,6 +56,7 @@ final class CreatingViewController: UIViewController {
         view.addSubview(newHabit)
         view.addSubview(newEvent)
         view.addSubview(topTitle)
+        
         
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),

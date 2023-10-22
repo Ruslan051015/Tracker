@@ -2,6 +2,8 @@ import Foundation
 import UIKit
 
 final class ScheduleViewController: UIViewController {
+    // MARK: - Properties:
+    weak var delegate: ScheduleViewControllerProtocol?
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -16,7 +18,7 @@ final class ScheduleViewController: UIViewController {
         "Понедельник", "Вторник", "Среда", "Четверг",
         "Пятница", "Суббота", "Воскресенье"
     ]
-    private var selectedDays: Set<String> = []
+    private var selectedDays: [String] = []
     private let tableView = UITableView()
     
     private lazy var doneButton: UIButton = {
@@ -27,7 +29,7 @@ final class ScheduleViewController: UIViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius  = 16
         button.backgroundColor = .YPBlack
-        //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -81,15 +83,18 @@ final class ScheduleViewController: UIViewController {
     
     @objc private func switchToggled(_ sender: UISwitch) {
         if sender.isOn {
-            selectedDays.insert(weekDays[sender.tag])
+            selectedDays.append(weekDays[sender.tag])
             print(selectedDays)
         } else {
-            let dayToRemove = selectedDays.filter { $0 == weekDays[sender.tag] }
-            selectedDays.remove(weekDays[sender.tag])
+            selectedDays.removeAll { $0 == weekDays[sender.tag] }
             print(selectedDays)
         }
-        
-        
+    }
+    
+    @objc private func doneButtonTapped() {
+        delegate?.selectedDays = selectedDays
+        delegate?.showSelectedDays()
+        self.dismiss(animated: true)
     }
 }
 

@@ -3,17 +3,19 @@ import UIKit
 
 final class CategoriesViewController: UIViewController {
     // MARK: - Properties:
-    var categories: [String] = [] {
+    var categories: [String] = ["Hobby", "Hobby", "Hobby"] {
         didSet {
             showOrHideBackground()
         }
     }
+    var selectedCategory: String?
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text      = "Категория"
         label.font      = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -27,6 +29,7 @@ final class CategoriesViewController: UIViewController {
         button.layer.cornerRadius  = 16
         button.backgroundColor = .YPBlack
         //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
@@ -36,15 +39,18 @@ final class CategoriesViewController: UIViewController {
         table.layer.masksToBounds = true
         table.layer.cornerRadius = 16
         table.separatorStyle = .singleLine
-        table.backgroundColor = .YPBackground
+        table.backgroundColor = .clear
         table.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        table.showsVerticalScrollIndicator = false
+        table.translatesAutoresizingMaskIntoConstraints = false
         
         return table
     }()
     
     private lazy var backImageView: UIImageView = {
-        let image       = UIImage(named: "StarLight")
-        let imageView   = UIImageView(image: image)
+        let image = UIImage(named: "StarLight")
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
@@ -56,6 +62,7 @@ final class CategoriesViewController: UIViewController {
         label.textColor = .YPBlack
         label.numberOfLines = 2
         label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -77,12 +84,6 @@ final class CategoriesViewController: UIViewController {
     
     // MARK: - Methods:
     private func configureScreenItems() {
-        topTitle.translatesAutoresizingMaskIntoConstraints          = false
-        tableView.translatesAutoresizingMaskIntoConstraints         = false
-        addButton.translatesAutoresizingMaskIntoConstraints         = false
-        backImageView.translatesAutoresizingMaskIntoConstraints     = false
-        backgroundLabel.translatesAutoresizingMaskIntoConstraints   = false
-        
         view.addSubview(topTitle)
         view.addSubview(tableView)
         view.addSubview(addButton)
@@ -90,7 +91,6 @@ final class CategoriesViewController: UIViewController {
         view.addSubview(backgroundLabel)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "cell")
         
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
@@ -125,6 +125,7 @@ final class CategoriesViewController: UIViewController {
             backgroundLabel.isHidden = true
             backImageView.isHidden = true
         } else {
+            tableView.isHidden = true
             backgroundLabel.isHidden = false
             backImageView.isHidden = false
         }
@@ -146,18 +147,15 @@ extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = categories[indexPath.row]
-        cell.backgroundColor = .clear
+        cell.backgroundColor = .YPBackground
         cell.selectionStyle = .none
-        if indexPath.row == categories.count - 1 {
+        if categories.count == 1 || indexPath.row == categories.count - 1 {
+            cell.layer.masksToBounds = true
+            cell.layer.cornerRadius = 16
+            cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1000)
         }
-        
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "cell")
+
         return cell
     }
 }
@@ -174,9 +172,6 @@ extension CategoriesViewController: UITableViewDelegate {
         let checkmark = UIImage(named: "CheckmarkBlue")
         cell?.accessoryView = UIImageView(image: checkmark)
         cell?.accessoryView?.bounds = CGRect(x: 0, y: 0, width: 14.3, height: 14.2)
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
