@@ -16,7 +16,7 @@ final class ScheduleViewController: UIViewController {
         "Понедельник", "Вторник", "Среда", "Четверг",
         "Пятница", "Суббота", "Воскресенье"
     ]
-    private var selectedDays: [String] = []
+    private var selectedDays: Set<String> = []
     private let tableView = UITableView()
     
     private lazy var doneButton: UIButton = {
@@ -39,7 +39,7 @@ final class ScheduleViewController: UIViewController {
         configureScreenItems()
     }
     
-    // MARK: - Methods:
+    // MARK: - Private methods:
     private func configureScreenItems() {
         topTitle.translatesAutoresizingMaskIntoConstraints   = false
         tableView.translatesAutoresizingMaskIntoConstraints  = false
@@ -78,8 +78,22 @@ final class ScheduleViewController: UIViewController {
         tableView.layer.cornerRadius = 16
         tableView.isScrollEnabled = false
     }
+    
+    @objc private func switchToggled(_ sender: UISwitch) {
+        if sender.isOn {
+            selectedDays.insert(weekDays[sender.tag])
+            print(selectedDays)
+        } else {
+            let dayToRemove = selectedDays.filter { $0 == weekDays[sender.tag] }
+            selectedDays.remove(weekDays[sender.tag])
+            print(selectedDays)
+        }
+        
+        
+    }
 }
 
+// MARK: - UITableViewDelegate:
 extension ScheduleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         75
@@ -92,6 +106,7 @@ extension ScheduleViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource:
 extension ScheduleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         weekDays.count
@@ -115,11 +130,4 @@ extension ScheduleViewController: UITableViewDataSource {
         
         return cell
     }
-    
-   
-    @objc func switchToggled(_ sender: UISwitch) {
-        selectedDays.append(weekDays[sender.tag])
-        print(selectedDays)
-    }
-    
 }
