@@ -18,7 +18,8 @@ final class ScheduleViewController: UIViewController {
         "Понедельник", "Вторник", "Среда", "Четверг",
         "Пятница", "Суббота", "Воскресенье"
     ]
-    private var selectedDays: [String] = []
+    private var selectedDays: [String] = [] 
+  
     private let tableView = UITableView()
     
     private lazy var doneButton: UIButton = {

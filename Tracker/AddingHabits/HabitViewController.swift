@@ -8,7 +8,8 @@ protocol ScheduleViewControllerProtocol: AnyObject {
 
 final class HabitViewController: UIViewController {
     // MARK: - Properties:
-    var selectedDays: [String] = []
+    var selectedDays: [String] = [] 
+    
     // MARK: - Private properties:
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
