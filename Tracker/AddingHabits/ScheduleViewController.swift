@@ -35,8 +35,15 @@ final class ScheduleViewController: UIViewController {
     }()
     
     // MARK: - LifeCycle:
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedDays = delegate?.selectedDays ?? []
+        print(selectedDays)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .YPWhite
         configureScreenItems()
     }
@@ -121,7 +128,6 @@ extension ScheduleViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         
         let switchView = UISwitch(frame: .zero)
-        switchView.setOn(false, animated: true)
         switchView.tag = indexPath.row
         switchView.onTintColor = .YPBlue
         switchView.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
@@ -132,7 +138,12 @@ extension ScheduleViewController: UITableViewDataSource {
         if indexPath.row == 6 {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10000)
         }
-        
+        let item = weekDays[indexPath.row]
+        for day in selectedDays {
+            if day == item {
+                switchView.isOn = true
+            }
+        }
         return cell
     }
 }

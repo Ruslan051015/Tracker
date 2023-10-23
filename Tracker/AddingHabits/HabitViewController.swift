@@ -241,15 +241,18 @@ final class HabitViewController: UIViewController {
 extension HabitViewController: ScheduleViewControllerProtocol {
     func showSelectedDays() {
         print("show selected days was called")
-        scheduleButton.addSubview(selectedDaysLabel)
-        scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
-        NSLayoutConstraint.activate([
-            selectedDaysLabel.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
-            selectedDaysLabel.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 39),
-            selectedDaysLabel.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -56),
-            selectedDaysLabel.heightAnchor.constraint(equalToConstant: 22)
-        ])
-        
+        if !selectedDays.isEmpty {
+            scheduleButton.addSubview(selectedDaysLabel)
+            scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
+            NSLayoutConstraint.activate([
+                selectedDaysLabel.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
+                selectedDaysLabel.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 39),
+                selectedDaysLabel.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -56),
+                selectedDaysLabel.heightAnchor.constraint(equalToConstant: 22)
+            ])
+        } else {
+            scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
         let weekDays: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница"]
         let weekEnd: [String] = ["Суббота", "Воскресенье"]
         let week: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница", "Суббота", "Воскресенье"]
