@@ -1,10 +1,10 @@
 import Foundation
 import UIKit
 
-final class CategoriesViewController: UIViewController {
+final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
     weak var delegate: CategoryViewControllerProtocol?
-    var categories: [String] = ["Hobby", "Bobu", "Mimi"] {
+    var categories: [String] = ["Hobby"] {
         didSet {
             showOrHideBackground()
         }

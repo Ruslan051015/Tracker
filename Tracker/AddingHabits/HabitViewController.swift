@@ -20,6 +20,11 @@ final class HabitViewController: UIViewController {
             print("HVC category \(selectedCategory) was added")
         }
     }
+    var trackerName: String = "" {
+        didSet {
+            print(trackerName)
+        }
+    }
     
     // MARK: - Private properties:
     private let scrollView: UIScrollView = {
@@ -45,6 +50,7 @@ final class HabitViewController: UIViewController {
         let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: "Введите название трекера")
         field.backgroundColor = .YPBackground
         field.textColor = .YPBlack
+        field.delegate = self
         field.translatesAutoresizingMaskIntoConstraints = false
         
         return field
@@ -308,6 +314,16 @@ extension HabitViewController: CategoryViewControllerProtocol {
             categoryButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 //            selectedCategoryLabel.isHidden = true
         }
+    }
+}
+
+extension HabitViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        trackerName = textField.text ?? ""
     }
 }
 
