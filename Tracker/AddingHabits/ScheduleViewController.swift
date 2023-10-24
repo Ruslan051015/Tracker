@@ -13,12 +13,23 @@ final class ScheduleViewController: UIViewController {
         
         return label
     }()
+    private let dictToSort: [String: Int] = ["Понедельник": 0,
+                                             "Вторник":     1,
+                                             "Среда":       2,
+                                             "Четверг":     3,
+                                             "Пятница":     4,
+                                             "Суббота":     5,
+                                             "Воскресенье": 6]
     
     private let weekDays: [String] = [
         "Понедельник", "Вторник", "Среда", "Четверг",
         "Пятница", "Суббота", "Воскресенье"
     ]
-    private var selectedDays: [String] = [] 
+    private var selectedDays: [String] = [] {
+        didSet {
+            selectedDays.sort { (dictToSort[$0] ?? 7) < (dictToSort[$1] ?? 7) }
+        }
+    }
   
     private let tableView = UITableView()
     

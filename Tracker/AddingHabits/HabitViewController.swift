@@ -2,13 +2,24 @@ import Foundation
 import UIKit
 
 protocol ScheduleViewControllerProtocol: AnyObject {
-    func showSelectedDays()
     var selectedDays: [String] { get set }
+    func showSelectedDays()
 }
+
+protocol CategoryViewControllerProtocol: AnyObject {
+    var selectedCategory: String { get set }
+    func showSelectedCategory()
+}
+
 
 final class HabitViewController: UIViewController {
     // MARK: - Properties:
-    var selectedDays: [String] = [] 
+    var selectedDays: [String] = []
+    var selectedCategory: String = "" {
+        didSet {
+            print("HVC category \(selectedCategory) was added")
+        }
+    }
     
     // MARK: - Private properties:
     private let scrollView: UIScrollView = {
@@ -54,6 +65,15 @@ final class HabitViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
+    }()
+    
+    private lazy var selectedCategoryLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.textColor = .YPGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
     }()
     
     private lazy var dividerLine: UIView = {
@@ -169,7 +189,9 @@ final class HabitViewController: UIViewController {
         scrollView.addSubview(dividerLine)
         
         categoryButton.addSubview(chevronImage1)
+        categoryButton.addSubview(selectedCategoryLabel)
         scheduleButton.addSubview(chevronImage2)
+        scheduleButton.addSubview(selectedDaysLabel)
         
         stackView.addArrangedSubview(cancelButton)
         stackView.addArrangedSubview(createButton)
@@ -198,6 +220,11 @@ final class HabitViewController: UIViewController {
             categoryButton.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
             categoryButton.heightAnchor.constraint(equalToConstant: 75),
             
+            selectedCategoryLabel.leadingAnchor.constraint(equalTo: categoryButton.leadingAnchor, constant: 16),
+            selectedCategoryLabel.topAnchor.constraint(equalTo: categoryButton.topAnchor, constant: 39),
+            selectedCategoryLabel.trailingAnchor.constraint(equalTo: categoryButton.trailingAnchor, constant: -56),
+            selectedCategoryLabel.heightAnchor.constraint(equalToConstant: 22),
+            
             chevronImage1.trailingAnchor.constraint(equalTo: categoryButton.trailingAnchor, constant: -24),
             chevronImage1.bottomAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: -31),
             chevronImage2.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -24),
@@ -212,6 +239,11 @@ final class HabitViewController: UIViewController {
             scheduleButton.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 16),
             scheduleButton.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
             scheduleButton.heightAnchor.constraint(equalToConstant: 75),
+            
+            selectedDaysLabel.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
+            selectedDaysLabel.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 39),
+            selectedDaysLabel.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -56),
+            selectedDaysLabel.heightAnchor.constraint(equalToConstant: 22),
             
             stackView.heightAnchor.constraint(equalToConstant: 60),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -228,6 +260,7 @@ final class HabitViewController: UIViewController {
     
     @objc private func showCategories() {
         let viewToPresent = CategoriesViewController()
+        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
     
@@ -241,19 +274,14 @@ final class HabitViewController: UIViewController {
 // MARK: - Extension:
 extension HabitViewController: ScheduleViewControllerProtocol {
     func showSelectedDays() {
-        print("show selected days was called")
+        print("Show selected days was called")
+        
         if !selectedDays.isEmpty {
-            scheduleButton.addSubview(selectedDaysLabel)
             scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
-            NSLayoutConstraint.activate([
-                selectedDaysLabel.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
-                selectedDaysLabel.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 39),
-                selectedDaysLabel.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -56),
-                selectedDaysLabel.heightAnchor.constraint(equalToConstant: 22)
-            ])
         } else {
             scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
+        
         let weekDays: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница"]
         let weekEnd: [String] = ["Суббота", "Воскресенье"]
         let week: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница", "Суббота", "Воскресенье"]
@@ -266,6 +294,19 @@ extension HabitViewController: ScheduleViewControllerProtocol {
             selectedDaysLabel.text = "Все дни"
         } else {
             selectedDaysLabel.text = selectedDays.map { $0.shortName() }.joined(separator: ", ")
+        }
+    }
+}
+
+extension HabitViewController: CategoryViewControllerProtocol {
+    func showSelectedCategory() {
+        print("Show selected category was called")
+        selectedCategoryLabel.text = selectedCategory
+        if !selectedCategory.isEmpty {
+            categoryButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
+        } else {
+            categoryButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//            selectedCategoryLabel.isHidden = true
         }
     }
 }

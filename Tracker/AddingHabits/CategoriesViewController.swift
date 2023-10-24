@@ -3,12 +3,18 @@ import UIKit
 
 final class CategoriesViewController: UIViewController {
     // MARK: - Properties:
-    var categories: [String] = ["Hobby", "Hobby", "Hobby"] {
+    weak var delegate: CategoryViewControllerProtocol?
+    var categories: [String] = ["Hobby", "Bobu", "Mimi"] {
         didSet {
             showOrHideBackground()
         }
     }
-    var selectedCategory: String?
+    var selectedCategory: String = "" {
+        didSet {
+            print("SCVC category \(selectedCategory) was added")
+        }
+    }
+    
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -28,7 +34,7 @@ final class CategoriesViewController: UIViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius  = 16
         button.backgroundColor = .YPBlack
-        //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -42,6 +48,7 @@ final class CategoriesViewController: UIViewController {
         table.backgroundColor = .clear
         table.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         table.showsVerticalScrollIndicator = false
+        table.allowsMultipleSelection = false
         table.translatesAutoresizingMaskIntoConstraints = false
         
         return table
@@ -70,6 +77,10 @@ final class CategoriesViewController: UIViewController {
     
     
     // MARK: - LifeCycle:
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedCategory = delegate?.selectedCategory ?? ""
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .YPWhite
@@ -130,12 +141,10 @@ final class CategoriesViewController: UIViewController {
             backImageView.isHidden = false
         }
     }
-    
-    private func addCheckmark() -> UIImageView {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 14.3, height: 14.2))
-        let image = UIImage(named: "CheckmarkBlue")
-        imageView.image = image
-        return imageView
+    @objc private func addButtonTapped() {
+        delegate?.selectedCategory = selectedCategory
+        delegate?.showSelectedCategory()
+        self.dismiss(animated: true)
     }
 }
 // MARK: - UITableViewDataSource:
@@ -155,6 +164,9 @@ extension CategoriesViewController: UITableViewDataSource {
             cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1000)
         }
+        if selectedCategory == cell.textLabel?.text {
+            cell.accessoryView = UIImageView(image: UIImage(named: "CheckmarkBlue"))
+        }
 
         return cell
     }
@@ -167,15 +179,22 @@ extension CategoriesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
         let checkmark = UIImage(named: "CheckmarkBlue")
-        cell?.accessoryView = UIImageView(image: checkmark)
-        cell?.accessoryView?.bounds = CGRect(x: 0, y: 0, width: 14.3, height: 14.2)
+        if cell?.accessoryView != .none {
+            cell?.accessoryView = .none
+            selectedCategory = ""
+        } else {
+            cell?.accessoryView = UIImageView(image: checkmark)
+            cell?.accessoryView?.bounds = CGRect(x: 0, y: 0, width: 14.3, height: 14.2)
+            selectedCategory = cell?.textLabel?.text ?? ""
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryView = .none
+        selectedCategory = ""
     }
 }
