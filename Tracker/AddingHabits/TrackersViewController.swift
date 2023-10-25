@@ -3,14 +3,18 @@ import UIKit
 
 final class TrackersViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
-    var currentData: Date = Date()
-    lazy var searchField: UISearchTextField = {
+    var currentDate: Date = Date()
+    var categories: [TrackerCategory] = []
+    var visibleCategories: [TrackerCategory] = []
+    var completedTrackers: [TrackerRecord] = []
+    // MARK: - Private properties:
+    private lazy var searchField: UISearchTextField = {
         let field = UISearchTextField()
         field.delegate = self
         
         return field
     }()
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collection.delegate = self
         collection.dataSource = self

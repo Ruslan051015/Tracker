@@ -1,5 +1,7 @@
 import Foundation
 
 struct TrackerCategory {
-    // add constants
+    let name: String
+    let includedTrackers: [Tracker]
 }
+

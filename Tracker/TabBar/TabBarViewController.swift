@@ -7,6 +7,9 @@ final class TabBarViewController: UITabBarController {
         picker.preferredDatePickerStyle = .compact
         picker.datePickerMode = .date
         picker.tintColor = .YPBlue
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        picker.widthAnchor.constraint(equalToConstant: 110).isActive = true
         
         return picker
     }()
