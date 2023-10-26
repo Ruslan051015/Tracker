@@ -1,12 +1,10 @@
 import Foundation
 import UIKit
 
-
-
 final class CreatingViewController: UIViewController {
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Cоздание трекера"
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
@@ -22,7 +20,7 @@ final class CreatingViewController: UIViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
-        //button.addTarget(self, action: #selector(<#T##@objc method#>), for: .touchUpInside)
+        button.addTarget(self, action: #selector(openHabitVC), for: .touchUpInside)
         
         return button
     }()
@@ -35,7 +33,7 @@ final class CreatingViewController: UIViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
-        button.addTarget(self, action: #selector(openHabitVC), for: .touchUpInside)
+        button.addTarget(self, action: #selector(openEventVC), for: .touchUpInside)
         
         return button
     }()
@@ -47,6 +45,9 @@ final class CreatingViewController: UIViewController {
         view.backgroundColor = .YPWhite
         configureScreenItems()
     }
+    
+    // MARK: - Methods:
+    
     // MARK: - Private methods:
     private func configureScreenItems() {
         newHabit.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +57,6 @@ final class CreatingViewController: UIViewController {
         view.addSubview(newHabit)
         view.addSubview(newEvent)
         view.addSubview(topTitle)
-        
         
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
@@ -77,8 +77,14 @@ final class CreatingViewController: UIViewController {
             newEvent.widthAnchor.constraint(equalToConstant: 335)
         ])
     }
+    
     @objc private func openHabitVC() {
-        let viewToPresent = HabitViewController()
+        let viewToPresent = HabitOrEventViewController(trackerType: .habit)
+        self.present(viewToPresent, animated: true)
+    }
+    
+    @objc private func openEventVC() {
+        let viewToPresent = HabitOrEventViewController(trackerType: .event)
         self.present(viewToPresent, animated: true)
     }
 }

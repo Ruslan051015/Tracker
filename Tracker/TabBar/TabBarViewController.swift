@@ -10,6 +10,7 @@ final class TabBarViewController: UITabBarController {
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.heightAnchor.constraint(equalToConstant: 34).isActive = true
         picker.widthAnchor.constraint(equalToConstant: 110).isActive = true
+        picker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
         
         return picker
     }()
@@ -56,6 +57,14 @@ final class TabBarViewController: UITabBarController {
     
     @objc private func createHabitOrEvent() {
         self.present(CreatingViewController(), animated: true)
+    }
+    
+    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
+        let selectedDate = sender.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyy"
+        let formattedDate = dateFormatter.string(from: selectedDate)
+        print("Current date: \(formattedDate)")
     }
     
     private func setTabBarsBorder() {
