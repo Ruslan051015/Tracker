@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+protocol NewCategoryVCProtocol: AnyObject {
+    func addNewCategory(_ value: String)
+}
+
 final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
     weak var delegate: CategoryViewControllerProtocol?
@@ -73,9 +77,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         
         return label
     }()
-    
-    
-    
+
     // MARK: - LifeCycle:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -141,10 +143,15 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
             backImageView.isHidden = false
         }
     }
-    @objc private func addButtonTapped() {
-        delegate?.selectedCategory = selectedCategory
-        delegate?.showSelectedCategory()
+    
+    private func dismissCategoryVC() {
         self.dismiss(animated: true)
+    }
+    
+    @objc private func addButtonTapped() {
+        let viewToPresent = NewCategoryVC()
+        viewToPresent.delegate = self
+        self.present(viewToPresent, animated: true)
     }
 }
 // MARK: - UITableViewDataSource:
@@ -158,11 +165,18 @@ extension CategoriesViewController: UITableViewDataSource {
         cell.textLabel?.text = categories[indexPath.row]
         cell.backgroundColor = .YPBackground
         cell.selectionStyle = .none
-        if categories.count == 1 || indexPath.row == categories.count - 1 {
-            cell.layer.masksToBounds = true
+        cell.layer.masksToBounds = true
+        if categories.count == 1 {
             cell.layer.cornerRadius = 16
             cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1000)
+        } else if indexPath.row == categories.count - 1 {
+            cell.layer.cornerRadius = 16
+            cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1000)
+        } else {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            cell.layer.cornerRadius = 0
         }
         if selectedCategory == cell.textLabel?.text {
             cell.accessoryView = UIImageView(image: UIImage(named: "CheckmarkBlue"))
@@ -189,12 +203,23 @@ extension CategoriesViewController: UITableViewDelegate {
             cell?.accessoryView?.bounds = CGRect(x: 0, y: 0, width: 14.3, height: 14.2)
             selectedCategory = cell?.textLabel?.text ?? ""
         }
-        
+        delegate?.selectedCategory = selectedCategory
+        delegate?.showSelectedCategory()
+        dismissCategoryVC()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryView = .none
         selectedCategory = ""
+    }
+}
+
+// MARK: - CategoriesViewControllerProtocol:
+extension CategoriesViewController: NewCategoryVCProtocol {
+    func addNewCategory(_ value: String) {
+        categories.append(value)
+        print("Value was added to categories")
+        tableView.reloadData()
     }
 }

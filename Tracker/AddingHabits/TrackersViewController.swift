@@ -32,7 +32,6 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = .YPWhite
         
         screenItemsSetup()
-        
     }
     // MARK: - Private methods:
     private func screenItemsSetup() {

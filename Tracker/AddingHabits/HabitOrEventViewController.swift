@@ -28,8 +28,6 @@ protocol CategoryViewControllerProtocol: AnyObject {
 final class HabitOrEventViewController: UIViewController {
     // MARK: - Properties:
     var trackerType: HabitOrEvent
-    
-    // MARK: - Properties:
     var selectedDays: [String] = []
     var selectedCategory: String = "" {
         didSet {
@@ -205,6 +203,7 @@ final class HabitOrEventViewController: UIViewController {
         setupToHideKeyboardOnTapOnView()
         configureScreenItems()
         setupConstraints()
+        textField.becomeFirstResponder()
     }
     
     // MARK: - Methods:

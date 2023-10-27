@@ -24,6 +24,7 @@
 		4A81E5422AD8398F00CF1260 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81E5412AD8398F00CF1260 /* ScheduleViewController.swift */; };
 		4A81E5442AD841F800CF1260 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81E5432AD841F800CF1260 /* CategoriesViewController.swift */; };
 		4A86C3FC2AD056450079EF4B /* CreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86C3FB2AD056450079EF4B /* CreatingViewController.swift */; };
+		4AC401A12AEBFB8B009858DA /* NewCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC401A02AEBFB8B009858DA /* NewCategoryVC.swift */; };
 		4AC8312F2AD5D98E00F0DDE4 /* enumForSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8312E2AD5D98E00F0DDE4 /* enumForSections.swift */; };
 		4ACEA5212ADAF752004E379E /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEA5202ADAF752004E379E /* UIViewController + Extension.swift */; };
 		4AD8773E2AD6E214007E2EE2 /* EmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD8773D2AD6E214007E2EE2 /* EmojiCell.swift */; };
@@ -73,6 +74,7 @@
 		4A81E5412AD8398F00CF1260 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		4A81E5432AD841F800CF1260 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		4A86C3FB2AD056450079EF4B /* CreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingViewController.swift; sourceTree = "<group>"; };
+		4AC401A02AEBFB8B009858DA /* NewCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryVC.swift; sourceTree = "<group>"; };
 		4AC8312E2AD5D98E00F0DDE4 /* enumForSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumForSections.swift; sourceTree = "<group>"; };
 		4ACEA5202ADAF752004E379E /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		4AD8773D2AD6E214007E2EE2 /* EmojiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCell.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				4A21EF4A2AD1A21B00BD40DB /* HabitOrEventViewController.swift */,
 				4A81E5412AD8398F00CF1260 /* ScheduleViewController.swift */,
 				4A81E5432AD841F800CF1260 /* CategoriesViewController.swift */,
+				4AC401A02AEBFB8B009858DA /* NewCategoryVC.swift */,
 				4A7D47152ADC7B5E00A8CE1F /* CollectionView */,
 			);
 			path = AddingHabits;
@@ -367,6 +370,7 @@
 				4A21EF4D2AD1AB3D00BD40DB /* CustomTextField.swift in Sources */,
 				4A5EB1882AE5B25000E941B1 /* String + Extension.swift in Sources */,
 				4A81E5442AD841F800CF1260 /* CategoriesViewController.swift in Sources */,
+				4AC401A12AEBFB8B009858DA /* NewCategoryVC.swift in Sources */,
 				4AC8312F2AD5D98E00F0DDE4 /* enumForSections.swift in Sources */,
 				4A8181402ACF5F8200A3B9DF /* TrackerRecord.swift in Sources */,
 				4AE8CC642AE020A100D7A628 /* TabBarViewController.swift in Sources */,
