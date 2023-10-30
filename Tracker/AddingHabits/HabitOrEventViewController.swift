@@ -72,6 +72,17 @@ final class HabitOrEventViewController: UIViewController {
         return field
     }()
     
+    private lazy var limitationLabel: UILabel = {
+       let label                                        = UILabel()
+        label.font                                      = .systemFont(ofSize: 17, weight: .regular)
+        label.textColor                                 = .YPRed
+        label.textAlignment                             = .center
+        label.text                                      = "Ограничение 38 символов"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     private lazy var categoryButton: UIButton = {
         let button                                       = UIButton(type: .system)
         button.tintColor                                 = .YPBlack
@@ -307,6 +318,21 @@ final class HabitOrEventViewController: UIViewController {
         }
         NSLayoutConstraint.activate(constraints)
     }
+    
+    private func addLimitLabel() {
+        self.view.addSubview(limitationLabel)
+        NSLayoutConstraint.activate([
+            limitationLabel.heightAnchor.constraint(equalToConstant: 22),
+            limitationLabel.widthAnchor.constraint(equalToConstant: 286),
+            limitationLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 8),
+            limitationLabel.bottomAnchor.constraint(equalTo: categoryButton.topAnchor, constant: -32),
+            limitationLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+        ])
+    }
+    
+    private func hideLimitLabel() {
+        limitationLabel.removeFromSuperview()
+    }
 
     @objc private func showCategories() {
         let viewToPresent = CategoriesViewController()
@@ -368,8 +394,30 @@ extension HabitOrEventViewController: UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         trackerName = textField.text ?? ""
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let charsLimit = 38
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        
+        if updatedText.count == charsLimit {
+            addLimitLabel()
+        } else if updatedText.count < 38 {
+            hideLimitLabel()
+        }
+        return updatedText.count <= 38
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        hideLimitLabel()
+        return true
+    }
 }
-
