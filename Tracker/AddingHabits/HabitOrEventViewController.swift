@@ -1,60 +1,11 @@
 import Foundation
 import UIKit
 
-enum HabitOrEvent {
-    case habit
-    case event
-    
-    var titleText: String {
-        switch self {
-        case .habit:
-            return "Новая привычка"
-        case .event:
-            return "Новое событие"
-        }
-    }
-}
-
-protocol ScheduleViewControllerProtocol: AnyObject {
-    var selectedDays: [String] { get set }
-    func showSelectedDays()
-}
-
-protocol CategoryViewControllerProtocol: AnyObject {
-    var selectedCategory: String { get set }
-    func showSelectedCategory()
-}
-
 final class HabitOrEventViewController: UIViewController {
-    // MARK: - Properties:
-    var trackerType: HabitOrEvent
-    var selectedDays: [String] = []
-    var selectedCategory: String = "" {
-        didSet {
-            print("HVC category \(selectedCategory) was added")
-        }
-    }
-    var trackerName: String = "" {
-        didSet {
-            print(trackerName)
-        }
-    }
-    
     // MARK: - Private properties:
-    private let scrollView: UIScrollView = {
-        let scroll                                       = UIScrollView()
-        scroll.isMultipleTouchEnabled                    = true
-        scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.contentSize                               = CGSize(width: scroll.frame.width,
-                                                                  height: scroll.frame.height)
-        
-        return scroll
-    }()
-    
     private lazy var topTitle: UILabel = {
         let label                                       = UILabel()
-        label.text                                      = trackerType.titleText
-        label.textAlignment                             = .center
+        label.text                                      = "Cоздание трекера"
         label.font                                      = .systemFont(ofSize: 16, weight: .medium)
         label.textColor                                 = .YPBlack
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -62,362 +13,76 @@ final class HabitOrEventViewController: UIViewController {
         return label
     }()
     
-    private lazy var textField: CustomUITextField = {
-        let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: "Введите название трекера")
-        field.backgroundColor                           = .YPBackground
-        field.textColor                                 = .YPBlack
-        field.delegate                                  = self
-        field.translatesAutoresizingMaskIntoConstraints = false
-        
-        return field
-    }()
-    
-    private lazy var limitationLabel: UILabel = {
-       let label                                        = UILabel()
-        label.font                                      = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor                                 = .YPRed
-        label.textAlignment                             = .center
-        label.text                                      = "Ограничение 38 символов"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private lazy var categoryButton: UIButton = {
-        let button                                       = UIButton(type: .system)
-        button.tintColor                                 = .YPBlack
-        button.titleLabel?.font                          = .systemFont(ofSize: 17, weight: .regular)
-        button.contentHorizontalAlignment                = .leading
-        button.backgroundColor                           = .YPBackground
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.masksToBounds                       = true
-        button.contentEdgeInsets                         = UIEdgeInsets(top: 0,
-                                                                        left: 16,
-                                                                        bottom: 0,
-                                                                        right: 0)
-        button.setTitle("Категория", for: .normal)
-        button.addTarget(self, action: #selector(showCategories), for: .touchUpInside)
-        if trackerType == .habit{
-            button.layer.cornerRadius                    = 16
-            button.layer.maskedCorners                   = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        } else {
-            button.layer.cornerRadius                    = 16
-        }
-        
-        return button
-    }()
-    
-    private lazy var selectedCategoryLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor                                 = .YPGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private lazy var dividerLine: UIView = {
-        let divider                                       = UIView()
-        divider.backgroundColor                           = .YPGray
-        divider.translatesAutoresizingMaskIntoConstraints = false
-        
-        return divider
-    }()
-    
-    private lazy var chevronImage1: UIImageView = {
-        let imageView                                       = UIImageView()
-        let chevron                                         = #imageLiteral(resourceName: "Chevron")
-        imageView.image                                     = chevron
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return imageView
-    }()
-    
-    private lazy var chevronImage2: UIImageView = {
-        let imageView                                       = UIImageView()
-        let chevron                                         = #imageLiteral(resourceName: "Chevron")
-        imageView.image                                     = chevron
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return imageView
-    }()
-    
-    private lazy var scheduleButton: UIButton = {
-        let button                                       = UIButton(type: .system)
-        button.tintColor                                 = .YPBlack
-        button.titleLabel?.font                          = .systemFont(ofSize: 17, weight: .regular)
-        button.contentHorizontalAlignment                = .left
-        button.layer.masksToBounds                       = true
-        button.layer.cornerRadius                        = 16
-        button.layer.maskedCorners                       = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        button.backgroundColor                           = .YPBackground
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets                         = UIEdgeInsets(top: 0,
-                                                                        left: 16,
-                                                                        bottom: 0,
-                                                                        right: 0)
-        button.addTarget(self, action: #selector(showSchedule), for: .touchUpInside)
-        button.setTitle("Расписание", for: .normal)
-        
-        return button
-    }()
-    
-    private lazy var selectedDaysLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor                                 = .YPGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    private let stackView: UIStackView = {
-        let stack                                       = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        
-        return stack
-    }()
-    
-    private lazy var cancelButton: UIButton = {
+    private lazy var newHabit: UIButton = {
         let button                                       = UIButton(type: .system)
         button.titleLabel?.font                          = .systemFont(ofSize: 16, weight: .medium)
-        button.tintColor                                 = .YPRed
-        button.backgroundColor                           = .clear
+        button.tintColor                                 = .YPWhite
         button.layer.masksToBounds                       = true
         button.layer.cornerRadius                        = 16
-        button.layer.borderWidth                         = 1
-        button.layer.borderColor                         = UIColor.YPRed.cgColor
+        button.backgroundColor                           = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Отменить", for: .normal)
+        button.setTitle("Привычка", for: .normal)
+        button.addTarget(self, action: #selector(openHabitVC), for: .touchUpInside)
         
         return button
     }()
     
-    private lazy var createButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Cоздать", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+    private lazy var newEvent: UIButton = {
+        let button                                       = UIButton(type: .system)
+        button.titleLabel?.font                          = .systemFont(ofSize: 16, weight: .medium)
         button.tintColor                                 = .YPWhite
-        button.backgroundColor                           = .YPGray
         button.layer.masksToBounds                       = true
         button.layer.cornerRadius                        = 16
+        button.backgroundColor                           = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Нерегулярное событие", for: .normal)
+        button.addTarget(self, action: #selector(openEventVC), for: .touchUpInside)
         
         return button
     }()
     
     // MARK: - LifeCycle:
     override func viewDidLoad() {
-        view.backgroundColor = .YPWhite
         super.viewDidLoad()
-        
-        setupToHideKeyboardOnTapOnView()
+        view.backgroundColor = .YPWhite
         configureScreenItems()
-        setupConstraints()
-        textField.becomeFirstResponder()
     }
     
     // MARK: - Methods:
-    init(trackerType: HabitOrEvent) {
-        self.trackerType = trackerType
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: - Private methods:
     private func configureScreenItems() {
-        
+        view.addSubview(newHabit)
+        view.addSubview(newEvent)
         view.addSubview(topTitle)
-        view.addSubview(scrollView)
-        view.addSubview(stackView)
         
-        scrollView.addSubview(textField)
-        scrollView.addSubview(categoryButton)
-        
-        categoryButton.addSubview(chevronImage1)
-        categoryButton.addSubview(selectedCategoryLabel)
-        
-        stackView.addArrangedSubview(cancelButton)
-        stackView.addArrangedSubview(createButton)
-        stackView.spacing = 8
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        
-        if trackerType == .habit {
-            scrollView.addSubview(scheduleButton)
-            scrollView.addSubview(dividerLine)
-            scheduleButton.addSubview(chevronImage2)
-            scheduleButton.addSubview(selectedDaysLabel)
-        }
-    }
-    
-    private func setupConstraints() {
-        var constraints = [
+        NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             topTitle.heightAnchor.constraint(equalToConstant: 22),
             topTitle.widthAnchor.constraint(equalToConstant: 149),
             
-            scrollView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            scrollView.bottomAnchor.constraint(equalTo: stackView.topAnchor),
+            newHabit.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            newHabit.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            newHabit.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 295),
+            newHabit.heightAnchor.constraint(equalToConstant: 60),
+            newHabit.widthAnchor.constraint(equalToConstant: 335),
             
-            textField.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
-            textField.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 16),
-            textField.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
-            textField.heightAnchor.constraint(equalToConstant: 75),
-            
-            categoryButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 24),
-            categoryButton.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 16),
-            categoryButton.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
-            categoryButton.heightAnchor.constraint(equalToConstant: 75),
-            
-            selectedCategoryLabel.leadingAnchor.constraint(equalTo: categoryButton.leadingAnchor, constant: 16),
-            selectedCategoryLabel.topAnchor.constraint(equalTo: categoryButton.topAnchor, constant: 39),
-            selectedCategoryLabel.trailingAnchor.constraint(equalTo: categoryButton.trailingAnchor, constant: -56),
-            selectedCategoryLabel.heightAnchor.constraint(equalToConstant: 22),
-            
-            chevronImage1.trailingAnchor.constraint(equalTo: categoryButton.trailingAnchor, constant: -24),
-            chevronImage1.bottomAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: -31),
-            
-            stackView.heightAnchor.constraint(equalToConstant: 60),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
-            
-            cancelButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 166),
-            cancelButton.heightAnchor.constraint(equalToConstant: 60),
-            
-            createButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 161),
-            createButton.heightAnchor.constraint(equalToConstant: 60)
-        ]
-        if trackerType == .habit {
-            constraints += [
-                dividerLine.heightAnchor.constraint(equalToConstant: 1),
-                dividerLine.bottomAnchor.constraint(equalTo: categoryButton.bottomAnchor),
-                dividerLine.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 32),
-                dividerLine.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -32),
-                
-                scheduleButton.topAnchor.constraint(equalTo: categoryButton.bottomAnchor),
-                scheduleButton.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 16),
-                scheduleButton.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
-                scheduleButton.heightAnchor.constraint(equalToConstant: 75),
-                
-                chevronImage2.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -24),
-                chevronImage2.bottomAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: -31),
-                
-                selectedDaysLabel.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
-                selectedDaysLabel.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 39),
-                selectedDaysLabel.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -56),
-                selectedDaysLabel.heightAnchor.constraint(equalToConstant: 22),
-            ]
-        }
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    private func addLimitLabel() {
-        self.view.addSubview(limitationLabel)
-        NSLayoutConstraint.activate([
-            limitationLabel.heightAnchor.constraint(equalToConstant: 22),
-            limitationLabel.widthAnchor.constraint(equalToConstant: 286),
-            limitationLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 8),
-            limitationLabel.bottomAnchor.constraint(equalTo: categoryButton.topAnchor, constant: -32),
-            limitationLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
+            newEvent.topAnchor.constraint(equalTo: newHabit.bottomAnchor, constant: 16),
+            newEvent.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            newEvent.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            newEvent.heightAnchor.constraint(equalToConstant: 60),
+            newEvent.widthAnchor.constraint(equalToConstant: 335)
         ])
     }
     
-    private func hideLimitLabel() {
-        limitationLabel.removeFromSuperview()
-    }
-
-    @objc private func showCategories() {
-        let viewToPresent = CategoriesViewController()
-        viewToPresent.delegate = self
+    @objc private func openHabitVC() {
+        let viewToPresent = TrackerCreatingViewController(trackerType: .habit)
         self.present(viewToPresent, animated: true)
     }
     
-    @objc private func showSchedule() {
-        let viewToPresent = ScheduleViewController()
-        viewToPresent.delegate = self
+    @objc private func openEventVC() {
+        let viewToPresent = TrackerCreatingViewController(trackerType: .event)
         self.present(viewToPresent, animated: true)
-    }
-}
-
-
-// MARK: - Extension:
-extension HabitOrEventViewController: ScheduleViewControllerProtocol {
-    func showSelectedDays() {
-        print("Show selected days was called")
-        
-        if !selectedDays.isEmpty {
-            scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
-        } else {
-            scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        }
-        
-        let weekDays: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница"]
-        let weekEnd: [String] = ["Суббота", "Воскресенье"]
-        let week: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница", "Суббота", "Воскресенье"]
-        
-        if weekDays.allSatisfy(selectedDays.contains(_:)) && weekDays.count == selectedDays.count {
-            selectedDaysLabel.text = "Будни"
-        } else if weekEnd.allSatisfy(selectedDays.contains(_:)) && weekEnd.count == selectedDays.count {
-            selectedDaysLabel.text = "Выходные дни"
-        } else if week.allSatisfy(selectedDays.contains(_:)) {
-            selectedDaysLabel.text = "Все дни"
-        } else {
-            selectedDaysLabel.text = selectedDays.map { $0.shortName() }.joined(separator: ", ")
-        }
-    }
-}
-
-extension HabitOrEventViewController: CategoryViewControllerProtocol {
-    func showSelectedCategory() {
-        print("Show selected category was called")
-        selectedCategoryLabel.text = selectedCategory
-        if !selectedCategory.isEmpty {
-            categoryButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
-        } else {
-            categoryButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            //            selectedCategoryLabel.isHidden = true
-        }
-    }
-}
-
-extension HabitOrEventViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        trackerName = textField.text ?? ""
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        let charsLimit = 38
-        guard let stringRange = Range(range, in: currentText) else { return false }
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        
-        if updatedText.count == charsLimit {
-            addLimitLabel()
-        } else if updatedText.count < 38 {
-            hideLimitLabel()
-        }
-        return updatedText.count <= 38
-    }
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        hideLimitLabel()
-        return true
     }
 }

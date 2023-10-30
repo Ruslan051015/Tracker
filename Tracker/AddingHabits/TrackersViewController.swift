@@ -3,41 +3,42 @@ import UIKit
 
 final class TrackersViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
-    var currentDate: Date = Date()
-    var categories: [TrackerCategory] = []
+    var currentDate: Date                    = Date()
+    var categories: [TrackerCategory]        = []
     var visibleCategories: [TrackerCategory] = []
-    var completedTrackers: [TrackerRecord] = []
+    var completedTrackers: [TrackerRecord]   = []
+    
     // MARK: - Private properties:
     private lazy var searchField: UISearchTextField = {
-        let field = UISearchTextField()
-        field.delegate = self
+        let field                                       = UISearchTextField()
+        field.delegate                                  = self
+        field.translatesAutoresizingMaskIntoConstraints = false
         
         return field
     }()
+    
     private lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collection.delegate = self
-        collection.dataSource = self
+        collection.delegate                                  = self
+        collection.dataSource                                = self
+        collection.translatesAutoresizingMaskIntoConstraints = false
         
         return collection
     }()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
     
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
-        
         screenItemsSetup()
     }
+    
     // MARK: - Private methods:
     private func screenItemsSetup() {
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        searchField.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(searchField)
         view.addSubview(collectionView)
         
@@ -54,8 +55,6 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
-    
 }
 
 // MARK: - UICollectionViewDelegate:
@@ -85,6 +84,6 @@ extension TrackersViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-    
 }
+
+// MARK: - :
