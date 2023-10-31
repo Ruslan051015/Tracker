@@ -27,6 +27,7 @@ protocol CategoryViewControllerProtocol: AnyObject {
 
 final class TrackerCreatingViewController: UIViewController {
     // MARK: - Properties:
+    weak var delegate: TrackersViewControllerProtocol?
     var trackerType: HabitOrEvent
     var selectedDays: [String]   = []
     var selectedCategory: String = "" {
@@ -156,7 +157,7 @@ final class TrackerCreatingViewController: UIViewController {
                                                                         left: 16,
                                                                         bottom: 0,
                                                                         right: 0)
-        button.addTarget(self, action: #selector(showSchedule), for: .touchUpInside)
+        button.addTarget(self, action: #selector(scheduleButtonTapped), for: .touchUpInside)
         button.setTitle("Расписание", for: .normal)
         
         return button
@@ -203,6 +204,7 @@ final class TrackerCreatingViewController: UIViewController {
         button.layer.masksToBounds                       = true
         button.layer.cornerRadius                        = 16
         button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -337,6 +339,14 @@ final class TrackerCreatingViewController: UIViewController {
     @objc private func cancelButtonTapped() {
         self.view.window?.rootViewController?.dismiss(animated: true)
     }
+    
+//    @objc private func createButtonTapped() {
+//        let id = UUID()
+//        let trackersArray: [Tracker] = [Tracker(id: id, name: trackerName, schedule: selectedDays)]
+//        let trackerCategory = TrackerCategory(name: selectedCategory, includedTrackers: trackersArray)
+//        delegate?.addCategory(trackerCategory)
+//        self.view.window?.rootViewController?.dismiss(animated: true)
+//    }
 
     @objc private func showCategories() {
         let viewToPresent = CategoriesViewController()
@@ -344,7 +354,7 @@ final class TrackerCreatingViewController: UIViewController {
         self.present(viewToPresent, animated: true)
     }
     
-    @objc private func showSchedule() {
+    @objc private func scheduleButtonTapped() {
         let viewToPresent = ScheduleViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
@@ -352,7 +362,7 @@ final class TrackerCreatingViewController: UIViewController {
 }
 
 
-// MARK: - Extension:
+// MARK: - ScheduleViewControllerProtocol:
 extension TrackerCreatingViewController: ScheduleViewControllerProtocol {
     func showSelectedDays() {
         print("Show selected days was called")
@@ -379,6 +389,7 @@ extension TrackerCreatingViewController: ScheduleViewControllerProtocol {
     }
 }
 
+// MARK: - CategoryViewControllerProtocol:
 extension TrackerCreatingViewController: CategoryViewControllerProtocol {
     func showSelectedCategory() {
         print("Show selected category was called")
@@ -392,6 +403,7 @@ extension TrackerCreatingViewController: CategoryViewControllerProtocol {
     }
 }
 
+// MARK: - UITextFieldDelegate:
 extension TrackerCreatingViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

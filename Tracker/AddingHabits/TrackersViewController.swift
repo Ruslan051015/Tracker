@@ -1,12 +1,20 @@
 import Foundation
 import UIKit
 
+protocol TrackersViewControllerProtocol: AnyObject {
+    func addCategory(_ name: TrackerCategory)
+}
+
 final class TrackersViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
     var currentDate: Date                    = Date()
-    var categories: [TrackerCategory]        = []
+    var categories: [TrackerCategory]        = [] {
+        didSet {
+            print(categories)
+        }
+    }
     var visibleCategories: [TrackerCategory] = []
-    var completedTrackers: [TrackerRecord]   = []
+    var completedTrackers: Set<TrackerRecord>   = []
     
     // MARK: - Private properties:
     private lazy var searchField: UISearchTextField = {
@@ -86,4 +94,9 @@ extension TrackersViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - :
+// MARK: - TrackersViewControllerProtocol:
+extension TrackersViewController: TrackersViewControllerProtocol {
+    func addCategory(_ name: TrackerCategory) {
+        categories.append(name)
+    }
+}

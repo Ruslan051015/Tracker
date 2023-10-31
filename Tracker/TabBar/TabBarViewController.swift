@@ -2,7 +2,7 @@ import UIKit
 
 final class TabBarViewController: UITabBarController {
     // MARK: - Private properties:
-    let datePicker: UIDatePicker = {
+    private let datePicker: UIDatePicker = {
         let picker                                                   = UIDatePicker()
         picker.preferredDatePickerStyle                              = .compact
         picker.datePickerMode                                        = .date
@@ -36,7 +36,7 @@ final class TabBarViewController: UITabBarController {
         trackersNav.navigationBar.tintColor = .YPBlack
         let rightButton                     = UIBarButtonItem(customView: datePicker)
         trackersNav.viewControllers.first?.navigationItem.rightBarButtonItem = rightButton
-        trackersNav.viewControllers.first?.navigationItem.leftBarButtonItem  = UIBarButtonItem(image: UIImage(named: "Plus"), style: .plain, target: self, action: #selector(createHabitOrEvent))
+        trackersNav.viewControllers.first?.navigationItem.leftBarButtonItem  = UIBarButtonItem(image: UIImage(named: "Plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
         
         vc.navigationItem.title = title
         vc.navigationController?.navigationBar.prefersLargeTitles = true
@@ -54,8 +54,9 @@ final class TabBarViewController: UITabBarController {
         return statsNav
     }
     
-    @objc private func createHabitOrEvent() {
-        self.present(HabitOrEventViewController(), animated: true)
+    @objc private func plusButtonTapped() {
+        let viewToPresent = HabitOrEventViewController()
+        self.present(viewToPresent, animated: true)
     }
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
@@ -73,3 +74,4 @@ final class TabBarViewController: UITabBarController {
         tabBar.clipsToBounds = true
     }
 }
+
