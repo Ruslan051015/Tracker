@@ -27,7 +27,7 @@ protocol CategoryViewControllerProtocol: AnyObject {
 
 final class TrackerCreatingViewController: UIViewController {
     // MARK: - Properties:
-    weak var delegate: TrackersViewControllerProtocol?
+    weak var delegate: TrackerCreatingViewControllerDelegate?
     var trackerType: HabitOrEvent
     var selectedDays: [String]   = []
     var selectedCategory: String = "" {
@@ -324,7 +324,6 @@ final class TrackerCreatingViewController: UIViewController {
     private func addLimitLabel() {
         self.view.addSubview(limitationLabel)
         NSLayoutConstraint.activate([
-            limitationLabel.heightAnchor.constraint(equalToConstant: 22),
             limitationLabel.widthAnchor.constraint(equalToConstant: 286),
             limitationLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 8),
             limitationLabel.bottomAnchor.constraint(equalTo: categoryButton.topAnchor, constant: -32),

@@ -38,17 +38,17 @@ final class ScheduleViewController: UIViewController {
     }
     
     private lazy var tableView: UITableView = {
-       let table                                        = UITableView()
-        table.delegate                                  = self
-        table.dataSource                                = self
-        table.backgroundColor                           = .YPBackground
-        table.layer.masksToBounds                       = true
-        table.layer.cornerRadius                        = 16
-        table.isScrollEnabled                           = false
-        table.translatesAutoresizingMaskIntoConstraints = false
+       let tableView                                        = UITableView()
+        tableView.delegate                                  = self
+        tableView.dataSource                                = self
+        tableView.backgroundColor                           = .YPBackground
+        tableView.layer.masksToBounds                       = true
+        tableView.layer.cornerRadius                        = 16
+        tableView.isScrollEnabled                           = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        return table
+        return tableView
     }()
     
     private lazy var doneButton: UIButton = {

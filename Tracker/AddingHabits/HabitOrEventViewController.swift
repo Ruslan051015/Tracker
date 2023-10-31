@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+protocol TrackerCreatingViewControllerDelegate: AnyObject {
+    func TrackerCreatingVC(_: TrackerCreatingViewController, tracker: Tracker, category: String)
+}
+
 final class HabitOrEventViewController: UIViewController {
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
@@ -76,11 +80,22 @@ final class HabitOrEventViewController: UIViewController {
     
     @objc private func openHabitVC() {
         let viewToPresent = TrackerCreatingViewController(trackerType: .habit)
+        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
     
     @objc private func openEventVC() {
         let viewToPresent = TrackerCreatingViewController(trackerType: .event)
+        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
+}
+
+// MARK: - TrackerCreatingViewControllerDelegate:
+extension HabitOrEventViewController: TrackerCreatingViewControllerDelegate {
+    func TrackerCreatingVC(_: TrackerCreatingViewController, tracker: Tracker, category: String) {
+        
+    }
+    
+    
 }
