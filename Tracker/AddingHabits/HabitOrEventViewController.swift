@@ -2,28 +2,31 @@ import Foundation
 import UIKit
 
 protocol TrackerCreatingViewControllerDelegate: AnyObject {
-    func TrackerCreatingVC(_: TrackerCreatingViewController, tracker: Tracker, category: String)
+    func transitTracker(_ tracker: Tracker,and category: String,from: TrackerCreatingViewController)
 }
 
 final class HabitOrEventViewController: UIViewController {
+    // MARK: - Properties:
+    weak var delegate: HabitOrEventDelegate?
+    
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
-        let label                                       = UILabel()
-        label.text                                      = "Cоздание трекера"
-        label.font                                      = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor                                 = .YPBlack
+        let label = UILabel()
+        label.text = "Cоздание трекера"
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .YPBlack
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var newHabit: UIButton = {
-        let button                                       = UIButton(type: .system)
-        button.titleLabel?.font                          = .systemFont(ofSize: 16, weight: .medium)
-        button.tintColor                                 = .YPWhite
-        button.layer.masksToBounds                       = true
-        button.layer.cornerRadius                        = 16
-        button.backgroundColor                           = .YPBlack
+        let button = UIButton(type: .system)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        button.tintColor = .YPWhite
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        button.backgroundColor = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Привычка", for: .normal)
         button.addTarget(self, action: #selector(openHabitVC), for: .touchUpInside)
@@ -32,12 +35,12 @@ final class HabitOrEventViewController: UIViewController {
     }()
     
     private lazy var newEvent: UIButton = {
-        let button                                       = UIButton(type: .system)
-        button.titleLabel?.font                          = .systemFont(ofSize: 16, weight: .medium)
-        button.tintColor                                 = .YPWhite
-        button.layer.masksToBounds                       = true
-        button.layer.cornerRadius                        = 16
-        button.backgroundColor                           = .YPBlack
+        let button = UIButton(type: .system)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        button.tintColor = .YPWhite
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        button.backgroundColor = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Нерегулярное событие", for: .normal)
         button.addTarget(self, action: #selector(openEventVC), for: .touchUpInside)
@@ -93,9 +96,8 @@ final class HabitOrEventViewController: UIViewController {
 
 // MARK: - TrackerCreatingViewControllerDelegate:
 extension HabitOrEventViewController: TrackerCreatingViewControllerDelegate {
-    func TrackerCreatingVC(_: TrackerCreatingViewController, tracker: Tracker, category: String) {
-        
+    func transitTracker(_ tracker: Tracker, and category: String, from: TrackerCreatingViewController) {
+        self.dismiss(animated: true)
+        delegate?.addTracker(tracker, and: category, from: self)
     }
-    
-    
 }

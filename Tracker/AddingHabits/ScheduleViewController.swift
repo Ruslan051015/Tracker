@@ -3,7 +3,7 @@ import UIKit
 
 final class ScheduleViewController: UIViewController {
     // MARK: - Properties:
-    weak var delegate: ScheduleViewControllerProtocol?
+    weak var delegate: ScheduleViewControllerDelegate?
     
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {

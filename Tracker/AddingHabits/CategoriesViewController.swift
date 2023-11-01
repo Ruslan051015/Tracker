@@ -7,7 +7,7 @@ protocol NewCategoryVCProtocol: AnyObject {
 
 final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
-    weak var delegate: CategoryViewControllerProtocol?
+    weak var delegate: CategoryViewControllerDelegate?
     var categories: [String] = ["Hobby"] {
         didSet {
             showOrHideBackground()
@@ -22,8 +22,8 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
         let label = UILabel()
-        label.text      = "Категория"
-        label.font      = .systemFont(ofSize: 16, weight: .medium)
+        label.text = "Категория"
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -33,10 +33,10 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Добавить категорию", for: .normal)
-        button.tintColor           = .YPWhite
-        button.frame.size          = CGSize(width: 335, height: 60)
+        button.tintColor = .YPWhite
+        button.frame.size = CGSize(width: 335, height: 60)
         button.layer.masksToBounds = true
-        button.layer.cornerRadius  = 16
+        button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
         button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -68,8 +68,8 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     
     private lazy var backgroundLabel: UILabel = {
         let label = UILabel()
-        label.text      = "Привычки и события можно\nобъединить по смыслу"
-        label.font      = .systemFont(ofSize: 12, weight: .medium)
+        label.text = "Привычки и события можно\nобъединить по смыслу"
+        label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
         label.numberOfLines = 2
         label.textAlignment = .center

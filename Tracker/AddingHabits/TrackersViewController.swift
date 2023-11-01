@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-protocol TrackersViewControllerProtocol: AnyObject {
-    func addCategory(_ name: TrackerCategory)
+protocol HabitOrEventDelegate: AnyObject {
+    func addTracker(_ tracker: Tracker, and category: String, from: HabitOrEventViewController)
 }
 
 final class TrackersViewController: UIViewController, UITextFieldDelegate {
@@ -18,11 +18,11 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Private properties:
     private let datePicker: UIDatePicker = {
-        let picker                                                   = UIDatePicker()
-        picker.preferredDatePickerStyle                              = .compact
-        picker.datePickerMode                                        = .date
-        picker.tintColor                                             = .YPBlue
-        picker.translatesAutoresizingMaskIntoConstraints             = false
+        let picker = UIDatePicker()
+        picker.preferredDatePickerStyle = .compact
+        picker.datePickerMode = .date
+        picker.tintColor = .YPBlue
+        picker.translatesAutoresizingMaskIntoConstraints = false
         picker.heightAnchor.constraint(equalToConstant: 34).isActive = true
         picker.widthAnchor.constraint(equalToConstant: 110).isActive = true
         picker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
@@ -93,15 +93,16 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        let selectedDate         = sender.date
-        let dateFormatter        = DateFormatter()
+        let selectedDate = sender.date
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyy"
-        let formattedDate        = dateFormatter.string(from: selectedDate)
+        let formattedDate = dateFormatter.string(from: selectedDate)
         print("Current date: \(formattedDate)")
     }
     
     @objc private func plusButtonTapped() {
         let viewToPresent = HabitOrEventViewController()
+        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
 }
@@ -135,9 +136,11 @@ extension TrackersViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - TrackersViewControllerProtocol:
-extension TrackersViewController: TrackersViewControllerProtocol {
-    func addCategory(_ name: TrackerCategory) {
-        categories.append(name)
+// MARK: - HabitOrEventDelegate:
+extension TrackersViewController: HabitOrEventDelegate {
+    func addTracker(_ tracker: Tracker, and category: String, from: HabitOrEventViewController) {
+        let trackerArray = [tracker]
+        let newCategory = TrackerCategory(name: tracker.name, includedTrackers: trackerArray)
+        categories.append(newCategory)
     }
 }

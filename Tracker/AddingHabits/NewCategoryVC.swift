@@ -12,24 +12,23 @@ final class NewCategoryVC: UIViewController {
     }
     
     private lazy var topTitle: UILabel = {
-        let label                                       = UILabel()
-        label.text                                      = "Новая категория"
-        label.textColor                                 = .YPBlack
-        label.textAlignment                             = .center
+        let label = UILabel()
+        label.text = "Новая категория"
+        label.textColor = .YPBlack
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font                                      = .systemFont(ofSize: 16,
-                                                                      weight: .medium)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         
         return label
     }()
     
     private lazy var textField: CustomUITextField = {
         let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: "Введите название категории")
-        field.layer.masksToBounds                       = true
-        field.layer.cornerRadius                        = 16
-        field.backgroundColor                           = .YPBackground
-        field.textColor                                 = .YPBlack
-        field.delegate                                  = self
+        field.layer.masksToBounds = true
+        field.layer.cornerRadius = 16
+        field.backgroundColor = .YPBackground
+        field.textColor = .YPBlack
+        field.delegate = self
         field.translatesAutoresizingMaskIntoConstraints = false
         
         return field
@@ -38,10 +37,10 @@ final class NewCategoryVC: UIViewController {
     private lazy var doneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Готово", for: .normal)
-        button.tintColor           = .YPWhite
-        button.frame.size          = CGSize(width: 335, height: 60)
+        button.tintColor = .YPWhite
+        button.frame.size = CGSize(width: 335, height: 60)
         button.layer.masksToBounds = true
-        button.layer.cornerRadius  = 16
+        button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
         button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

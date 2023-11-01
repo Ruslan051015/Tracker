@@ -1,9 +1,6 @@
 import UIKit
 
 final class TabBarViewController: UITabBarController {
-    // MARK: - Private properties:
-    
-    
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         super.viewDidLoad()

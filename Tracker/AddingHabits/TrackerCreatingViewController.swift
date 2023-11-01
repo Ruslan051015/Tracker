@@ -15,12 +15,12 @@ enum HabitOrEvent {
     }
 }
 
-protocol ScheduleViewControllerProtocol: AnyObject {
+protocol ScheduleViewControllerDelegate: AnyObject {
     var selectedDays: [String] { get set }
     func showSelectedDays()
 }
 
-protocol CategoryViewControllerProtocol: AnyObject {
+protocol CategoryViewControllerDelegate: AnyObject {
     var selectedCategory: String { get set }
     func showSelectedCategory()
 }
@@ -43,21 +43,20 @@ final class TrackerCreatingViewController: UIViewController {
     
     // MARK: - Private properties:
     private let scrollView: UIScrollView = {
-        let scroll                                       = UIScrollView()
-        scroll.isMultipleTouchEnabled                    = true
+        let scroll = UIScrollView()
+        scroll.isMultipleTouchEnabled = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.contentSize                               = CGSize(width: scroll.frame.width,
-                                                                  height: scroll.frame.height)
+        scroll.contentSize = CGSize(width: scroll.frame.width, height: scroll.frame.height)
         
         return scroll
     }()
     
     private lazy var topTitle: UILabel = {
-        let label                                       = UILabel()
-        label.text                                      = trackerType.titleText
-        label.textAlignment                             = .center
-        label.font                                      = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor                                 = .YPBlack
+        let label = UILabel()
+        label.text = trackerType.titleText
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .YPBlack
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -65,98 +64,92 @@ final class TrackerCreatingViewController: UIViewController {
     
     private lazy var textField: CustomUITextField = {
         let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: "Введите название трекера")
-        field.backgroundColor                           = .YPBackground
-        field.textColor                                 = .YPBlack
-        field.delegate                                  = self
+        field.backgroundColor = .YPBackground
+        field.textColor = .YPBlack
+        field.delegate = self
         field.translatesAutoresizingMaskIntoConstraints = false
         
         return field
     }()
     
     private lazy var limitationLabel: UILabel = {
-       let label                                        = UILabel()
-        label.font                                      = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor                                 = .YPRed
-        label.textAlignment                             = .center
-        label.text                                      = "Ограничение 38 символов"
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.textColor = .YPRed
+        label.textAlignment = .center
+        label.text = "Ограничение 38 символов"
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var categoryButton: UIButton = {
-        let button                                       = UIButton(type: .system)
-        button.tintColor                                 = .YPBlack
-        button.titleLabel?.font                          = .systemFont(ofSize: 17, weight: .regular)
-        button.contentHorizontalAlignment                = .leading
-        button.backgroundColor                           = .YPBackground
+        let button = UIButton(type: .system)
+        button.tintColor = .YPBlack
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
+        button.contentHorizontalAlignment = .leading
+        button.backgroundColor = .YPBackground
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.masksToBounds                       = true
-        button.contentEdgeInsets                         = UIEdgeInsets(top: 0,
-                                                                        left: 16,
-                                                                        bottom: 0,
-                                                                        right: 0)
+        button.layer.masksToBounds = true
+        button.contentEdgeInsets = UIEdgeInsets(top: 0,left: 16,bottom: 0,right: 0)
         button.setTitle("Категория", for: .normal)
         button.addTarget(self, action: #selector(showCategories), for: .touchUpInside)
         if trackerType == .habit{
-            button.layer.cornerRadius                    = 16
-            button.layer.maskedCorners                   = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+            button.layer.cornerRadius = 16
+            button.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         } else {
-            button.layer.cornerRadius                    = 16
+            button.layer.cornerRadius = 16
         }
         
         return button
     }()
     
     private lazy var selectedCategoryLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor                                 = .YPGray
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.textColor = .YPGray
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private lazy var dividerLine: UIView = {
-        let divider                                       = UIView()
-        divider.backgroundColor                           = .YPGray
+        let divider = UIView()
+        divider.backgroundColor = .YPGray
         divider.translatesAutoresizingMaskIntoConstraints = false
         
         return divider
     }()
     
     private lazy var chevronImage1: UIImageView = {
-        let imageView                                       = UIImageView()
-        let chevron                                         = #imageLiteral(resourceName: "Chevron")
-        imageView.image                                     = chevron
+        let imageView = UIImageView()
+        let chevron = #imageLiteral(resourceName: "Chevron")
+        imageView.image = chevron
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
     
     private lazy var chevronImage2: UIImageView = {
-        let imageView                                       = UIImageView()
-        let chevron                                         = #imageLiteral(resourceName: "Chevron")
-        imageView.image                                     = chevron
+        let imageView = UIImageView()
+        let chevron = #imageLiteral(resourceName: "Chevron")
+        imageView.image = chevron
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
     
     private lazy var scheduleButton: UIButton = {
-        let button                                       = UIButton(type: .system)
-        button.tintColor                                 = .YPBlack
-        button.titleLabel?.font                          = .systemFont(ofSize: 17, weight: .regular)
-        button.contentHorizontalAlignment                = .left
-        button.layer.masksToBounds                       = true
-        button.layer.cornerRadius                        = 16
-        button.layer.maskedCorners                       = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        button.backgroundColor                           = .YPBackground
+        let button = UIButton(type: .system)
+        button.tintColor = .YPBlack
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
+        button.contentHorizontalAlignment = .left
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        button.backgroundColor = .YPBackground
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets                         = UIEdgeInsets(top: 0,
-                                                                        left: 16,
-                                                                        bottom: 0,
-                                                                        right: 0)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0,left: 16,bottom: 0,right: 0)
         button.addTarget(self, action: #selector(scheduleButtonTapped), for: .touchUpInside)
         button.setTitle("Расписание", for: .normal)
         
@@ -164,30 +157,30 @@ final class TrackerCreatingViewController: UIViewController {
     }()
     
     private lazy var selectedDaysLabel: UILabel = {
-        let label                                       = UILabel()
-        label.font                                      = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor                                 = .YPGray
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.textColor = .YPGray
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private let stackView: UIStackView = {
-        let stack                                       = UIStackView()
+        let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         return stack
     }()
     
     private lazy var cancelButton: UIButton = {
-        let button                                       = UIButton(type: .system)
-        button.titleLabel?.font                          = .systemFont(ofSize: 16, weight: .medium)
-        button.tintColor                                 = .YPRed
-        button.backgroundColor                           = .clear
-        button.layer.masksToBounds                       = true
-        button.layer.cornerRadius                        = 16
-        button.layer.borderWidth                         = 1
-        button.layer.borderColor                         = UIColor.YPRed.cgColor
+        let button = UIButton(type: .system)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        button.tintColor = .YPRed
+        button.backgroundColor = .clear
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.YPRed.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         button.setTitle("Отменить", for: .normal)
@@ -199,12 +192,12 @@ final class TrackerCreatingViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Cоздать", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        button.tintColor                                 = .YPWhite
-        button.backgroundColor                           = .YPGray
-        button.layer.masksToBounds                       = true
-        button.layer.cornerRadius                        = 16
+        button.tintColor = .YPWhite
+        button.backgroundColor = .YPGray
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -339,14 +332,13 @@ final class TrackerCreatingViewController: UIViewController {
         self.view.window?.rootViewController?.dismiss(animated: true)
     }
     
-//    @objc private func createButtonTapped() {
-//        let id = UUID()
-//        let trackersArray: [Tracker] = [Tracker(id: id, name: trackerName, schedule: selectedDays)]
-//        let trackerCategory = TrackerCategory(name: selectedCategory, includedTrackers: trackersArray)
-//        delegate?.addCategory(trackerCategory)
-//        self.view.window?.rootViewController?.dismiss(animated: true)
-//    }
-
+        @objc private func createButtonTapped() {
+            let id = UUID()
+            let tracker = Tracker(id: id, name: trackerName, schedule: selectedDays)
+            self.dismiss(animated: true)
+            delegate?.transitTracker(tracker, and: selectedCategory, from: self)
+        }
+    
     @objc private func showCategories() {
         let viewToPresent = CategoriesViewController()
         viewToPresent.delegate = self
@@ -361,8 +353,8 @@ final class TrackerCreatingViewController: UIViewController {
 }
 
 
-// MARK: - ScheduleViewControllerProtocol:
-extension TrackerCreatingViewController: ScheduleViewControllerProtocol {
+// MARK: - ScheduleViewControllerDelegate:
+extension TrackerCreatingViewController: ScheduleViewControllerDelegate {
     func showSelectedDays() {
         print("Show selected days was called")
         
@@ -388,8 +380,8 @@ extension TrackerCreatingViewController: ScheduleViewControllerProtocol {
     }
 }
 
-// MARK: - CategoryViewControllerProtocol:
-extension TrackerCreatingViewController: CategoryViewControllerProtocol {
+// MARK: - CategoryViewControllerDelegate:
+extension TrackerCreatingViewController: CategoryViewControllerDelegate {
     func showSelectedCategory() {
         print("Show selected category was called")
         selectedCategoryLabel.text = selectedCategory
