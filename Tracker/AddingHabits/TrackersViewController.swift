@@ -43,6 +43,8 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
         collection.delegate = self
         collection.dataSource = self
         collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(TrackerCell.self, forCellWithReuseIdentifier: TrackerCell.reuseID)
+        collection.register(SupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SupplementaryView.reuseId)
         
         return collection
     }()
@@ -63,8 +65,6 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
     private func screenItemsSetup() {
         view.addSubview(searchField)
         view.addSubview(collectionView)
-        
-        collectionView.register(TrackerCell.self, forCellWithReuseIdentifier: TrackerCell.reuseID)
         
         NSLayoutConstraint.activate([
             searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -121,18 +121,33 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
     }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: 20, height: 20)
+    }
 }
 
 // MARK: - UICollectionViewDataSource:
 extension TrackersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        visibleCategories[section].includedTrackers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackerCell.reuseID, for: indexPath) as? TrackerCell else { return UICollectionViewCell()}
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseId, for: indexPath) as! SupplementaryView
+        headerView.titleLabel.text = visibleCategories[indexPath.section].name
+        
+        return headerView
     }
 }
 

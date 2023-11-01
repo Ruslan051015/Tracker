@@ -10,7 +10,10 @@ import UIKit
 class TrackerCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseID = "TrackersCell"
-    lazy var topView: UIView = {
+    
+    // MARK: - Private properties:
+    private var trackerID: UUID? = nil
+    private lazy var topView: UIView = {
         let view = UIView()
         view.backgroundColor = .YPBlue
         view.layer.masksToBounds = true
@@ -19,7 +22,7 @@ class TrackerCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var emojiLabel: UILabel = {
+    private lazy var emojiLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .YPBackground
         label.font = .systemFont(ofSize: 16)
@@ -32,7 +35,7 @@ class TrackerCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var trackerNameLabel: UILabel = {
+    private lazy var trackerNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.text = "Learn swift"
@@ -41,23 +44,23 @@ class TrackerCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var bottomView: UIView = {
+    private lazy var bottomView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         
         return view
     }()
     
-    lazy var daysCounterLabel: UILabel = {
+    private lazy var daysCounterLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
-        label.text = "1 day"
+        label.text = "1 день"
         
         return label
     }()
     
-    lazy var plusButton: UIButton = {
+    private lazy var plusButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "Plus"), for: .normal)
         button.tintColor = .YPWhite
@@ -78,6 +81,19 @@ class TrackerCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func cellConfig(id: UUID,
+                    name: String,
+                    color: UIColor,
+                    emoji: String,
+                    isCompleted: Bool,
+                    completedDays: Int) {
+        trackerID = id
+        trackerNameLabel.text = name
+        topView.backgroundColor = color
+        emojiLabel.text = emoji
+        daysCounterLabel.text = "\(completedDays.days())"
     }
     // MARK: - Private methods:
     @objc private func plusButtonTapped() {
@@ -112,8 +128,6 @@ class TrackerCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            //            topView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            //            topView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             topView.widthAnchor.constraint(equalToConstant: 167),
             topView.heightAnchor.constraint(equalToConstant: 90),
             emojiLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 12),

@@ -3,7 +3,7 @@ import UIKit
 
 final class SupplementaryView: UICollectionReusableView {
     // MARK: - Properties:
-    static let reuseIdentifier = "SupplementaryView"
+    static let reuseId = "SupplementaryView"
     lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 19, weight: .bold)
