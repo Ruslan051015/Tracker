@@ -13,7 +13,11 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
             print(categories)
         }
     }
-    var visibleCategories: [TrackerCategory] = []
+    var visibleCategories: [TrackerCategory] = [] {
+        didSet {
+            showOrHideStubs()
+        }
+    }
     var completedTrackers: Set<TrackerRecord> = []
     
     // MARK: - Private properties:
@@ -34,6 +38,8 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
         let field = UISearchTextField()
         field.delegate = self
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.placeholder = "Поиск"
+        field.backgroundColor = .clear
         
         return field
     }()
@@ -49,6 +55,26 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
         return collection
     }()
     
+    private lazy var stubImageView: UIImageView = {
+        let image = UIImage(named: "StarLight")
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    private lazy var stubLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Что будем отслеживать?"
+        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .YPBlack
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -59,17 +85,30 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = .YPWhite
         screenItemsSetup()
         navBarSetup()
+        showOrHideStubs()
     }
     
     // MARK: - Private methods:
     private func screenItemsSetup() {
-        view.addSubview(searchField)
-        view.addSubview(collectionView)
+        self.view.addSubview(searchField)
+        self.view.addSubview(collectionView)
+        self.view.addSubview(stubImageView)
+        self.view.addSubview(stubLabel)
         
         NSLayoutConstraint.activate([
             searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             searchField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            
+            stubImageView.heightAnchor.constraint(equalToConstant: 80),
+            stubImageView.widthAnchor.constraint(equalToConstant: 80),
+            stubImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            stubImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -330),
+            
+            stubLabel.topAnchor.constraint(equalTo: stubImageView.bottomAnchor, constant: 8),
+            stubLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            stubLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            stubLabel.heightAnchor.constraint(equalToConstant: 18),
             
             collectionView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -89,6 +128,18 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
             let leftButton = UIBarButtonItem(image: UIImage(named: "Plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
             leftButton.tintColor = .YPBlack
             navigationItem.leftBarButtonItem = leftButton
+        }
+    }
+    
+    private func showOrHideStubs() {
+        if !categories.isEmpty {
+            stubLabel.isHidden = true
+            stubImageView.isHidden = true
+            collectionView.isHidden = false
+        } else {
+            collectionView.isHidden = true
+            stubLabel.isHidden = false
+            stubImageView.isHidden = false
         }
     }
     
@@ -123,29 +174,44 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+        categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: 20, height: 20)
+        let indexPath = IndexPath(row: 0, section: section)
+        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+        let headerViewSize = headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width,
+                                                                       height: UIView.layoutFittingExpandedSize.height),
+                                                                withHorizontalFittingPriority: .required,
+                                                                verticalFittingPriority: .fittingSizeLevel)
+        return headerViewSize
     }
 }
 
 // MARK: - UICollectionViewDataSource:
 extension TrackersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        visibleCategories[section].includedTrackers.count
+        categories[section].includedTrackers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackerCell.reuseID, for: indexPath) as? TrackerCell else { return UICollectionViewCell()}
+        let tracker = categories[indexPath.section].includedTrackers[indexPath.row]
+        cell.cellConfig(
+            id: tracker.id,
+            name: tracker.name,
+            color: .YPColorSelection1,
+            emoji: "🛫",
+            isCompleted: true,
+            completedDays: 1)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseId, for: indexPath) as! SupplementaryView
-        headerView.titleLabel.text = visibleCategories[indexPath.section].name
+        headerView.titleLabel.text = categories[indexPath.section].name
+        headerView.titleLabel.font = .boldSystemFont(ofSize: 19)
         
         return headerView
     }
@@ -154,8 +220,11 @@ extension TrackersViewController: UICollectionViewDataSource {
 // MARK: - HabitOrEventDelegate:
 extension TrackersViewController: HabitOrEventDelegate {
     func addTracker(_ tracker: Tracker, and category: String, from: HabitOrEventViewController) {
+        print("add tracker was called")
         let trackerArray = [tracker]
-        let newCategory = TrackerCategory(name: tracker.name, includedTrackers: trackerArray)
+        let newCategory = TrackerCategory(name: category, includedTrackers: trackerArray)
         categories.append(newCategory)
+        showOrHideStubs()
+        collectionView.reloadData()
     }
 }

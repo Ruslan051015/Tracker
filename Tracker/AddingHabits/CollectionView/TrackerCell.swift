@@ -1,10 +1,3 @@
-//
-//  TrackerCell.swift
-//  Tracker
-//
-//  Created by Руслан Халилулин on 20.10.2023.
-//
-
 import UIKit
 
 class TrackerCell: UICollectionViewCell {
@@ -12,6 +5,7 @@ class TrackerCell: UICollectionViewCell {
     static let reuseID = "TrackersCell"
     
     // MARK: - Private properties:
+    var numberOfCompletedDays: Int = 0
     private var trackerID: UUID? = nil
     private lazy var topView: UIView = {
         let view = UIView()
@@ -55,7 +49,7 @@ class TrackerCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
-        label.text = "1 день"
+        label.text = "\(numberOfCompletedDays.days())"
         
         return label
     }()
@@ -93,7 +87,9 @@ class TrackerCell: UICollectionViewCell {
         trackerNameLabel.text = name
         topView.backgroundColor = color
         emojiLabel.text = emoji
-        daysCounterLabel.text = "\(completedDays.days())"
+        plusButton.backgroundColor = color
+        numberOfCompletedDays = completedDays
+        daysCounterLabel.text = "\(numberOfCompletedDays.days())"
     }
     // MARK: - Private methods:
     @objc private func plusButtonTapped() {
@@ -104,10 +100,14 @@ class TrackerCell: UICollectionViewCell {
             plusButton.setImage(doneImage, for: .normal)
             plusButton.imageEdgeInsets = UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11)
             plusButton.tintColor = .YPWhite
+            numberOfCompletedDays += 1
+            daysCounterLabel.text = "\(numberOfCompletedDays.days())"
         } else {
             plusButton.setImage(plusImage, for: .normal)
             plusButton.imageEdgeInsets = UIEdgeInsets(top: 11.72, left: 11.72, bottom: 12.07, right: 11.65)
             plusButton.tintColor = .YPWhite
+            numberOfCompletedDays -= 1
+            daysCounterLabel.text = "\(numberOfCompletedDays.days())"
         }
     }
     

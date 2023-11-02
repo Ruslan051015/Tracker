@@ -10,7 +10,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     weak var delegate: CategoryViewControllerDelegate?
     var categories: [String] = ["Hobby"] {
         didSet {
-            showOrHideBackground()
+            showOrHideStubs()
         }
     }
     var selectedCategory: String = "" {
@@ -54,11 +54,14 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         table.showsVerticalScrollIndicator = false
         table.allowsMultipleSelection = false
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.delegate = self
+        table.dataSource = self
+        table.allowsMultipleSelection = false
         
         return table
     }()
     
-    private lazy var backImageView: UIImageView = {
+    private lazy var stubImageView: UIImageView = {
         let image = UIImage(named: "StarLight")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +69,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         return imageView
     }()
     
-    private lazy var backgroundLabel: UILabel = {
+    private lazy var stubLabel: UILabel = {
         let label = UILabel()
         label.text = "Привычки и события можно\nобъединить по смыслу"
         label.font = .systemFont(ofSize: 12, weight: .medium)
@@ -87,12 +90,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = .YPWhite
         configureScreenItems()
-        showOrHideBackground()
-        
-        tableView.delegate                  = self
-        tableView.dataSource                = self
-        tableView.allowsMultipleSelection   = false
-        
+        showOrHideStubs()
     }
     
     // MARK: - Methods:
@@ -100,8 +98,8 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(topTitle)
         view.addSubview(tableView)
         view.addSubview(addButton)
-        view.addSubview(backImageView)
-        view.addSubview(backgroundLabel)
+        view.addSubview(stubImageView)
+        view.addSubview(stubLabel)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
@@ -115,15 +113,15 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor),
             
-            backImageView.heightAnchor.constraint(equalToConstant: 80),
-            backImageView.widthAnchor.constraint(equalToConstant: 80),
-            backImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            backImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -386),
+            stubImageView.heightAnchor.constraint(equalToConstant: 80),
+            stubImageView.widthAnchor.constraint(equalToConstant: 80),
+            stubImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            stubImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -386),
             
-            backgroundLabel.topAnchor.constraint(equalTo: backImageView.bottomAnchor, constant: 8),
-            backgroundLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            backgroundLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            backgroundLabel.heightAnchor.constraint(equalToConstant: 36),
+            stubLabel.topAnchor.constraint(equalTo: stubImageView.bottomAnchor, constant: 8),
+            stubLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            stubLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            stubLabel.heightAnchor.constraint(equalToConstant: 36),
             
             addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
@@ -133,14 +131,14 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         ])
     }
     // MARK: - Private methods:
-    private func showOrHideBackground() {
+    private func showOrHideStubs() {
         if !categories.isEmpty {
-            backgroundLabel.isHidden = true
-            backImageView.isHidden = true
+            stubLabel.isHidden = true
+            stubImageView.isHidden = true
         } else {
             tableView.isHidden = true
-            backgroundLabel.isHidden = false
-            backImageView.isHidden = false
+            stubLabel.isHidden = false
+            stubImageView.isHidden = false
         }
     }
     

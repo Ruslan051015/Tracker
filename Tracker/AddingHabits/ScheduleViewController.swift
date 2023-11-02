@@ -7,29 +7,20 @@ final class ScheduleViewController: UIViewController {
     
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
-        let label                                       = UILabel()
-        label.text                                      = "Расписание"
-        label.font                                      = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor                                 = .YPBlack
+        let label = UILabel()
+        label.text = "Расписание"
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .YPBlack
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
-    private let dictToSort: [String: Int] = ["Понедельник": 0,
-                                             "Вторник":     1,
-                                             "Среда":       2,
-                                             "Четверг":     3,
-                                             "Пятница":     4,
-                                             "Суббота":     5,
-                                             "Воскресенье": 6]
+    private let dictToSort: [String: Int] = ["Понедельник": 0, "Вторник": 1,
+                                             "Среда": 2, "Четверг": 3, "Пятница": 4,
+                                             "Суббота": 5, "Воскресенье": 6]
     
-    private let weekDays: [String] = ["Понедельник",
-                                      "Вторник",
-                                      "Среда",
-                                      "Четверг",
-                                      "Пятница",
-                                      "Суббота",
-                                      "Воскресенье"]
+    private let weekDays: [String] = ["Понедельник", "Вторник", "Среда",
+                                      "Четверг", "Пятница", "Суббота", "Воскресенье"]
     
     private var selectedDays: [String] = [] {
         didSet {
@@ -38,13 +29,13 @@ final class ScheduleViewController: UIViewController {
     }
     
     private lazy var tableView: UITableView = {
-       let tableView                                        = UITableView()
-        tableView.delegate                                  = self
-        tableView.dataSource                                = self
-        tableView.backgroundColor                           = .YPBackground
-        tableView.layer.masksToBounds                       = true
-        tableView.layer.cornerRadius                        = 16
-        tableView.isScrollEnabled                           = false
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .YPBackground
+        tableView.layer.masksToBounds = true
+        tableView.layer.cornerRadius = 16
+        tableView.isScrollEnabled = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
@@ -52,12 +43,12 @@ final class ScheduleViewController: UIViewController {
     }()
     
     private lazy var doneButton: UIButton = {
-        let button                                       = UIButton(type: .system)
-        button.tintColor                                 = .YPWhite
-        button.frame.size                                = CGSize(width: 335, height: 60)
-        button.layer.masksToBounds                       = true
-        button.layer.cornerRadius                        = 16
-        button.backgroundColor                           = .YPBlack
+        let button = UIButton(type: .system)
+        button.tintColor = .YPWhite
+        button.frame.size = CGSize(width: 335, height: 60)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        button.backgroundColor = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Готово", for: .normal)
         button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
@@ -85,7 +76,7 @@ final class ScheduleViewController: UIViewController {
         view.addSubview(topTitle)
         view.addSubview(tableView)
         view.addSubview(doneButton)
-      
+        
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -140,20 +131,20 @@ extension ScheduleViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell                    = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         
-        let switchView              = UISwitch(frame: .zero)
-        switchView.tag              = indexPath.row
-        switchView.onTintColor      = .YPBlue
+        let switchView = UISwitch(frame: .zero)
+        switchView.tag = indexPath.row
+        switchView.onTintColor = .YPBlue
         switchView.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
-        cell.accessoryView          = switchView
-        cell.textLabel?.text        = weekDays[indexPath.row]
-        cell.backgroundColor        = .clear
-        cell.separatorInset         = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        cell.accessoryView = switchView
+        cell.textLabel?.text = weekDays[indexPath.row]
+        cell.backgroundColor = .clear
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         if indexPath.row == 6 {
-            cell.separatorInset     = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10000)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10000)
         }
-        let item                    = weekDays[indexPath.row]
+        let item = weekDays[indexPath.row]
         
         for day in selectedDays {
             if day == item {
