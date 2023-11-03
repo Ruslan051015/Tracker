@@ -6,6 +6,12 @@ final class ScheduleViewController: UIViewController {
     weak var delegate: ScheduleViewControllerDelegate?
     
     // MARK: - Private properties:
+    private var selectedDays: [Weekdays] = [] {
+        didSet {
+            selectedDays.sort { $0.dayNumber < $1.dayNumber }
+        }
+    }
+    
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text = "Расписание"
@@ -15,16 +21,6 @@ final class ScheduleViewController: UIViewController {
         
         return label
     }()
-    private let dictToSort: [String: Int] = ["Понедельник": 0, "Вторник": 1,
-                                             "Среда": 2, "Четверг": 3, "Пятница": 4,
-                                             "Суббота": 5, "Воскресенье": 6]
-    
-    
-    private var selectedDays: [String] = [] {
-        didSet {
-            selectedDays.sort { (dictToSort[$0] ?? 7) < (dictToSort[$1] ?? 7) }
-        }
-    }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -95,10 +91,10 @@ final class ScheduleViewController: UIViewController {
     
     @objc private func switchToggled(_ sender: UISwitch) {
         if sender.isOn {
-            selectedDays.append(Weekdays.allCases[sender.tag].rawValue)
+            selectedDays.append(Weekdays.allCases[sender.tag])
             print(selectedDays)
         } else {
-            selectedDays.removeAll { $0 == Weekdays.allCases[sender.tag].rawValue }
+            selectedDays.removeAll { $0 == Weekdays.allCases[sender.tag] }
             print(selectedDays)
         }
     }
@@ -145,7 +141,7 @@ extension ScheduleViewController: UITableViewDataSource {
         let item = Weekdays.allCases[indexPath.row].rawValue
         
         for day in selectedDays {
-            if day == item {
+            if day.rawValue == item {
                 switchView.isOn = true
             }
         }

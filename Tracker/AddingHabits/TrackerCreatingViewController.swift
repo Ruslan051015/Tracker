@@ -16,7 +16,7 @@ enum HabitOrEvent {
 }
 
 protocol ScheduleViewControllerDelegate: AnyObject {
-    var selectedDays: [String] { get set }
+    var selectedDays: [Weekdays] { get set }
     func showSelectedDays()
 }
 
@@ -29,7 +29,7 @@ final class TrackerCreatingViewController: UIViewController {
     // MARK: - Properties:
     weak var delegate: TrackerCreatingViewControllerDelegate?
     var trackerType: HabitOrEvent
-    var selectedDays: [String]   = []
+    var selectedDays: [Weekdays]   = []
     var selectedCategory: String = "" {
         didSet {
             print("HVC category \(selectedCategory) was added")
@@ -327,17 +327,17 @@ final class TrackerCreatingViewController: UIViewController {
     private func hideLimitLabel() {
         limitationLabel.removeFromSuperview()
     }
-    
+    // MARK: - Objc-Methods:
     @objc private func cancelButtonTapped() {
         self.view.window?.rootViewController?.dismiss(animated: true)
     }
     
-        @objc private func createButtonTapped() {
-            let id = UUID()
-            let tracker = Tracker(id: id, name: trackerName, schedule: selectedDays)
-            self.dismiss(animated: true)
-            delegate?.transitTracker(tracker, and: selectedCategory, from: self)
-        }
+    @objc private func createButtonTapped() {
+        let id = UUID()
+        let tracker = Tracker(id: id, name: trackerName, schedule: selectedDays)
+        self.dismiss(animated: true)
+        delegate?.transitTracker(tracker, and: selectedCategory, from: self)
+    }
     
     @objc private func showCategories() {
         let viewToPresent = CategoriesViewController()
@@ -351,7 +351,6 @@ final class TrackerCreatingViewController: UIViewController {
         self.present(viewToPresent, animated: true)
     }
 }
-
 
 // MARK: - ScheduleViewControllerDelegate:
 extension TrackerCreatingViewController: ScheduleViewControllerDelegate {
@@ -368,14 +367,16 @@ extension TrackerCreatingViewController: ScheduleViewControllerDelegate {
         let weekEnd: [String] = ["Суббота", "Воскресенье"]
         let week: [String] = ["Понедельник","Вторник","Среда","Четверг","Пятница", "Суббота", "Воскресенье"]
         
-        if weekDays.allSatisfy(selectedDays.contains(_:)) && weekDays.count == selectedDays.count {
+        let selectedDaysRawValues = selectedDays.map { $0.rawValue }
+        
+        if weekDays.allSatisfy(selectedDaysRawValues.contains(_:)) && weekDays.count == selectedDaysRawValues.count {
             selectedDaysLabel.text = "Будни"
-        } else if weekEnd.allSatisfy(selectedDays.contains(_:)) && weekEnd.count == selectedDays.count {
+        } else if weekEnd.allSatisfy(selectedDaysRawValues.contains(_:)) && weekEnd.count == selectedDays.count {
             selectedDaysLabel.text = "Выходные дни"
-        } else if week.allSatisfy(selectedDays.contains(_:)) {
+        } else if week.allSatisfy(selectedDaysRawValues.contains(_:)) {
             selectedDaysLabel.text = "Все дни"
         } else {
-            selectedDaysLabel.text = selectedDays.map { $0.shortName() }.joined(separator: ", ")
+            selectedDaysLabel.text = selectedDays.map { $0.shortName }.joined(separator: ", ")
         }
     }
 }
