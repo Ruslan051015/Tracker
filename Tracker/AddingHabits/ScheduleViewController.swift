@@ -19,8 +19,6 @@ final class ScheduleViewController: UIViewController {
                                              "Среда": 2, "Четверг": 3, "Пятница": 4,
                                              "Суббота": 5, "Воскресенье": 6]
     
-    private let weekDays: [String] = ["Понедельник", "Вторник", "Среда",
-                                      "Четверг", "Пятница", "Суббота", "Воскресенье"]
     
     private var selectedDays: [String] = [] {
         didSet {
@@ -97,10 +95,10 @@ final class ScheduleViewController: UIViewController {
     
     @objc private func switchToggled(_ sender: UISwitch) {
         if sender.isOn {
-            selectedDays.append(weekDays[sender.tag])
+            selectedDays.append(Weekdays.allCases[sender.tag].rawValue)
             print(selectedDays)
         } else {
-            selectedDays.removeAll { $0 == weekDays[sender.tag] }
+            selectedDays.removeAll { $0 == Weekdays.allCases[sender.tag].rawValue }
             print(selectedDays)
         }
     }
@@ -127,7 +125,7 @@ extension ScheduleViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource:
 extension ScheduleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        weekDays.count
+        Weekdays.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -138,13 +136,13 @@ extension ScheduleViewController: UITableViewDataSource {
         switchView.onTintColor = .YPBlue
         switchView.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
         cell.accessoryView = switchView
-        cell.textLabel?.text = weekDays[indexPath.row]
+        cell.textLabel?.text = Weekdays.allCases[indexPath.row].rawValue
         cell.backgroundColor = .clear
         cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         if indexPath.row == 6 {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10000)
         }
-        let item = weekDays[indexPath.row]
+        let item = Weekdays.allCases[indexPath.row].rawValue
         
         for day in selectedDays {
             if day == item {
