@@ -142,7 +142,8 @@ final class TrackersViewController: UIViewController, UITextFieldDelegate {
             stubImageView.isHidden = false
         }
     }
-    
+     
+    // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
         let selectedDate = sender.date
         let dateFormatter = DateFormatter()
@@ -221,9 +222,25 @@ extension TrackersViewController: UICollectionViewDataSource {
 extension TrackersViewController: HabitOrEventDelegate {
     func addTracker(_ tracker: Tracker, and category: String, from: HabitOrEventViewController) {
         print("add tracker was called")
-        let trackerArray = [tracker]
-        let newCategory = TrackerCategory(name: category, includedTrackers: trackerArray)
-        categories.append(newCategory)
+        var updatedCategory: TrackerCategory?
+        var index: Int?
+        
+        for i in 0..<categories.count {
+            if categories[i].name == category {
+                updatedCategory = categories[i]
+                index = i
+            }
+        }
+        
+        if updatedCategory == nil {
+            categories.append(TrackerCategory(name: category, includedTrackers: [tracker]))
+        } else {
+            let newIncludedTrackers = (updatedCategory?.includedTrackers ?? []) + [tracker]
+            let sortedNewTrackers = newIncludedTrackers.sorted { $0.name < $1.name }
+            let newCategory = TrackerCategory(name: category, includedTrackers: sortedNewTrackers)
+            categories.remove(at: index ?? 0)
+            categories.append(newCategory)
+        }
         showOrHideStubs()
         collectionView.reloadData()
     }
