@@ -40,14 +40,17 @@ final class TrackersViewController: UIViewController {
         return picker
     }()
     
-    private lazy var searchField: UISearchTextField = {
-        let field = UISearchTextField()
-        field.delegate = self
-        field.translatesAutoresizingMaskIntoConstraints = false
-        field.placeholder = "Поиск"
-        field.backgroundColor = .clear
+    private lazy var searchBar: UISearchBar = {
+       let bar = UISearchBar()
+        bar.delegate = self
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.placeholder = "Поиск"
+        bar.backgroundColor = .clear
+        bar.searchBarStyle = .minimal
+        bar.searchTextField.clearButtonMode = .never
+        bar.updateHeight(height: 36)
         
-        return field
+        return bar
     }()
     
     private lazy var collectionView: UICollectionView = {
@@ -80,18 +83,7 @@ final class TrackersViewController: UIViewController {
         
         return label
     }()
-    
-    private lazy var cancelButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Отменить", for: .normal)
-        button.backgroundColor = .clear
-        button.tintColor = .YPBlue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
-        
-        return button
-    }()
-    
+ 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -105,21 +97,21 @@ final class TrackersViewController: UIViewController {
         showOrHideStubs()
         setCurrentDay()
         setupToHideKeyboardOnTapOnView()
+        
     }
     
     // MARK: - Private methods:
     private func screenItemsSetup() {
-        self.view.addSubview(searchField)
+        self.view.addSubview(searchBar)
         self.view.addSubview(collectionView)
         self.view.addSubview(stubImageView)
         self.view.addSubview(stubLabel)
         
-//        cancelButtonWidth = cancelButton.widthAnchor.constraint(equalToConstant: 0)
-        
         NSLayoutConstraint.activate([
-            searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            searchField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            searchBar.heightAnchor.constraint(equalToConstant: 36),
             
             stubImageView.heightAnchor.constraint(equalToConstant: 80),
             stubImageView.widthAnchor.constraint(equalToConstant: 80),
@@ -131,7 +123,7 @@ final class TrackersViewController: UIViewController {
             stubLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             stubLabel.heightAnchor.constraint(equalToConstant: 18),
             
-            collectionView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -169,22 +161,6 @@ final class TrackersViewController: UIViewController {
         currentDay = components
     }
     
-    private func searchFieldEditing() {
-        self.view.addSubview(cancelButton)
-        NSLayoutConstraint.activate([
-            searchField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -104),
-            cancelButton.centerYAnchor.constraint(equalTo: searchField.centerYAnchor),
-            cancelButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            cancelButton.widthAnchor.constraint(equalToConstant: 83),
-            
-        ])
-    }
-    
-    private func searchFieldNotEditing() {
-        cancelButton.removeFromSuperview()
-        searchField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    }
-    
     // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
         let selectedDate = sender.date
@@ -198,11 +174,6 @@ final class TrackersViewController: UIViewController {
         let viewToPresent = HabitOrEventViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
-    }
-    
-    @objc private func cancelButtonTapped() {
-        cancelButton.removeFromSuperview()
-        searchField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
 }
 
@@ -320,13 +291,65 @@ extension TrackersViewController: TrackerCellDelegate {
     }
 }
 
-// MARK: - UITextFieldDelegate:
-extension TrackersViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        searchFieldEditing()
+// MARK: - UITextSearchBarDelegate:
+extension TrackersViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        if let button = searchBar.value(forKey: "cancelButton") as? UIButton {
+            button.setTitle("Отменить", for: .normal)
+        }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        searchFieldNotEditing()
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        // doing smth with result of search
+        searchBar.resignFirstResponder()
+        guard let text = searchBar.text else { return }
+        if text.isEmpty {
+            searchBar.showsCancelButton = false
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.showsCancelButton = false
+    }
+    
+}
+
+extension UISearchBar {
+    func updateHeight(height: CGFloat, radius: CGFloat = 8.0) {
+        let image: UIImage? = UIImage.imageWithColor(color: .YPBackground, size: CGSize(width: 1, height: height))
+        setSearchFieldBackgroundImage(image, for: .normal)
+        for subview in self.subviews {
+            for subSubViews in subview.subviews {
+                if #available(iOS 13.0, *) {
+                    for child in subSubViews.subviews {
+                        if let textField = child as? UISearchTextField {
+                            textField.layer.cornerRadius = radius
+                            textField.clipsToBounds = true
+                        }
+                    }
+                    continue
+                }
+                if let textField = subSubViews as? UITextField {
+                    textField.layer.cornerRadius = radius
+                    textField.clipsToBounds = true
+                }
+            }
+        }
+    }
+}
+
+private extension UIImage {
+    static func imageWithColor(color: UIColor, size: CGSize) -> UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        guard let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            return nil
+        }
+        UIGraphicsEndImageContext()
+        return image
     }
 }
