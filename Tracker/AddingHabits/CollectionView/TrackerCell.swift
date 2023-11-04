@@ -3,10 +3,11 @@ import UIKit
 class TrackerCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseID = "TrackersCell"
+    var isCompleted: Bool = false
+    var trackerID: UUID? = nil
     
+    weak var delegate: TrackerCellDelegate?
     // MARK: - Private properties:
-    var numberOfCompletedDays: Int = 0
-    private var trackerID: UUID? = nil
     private lazy var topView: UIView = {
         let view = UIView()
         view.backgroundColor = .YPBlue
@@ -49,7 +50,7 @@ class TrackerCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
-        label.text = "\(numberOfCompletedDays.days())"
+        label.text = "\(0.days())"
         
         return label
     }()
@@ -81,6 +82,7 @@ class TrackerCell: UICollectionViewCell {
                     name: String,
                     color: UIColor,
                     emoji: String,
+                    isEnabled: Bool,
                     isCompleted: Bool,
                     completedDays: Int) {
         trackerID = id
@@ -88,27 +90,25 @@ class TrackerCell: UICollectionViewCell {
         topView.backgroundColor = color
         emojiLabel.text = emoji
         plusButton.backgroundColor = color
-        numberOfCompletedDays = completedDays
-        daysCounterLabel.text = "\(numberOfCompletedDays.days())"
+        plusButton.isEnabled = isEnabled
+        daysCounterLabel.text = "\(completedDays.days())"
     }
     // MARK: - Private methods:
     @objc private func plusButtonTapped() {
         let plusImage = UIImage(named: "Plus")
         let doneImage = UIImage(named: "Checkmark")
-    
+        
         if plusButton.currentImage != doneImage {
             plusButton.setImage(doneImage, for: .normal)
             plusButton.imageEdgeInsets = UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11)
             plusButton.tintColor = .YPWhite
-            numberOfCompletedDays += 1
-            daysCounterLabel.text = "\(numberOfCompletedDays.days())"
         } else {
             plusButton.setImage(plusImage, for: .normal)
             plusButton.imageEdgeInsets = UIEdgeInsets(top: 11.72, left: 11.72, bottom: 12.07, right: 11.65)
             plusButton.tintColor = .YPWhite
-            numberOfCompletedDays -= 1
-            daysCounterLabel.text = "\(numberOfCompletedDays.days())"
         }
+        guard let id = trackerID else { return }
+        delegate?.checkIfCompleted(for: id)
     }
     
     private func configureCell() {
