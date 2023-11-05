@@ -3,7 +3,6 @@ import UIKit
 class TrackerCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseID = "TrackersCell"
-    
     weak var delegate: TrackerCellDelegate?
     // MARK: - Private properties:
     private var isCompleted: Bool = false
@@ -28,7 +27,6 @@ class TrackerCell: UICollectionViewCell {
         label.layer.cornerRadius = 14
         label.textAlignment = .center
         label.text = "😍"
-        
         
         return label
     }()

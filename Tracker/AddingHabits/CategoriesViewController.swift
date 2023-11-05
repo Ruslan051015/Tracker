@@ -13,11 +13,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
             showOrHideStubs()
         }
     }
-    var selectedCategory: String = "" {
-        didSet {
-            print("SCVC category \(selectedCategory) was added")
-        }
-    }
+    var selectedCategory: String = "" 
     
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
@@ -80,7 +76,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         
         return label
     }()
-
+    
     // MARK: - LifeCycle:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -135,6 +131,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         if !categories.isEmpty {
             stubLabel.isHidden = true
             stubImageView.isHidden = true
+            tableView.isHidden = false
         } else {
             tableView.isHidden = true
             stubLabel.isHidden = false
@@ -179,7 +176,7 @@ extension CategoriesViewController: UITableViewDataSource {
         if selectedCategory == cell.textLabel?.text {
             cell.accessoryView = UIImageView(image: UIImage(named: "CheckmarkBlue"))
         }
-
+        
         return cell
     }
 }
@@ -217,7 +214,6 @@ extension CategoriesViewController: UITableViewDelegate {
 extension CategoriesViewController: NewCategoryVCProtocol {
     func addNewCategory(_ value: String) {
         categories.append(value)
-        print("Value was added to categories")
         tableView.reloadData()
     }
 }

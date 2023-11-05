@@ -4,12 +4,8 @@ final class NewCategoryVC: UIViewController {
     // MARK: - Properties:
     weak var delegate: NewCategoryVCProtocol?
     
-// MARK: - Private properties:
-    var categoryName: String = "" {
-        didSet {
-            print("Category name is \(categoryName)")
-        }
-    }
+    // MARK: - Private properties:
+    var categoryName: String = ""
     
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -57,7 +53,7 @@ final class NewCategoryVC: UIViewController {
         setupToHideKeyboardOnTapOnView()
     }
     
-// MARK: - Private methods:
+    // MARK: - Private methods:
     private func setupScreenItems() {
         self.view.addSubview(topTitle)
         self.view.addSubview(textField)

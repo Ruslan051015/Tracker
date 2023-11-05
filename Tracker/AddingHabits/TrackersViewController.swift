@@ -118,7 +118,7 @@ final class TrackersViewController: UIViewController {
             stubLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             stubLabel.heightAnchor.constraint(equalToConstant: 18),
             
-            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 34),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -157,10 +157,10 @@ final class TrackersViewController: UIViewController {
     
     private func reloadVisibleCategories() {
         let filterText = (searchBar.searchTextField.text ?? "").lowercased()
-        let component = Calendar.current.dateComponents([.weekday], from: datePicker.date)
-        if let day = component.weekday {
-            currentDay = day
-        }
+        let component = Calendar.current.component(.weekday, from: datePicker.date)
+        
+        currentDay = component
+        print(component)
         
         visibleCategories = categories.compactMap { category in
             let trackers = category.includedTrackers.filter { tracker in
@@ -192,11 +192,6 @@ final class TrackersViewController: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDelegate:
-extension TrackersViewController: UICollectionViewDelegate {
-    
-}
-
 // MARK: - UICollectionViewDelegateFlowLayout:
 extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -204,7 +199,7 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
+        UIEdgeInsets(top: 12, left: 16, bottom: 11, right: 16)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -222,6 +217,10 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
             verticalFittingPriority: .fittingSizeLevel)
         
         return headerViewSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
     }
 }
 
@@ -257,7 +256,7 @@ extension TrackersViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseId, for: indexPath) as! SupplementaryView
-        headerView.titleLabel.text = categories[indexPath.section].name
+        headerView.titleLabel.text = visibleCategories[indexPath.section].name
         headerView.titleLabel.font = .boldSystemFont(ofSize: 19)
         
         return headerView
@@ -317,7 +316,6 @@ extension TrackersViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        // doing smth with result of search
         searchBar.resignFirstResponder()
         guard let text = searchBar.text else { return }
         if text.isEmpty {
@@ -329,8 +327,8 @@ extension TrackersViewController: UISearchBarDelegate {
         searchBar.text = nil
         searchBar.showsCancelButton = false
         reloadVisibleCategories()
-        
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         reloadVisibleCategories()
         searchBar.resignFirstResponder()

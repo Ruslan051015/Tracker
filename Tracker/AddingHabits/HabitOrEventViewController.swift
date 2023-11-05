@@ -55,8 +55,6 @@ final class HabitOrEventViewController: UIViewController {
         configureScreenItems()
     }
     
-    // MARK: - Methods:
-    
     // MARK: - Private methods:
     private func configureScreenItems() {
         view.addSubview(newHabit)

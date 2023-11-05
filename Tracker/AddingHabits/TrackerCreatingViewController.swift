@@ -29,10 +29,15 @@ final class TrackerCreatingViewController: UIViewController {
     // MARK: - Properties:
     weak var delegate: TrackerCreatingViewControllerDelegate?
     var trackerType: HabitOrEvent
-    var selectedDays: [Weekdays]   = []
+    var selectedDays: [Weekdays] = [] {
+        didSet {
+            createButtonCondition()
+        }
+    }
+    
     var selectedCategory: String = "" {
         didSet {
-            print("HVC category \(selectedCategory) was added")
+            createButtonCondition()
         }
     }
     var trackerName: String = "" {
@@ -211,6 +216,7 @@ final class TrackerCreatingViewController: UIViewController {
         configureScreenItems()
         setupConstraints()
         textField.becomeFirstResponder()
+        createButtonCondition()
     }
     
     // MARK: - Methods:
@@ -320,6 +326,7 @@ final class TrackerCreatingViewController: UIViewController {
             limitationLabel.widthAnchor.constraint(equalToConstant: 286),
             limitationLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 8),
             limitationLabel.bottomAnchor.constraint(equalTo: categoryButton.topAnchor, constant: -32),
+            limitationLabel.heightAnchor.constraint(equalToConstant: 22),
             limitationLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
     }
@@ -327,14 +334,28 @@ final class TrackerCreatingViewController: UIViewController {
     private func hideLimitLabel() {
         limitationLabel.removeFromSuperview()
     }
+    
+    private func createButtonCondition() {
+        if trackerType == .habit {
+            createButton.isEnabled = !selectedDays.isEmpty && !selectedCategory.isEmpty && textField.text?.isEmpty == false
+        } else if trackerType == .event {
+            createButton.isEnabled = textField.text?.isEmpty == false && !selectedCategory.isEmpty
+        }
+    }
     // MARK: - Objc-Methods:
     @objc private func cancelButtonTapped() {
         self.view.window?.rootViewController?.dismiss(animated: true)
     }
     
     @objc private func createButtonTapped() {
-        let id = UUID()
-        let tracker = Tracker(id: id, name: trackerName, schedule: selectedDays)
+        var tracker: Tracker?
+        if trackerType == .habit {
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays)
+        } else if trackerType == .event {
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekdays.allCases)
+        }
+        
+        guard let tracker else { return }
         self.dismiss(animated: true)
         delegate?.transitTracker(tracker, and: selectedCategory, from: self)
     }
@@ -355,8 +376,6 @@ final class TrackerCreatingViewController: UIViewController {
 // MARK: - ScheduleViewControllerDelegate:
 extension TrackerCreatingViewController: ScheduleViewControllerDelegate {
     func showSelectedDays() {
-        print("Show selected days was called")
-        
         if !selectedDays.isEmpty {
             scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
         } else {
@@ -390,7 +409,6 @@ extension TrackerCreatingViewController: CategoryViewControllerDelegate {
             categoryButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
         } else {
             categoryButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            //            selectedCategoryLabel.isHidden = true
         }
     }
 }
@@ -402,12 +420,9 @@ extension TrackerCreatingViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         trackerName = textField.text ?? ""
+        createButtonCondition()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

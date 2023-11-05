@@ -21,7 +21,6 @@ final class TabBarViewController: UITabBarController {
         self.setViewControllers([trackersNVC, statsNVC], animated: true)
     }
     
-  
     private func setTabBarsBorder() {
         let lineView = UIView(frame: CGRect(x: 0, y: 0, width: tabBar.frame.size.width, height: 1))
         lineView.backgroundColor = .YPGray
