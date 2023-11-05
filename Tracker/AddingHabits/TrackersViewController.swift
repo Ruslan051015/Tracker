@@ -12,20 +12,12 @@ protocol TrackerCellDelegate: AnyObject {
 final class TrackersViewController: UIViewController {
     // MARK: - Properties:
     var currentDay: Int?
-    var categories: [TrackerCategory] = [] {
-        didSet {
-            print(categories)
-        }
-    }
-    var visibleCategories: [TrackerCategory] = [] {
-        didSet {
-            showOrHideStubs()
-        }
-    }
+    var categories: [TrackerCategory] = Mocks.trackers
+    var visibleCategories: [TrackerCategory] = []
     var completedTrackers: Set<TrackerRecord> = []
     
     // MARK: - Private properties:
-    private let datePicker: UIDatePicker = {
+    private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.datePickerMode = .date
@@ -35,13 +27,13 @@ final class TrackersViewController: UIViewController {
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.heightAnchor.constraint(equalToConstant: 34).isActive = true
         picker.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        picker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        picker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         
         return picker
     }()
     
     private lazy var searchBar: UISearchBar = {
-       let bar = UISearchBar()
+        let bar = UISearchBar()
         bar.delegate = self
         bar.translatesAutoresizingMaskIntoConstraints = false
         bar.placeholder = "Поиск"
@@ -83,7 +75,7 @@ final class TrackersViewController: UIViewController {
         
         return label
     }()
- 
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -92,12 +84,11 @@ final class TrackersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
+        
+        reloadData()
         screenItemsSetup()
         navBarSetup()
-        showOrHideStubs()
-        setCurrentDay()
         setupToHideKeyboardOnTapOnView()
-        
     }
     
     // MARK: - Private methods:
@@ -145,7 +136,7 @@ final class TrackersViewController: UIViewController {
     }
     
     private func showOrHideStubs() {
-        if !categories.isEmpty {
+        if !visibleCategories.isEmpty {
             stubLabel.isHidden = true
             stubImageView.isHidden = true
             collectionView.isHidden = false
@@ -155,19 +146,39 @@ final class TrackersViewController: UIViewController {
             stubImageView.isHidden = false
         }
     }
+  
+    private func reloadData() {
+        datePickerValueChanged()
+    }
     
-    private func setCurrentDay() {
-        let components = Calendar.current.dateComponents([.weekday], from: Date()).weekday
-        currentDay = components
+    private func reloadVisibleCategories() {
+        let filterText = (searchBar.searchTextField.text ?? "").lowercased()
+        let component = Calendar.current.dateComponents([.weekday], from: datePicker.date)
+        if let day = component.weekday {
+            currentDay = day
+        }
+        
+        visibleCategories = categories.compactMap { category in
+            let trackers = category.includedTrackers.filter { tracker in
+                let textCondition = filterText.isEmpty || tracker.name.lowercased().contains(filterText)
+                let dateCondition = tracker.schedule?.contains { weekDay in
+                    weekDay.calendarNumber == currentDay
+                } == true
+                 return textCondition && dateCondition
+            }
+            
+            if trackers.isEmpty {
+                return nil
+            }
+            return TrackerCategory(name: category.name, includedTrackers: trackers)
+        }
+        collectionView.reloadData()
+        showOrHideStubs()
     }
     
     // MARK: - Objc-Methods:
-    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        let selectedDate = sender.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyy"
-        let formattedDate = dateFormatter.string(from: selectedDate)
-        print("Current date: \(formattedDate)")
+    @objc private func datePickerValueChanged() {
+        reloadVisibleCategories()
     }
     
     @objc private func plusButtonTapped() {
@@ -193,7 +204,7 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        categories.count
+        visibleCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -213,7 +224,7 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource:
 extension TrackersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        categories[section].includedTrackers.count
+        visibleCategories[section].includedTrackers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -231,7 +242,7 @@ extension TrackersViewController: UICollectionViewDataSource {
             id: tracker.id,
             name: tracker.name,
             color: .YPColorSelection1,
-            emoji: "🛫",
+            emoji: "🤓",
             isEnabled: isEnabled,
             isCompleted: isCompleted,
             completedDays: completedDays)
@@ -312,44 +323,12 @@ extension TrackersViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
         searchBar.showsCancelButton = false
-    }
-    
-}
+        reloadVisibleCategories()
 
-extension UISearchBar {
-    func updateHeight(height: CGFloat, radius: CGFloat = 8.0) {
-        let image: UIImage? = UIImage.imageWithColor(color: .YPBackground, size: CGSize(width: 1, height: height))
-        setSearchFieldBackgroundImage(image, for: .normal)
-        for subview in self.subviews {
-            for subSubViews in subview.subviews {
-                if #available(iOS 13.0, *) {
-                    for child in subSubViews.subviews {
-                        if let textField = child as? UISearchTextField {
-                            textField.layer.cornerRadius = radius
-                            textField.clipsToBounds = true
-                        }
-                    }
-                    continue
-                }
-                if let textField = subSubViews as? UITextField {
-                    textField.layer.cornerRadius = radius
-                    textField.clipsToBounds = true
-                }
-            }
-        }
     }
-}
-
-private extension UIImage {
-    static func imageWithColor(color: UIColor, size: CGSize) -> UIImage? {
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        color.setFill()
-        UIRectFill(rect)
-        guard let image: UIImage = UIGraphicsGetImageFromCurrentImageContext() else {
-            return nil
-        }
-        UIGraphicsEndImageContext()
-        return image
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        reloadVisibleCategories()
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
     }
 }
