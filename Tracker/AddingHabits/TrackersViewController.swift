@@ -6,7 +6,7 @@ protocol HabitOrEventDelegate: AnyObject {
 }
 
 protocol TrackerCellDelegate: AnyObject {
-    func checkIfCompleted(for id: UUID)
+    func checkIfCompleted(for id: UUID, at indexPath: IndexPath)
 }
 
 final class TrackersViewController: UIViewController {
@@ -14,7 +14,11 @@ final class TrackersViewController: UIViewController {
     var currentDay: Int?
     var categories: [TrackerCategory] = Mocks.trackers
     var visibleCategories: [TrackerCategory] = []
-    var completedTrackers: Set<TrackerRecord> = []
+    var completedTrackers: [TrackerRecord] = [] {
+        didSet {
+            print(completedTrackers)
+        }
+    }
     
     // MARK: - Private properties:
     private lazy var datePicker: UIDatePicker = {
@@ -146,7 +150,7 @@ final class TrackersViewController: UIViewController {
             stubImageView.isHidden = false
         }
     }
-  
+    
     private func reloadData() {
         datePickerValueChanged()
     }
@@ -164,7 +168,7 @@ final class TrackersViewController: UIViewController {
                 let dateCondition = tracker.schedule?.contains { weekDay in
                     weekDay.calendarNumber == currentDay
                 } == true
-                 return textCondition && dateCondition
+                return textCondition && dateCondition
             }
             
             if trackers.isEmpty {
@@ -245,7 +249,8 @@ extension TrackersViewController: UICollectionViewDataSource {
             emoji: "🤓",
             isEnabled: isEnabled,
             isCompleted: isCompleted,
-            completedDays: completedDays)
+            completedDays: completedDays,
+            indexPath: indexPath)
         
         return cell
     }
@@ -290,15 +295,15 @@ extension TrackersViewController: HabitOrEventDelegate {
 
 // MARK: - TrackerCellDelegate:
 extension TrackersViewController: TrackerCellDelegate {
-    func checkIfCompleted(for id: UUID) {
+    func checkIfCompleted(for id: UUID, at indexPath: IndexPath) {
         if let index = completedTrackers.firstIndex(where: { tracker in
             tracker.id == id && tracker.date.onlyDate == datePicker.date.onlyDate
         }) {
             completedTrackers.remove(at: index)
         } else {
-            completedTrackers.insert(TrackerRecord(id: id, date: datePicker.date))
+            completedTrackers.append(TrackerRecord(id: id, date: datePicker.date))
         }
-        collectionView.reloadData()
+        collectionView.reloadItems(at: [indexPath])
     }
 }
 
@@ -324,7 +329,7 @@ extension TrackersViewController: UISearchBarDelegate {
         searchBar.text = nil
         searchBar.showsCancelButton = false
         reloadVisibleCategories()
-
+        
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         reloadVisibleCategories()

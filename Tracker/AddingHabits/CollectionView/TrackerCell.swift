@@ -3,11 +3,14 @@ import UIKit
 class TrackerCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseID = "TrackersCell"
-    var isCompleted: Bool = false
-    var trackerID: UUID? = nil
     
     weak var delegate: TrackerCellDelegate?
     // MARK: - Private properties:
+    private var isCompleted: Bool = false
+    private var trackerID: UUID? = nil
+    private var indexPath: IndexPath?
+    private let plusImage = UIImage(named: "Plus")
+    private let doneImage = UIImage(named: "Checkmark")
     private lazy var topView: UIView = {
         let view = UIView()
         view.backgroundColor = .YPBlue
@@ -84,33 +87,22 @@ class TrackerCell: UICollectionViewCell {
                     emoji: String,
                     isEnabled: Bool,
                     isCompleted: Bool,
-                    completedDays: Int) {
-        trackerID = id
-        trackerNameLabel.text = name
-        topView.backgroundColor = color
-        emojiLabel.text = emoji
-        plusButton.backgroundColor = color
-        plusButton.isEnabled = isEnabled
-        daysCounterLabel.text = "\(completedDays.days())"
+                    completedDays: Int,
+                    indexPath: IndexPath) {
+        self.trackerID = id
+        self.trackerNameLabel.text = name
+        self.topView.backgroundColor = color
+        self.emojiLabel.text = emoji
+        self.plusButton.backgroundColor = color
+        self.plusButton.isEnabled = isEnabled
+        self.daysCounterLabel.text = "\(completedDays.days())"
+        self.indexPath = indexPath
+        self.isCompleted = isCompleted
+        
+        let image = isCompleted ? doneImage : plusImage
+        plusButton.setImage(image, for: .normal)
     }
     // MARK: - Private methods:
-    @objc private func plusButtonTapped() {
-        let plusImage = UIImage(named: "Plus")
-        let doneImage = UIImage(named: "Checkmark")
-        
-        if plusButton.currentImage != doneImage {
-            plusButton.setImage(doneImage, for: .normal)
-            plusButton.imageEdgeInsets = UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11)
-            plusButton.tintColor = .YPWhite
-        } else {
-            plusButton.setImage(plusImage, for: .normal)
-            plusButton.imageEdgeInsets = UIEdgeInsets(top: 11.72, left: 11.72, bottom: 12.07, right: 11.65)
-            plusButton.tintColor = .YPWhite
-        }
-        guard let id = trackerID else { return }
-        delegate?.checkIfCompleted(for: id)
-    }
-    
     private func configureCell() {
         topView.translatesAutoresizingMaskIntoConstraints = false
         emojiLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -152,6 +144,11 @@ class TrackerCell: UICollectionViewCell {
             plusButton.widthAnchor.constraint(equalToConstant: 34),
             plusButton.heightAnchor.constraint(equalToConstant: 34)
         ])
-        
+    }
+    
+    // MARK: - Objc-Methods:
+    @objc private func plusButtonTapped() {
+        guard let id = trackerID, let indexPath = indexPath else { return }
+        delegate?.checkIfCompleted(for: id, at: indexPath)
     }
 }
