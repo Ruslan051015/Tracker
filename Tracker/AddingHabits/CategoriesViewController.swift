@@ -174,7 +174,7 @@ extension CategoriesViewController: UITableViewDataSource {
             cell.layer.cornerRadius = 0
         }
         if selectedCategory == cell.textLabel?.text {
-            cell.accessoryView = UIImageView(image: UIImage(named: "checkmarkBlue"))
+            cell.accessoryView = UIImageView(image: UIImage(named: "checkmark"))
         }
         
         return cell
@@ -189,7 +189,7 @@ extension CategoriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        let checkmark = UIImage(named: "checkmarkBlue")
+        let checkmark = UIImage(named: "checkmark")
         if cell?.accessoryView != .none {
             cell?.accessoryView = .none
             selectedCategory = ""

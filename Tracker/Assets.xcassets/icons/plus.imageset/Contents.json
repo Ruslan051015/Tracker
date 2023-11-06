@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "logo.png",
-      "idiom" : "universal"
+      "filename" : "plus.svg",
+      "idiom" : "iphone"
     }
   ],
   "info" : {
