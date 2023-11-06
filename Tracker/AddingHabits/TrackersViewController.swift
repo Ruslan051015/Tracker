@@ -14,13 +14,10 @@ final class TrackersViewController: UIViewController {
     var currentDay: Int?
     var categories: [TrackerCategory] = Mocks.trackers
     var visibleCategories: [TrackerCategory] = []
-    var completedTrackers: [TrackerRecord] = [] {
-        didSet {
-            print(completedTrackers)
-        }
-    }
+    var completedTrackers: [TrackerRecord] = []
     
     // MARK: - Private properties:
+    private let params = GeometricParams(cellCount: 2, leftInset: 16, rightInset: 16, cellSpacing: 9)
     private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
@@ -60,7 +57,7 @@ final class TrackersViewController: UIViewController {
     }()
     
     private lazy var stubImageView: UIImageView = {
-        let image = UIImage(named: "StarLight")
+        let image = UIImage(named: "starLight")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -132,7 +129,7 @@ final class TrackersViewController: UIViewController {
             let rightButton = UIBarButtonItem(customView: datePicker)
             navigationItem.rightBarButtonItem = rightButton
             
-            let leftButton = UIBarButtonItem(image: UIImage(named: "Plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
+            let leftButton = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
             leftButton.tintColor = .YPBlack
             navigationItem.leftBarButtonItem = leftButton
         }
@@ -194,11 +191,13 @@ final class TrackersViewController: UIViewController {
 // MARK: - UICollectionViewDelegateFlowLayout:
 extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 167, height: 148)
+        let availableWidth = collectionView.frame.size.width - params.paddingWidth
+        let cellWidth = availableWidth / CGFloat(params.cellCount)
+        return CGSize(width: cellWidth, height: 148)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 12, left: 16, bottom: 11, right: 16)
+        UIEdgeInsets(top: 12, left: params.leftInset, bottom: 11, right: params.rightInset)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -223,7 +222,7 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        9
+        params.cellSpacing
     }
 }
 
@@ -269,7 +268,6 @@ extension TrackersViewController: UICollectionViewDataSource {
 // MARK: - HabitOrEventDelegate:
 extension TrackersViewController: HabitOrEventDelegate {
     func addTracker(_ tracker: Tracker, and category: String, from: HabitOrEventViewController) {
-        print("add tracker was called")
         var updatedCategory: TrackerCategory?
         var index: Int?
         

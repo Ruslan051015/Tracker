@@ -58,7 +58,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     }()
     
     private lazy var stubImageView: UIImageView = {
-        let image = UIImage(named: "StarLight")
+        let image = UIImage(named: "starLight")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -174,7 +174,7 @@ extension CategoriesViewController: UITableViewDataSource {
             cell.layer.cornerRadius = 0
         }
         if selectedCategory == cell.textLabel?.text {
-            cell.accessoryView = UIImageView(image: UIImage(named: "CheckmarkBlue"))
+            cell.accessoryView = UIImageView(image: UIImage(named: "checkmarkBlue"))
         }
         
         return cell
@@ -189,7 +189,7 @@ extension CategoriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        let checkmark = UIImage(named: "CheckmarkBlue")
+        let checkmark = UIImage(named: "checkmarkBlue")
         if cell?.accessoryView != .none {
             cell?.accessoryView = .none
             selectedCategory = ""

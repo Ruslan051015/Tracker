@@ -73,6 +73,7 @@ final class TrackerCreatingViewController: UIViewController {
         field.textColor = .YPBlack
         field.delegate = self
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         return field
     }()
@@ -128,7 +129,7 @@ final class TrackerCreatingViewController: UIViewController {
     
     private lazy var chevronImage1: UIImageView = {
         let imageView = UIImageView()
-        let chevron = #imageLiteral(resourceName: "Chevron")
+        let chevron = UIImage(named: "chevron")
         imageView.image = chevron
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -137,7 +138,7 @@ final class TrackerCreatingViewController: UIViewController {
     
     private lazy var chevronImage2: UIImageView = {
         let imageView = UIImageView()
-        let chevron = #imageLiteral(resourceName: "Chevron")
+        let chevron = UIImage(named: "chevron")
         imageView.image = chevron
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -341,6 +342,11 @@ final class TrackerCreatingViewController: UIViewController {
         } else if trackerType == .event {
             createButton.isEnabled = textField.text?.isEmpty == false && !selectedCategory.isEmpty
         }
+        if createButton.isEnabled {
+            createButton.backgroundColor = .YPBlack
+        } else {
+            createButton.backgroundColor = .YPGray
+        }
     }
     // MARK: - Objc-Methods:
     @objc private func cancelButtonTapped() {
@@ -370,6 +376,10 @@ final class TrackerCreatingViewController: UIViewController {
         let viewToPresent = ScheduleViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
+    }
+    
+    @objc private func textFieldDidChange() {
+        createButtonCondition()
     }
 }
 
@@ -422,7 +432,6 @@ extension TrackerCreatingViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         trackerName = textField.text ?? ""
-        createButtonCondition()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

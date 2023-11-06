@@ -8,8 +8,8 @@ class TrackerCell: UICollectionViewCell {
     private var isCompleted: Bool = false
     private var trackerID: UUID? = nil
     private var indexPath: IndexPath?
-    private let plusImage = UIImage(named: "Plus")
-    private let doneImage = UIImage(named: "Checkmark")
+    private let plusImage = UIImage(named: "plus")
+    private let doneImage = UIImage(named: "checkmark")
     private lazy var topView: UIView = {
         let view = UIView()
         view.backgroundColor = .YPBlue
@@ -58,7 +58,7 @@ class TrackerCell: UICollectionViewCell {
     
     private lazy var plusButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "Plus"), for: .normal)
+        button.setImage(UIImage(named: "plus"), for: .normal)
         button.tintColor = .YPWhite
         button.imageEdgeInsets = UIEdgeInsets(top: 11.72, left: 11.72, bottom: 12.07, right: 11.65)
         button.layer.masksToBounds = true
@@ -99,6 +99,7 @@ class TrackerCell: UICollectionViewCell {
         
         let image = isCompleted ? doneImage : plusImage
         plusButton.setImage(image, for: .normal)
+        plusButton.alpha = isCompleted ? 0.3 : 1
     }
     // MARK: - Private methods:
     private func configureCell() {
@@ -118,7 +119,7 @@ class TrackerCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            topView.widthAnchor.constraint(equalToConstant: 167),
+            topView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             topView.heightAnchor.constraint(equalToConstant: 90),
             emojiLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 12),
             emojiLabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 12),
@@ -130,7 +131,7 @@ class TrackerCell: UICollectionViewCell {
             trackerNameLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -12),
             
             bottomView.topAnchor.constraint(equalTo: topView.bottomAnchor),
-            bottomView.widthAnchor.constraint(equalToConstant: 167),
+            bottomView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             bottomView.heightAnchor.constraint(equalToConstant: 58),
             daysCounterLabel.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 16),
             daysCounterLabel.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 12),

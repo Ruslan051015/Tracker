@@ -11,6 +11,7 @@ final class CustomUITextField: UITextField {
         
         placeholder = text
         clearButtonMode = .whileEditing
+        
         textColor = .YPGray
         font = .systemFont(ofSize: 17, weight: .regular)
         layer.masksToBounds = true
@@ -31,6 +32,7 @@ final class CustomUITextField: UITextField {
     }
     
     override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
-        bounds.inset(by: UIEdgeInsets(top: 0, left: 314, bottom: 0, right: 0))
+        let originalRect = super.clearButtonRect(forBounds: bounds)
+               return originalRect.offsetBy(dx: -5, dy: 0)
     }
 }

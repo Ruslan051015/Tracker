@@ -14,9 +14,9 @@ final class TabBarViewController: UITabBarController {
         let statsNVC = UINavigationController(rootViewController: StatisticsViewController())
         
         trackersNVC.tabBarItem.title = "Трекеры"
-        trackersNVC.tabBarItem.image = UIImage(named: "Record")
+        trackersNVC.tabBarItem.image = UIImage(named: "record")
         statsNVC.tabBarItem.title = "Статистика"
-        statsNVC.tabBarItem.image = UIImage(named: "Statistics")
+        statsNVC.tabBarItem.image = UIImage(named: "statistics")
         
         self.setViewControllers([trackersNVC, statsNVC], animated: true)
     }

@@ -15,7 +15,7 @@ class StatisticsViewController: UIViewController {
     
     private lazy var stubImage: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage(named: "SadSmile")
+        let image = UIImage(named: "sadSmile")
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
