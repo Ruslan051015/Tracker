@@ -38,11 +38,11 @@ class StatisticsViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
+            stubImage.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            stubImage.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             stubLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
             stubLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -16),
-            stubLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -247),
-            stubImage.centerXAnchor.constraint(equalTo: stubLabel.centerXAnchor),
-            stubImage.bottomAnchor.constraint(equalTo: stubLabel.topAnchor, constant: -8)
+            stubLabel.topAnchor.constraint(equalTo: stubImage.bottomAnchor, constant: 8),
         ])
     }
     
