@@ -8,15 +8,15 @@ final class Mocks {
                 Tracker(
                     id: UUID(),
                     name: "Swift",
-                    schedule: [.Monday, .Thursday, .Wednesday, .Friday, .Saturday, .Sunday]),
+                    schedule: [.Monday, .Tuesday, .Wednesday, .Friday, .Saturday, .Sunday]),
                 Tracker(
                     id: UUID(),
                     name: "SwiftBook",
-                    schedule: [.Monday, .Wednesday, .Saturday, .Sunday]),
+                    schedule: [.Monday, .Tuesday, .Sunday]),
                 Tracker(
                     id: UUID(),
                     name: "Сomputer Science",
-                    schedule: [.Monday, .Wednesday, .Saturday, .Sunday])
+                    schedule: [.Monday, .Tuesday,  .Saturday, .Sunday])
             ]),
         
         TrackerCategory(
@@ -25,7 +25,7 @@ final class Mocks {
                 Tracker(
                     id: UUID(),
                     name: "Gym",
-                    schedule: [.Monday, .Wednesday, .Friday, .Sunday,]),
+                    schedule: [.Monday, .Tuesday, .Wednesday, .Friday, .Sunday,]),
                 Tracker(
                     id: UUID(),
                     name: "Football",
