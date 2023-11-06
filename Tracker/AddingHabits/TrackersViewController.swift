@@ -27,7 +27,6 @@ final class TrackersViewController: UIViewController {
         picker.datePickerMode = .date
         picker.tintColor = .YPBlue
         picker.calendar.firstWeekday = 2
-        picker.locale = Locale(identifier: "ru-RU")
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.heightAnchor.constraint(equalToConstant: 34).isActive = true
         picker.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -222,6 +221,10 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        9
+    }
 }
 
 // MARK: - UICollectionViewDataSource:
@@ -310,9 +313,6 @@ extension TrackersViewController: TrackerCellDelegate {
 extension TrackersViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
-        if let button = searchBar.value(forKey: "cancelButton") as? UIButton {
-            button.setTitle("Отменить", for: .normal)
-        }
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {

@@ -34,7 +34,6 @@ final class NewCategoryVC: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Готово", for: .normal)
         button.tintColor = .YPWhite
-        button.frame.size = CGSize(width: 335, height: 60)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack

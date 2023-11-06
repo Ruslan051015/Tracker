@@ -16,7 +16,7 @@ enum HabitOrEvent {
 }
 
 protocol ScheduleViewControllerDelegate: AnyObject {
-    var selectedDays: [Weekdays] { get set }
+    var selectedDays: [Weekday] { get set }
     func showSelectedDays()
 }
 
@@ -29,7 +29,7 @@ final class TrackerCreatingViewController: UIViewController {
     // MARK: - Properties:
     weak var delegate: TrackerCreatingViewControllerDelegate?
     var trackerType: HabitOrEvent
-    var selectedDays: [Weekdays] = [] {
+    var selectedDays: [Weekday] = [] {
         didSet {
             createButtonCondition()
         }
@@ -352,7 +352,7 @@ final class TrackerCreatingViewController: UIViewController {
         if trackerType == .habit {
             tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays)
         } else if trackerType == .event {
-            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekdays.allCases)
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases)
         }
         
         guard let tracker else { return }

@@ -17,7 +17,7 @@
 		4A5AD1F02ACEF2F7000E826B /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AD1EF2ACEF2F7000E826B /* TrackerUITestsLaunchTests.swift */; };
 		4A5AD1FD2ACEFE46000E826B /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AD1FC2ACEFE46000E826B /* UIColor + Extension.swift */; };
 		4A5EB1882AE5B25000E941B1 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EB1872AE5B25000E941B1 /* Date + Extension.swift */; };
-		4A6704E02AF50C73000DE99A /* WeekDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6704DF2AF50C73000DE99A /* WeekDays.swift */; };
+		4A6704E02AF50C73000DE99A /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6704DF2AF50C73000DE99A /* WeekDay.swift */; };
 		4A693F712AF7C512004A2D15 /* UISearchBar + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A693F702AF7C512004A2D15 /* UISearchBar + Extension.swift */; };
 		4A693F732AF7C541004A2D15 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A693F722AF7C541004A2D15 /* UIImage + Extension.swift */; };
 		4A693F752AF7DD33004A2D15 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A693F742AF7DD33004A2D15 /* Mocks.swift */; };
@@ -72,7 +72,7 @@
 		4A5AD1EF2ACEF2F7000E826B /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4A5AD1FC2ACEFE46000E826B /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		4A5EB1872AE5B25000E941B1 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
-		4A6704DF2AF50C73000DE99A /* WeekDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDays.swift; sourceTree = "<group>"; };
+		4A6704DF2AF50C73000DE99A /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		4A693F702AF7C512004A2D15 /* UISearchBar + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar + Extension.swift"; sourceTree = "<group>"; };
 		4A693F722AF7C541004A2D15 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		4A693F742AF7DD33004A2D15 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 				4A81813B2ACF5F5700A3B9DF /* Tracker.swift */,
 				4A81813D2ACF5F6700A3B9DF /* TrackerCategory.swift */,
 				4A81813F2ACF5F8200A3B9DF /* TrackerRecord.swift */,
-				4A6704DF2AF50C73000DE99A /* WeekDays.swift */,
+				4A6704DF2AF50C73000DE99A /* WeekDay.swift */,
 				4A693F742AF7DD33004A2D15 /* Mocks.swift */,
 			);
 			path = Models;
@@ -386,7 +386,7 @@
 				4AE8CC642AE020A100D7A628 /* TabBarViewController.swift in Sources */,
 				4A81E5422AD8398F00CF1260 /* ScheduleViewController.swift in Sources */,
 				4A40E1172AE1D4D000E52FB9 /* TrackerCell.swift in Sources */,
-				4A6704E02AF50C73000DE99A /* WeekDays.swift in Sources */,
+				4A6704E02AF50C73000DE99A /* WeekDay.swift in Sources */,
 				4AE8CC662AE0242100D7A628 /* StatisticsViewController.swift in Sources */,
 				4AD8773E2AD6E214007E2EE2 /* EmojiCell.swift in Sources */,
 				4AD877422AD7040A007E2EE2 /* ColorCell.swift in Sources */,
