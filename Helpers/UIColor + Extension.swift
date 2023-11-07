@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static var YPBackground: UIColor { UIColor(named:"YPBackground") ?? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) }
+    static var YPBackground: UIColor { UIColor(named:"YPBackground") ?? #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1) }
     static var YPBlack: UIColor { UIColor(named:"YPBlack") ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) }
     static var YPBlue: UIColor { UIColor(named:"YPBlue") ?? #colorLiteral(red: 0.2695594132, green: 0.5159891248, blue: 1, alpha: 1) }
     static var YPColorSelection1: UIColor { UIColor(named:"YPColorSelection1") ?? #colorLiteral(red: 1, green: 0.2304438651, blue: 0, alpha: 1) }
