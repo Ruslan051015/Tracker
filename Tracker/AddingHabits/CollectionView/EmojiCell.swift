@@ -5,18 +5,18 @@ final class EmojiCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseIdentifier = "EmojiCell"
     let emojiLabel = UILabel()
-    
+  
     // MARK: - Methods:
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        emojiLabel.translatesAutoresizingMaskIntoConstraints = false
+
         emojiLabel.font = .systemFont(ofSize: 32)
         contentView.addSubview(emojiLabel)
-        emojiLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             emojiLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            emojiLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
+            emojiLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)            
         ])
     }
     

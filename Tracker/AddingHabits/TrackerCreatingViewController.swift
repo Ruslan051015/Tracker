@@ -61,13 +61,14 @@ final class TrackerCreatingViewController: UIViewController {
     ]
     
     private let params = GeometricParams(cellCount: 6, leftInset: 18, rightInset: 18, cellSpacing: 5)
+    private var lastSelectedIndexPath: IndexPath?
     
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.isMultipleTouchEnabled = true
         scroll.isScrollEnabled = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.contentSize = CGSize(width: view.frame.width, height: 830)
+        scroll.decelerationRate = .init(rawValue: 1)
         
         return scroll
     }()
@@ -262,9 +263,9 @@ final class TrackerCreatingViewController: UIViewController {
     
     // MARK: - Private methods:
     private func configureScreenItems() {
-        view.addSubview(topTitle)
-        view.addSubview(scrollView)
-        view.addSubview(stackView)
+        self.view.addSubview(topTitle)
+        self.view.addSubview(scrollView)
+        self.view.addSubview(stackView)
         
         scrollView.addSubview(textField)
         scrollView.addSubview(categoryButton)
@@ -289,8 +290,10 @@ final class TrackerCreatingViewController: UIViewController {
     private func setupConstraints() {
         var collectionViewTopConstraint: NSLayoutConstraint?
         if trackerType == .event {
+            scrollView.contentSize = CGSize(width: view.frame.width, height: 650)
             collectionViewTopConstraint = collectionView.topAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: 32)
         } else if trackerType == .habit {
+            scrollView.contentSize = CGSize(width: view.frame.width, height: 725)
             collectionViewTopConstraint = collectionView.topAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 32)
         }
         
@@ -305,7 +308,7 @@ final class TrackerCreatingViewController: UIViewController {
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: stackView.topAnchor),
             
-            textField.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
+            textField.topAnchor.constraint(equalTo: scrollView.topAnchor),
             textField.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 16),
             textField.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
             textField.heightAnchor.constraint(equalToConstant: 75),
@@ -326,7 +329,7 @@ final class TrackerCreatingViewController: UIViewController {
             collectionViewTopConstraint!,
             collectionView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 470),
+            collectionView.heightAnchor.constraint(equalToConstant: 430),
             
             stackView.heightAnchor.constraint(equalToConstant: 60),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -513,6 +516,9 @@ extension TrackerCreatingViewController: UICollectionViewDataSource {
         case sectionsEnum.emojiCell.rawValue:
             guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseIdentifier, for: indexPath) as? EmojiCell else { return UICollectionViewCell()}
             emojiCell.emojiLabel.text = emojies[indexPath.row]
+            if lastSelectedIndexPath == indexPath {
+                // TODO: Add property to emoji cell to set selectionColor
+            }
             return emojiCell
             
         case sectionsEnum.colorCell.rawValue:
@@ -576,5 +582,13 @@ extension TrackerCreatingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         params.cellSpacing
+    }
+}
+
+extension TrackerCreatingViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        lastSelectedIndexPath = indexPath
+        collectionView.reloadData()
+        
     }
 }
