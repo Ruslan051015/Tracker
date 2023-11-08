@@ -47,15 +47,31 @@ final class TrackerCreatingViewController: UIViewController {
     }
     
     // MARK: - Private properties:
-    private let scrollView: UIScrollView = {
+    private let emojies: [String] = ["🙂", "😻", "🌺", "🐶", "❤️", "😱",
+                                     "😇", "😡", "🥶", "🤔", "🙌", "🍔",
+                                     "🥦", "🏓", "🥇", "🎸", "🏝️", "😪"]
+    
+    private let colors: [UIColor] = [
+        .YPColorSelection1, .YPColorSelection2, .YPColorSelection3,
+        .YPColorSelection4, .YPColorSelection5, .YPColorSelection6,
+        .YPColorSelection7, .YPColorSelection8, .YPColorSelection9,
+        .YPColorSelection10, .YPColorSelection11, .YPColorSelection12,
+        .YPColorSelection13, .YPColorSelection14, .YPColorSelection15,
+        .YPColorSelection16, .YPColorSelection17, .YPColorSelection18
+    ]
+    
+    private let params = GeometricParams(cellCount: 6, leftInset: 18, rightInset: 18, cellSpacing: 5)
+    
+    private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.isMultipleTouchEnabled = true
+        scroll.isScrollEnabled = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.contentSize = CGSize(width: scroll.frame.width, height: scroll.frame.height)
+        scroll.contentSize = CGSize(width: view.frame.width, height: 830)
         
         return scroll
     }()
-    
+   
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text = trackerType.titleText
@@ -171,7 +187,21 @@ final class TrackerCreatingViewController: UIViewController {
         return label
     }()
     
-    private let stackView: UIStackView = {
+    private lazy var collectionView: UICollectionView = {
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collection.delegate = self
+        collection.dataSource = self
+        collection.backgroundColor = .clear
+        collection.isScrollEnabled = false
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(EmojiCell.self, forCellWithReuseIdentifier: EmojiCell.reuseIdentifier)
+        collection.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.reuseIdentifier)
+        collection.register(SupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SupplementaryView.reuseId)
+        
+        return collection
+    }()
+    
+    private lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         
@@ -238,6 +268,7 @@ final class TrackerCreatingViewController: UIViewController {
         
         scrollView.addSubview(textField)
         scrollView.addSubview(categoryButton)
+        scrollView.addSubview(collectionView)
         
         categoryButton.addSubview(chevronImage1)
         categoryButton.addSubview(selectedCategoryLabel)
@@ -246,7 +277,6 @@ final class TrackerCreatingViewController: UIViewController {
         stackView.addArrangedSubview(createButton)
         stackView.spacing = 8
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
         
         if trackerType == .habit {
             scrollView.addSubview(scheduleButton)
@@ -257,6 +287,13 @@ final class TrackerCreatingViewController: UIViewController {
     }
     
     private func setupConstraints() {
+        var collectionViewTopConstraint: NSLayoutConstraint?
+        if trackerType == .event {
+            collectionViewTopConstraint = collectionView.topAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: 32)
+        } else if trackerType == .habit {
+            collectionViewTopConstraint = collectionView.topAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 32)
+        }
+        
         var constraints = [
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -264,8 +301,8 @@ final class TrackerCreatingViewController: UIViewController {
             topTitle.widthAnchor.constraint(equalToConstant: 149),
             
             scrollView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: stackView.topAnchor),
             
             textField.topAnchor.constraint(equalTo: scrollView.frameLayoutGuide.topAnchor),
@@ -285,6 +322,11 @@ final class TrackerCreatingViewController: UIViewController {
             
             chevronImage1.trailingAnchor.constraint(equalTo: categoryButton.trailingAnchor, constant: -24),
             chevronImage1.bottomAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: -31),
+            
+            collectionViewTopConstraint!,
+            collectionView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor),
+            collectionView.heightAnchor.constraint(equalToConstant: 470),
             
             stackView.heightAnchor.constraint(equalToConstant: 60),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -451,5 +493,88 @@ extension TrackerCreatingViewController: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         hideLimitLabel()
         return true
+    }
+}
+
+// MARK: - UICollectionViewDataSource:
+extension TrackerCreatingViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case sectionsEnum.emojiCell.rawValue:
+            return emojies.count
+        case sectionsEnum.colorCell.rawValue:
+            return colors.count
+        default: return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.section {
+        case sectionsEnum.emojiCell.rawValue:
+            guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseIdentifier, for: indexPath) as? EmojiCell else { return UICollectionViewCell()}
+            emojiCell.emojiLabel.text = emojies[indexPath.row]
+            return emojiCell
+            
+        case sectionsEnum.colorCell.rawValue:
+            guard let colorCell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.reuseIdentifier, for: indexPath) as? ColorCell else { return UICollectionViewCell()}
+            colorCell.colorView.backgroundColor = colors[indexPath.row]
+            return colorCell
+        default:
+            return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseId, for: indexPath) as! SupplementaryView
+        headerView.titleLabel.font = .boldSystemFont(ofSize: 19)
+        
+        switch indexPath.section {
+        case sectionsEnum.emojiCell.rawValue:
+            headerView.titleLabel.text = "Emoji"
+        case sectionsEnum.colorCell.rawValue:
+            headerView.titleLabel.text = "Цвет"
+        default:
+            headerView.titleLabel.text = "1"
+        }
+        
+        return headerView
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout:
+extension TrackerCreatingViewController: UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let availableWidth = collectionView.frame.size.width - params.paddingWidth
+        let cellWidth = availableWidth / CGFloat(params.cellCount)
+        return CGSize(width: cellWidth, height: 52)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 24, left: params.leftInset, bottom: 24, right: params.rightInset)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let indexPath = IndexPath(row: 0, section: section)
+        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+        let headerViewSize = headerView.systemLayoutSizeFitting(
+            CGSize(
+                width: collectionView.frame.width,
+                height: UIView.layoutFittingExpandedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel)
+        
+        return headerViewSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        params.cellSpacing
     }
 }

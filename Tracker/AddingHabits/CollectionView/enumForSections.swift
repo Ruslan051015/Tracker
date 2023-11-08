@@ -1,6 +1,6 @@
 import Foundation
 
-public enum sections: Int {
-    case emojiCell     
-    case colorCell     
+public enum sectionsEnum: Int, CaseIterable {
+    case emojiCell = 0
+    case colorCell = 1
 }
