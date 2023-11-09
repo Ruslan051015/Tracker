@@ -607,10 +607,21 @@ extension TrackerCreatingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case sectionsEnum.emojiCell.rawValue:
-            selectedEmojiIndexPath = indexPath
+            if selectedEmojiIndexPath == indexPath {
+                selectedEmojiIndexPath = nil
+                selectedEmoji = ""
+            } else {
+                selectedEmojiIndexPath = indexPath
+            }
             collectionView.reloadData()
         case sectionsEnum.colorCell.rawValue:
-            selectedColorIndexPath = indexPath
+            if selectedColorIndexPath == indexPath {
+                selectedColorIndexPath = nil
+                selectedColor = nil
+            } else {
+                selectedColorIndexPath = indexPath
+            }
+            
             collectionView.reloadData()
         default:
             break
