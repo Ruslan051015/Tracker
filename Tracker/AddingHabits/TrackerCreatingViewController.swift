@@ -40,11 +40,7 @@ final class TrackerCreatingViewController: UIViewController {
             createButtonCondition()
         }
     }
-    var trackerName: String = "" {
-        didSet {
-            print(trackerName)
-        }
-    }
+    var trackerName: String = ""
     
     // MARK: - Private properties:
     private let emojies: [String] = ["🙂", "😻", "🌺", "🐶", "❤️", "😱",
@@ -61,7 +57,21 @@ final class TrackerCreatingViewController: UIViewController {
     ]
     
     private let params = GeometricParams(cellCount: 6, leftInset: 18, rightInset: 18, cellSpacing: 5)
-    private var lastSelectedIndexPath: IndexPath?
+    
+    private var selectedEmojiIndexPath: IndexPath?
+    private var selectedColorIndexPath: IndexPath?
+    
+    private var selectedEmoji: String = "" {
+        didSet {
+            createButtonCondition()
+        }
+    }
+    
+    private var selectedColor: UIColor? {
+        didSet {
+            createButtonCondition()
+        }
+    }
     
     private lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -72,7 +82,7 @@ final class TrackerCreatingViewController: UIViewController {
         
         return scroll
     }()
-   
+    
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text = trackerType.titleText
@@ -194,6 +204,7 @@ final class TrackerCreatingViewController: UIViewController {
         collection.dataSource = self
         collection.backgroundColor = .clear
         collection.isScrollEnabled = false
+        collection.allowsMultipleSelection = true
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(EmojiCell.self, forCellWithReuseIdentifier: EmojiCell.reuseIdentifier)
         collection.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.reuseIdentifier)
@@ -290,10 +301,10 @@ final class TrackerCreatingViewController: UIViewController {
     private func setupConstraints() {
         var collectionViewTopConstraint: NSLayoutConstraint?
         if trackerType == .event {
-            scrollView.contentSize = CGSize(width: view.frame.width, height: 650)
+            scrollView.contentSize = CGSize(width: view.frame.width, height: 688)
             collectionViewTopConstraint = collectionView.topAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: 32)
         } else if trackerType == .habit {
-            scrollView.contentSize = CGSize(width: view.frame.width, height: 725)
+            scrollView.contentSize = CGSize(width: view.frame.width, height: 763)
             collectionViewTopConstraint = collectionView.topAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 32)
         }
         
@@ -367,7 +378,7 @@ final class TrackerCreatingViewController: UIViewController {
     }
     
     private func addLimitLabel() {
-        self.view.addSubview(limitationLabel)
+        scrollView.addSubview(limitationLabel)
         NSLayoutConstraint.activate([
             limitationLabel.widthAnchor.constraint(equalToConstant: 286),
             limitationLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 8),
@@ -383,9 +394,9 @@ final class TrackerCreatingViewController: UIViewController {
     
     private func createButtonCondition() {
         if trackerType == .habit {
-            createButton.isEnabled = !selectedDays.isEmpty && !selectedCategory.isEmpty && textField.text?.isEmpty == false
+            createButton.isEnabled = !selectedDays.isEmpty && textField.text?.isEmpty == false && !selectedCategory.isEmpty && !selectedEmoji.isEmpty && selectedColor != nil
         } else if trackerType == .event {
-            createButton.isEnabled = textField.text?.isEmpty == false && !selectedCategory.isEmpty
+            createButton.isEnabled = textField.text?.isEmpty == false && !selectedCategory.isEmpty && !selectedEmoji.isEmpty && selectedColor != nil
         }
         if createButton.isEnabled {
             createButton.backgroundColor = .YPBlack
@@ -393,6 +404,7 @@ final class TrackerCreatingViewController: UIViewController {
             createButton.backgroundColor = .YPGray
         }
     }
+    
     // MARK: - Objc-Methods:
     @objc private func cancelButtonTapped() {
         self.view.window?.rootViewController?.dismiss(animated: true)
@@ -401,9 +413,9 @@ final class TrackerCreatingViewController: UIViewController {
     @objc private func createButtonTapped() {
         var tracker: Tracker?
         if trackerType == .habit {
-            tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays)
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays, color: selectedColor ?? .clear, emoji: selectedEmoji)
         } else if trackerType == .event {
-            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases)
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases, color: selectedColor ?? .clear, emoji: selectedEmoji)
         }
         
         guard let tracker else { return }
@@ -458,7 +470,6 @@ extension TrackerCreatingViewController: ScheduleViewControllerDelegate {
 // MARK: - CategoryViewControllerDelegate:
 extension TrackerCreatingViewController: CategoryViewControllerDelegate {
     func showSelectedCategory() {
-        print("Show selected category was called")
         selectedCategoryLabel.text = selectedCategory
         if !selectedCategory.isEmpty {
             categoryButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 38, right: 56)
@@ -516,14 +527,20 @@ extension TrackerCreatingViewController: UICollectionViewDataSource {
         case sectionsEnum.emojiCell.rawValue:
             guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseIdentifier, for: indexPath) as? EmojiCell else { return UICollectionViewCell()}
             emojiCell.emojiLabel.text = emojies[indexPath.row]
-            if lastSelectedIndexPath == indexPath {
-                // TODO: Add property to emoji cell to set selectionColor
+            if selectedEmojiIndexPath == indexPath {
+                emojiCell.selectionView.backgroundColor = .YPLightGray
+                selectedEmoji = emojiCell.emojiLabel.text ?? ""
             }
             return emojiCell
             
         case sectionsEnum.colorCell.rawValue:
             guard let colorCell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.reuseIdentifier, for: indexPath) as? ColorCell else { return UICollectionViewCell()}
             colorCell.colorView.backgroundColor = colors[indexPath.row]
+            if selectedColorIndexPath == indexPath {
+                colorCell.selectionView.isHidden = false
+                colorCell.selectionView.layer.borderColor = colors[indexPath.row].cgColor
+                selectedColor = colors[indexPath.row]
+            }
             return colorCell
         default:
             return UICollectionViewCell()
@@ -585,10 +602,20 @@ extension TrackerCreatingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UICollectionViewDelegate:
 extension TrackerCreatingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        lastSelectedIndexPath = indexPath
-        collectionView.reloadData()
+        switch indexPath.section {
+        case sectionsEnum.emojiCell.rawValue:
+            selectedEmojiIndexPath = indexPath
+            collectionView.reloadData()
+        case sectionsEnum.colorCell.rawValue:
+            selectedColorIndexPath = indexPath
+            collectionView.reloadData()
+        default:
+            break
+        }
+        
         
     }
 }

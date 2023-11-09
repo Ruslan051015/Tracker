@@ -12,7 +12,7 @@ protocol TrackerCellDelegate: AnyObject {
 final class TrackersViewController: UIViewController {
     // MARK: - Properties:
     var currentDay: Int?
-    var categories: [TrackerCategory] = Mocks.trackers
+    var categories: [TrackerCategory] = []//Mocks.trackers
     var visibleCategories: [TrackerCategory] = []
     var completedTrackers: [TrackerRecord] = []
     
@@ -154,9 +154,7 @@ final class TrackersViewController: UIViewController {
     private func reloadVisibleCategories() {
         let filterText = (searchBar.searchTextField.text ?? "").lowercased()
         let component = Calendar.current.component(.weekday, from: datePicker.date)
-        
         currentDay = component
-        print(component)
         
         visibleCategories = categories.compactMap { category in
             let trackers = category.includedTrackers.filter { tracker in
@@ -246,8 +244,8 @@ extension TrackersViewController: UICollectionViewDataSource {
         cell.cellConfig(
             id: tracker.id,
             name: tracker.name,
-            color: .YPColorSelection1,
-            emoji: "🤓",
+            color: tracker.color,
+            emoji: tracker.emoji,
             isEnabled: isEnabled,
             isCompleted: isCompleted,
             completedDays: completedDays,
