@@ -157,7 +157,6 @@
 			children = (
 				4A86C3FA2AD055E00079EF4B /* AddingHabits */,
 				4AAE91992AFFE981004E3C03 /* CoreData */,
-				4AD1BD9C2B02D21C001F6CFD /* Stores */,
 				4ABC6DA52AE4713800651AC0 /* Settings */,
 				4A81813A2ACF5F2600A3B9DF /* Models */,
 				4A8181392ACF5EFD00A3B9DF /* TabBar */,
@@ -250,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				4AAE91962AFFE97A004E3C03 /* TrackerModels.xcdatamodeld */,
+				4AD1BD9C2B02D21C001F6CFD /* Stores */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";

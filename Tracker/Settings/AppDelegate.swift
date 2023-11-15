@@ -8,21 +8,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let container = NSPersistentContainer(name: "TrackerModels")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Handling error code
+                print(error.localizedDescription)
+            } else {
+                print("DBUrl:", storeDescription.url?.absoluteString)
             }
         })
         return container
     }()
-    var window: UIWindow?
-    
-    // MARK: - Methods:
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = TabBarViewController()
-        window?.makeKeyAndVisible()
-        
-        return true
-    }
     
     func getContext() -> NSManagedObjectContext {
         return persistentContainer.viewContext
@@ -39,5 +31,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    var window: UIWindow?
+    
+    // MARK: - Methods:
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = TabBarViewController()
+        window?.makeKeyAndVisible()
+        
+        return true
+    }
+    
+    
 }
 
