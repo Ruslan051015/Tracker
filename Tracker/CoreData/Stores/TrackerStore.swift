@@ -24,6 +24,6 @@ final class TrackerStore: NSObject {
         newTracker.name = tracker.name
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
-        newTracker.schedule = tracker.schedule
+        newTracker.setValue(tracker.schedule, forKey: "schedule")
     }
 }
