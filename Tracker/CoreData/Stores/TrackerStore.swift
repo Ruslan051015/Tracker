@@ -17,6 +17,19 @@ final class TrackerStore: NSObject {
         return context
     }()
     
+    private lazy var fetchedResultsController: NSFetchedResultsController<TrackerCoreData> = {
+        let fetchRequest = TrackerCoreData.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        let controller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        controller.delegate = self
+        
+    }()
+    
     // MARK: - Methods:
     func addTracker(_ tracker: Tracker) {
         let newTracker = TrackerCoreData(context: managedObjectContext)
