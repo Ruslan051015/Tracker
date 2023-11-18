@@ -2,41 +2,34 @@ import UIKit
 import Foundation
 import CoreData
 
-final class TrackerStore: NSObject {
+protocol TrackerStoreProtocol {
+    var context: NSManagedObjectContext { get }
+    func addTracker(_ tracker: Tracker)
+    //    func deleteTracker(_ tracker: TrackerCoreData)
+}
+
+final class TrackerStore: NSObject & TrackerStoreProtocol {
     // MARK: - Properties:
-    static let shared = TrackerStore()
-    
-    // MARK: - Private Properties:
-    private lazy var appdelegate: AppDelegate = {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        return delegate
-    }()
-    
-    private lazy var managedObjectContext: NSManagedObjectContext = {
-        let context = appdelegate.getContext()
-        return context
-    }()
-    
-    private lazy var fetchedResultsController: NSFetchedResultsController<TrackerCoreData> = {
-        let fetchRequest = TrackerCoreData.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        let controller = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: managedObjectContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        controller.delegate = self
-        
-    }()
+    var context: NSManagedObjectContext
     
     // MARK: - Methods:
-    func addTracker(_ tracker: Tracker) {
-        let newTracker = TrackerCoreData(context: managedObjectContext)
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
+    
+    func addTracker(_ tracker: Tracker, with category: String) {
+        let newTracker = TrackerCoreData(context: context)
         newTracker.id = tracker.id
         newTracker.name = tracker.name
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
         newTracker.setValue(tracker.schedule, forKey: "schedule")
+        
     }
+    
+    /* MARK: - TODO: In next sprints
+    func deleteTracker(_ tracker: TrackerCoreData) {
+        context.delete(tracker)
+    }
+     */
 }

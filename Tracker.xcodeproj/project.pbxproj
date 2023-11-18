@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A07C3CD2AF91E2D001BD9B7 /* GeometricParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A07C3CC2AF91E2D001BD9B7 /* GeometricParams.swift */; };
+		4A19A8FA2B08FAD5002C90AF /* CoreDataFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A19A8F92B08FAD5002C90AF /* CoreDataFacade.swift */; };
 		4A21EF4B2AD1A21B00BD40DB /* TrackerCreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21EF4A2AD1A21B00BD40DB /* TrackerCreatingViewController.swift */; };
 		4A21EF4D2AD1AB3D00BD40DB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21EF4C2AD1AB3D00BD40DB /* CustomTextField.swift */; };
 		4A40E1172AE1D4D000E52FB9 /* TrackerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A40E1162AE1D4D000E52FB9 /* TrackerCell.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		4A07C3CC2AF91E2D001BD9B7 /* GeometricParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometricParams.swift; sourceTree = "<group>"; };
+		4A19A8F92B08FAD5002C90AF /* CoreDataFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFacade.swift; sourceTree = "<group>"; };
 		4A21EF4A2AD1A21B00BD40DB /* TrackerCreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCreatingViewController.swift; sourceTree = "<group>"; };
 		4A21EF4C2AD1AB3D00BD40DB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4A40E1162AE1D4D000E52FB9 /* TrackerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCell.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A19A8F82B08FAB2002C90AF /* Facade */ = {
+			isa = PBXGroup;
+			children = (
+				4A19A8F92B08FAD5002C90AF /* CoreDataFacade.swift */,
+			);
+			path = Facade;
+			sourceTree = "<group>";
+		};
 		4A5AD1C02ACEF2F6000E826B = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +268,7 @@
 		4AAE91992AFFE981004E3C03 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4A19A8F82B08FAB2002C90AF /* Facade */,
 				4A7837882B06655600522F35 /* Transformable */,
 				4AAE91962AFFE97A004E3C03 /* TrackerModels.xcdatamodeld */,
 				4AD1BD9C2B02D21C001F6CFD /* Stores */,
@@ -424,6 +435,7 @@
 				4A5EB1882AE5B25000E941B1 /* Date + Extension.swift in Sources */,
 				4A81E5442AD841F800CF1260 /* CategoriesViewController.swift in Sources */,
 				4AC401A12AEBFB8B009858DA /* NewCategoryVC.swift in Sources */,
+				4A19A8FA2B08FAD5002C90AF /* CoreDataFacade.swift in Sources */,
 				4AC8312F2AD5D98E00F0DDE4 /* enumForSections.swift in Sources */,
 				4A8181402ACF5F8200A3B9DF /* TrackerRecord.swift in Sources */,
 				4AE8CC642AE020A100D7A628 /* TabBarViewController.swift in Sources */,
