@@ -18,7 +18,7 @@ final class TrackerStore: NSObject  {
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
         newTracker.setValue(tracker.schedule, forKey: "schedule")
-        newTracker.record = []
+        newTracker.record = []
     }
     
     func createTrackerFromCoreData(_ object: TrackerCoreData) throws -> Tracker {
