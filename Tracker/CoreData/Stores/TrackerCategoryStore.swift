@@ -1,12 +1,6 @@
 import Foundation
 import CoreData
 
-protocol CategoryStoreProtocol {
-    var context: NSManagedObjectContext { get }
-    func addCategory()
-//    func deleteCatefory()
-}
-
 final class TrackerCategoryStore: NSObject {
     // MARK: - Properties:
     var context: NSManagedObjectContext
@@ -16,9 +10,24 @@ final class TrackerCategoryStore: NSObject {
         self.context = context
         super.init()
     }
-    func addCategory(_ name: String, with) {
+    
+    
+    
+    func addCategory(_ name: String) {
         let newCategory = TrackerCategoryCoreData(context: context)
         newCategory.name = name
-        newCategory.trackers =
+    }
+    
+    func deleteCategory(_ model: NSManagedObject) {
+        context.delete(model)
+    }
+    
+    func createCategoryFromCoreData(object: TrackerCategoryCoreData) throws -> TrackerCategory {
+        guard let name = object.name,
+              let trackers = object.trackers as? [Tracker] else {
+            print("Не удалось обработать имя и трекеры")
+            throw CoreDataErrors.creatingCategoryFromObjectError
+        }
+        let category = TrackerCategory(name: name, includedTrackers: trackers)
     }
 }

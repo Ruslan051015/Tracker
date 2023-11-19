@@ -16,22 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
-    func getContext() -> NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
-    
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
     var window: UIWindow?
     
     // MARK: - Methods:
