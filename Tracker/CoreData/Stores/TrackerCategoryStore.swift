@@ -7,7 +7,18 @@ protocol CategoryCoreDataProtocol {
 }
 
 protocol CategoryStoreDelegate: AnyObject {
-    func didUpdate()
+    func didUpdate(indexes: updateIndexes, from: TrackerCategoryStore)
+}
+
+struct updateIndexes {
+    struct Move: Hashable {
+        let oldIndex: Int
+        let newIndex: Int
+    }
+    let insertedIndexes: IndexSet
+    let deletedIndexes: IndexSet
+    let updatedIndexes: IndexSet
+    let movedIndexes: Set<Move>
 }
 
 final class TrackerCategoryStore: NSObject {
@@ -15,13 +26,18 @@ final class TrackerCategoryStore: NSObject {
     static let shared = TrackerCategoryStore()
     var categories: [TrackerCategory] {
         guard
-            let object = self.categoryFRC.fetchedObjects,
-            let categories = try? object.map({ try self.createCategoryFromCoreData($0) }) else { return []
+            let objects = self.categoryFRC.fetchedObjects,
+            let categories = try? objects.map({ try self.createCategoryFromCoreData($0) }) else { return []
         }
         return categories
     }
     
     // MARK: - Private properties:
+    private var insertedIndexes: IndexSet?
+    private var deletedIndexes: IndexSet?
+    private var updatedIndexes: IndexSet?
+    private var moveIndexes: updateIndexes.Move?
+    
     private let context: NSManagedObjectContext
     private let trackerStore = TrackerStore.shared
     
@@ -100,6 +116,19 @@ final class TrackerCategoryStore: NSObject {
             })
         
         return category
+    }
+    
+    func getCategoriesList() -> [String] {
+        let request = TrackerCategoryCoreData.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        var stringArray: [String] = []
+        do {
+            let objects = try context.fetch(request)
+            stringArray = objects.compactMap { try? createCategoryFromCoreData(_:$0)}.map { $0.name }
+        } catch {
+            print("Не удалось получить категории")
+        }
+        return stringArray
     }
 }
 

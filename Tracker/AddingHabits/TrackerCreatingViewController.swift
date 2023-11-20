@@ -56,6 +56,7 @@ final class TrackerCreatingViewController: UIViewController {
         .YPColorSelection16, .YPColorSelection17, .YPColorSelection18
     ]
     
+    private let trackerStore = TrackerStore.shared
     private let params = GeometricParams(cellCount: 6, leftInset: 18, rightInset: 18, cellSpacing: 5)
     
     private var selectedEmojiIndexPath: IndexPath?

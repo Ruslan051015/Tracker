@@ -3,22 +3,4 @@
    uuid = "3F951C77-DF95-41B2-9887-24DE6A48C636"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "96C0E2FC-484F-4A39-A8C6-F6F00E2CC493"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../Library/Developer/Xcode/DerivedData/Tracker-dlpjquyqzfbxdrcgqzyekzvvvzqx/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCoreData+CoreDataProperties.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3"
-            endingLineNumber = "3"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

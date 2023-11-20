@@ -2,18 +2,14 @@ import Foundation
 import UIKit
 
 protocol NewCategoryVCProtocol: AnyObject {
-    func addNewCategory(_ value: String)
+    func reloadTable()
 }
 
 final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
     weak var delegate: CategoryViewControllerDelegate?
-    var categories: [String] = ["Hobby"] {
-        didSet {
-            showOrHideStubs()
-        }
-    }
-    var selectedCategory: String = "" 
+    var categories: [String] = []
+    var selectedCategory: String = ""
     
     // MARK: - Private properties:
     private let categoryStore = TrackerCategoryStore.shared
@@ -87,6 +83,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = .YPWhite
         configureScreenItems()
+        fetchCategoriesArray()
         showOrHideStubs()
         
     }
@@ -139,6 +136,10 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
             stubLabel.isHidden = false
             stubImageView.isHidden = false
         }
+    }
+    
+    private func fetchCategoriesArray() {
+        categories = categoryStore.getCategoriesList()
     }
     
     private func dismissCategoryVC() {
@@ -214,8 +215,8 @@ extension CategoriesViewController: UITableViewDelegate {
 
 // MARK: - CategoriesViewControllerProtocol:
 extension CategoriesViewController: NewCategoryVCProtocol {
-    func addNewCategory(_ value: String) {
-        categories.append(value)
+    func reloadTable() {
+        categories = categoryStore.getCategoriesList()
         tableView.reloadData()
     }
 }

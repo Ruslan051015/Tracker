@@ -1,16 +1,7 @@
 import UIKit
 import CoreData
 
-struct updateIndexes {
-    struct Move: Hashable {
-        let oldIndex: Int
-        let newIndex: Int
-    }
-    let insertedIndexes: IndexSet
-    let deletedIndexes: IndexSet
-    let updatedIndexes: IndexSet
-    let movedIndexes: Set<Move>
-}
+
 
 protocol CoreDataFacadeDelegate: AnyObject {
     func didUpdate(_ update: updateIndexes, from: CoreDataFacade)
