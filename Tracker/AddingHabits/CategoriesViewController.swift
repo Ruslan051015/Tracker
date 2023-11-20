@@ -16,6 +16,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     var selectedCategory: String = "" 
     
     // MARK: - Private properties:
+    private let facafe = CoreDataFacade(delegate: nil)
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text = "Категория"
@@ -87,6 +88,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .YPWhite
         configureScreenItems()
         showOrHideStubs()
+        facafe.fetchCategories()
     }
     
     // MARK: - Methods:

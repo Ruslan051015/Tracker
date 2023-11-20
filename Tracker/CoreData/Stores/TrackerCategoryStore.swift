@@ -29,5 +29,6 @@ final class TrackerCategoryStore: NSObject {
             throw CoreDataErrors.creatingCategoryFromObjectError
         }
         let category = TrackerCategory(name: name, includedTrackers: trackers)
+        return category
     }
 }

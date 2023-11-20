@@ -25,7 +25,7 @@ final class TrackerStore: NSObject  {
         guard
             let id = object.id,
             let name = object.name,
-            let color = object.color,
+            let color = object.value(forKey: "color") as? UIColor,
             let emoji = object.emoji,
             let schedule = object.schedule else {
             print("Не удалось получить данные из БД")
@@ -34,7 +34,7 @@ final class TrackerStore: NSObject  {
         return Tracker(
             id: id,
             name: name,
-            schedule: schedule as! [Weekday],
+            schedule: schedule as? [Weekday],
             color: color,
             emoji: emoji)
     }

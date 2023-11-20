@@ -5,7 +5,8 @@ final class NewCategoryVC: UIViewController {
     weak var delegate: NewCategoryVCProtocol?
     
     // MARK: - Private properties:
-    var categoryName: String = ""
+    private var categoryName: String = ""
+    private let facade = CoreDataFacade(delegate: nil)
     
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -77,6 +78,11 @@ final class NewCategoryVC: UIViewController {
     
     @objc private func doneButtonTapped() {
         delegate?.addNewCategory(categoryName)
+        do {
+            try facade.addCategoryToCoreData(categoryName)
+        } catch {
+            print("Failed to add category to CD")
+        }
         self.dismiss(animated: true)
     }
 }

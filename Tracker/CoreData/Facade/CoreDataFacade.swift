@@ -131,6 +131,13 @@ class CoreDataFacade: NSObject {
         }
     }
     
+    func fetchCategories() {
+        let request = TrackerCategoryCoreData.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        let categories = try? context.fetch(request)
+        print(categories)
+    }
+    
     
     
     
@@ -141,30 +148,30 @@ class CoreDataFacade: NSObject {
 
 // MARK: - NSFetchedResultsControllerDelegate:
 extension CoreDataFacade: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        <#code#>
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            
-        case .delete:
-            
-        case .update:
-            
-        case .move:
-            
-        @unknown default:
-            fatalError()
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        <#code#>
-    }
+    //    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    //
+    //    }
+    //
+    //    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    ////        switch type {
+    ////        case .insert:
+    ////
+    ////        case .delete:
+    ////
+    ////        case .update:
+    ////
+    ////        case .move:
+    ////
+    ////        @unknown default:
+    ////            fatalError()
+    ////        }
+    //    }
+    //
+    //    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    //
+    //    }
 }
-
+//
 // MARK: - CoreDataFacadeProtocol:
 extension CoreDataFacade: CoreDataFacadeProtocol {
     var numberOfSections: Int {
@@ -175,43 +182,44 @@ extension CoreDataFacade: CoreDataFacadeProtocol {
     }
     
     func numberOfRowsInSection(_ section: Int) -> Int {
-        guard let trackers = categoryFRC.fetchedObjects.map { categoryStore.createCategoryFromCoreData(object: $0)}
+        0
     }
     
     func getTrackerFromCoreData(at: IndexPath) -> Tracker? {
-        <#code#>
+        nil
     }
     
     func addTrackerToCoreData(_ tracker: Tracker) throws {
-        <#code#>
+        
     }
     
     func deleteTrackerFromCoreData(at indexPath: IndexPath) throws {
-        <#code#>
+        
     }
     
     func getCategoryFromCoreData(at: IndexPath) -> TrackerCategory? {
-        <#code#>
+        nil
     }
     
     func addCategoryToCoreData(_ name: String) throws {
-        <#code#>
+        categoryStore.addCategory(name)
+        saveContext()
     }
     
     func deleteCategoryFromCoreData(_ name: IndexPath) throws {
-        <#code#>
+        
     }
     
     func getRecordFromCoreData(at: IndexPath) -> TrackerRecord? {
-        <#code#>
+        nil
     }
     
     func addRecordToCoreData(_ tracker: Tracker) throws {
-        <#code#>
+        
     }
     
     func deleteRecordFromCoreData(_ tracker: Tracker) throws {
-        <#code#>
+        
     }
     
     

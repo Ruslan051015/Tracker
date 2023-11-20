@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = TabBarViewController()
         window?.makeKeyAndVisible()
         DaysValueTransformer.register()
+        ColorTransformer.register()
         
         return true
     }
