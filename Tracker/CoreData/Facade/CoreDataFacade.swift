@@ -16,25 +16,6 @@ protocol CoreDataFacadeDelegate: AnyObject {
     func didUpdate(_ update: updateIndexes, from: CoreDataFacade)
 }
 
-protocol CoreDataFacadeProtocol {
-    var numberOfSections: Int { get }
-    func numberOfRowsInSection(_ section: Int) -> Int
-    func getTrackerFromCoreData(at: IndexPath) -> Tracker?
-    func addTrackerToCoreData(_ tracker: Tracker) throws
-    func deleteTrackerFromCoreData(at indexPath: IndexPath) throws
-    func getCategoryFromCoreData(at: IndexPath) -> TrackerCategory?
-    func addCategoryToCoreData(_ name: String) throws
-    func deleteCategoryFromCoreData(_ name: IndexPath) throws
-    func getRecordFromCoreData(at: IndexPath) -> TrackerRecord?
-    func addRecordToCoreData(_ tracker: Tracker) throws
-    func deleteRecordFromCoreData(_ tracker: Tracker) throws
-}
-
-enum CoreDataErrors: Error {
-    case creatingTrackerFromObjectError
-    case creatingCategoryFromObjectError
-}
-
 class CoreDataFacade: NSObject {
     // MARK: - Properties:
     
@@ -64,20 +45,7 @@ class CoreDataFacade: NSObject {
         return store
     }()
     
-    private lazy var categoryFRC: NSFetchedResultsController<TrackerCategoryCoreData> = {
-        let fetchRequest = TrackerCategoryCoreData.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        let controller = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: context,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        controller.delegate = self
-        try? controller.performFetch()
-        
-        return controller
-    }()
+    
     
     private lazy var trackersFRC: NSFetchedResultsController<TrackerCoreData> = {
         let fetchRequest = TrackerCoreData.fetchRequest()
@@ -172,56 +140,5 @@ extension CoreDataFacade: NSFetchedResultsControllerDelegate {
     //    }
 }
 //
-// MARK: - CoreDataFacadeProtocol:
-extension CoreDataFacade: CoreDataFacadeProtocol {
-    var numberOfSections: Int {
-        guard let numberFfSections = categoryFRC.fetchedObjects?.count else {
-            return 0
-        }
-        return numberFfSections
-    }
-    
-    func numberOfRowsInSection(_ section: Int) -> Int {
-        0
-    }
-    
-    func getTrackerFromCoreData(at: IndexPath) -> Tracker? {
-        nil
-    }
-    
-    func addTrackerToCoreData(_ tracker: Tracker) throws {
-        
-    }
-    
-    func deleteTrackerFromCoreData(at indexPath: IndexPath) throws {
-        
-    }
-    
-    func getCategoryFromCoreData(at: IndexPath) -> TrackerCategory? {
-        nil
-    }
-    
-    func addCategoryToCoreData(_ name: String) throws {
-        categoryStore.addCategory(name)
-        saveContext()
-    }
-    
-    func deleteCategoryFromCoreData(_ name: IndexPath) throws {
-        
-    }
-    
-    func getRecordFromCoreData(at: IndexPath) -> TrackerRecord? {
-        nil
-    }
-    
-    func addRecordToCoreData(_ tracker: Tracker) throws {
-        
-    }
-    
-    func deleteRecordFromCoreData(_ tracker: Tracker) throws {
-        
-    }
-    
-    
-}
+
 

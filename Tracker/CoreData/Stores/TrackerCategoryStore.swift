@@ -1,34 +1,118 @@
 import Foundation
+import UIKit
 import CoreData
+
+protocol CategoryCoreDataProtocol {
+    var numberOfSections: Int { get }
+}
+
+protocol CategoryStoreDelegate: AnyObject {
+    func didUpdate()
+}
 
 final class TrackerCategoryStore: NSObject {
     // MARK: - Properties:
-    var context: NSManagedObjectContext
+    static let shared = TrackerCategoryStore()
+    var categories: [TrackerCategory] {
+        guard
+            let object = self.categoryFRC.fetchedObjects,
+            let categories = try? object.map({ try self.createCategoryFromCoreData($0) }) else { return []
+        }
+        return categories
+    }
     
-    // MARK: - Methods:
+    // MARK: - Private properties:
+    private let context: NSManagedObjectContext
+    private let trackerStore = TrackerStore.shared
+    
+    private lazy var categoryFRC: NSFetchedResultsController<TrackerCategoryCoreData> = {
+        let fetchRequest = TrackerCategoryCoreData.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        let controller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        controller.delegate = self
+        try? controller.performFetch()
+        
+        return controller
+    }()
+    
+    // MARK: - Initializers:
+    convenience override init() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Не удалось инициализировать AppDelegate")
+        }
+        let context = appDelegate.persistentContainer.viewContext
+        self.init(context: context)
+    }
+    
     init(context: NSManagedObjectContext) {
         self.context = context
         super.init()
     }
     
-    
-    
-    func addCategory(_ name: String) {
-        let newCategory = TrackerCategoryCoreData(context: context)
-        newCategory.name = name
-    }
-    
-    func deleteCategory(_ model: NSManagedObject) {
-        context.delete(model)
-    }
-    
-    func createCategoryFromCoreData(object: TrackerCategoryCoreData) throws -> TrackerCategory {
-        guard let name = object.name,
-              let trackers = object.trackers as? [Tracker] else {
-            print("Не удалось обработать имя и трекеры")
-            throw CoreDataErrors.creatingCategoryFromObjectError
+    // MARK: - CoreData Methods:
+    func saveContext() {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
         }
-        let category = TrackerCategory(name: name, includedTrackers: trackers)
+    }
+    
+    func deleteCategory(_ model: TrackerCategoryCoreData) {
+        guard let objectToDelete = categoryFRC.fetchedObjects?.first(where: { $0.name == model.name }) else {
+            print("Не удалось найти категорию для удаления")
+            return }
+        categoryFRC.managedObjectContext.delete(objectToDelete)
+        saveContext()
+    }
+    
+    func createCoreDataCategory(with name: String) {
+        let category = TrackerCategoryCoreData(context: context)
+        category.name = name
+        category.trackers = []
+        saveContext()
+    }
+    
+    func createCategoryFromCoreData(_ model: TrackerCategoryCoreData) throws -> TrackerCategory {
+        guard let name = model.name else {
+            throw CDErrors.categoryTitleError
+        }
+        guard let trackers = model.trackers else {
+            throw CDErrors.categoryTrackersError
+        }
+        
+        let category = TrackerCategory(
+            name: name,
+            includedTrackers: trackers.compactMap { coreDataTracker -> Tracker? in
+                if let coreDataTracker = coreDataTracker as? TrackerCoreData {
+                    return try? trackerStore.createTrackerFromCoreData(coreDataTracker)
+                } else {
+                    return nil
+                }
+            })
+        
         return category
     }
+}
+
+// MARK: - CategoryCoreDataProtocol
+extension TrackerCategoryStore: CategoryCoreDataProtocol {
+    var numberOfSections: Int {
+        categories.count
+    }
+    
+    
+}
+
+// MARK: - CategoryCoreDataProtocol
+extension TrackerCategoryStore: NSFetchedResultsControllerDelegate {
+    
 }

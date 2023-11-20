@@ -4,13 +4,25 @@ import CoreData
 
 final class TrackerStore: NSObject  {
     // MARK: - Properties:
+    static let shared = TrackerStore()
+    // MARK: - Private properties:
     var context: NSManagedObjectContext
     
-    // MARK: - Methods:
-    init(context: NSManagedObjectContext) {
-        self.context = context
+    // MARK: - Initializers:
+    convenience override init() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Не удалось инициализировать AppDelegate")
+        }
+        let context = appDelegate.persistentContainer.viewContext
+        self.init(context: context)
     }
     
+    init(context: NSManagedObjectContext) {
+        self.context = context
+        super.init()
+    }
+    
+    // MARK: - CoreData Methods:
     func createCoreDataTracker(from tracker: Tracker, with category: String) {
         let newTracker = TrackerCoreData(context: context)
         newTracker.id = tracker.id
@@ -21,20 +33,20 @@ final class TrackerStore: NSObject  {
         newTracker.record = []
     }
     
-    func createTrackerFromCoreData(_ object: TrackerCoreData) throws -> Tracker {
+    func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {
         guard
-            let id = object.id,
-            let name = object.name,
-            let color = object.value(forKey: "color") as? UIColor,
-            let emoji = object.emoji,
-            let schedule = object.schedule else {
+            let id = model.id,
+            let name = model.name,
+            let color = model.value(forKey: "color") as? UIColor,
+            let emoji = model.emoji,
+            let schedule = model.schedule as? [Weekday] else {
             print("Не удалось получить данные из БД")
-            throw CoreDataErrors.creatingTrackerFromObjectError
+            throw CDErrors.creatingTrackerFromModelError
         }
         return Tracker(
             id: id,
             name: name,
-            schedule: schedule as? [Weekday],
+            schedule: schedule,
             color: color,
             emoji: emoji)
     }

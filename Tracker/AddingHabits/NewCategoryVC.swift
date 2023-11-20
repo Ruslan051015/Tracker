@@ -6,7 +6,7 @@ final class NewCategoryVC: UIViewController {
     
     // MARK: - Private properties:
     private var categoryName: String = ""
-    private let facade = CoreDataFacade(delegate: nil)
+    private let categoryStore = TrackerCategoryStore.shared
     
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -78,11 +78,7 @@ final class NewCategoryVC: UIViewController {
     
     @objc private func doneButtonTapped() {
         delegate?.addNewCategory(categoryName)
-        do {
-            try facade.addCategoryToCoreData(categoryName)
-        } catch {
-            print("Failed to add category to CD")
-        }
+        categoryStore.createCoreDataCategory(with: categoryName)
         self.dismiss(animated: true)
     }
 }
