@@ -6,8 +6,8 @@ final class TrackerStore: NSObject  {
     // MARK: - Properties:
     static let shared = TrackerStore()
     // MARK: - Private properties:
-    var context: NSManagedObjectContext
-    
+    private var context: NSManagedObjectContext
+    private let recordStore = TrackerRecordStore.shared
     // MARK: - Initializers:
     convenience override init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -23,14 +23,29 @@ final class TrackerStore: NSObject  {
     }
     
     // MARK: - CoreData Methods:
-    func createCoreDataTracker(from tracker: Tracker, with category: String) {
+    func saveContext() {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws -> TrackerCoreData {
         let newTracker = TrackerCoreData(context: context)
         newTracker.id = tracker.id
         newTracker.name = tracker.name
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
         newTracker.setValue(tracker.schedule, forKey: "schedule")
+        newTracker.category = category
         newTracker.record = []
+        saveContext()
+        
+        return newTracker
     }
     
     func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {

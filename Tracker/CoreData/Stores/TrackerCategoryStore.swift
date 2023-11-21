@@ -130,6 +130,17 @@ final class TrackerCategoryStore: NSObject {
         }
         return stringArray
     }
+    
+    func getCategoryWith(title: String) throws -> TrackerCategoryCoreData? {
+        let request = categoryFRC.fetchRequest
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCategoryCoreData.name), title)
+        do {
+            let category = try context.fetch(request)
+            return category.first
+        } catch {
+            throw CDErrors.getCoreDataCategoryError
+        }
+    }
 }
 
 // MARK: - CategoryCoreDataProtocol

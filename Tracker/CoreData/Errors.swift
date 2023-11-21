@@ -12,4 +12,7 @@ enum CDErrors: Error {
     case creatingCategoryFromModelError
     case categoryTitleError
     case categoryTrackersError
+    case getCoreDataCategoryError
+    case creatingCoreDataTrackerError
+    case recordCoreDataCreatingError
 }
