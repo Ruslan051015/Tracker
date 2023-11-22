@@ -12,6 +12,7 @@ final class TrackerRecordStore: NSObject {
         }
         return fetchedRecords
     }
+    
     // MARK: - Private properties:
     private var context: NSManagedObjectContext
     private lazy var recordFRC: NSFetchedResultsController<TrackerRecordCoreData> = {
@@ -59,7 +60,7 @@ final class TrackerRecordStore: NSObject {
     }
     
     func createTrackerRecordCoreData(from record: TrackerRecord) throws -> TrackerRecordCoreData {
-            let coreDataRecord = TrackerRecordCoreData(context: context)
+        let coreDataRecord = TrackerRecordCoreData(context: context)
         coreDataRecord.recordID = record.id
         coreDataRecord.date = record.date
         saveContext()

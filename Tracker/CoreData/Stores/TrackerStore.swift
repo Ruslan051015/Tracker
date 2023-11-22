@@ -5,6 +5,14 @@ import CoreData
 final class TrackerStore: NSObject  {
     // MARK: - Properties:
     static let shared = TrackerStore()
+    var trackers: [Tracker] {
+        guard
+            let objects = self.trackersFRC.fetchedObjects,
+            let trackers = try? objects.map({ try createTrackerFromCoreData($0) }) else {
+            return []
+        }
+        return trackers
+    }
     // MARK: - Private properties:
     private var context: NSManagedObjectContext
     private let recordStore = TrackerRecordStore.shared

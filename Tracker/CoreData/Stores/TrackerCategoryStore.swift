@@ -153,8 +153,6 @@ extension TrackerCategoryStore: CategoryCoreDataProtocol {
     var numberOfSections: Int {
         categories.count
     }
-    
-    
 }
 
 // MARK: - CategoryCoreDataProtocol
