@@ -50,9 +50,14 @@ final class TrackerCategoryStore: NSObject {
             managedObjectContext: context,
             sectionNameKeyPath: nil,
             cacheName: nil)
-        controller.delegate = self
-        try? controller.performFetch()
         
+        controller.delegate = self
+        
+        do {
+            try controller.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
         return controller
     }()
     

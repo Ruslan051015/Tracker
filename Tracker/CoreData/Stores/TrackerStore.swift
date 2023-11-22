@@ -8,6 +8,26 @@ final class TrackerStore: NSObject  {
     // MARK: - Private properties:
     private var context: NSManagedObjectContext
     private let recordStore = TrackerRecordStore.shared
+    private lazy var trackersFRC: NSFetchedResultsController<TrackerCoreData> = {
+        let fetchRequest = TrackerCoreData.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        let controller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
+        controller.delegate = self
+        
+        do {
+            try controller.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+        return controller
+    }()
+    
     // MARK: - Initializers:
     convenience override init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -36,7 +56,7 @@ final class TrackerStore: NSObject  {
     
     func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws -> TrackerCoreData {
         let newTracker = TrackerCoreData(context: context)
-        newTracker.id = tracker.id
+        newTracker.trackerID = tracker.id
         newTracker.name = tracker.name
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
@@ -50,7 +70,7 @@ final class TrackerStore: NSObject  {
     
     func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {
         guard
-            let id = model.id,
+            let id = model.trackerID,
             let name = model.name,
             let color = model.value(forKey: "color") as? UIColor,
             let emoji = model.emoji,
@@ -66,9 +86,31 @@ final class TrackerStore: NSObject  {
             emoji: emoji)
     }
     
-    /* MARK: - TODO: In next sprints
-    func deleteTracker(_ tracker: TrackerCoreData) {
-        context.delete(tracker)
+     func upadateTrackerRecord(for record: TrackerRecord) {
+        let request = TrackerCoreData.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id as CVarArg)
+        
+        guard let trackers = try? context.fetch(request) else {
+            print("Yе удалось выполнить запрос")
+            return
+        }
+        if let trackerCD = trackers.first {
+            let trackerRecord = TrackerRecordCoreData(context: context)
+            trackerRecord.recordID = record.id
+            trackerRecord.date = record.date
+            trackerCD.addToRecord(trackerRecord)
+            saveContext()
+        }
     }
+    
+    /* MARK: - TODO: In next sprints
+     func deleteTracker(_ tracker: TrackerCoreData) {
+     context.delete(tracker)
+     }
      */
+}
+
+extension TrackerStore: NSFetchedResultsControllerDelegate {
+    
 }
