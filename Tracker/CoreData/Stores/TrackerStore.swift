@@ -63,12 +63,12 @@ final class TrackerStore: NSObject  {
     }
     
     func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws -> TrackerCoreData {
-        let newTracker = TrackerCoreData(context: context)
+        var newTracker = TrackerCoreData(context: context)
         newTracker.trackerID = tracker.id
         newTracker.name = tracker.name
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
-        newTracker.setValue(tracker.schedule, forKey: "schedule")
+        newTracker = tracker.schedule
         newTracker.category = category
         newTracker.record = []
         saveContext()
