@@ -68,7 +68,7 @@ final class TrackerStore: NSObject  {
         newTracker.name = tracker.name
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
-        newTracker = tracker.schedule
+        newTracker.schedule = tracker.schedule as? NSObject
         newTracker.category = category
         newTracker.record = []
         saveContext()
