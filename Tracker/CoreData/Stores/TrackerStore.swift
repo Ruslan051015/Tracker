@@ -2,8 +2,13 @@ import UIKit
 import Foundation
 import CoreData
 
+protocol TrackerStoreDelegate: AnyObject {
+    func dudUpdateTrackers()
+}
+
 final class TrackerStore: NSObject  {
     // MARK: - Properties:
+    weak var delegate: TrackerStoreDelegate?
     static let shared = TrackerStore()
     var trackers: [Tracker] {
         guard
@@ -65,7 +70,7 @@ final class TrackerStore: NSObject  {
     func updateTrackerRecord(for record: TrackerRecord) throws {
         let request = TrackerCoreData.fetchRequest()
         
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id as CVarArg)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id.uuidString)
         
         guard let trackers = try? context.fetch(request) else {
             print("Hе удалось выполнить запрос")
@@ -112,5 +117,7 @@ final class TrackerStore: NSObject  {
 }
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {
-    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        delegate?.dudUpdateTrackers()
+    }
 }

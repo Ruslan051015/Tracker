@@ -84,6 +84,7 @@ final class TrackersViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
         categoryStore.delegate = self
+        trackerStore.delegate = self
         
         updateCategories()
         updateCompletedTrackers()
@@ -282,17 +283,18 @@ extension TrackersViewController: UICollectionViewDataSource {
 extension TrackersViewController: TrackerCellDelegate {
     func checkIfCompleted(for id: UUID, at indexPath: IndexPath) {
         if let record = completedTrackers.first(where: { tracker in
-            tracker.id == id && tracker.date.onlyDate()! == datePicker.date.onlyDate()
+            tracker.id == id && tracker.date.onlyDate() == datePicker.date.onlyDate()
         }) {
             recordStore.deleteRecord(record)
         } else {
             do {
-                let record = TrackerRecord(id: id, date: datePicker.date.onlyDate()!)
+                let record = TrackerRecord(id: id, date: datePicker.date)
                 try trackerStore.updateTrackerRecord(for: record)
             } catch {
                 print(CDErrors.recordCoreDataCreatingError)
             }
         }
+        updateCompletedTrackers()
         collectionView.reloadItems(at: [indexPath])
     }
 }
@@ -324,12 +326,19 @@ extension TrackersViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - CategoryStoreDelegate:
 extension TrackersViewController: CategoryStoreDelegate {
     func didUpdateCategories() {
         updateCategories()
-        updateCompletedTrackers()
         reloadVisibleCategories()
         collectionView.reloadData()
+    }
+}
+
+// MARK: - CategoryStoreDelegate:
+extension TrackersViewController: TrackerStoreDelegate {
+    func dudUpdateTrackers() {
+        updateCompletedTrackers()
     }
     
     

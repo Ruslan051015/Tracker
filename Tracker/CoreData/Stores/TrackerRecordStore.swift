@@ -115,7 +115,7 @@ final class TrackerRecordStore: NSObject {
         request.predicate = NSPredicate(
             format: "%K == %@ AND %K == %@",
             #keyPath(TrackerRecordCoreData.recordID),
-            id as CVarArg,
+            id.uuidString,
             #keyPath(TrackerRecordCoreData.date),
             date as CVarArg)
         
