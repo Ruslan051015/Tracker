@@ -2,6 +2,10 @@ import Foundation
 import UIKit
 import CoreData
 
+protocol TrackerRecordDelegate: AnyObject {
+    func dudUpdateRecord()
+}
+
 final class TrackerRecordStore: NSObject {
     // MARK: - Properties:
     static let shared = TrackerRecordStore()
@@ -59,14 +63,6 @@ final class TrackerRecordStore: NSObject {
         }
     }
     
-    func createTrackerRecordCoreData(from record: TrackerRecord) throws -> TrackerRecordCoreData {
-        let coreDataRecord = TrackerRecordCoreData(context: context)
-        coreDataRecord.recordID = record.id
-        coreDataRecord.date = record.date
-        saveContext()
-        return coreDataRecord
-    }
-    
     func createTrackerRecord(from recordCD: TrackerRecordCoreData) throws -> TrackerRecord {
         guard
             let recordID = recordCD.recordID,
@@ -85,23 +81,8 @@ final class TrackerRecordStore: NSObject {
         return newRecord
     }
     
-    func deleteRecord(with id: UUID, and date: Date) {
-        let request = TrackerRecordCoreData.fetchRequest()
-        request.predicate = NSPredicate(
-            format: "%K == %@ AND %K == %@",
-            #keyPath(TrackerRecordCoreData.recordID),
-            id as CVarArg,
-            #keyPath(TrackerRecordCoreData.date),
-            date as CVarArg)
-        
-        guard let trackersRecords = try? context.fetch(request) else {
-            print("Не удалось выполнить запрос")
-            return
-        }
-        if let recordToDelete = trackersRecords.first {
-            context.delete(recordToDelete)
-            saveContext()
-        }
+    func deleteRecord(_ record: TrackerRecord) {
+        deleteRecordFromCD(with: record.id, and: record.date)
     }
     
     func checkIfTrackerCompleted(with trackerID: UUID, and date: Date) -> Bool {
@@ -126,6 +107,26 @@ final class TrackerRecordStore: NSObject {
             return 0
         }
         return trackerRecords.map { $0.id == id }.count
+    }
+    
+    // MARK: - Private Methods:
+    private func deleteRecordFromCD(with id: UUID, and date: Date) {
+        let request = TrackerRecordCoreData.fetchRequest()
+        request.predicate = NSPredicate(
+            format: "%K == %@ AND %K == %@",
+            #keyPath(TrackerRecordCoreData.recordID),
+            id as CVarArg,
+            #keyPath(TrackerRecordCoreData.date),
+            date as CVarArg)
+        
+        guard let trackersRecords = try? context.fetch(request) else {
+            print("Не удалось выполнить запрос")
+            return
+        }
+        if let recordToDelete = trackersRecords.first {
+            context.delete(recordToDelete)
+            saveContext()
+        }
     }
 }
 

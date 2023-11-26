@@ -77,7 +77,12 @@ final class NewCategoryVC: UIViewController {
     }
     
     @objc private func doneButtonTapped() {
-        categoryStore.createCoreDataCategory(with: categoryName)
+        do {
+            try categoryStore.createCoreDataCategory(with: categoryName)
+        } catch {
+            print(CDErrors.creatingCoreDataCategoryError)
+        }
+        
         delegate?.reloadTable()
         self.dismiss(animated: true)
     }

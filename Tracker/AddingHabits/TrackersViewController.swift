@@ -1,10 +1,6 @@
 import Foundation
 import UIKit
 
-protocol HabitOrEventDelegate: AnyObject {
-    func addTracker(_ tracker: Tracker, and category: String, from: HabitOrEventViewController)
-}
-
 protocol TrackerCellDelegate: AnyObject {
     func checkIfCompleted(for id: UUID, at indexPath: IndexPath)
 }
@@ -17,6 +13,9 @@ final class TrackersViewController: UIViewController {
     var completedTrackers: [TrackerRecord] = []
     
     // MARK: - Private properties:
+    private let trackerStore = TrackerStore()
+    private let categoryStore = TrackerCategoryStore()
+    private let recordStore = TrackerRecordStore()
     private let params = GeometricParams(cellCount: 2, leftInset: 16, rightInset: 16, cellSpacing: 9)
     private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
@@ -84,6 +83,11 @@ final class TrackersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
+        categoryStore.delegate = self
+        
+        updateCategories()
+        updateCompletedTrackers()
+        reloadVisibleCategories()
         
         reloadData()
         screenItemsSetup()
@@ -174,6 +178,18 @@ final class TrackersViewController: UIViewController {
         showOrHideStubs()
     }
     
+    private func updateCategories() {
+        categories = categoryStore.categories
+    }
+    
+    private func updateCompletedTrackers() {
+        if let records = recordStore.records {
+            self.completedTrackers = records
+        } else {
+            self.completedTrackers = []
+        }
+    }
+    
     // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged() {
         reloadVisibleCategories()
@@ -181,7 +197,6 @@ final class TrackersViewController: UIViewController {
     
     @objc private func plusButtonTapped() {
         let viewToPresent = HabitOrEventViewController()
-        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
 }
@@ -236,9 +251,9 @@ extension TrackersViewController: UICollectionViewDataSource {
         let tracker = visibleCategories[indexPath.section].includedTrackers[indexPath.row]
         
         let isCompleted = completedTrackers.contains { record in
-            record.id == tracker.id && record.date.onlyDate == datePicker.date.onlyDate
+            record.id == tracker.id && record.date.onlyDate() == datePicker.date.onlyDate()
         }
-        let isEnabled = datePicker.date <= Date() || Date().onlyDate == datePicker.date.onlyDate
+        let isEnabled = datePicker.date <= Date() || Date().onlyDate() == datePicker.date.onlyDate()
         let completedDays = completedTrackers.filter { $0.id == tracker.id }.count
         
         cell.cellConfig(
@@ -263,43 +278,20 @@ extension TrackersViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - HabitOrEventDelegate:
-extension TrackersViewController: HabitOrEventDelegate {
-    func addTracker(_ tracker: Tracker, and category: String, from: HabitOrEventViewController) {
-        var updatedCategory: TrackerCategory?
-        var index: Int?
-        
-        for i in 0..<categories.count {
-            if categories[i].name == category {
-                updatedCategory = categories[i]
-                index = i
-            }
-        }
-        
-        if updatedCategory == nil {
-            categories.append(TrackerCategory(name: category, includedTrackers: [tracker]))
-        } else {
-            let newIncludedTrackers = (updatedCategory?.includedTrackers ?? []) + [tracker]
-            let sortedNewTrackers = newIncludedTrackers.sorted { $0.name < $1.name }
-            let newCategory = TrackerCategory(name: category, includedTrackers: sortedNewTrackers)
-            categories.remove(at: index ?? 0)
-            categories.insert(newCategory, at: index ?? 0)
-        }
-        visibleCategories = categories
-        showOrHideStubs()
-        collectionView.reloadData()
-    }
-}
-
 // MARK: - TrackerCellDelegate:
 extension TrackersViewController: TrackerCellDelegate {
     func checkIfCompleted(for id: UUID, at indexPath: IndexPath) {
-        if let index = completedTrackers.firstIndex(where: { tracker in
-            tracker.id == id && tracker.date.onlyDate == datePicker.date.onlyDate
+        if let record = completedTrackers.first(where: { tracker in
+            tracker.id == id && tracker.date.onlyDate()! == datePicker.date.onlyDate()
         }) {
-            completedTrackers.remove(at: index)
+            recordStore.deleteRecord(record)
         } else {
-            completedTrackers.append(TrackerRecord(id: id, date: datePicker.date))
+            do {
+                let record = TrackerRecord(id: id, date: datePicker.date.onlyDate()!)
+                try trackerStore.updateTrackerRecord(for: record)
+            } catch {
+                print(CDErrors.recordCoreDataCreatingError)
+            }
         }
         collectionView.reloadItems(at: [indexPath])
     }
@@ -330,4 +322,15 @@ extension TrackersViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.showsCancelButton = false
     }
+}
+
+extension TrackersViewController: CategoryStoreDelegate {
+    func didUpdateCategories() {
+        updateCategories()
+        updateCompletedTrackers()
+        reloadVisibleCategories()
+        collectionView.reloadData()
+    }
+    
+    
 }

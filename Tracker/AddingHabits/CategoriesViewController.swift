@@ -82,6 +82,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .YPWhite
+        
         configureScreenItems()
         fetchCategoriesArray()
         showOrHideStubs()
@@ -217,6 +218,7 @@ extension CategoriesViewController: UITableViewDelegate {
 extension CategoriesViewController: NewCategoryVCProtocol {
     func reloadTable() {
         categories = categoryStore.getCategoriesList()
+        showOrHideStubs()
         tableView.reloadData()
     }
 }

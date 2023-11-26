@@ -2,27 +2,13 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol CategoryCoreDataProtocol {
-    var numberOfSections: Int { get }
-}
-
 protocol CategoryStoreDelegate: AnyObject {
-    func didUpdate(indexes: updateIndexes, from: TrackerCategoryStore)
-}
-
-struct updateIndexes {
-    struct Move: Hashable {
-        let oldIndex: Int
-        let newIndex: Int
-    }
-    let insertedIndexes: IndexSet
-    let deletedIndexes: IndexSet
-    let updatedIndexes: IndexSet
-    let movedIndexes: Set<Move>
+    func didUpdateCategories()
 }
 
 final class TrackerCategoryStore: NSObject {
     // MARK: - Properties:
+    weak var delegate: CategoryStoreDelegate?
     static let shared = TrackerCategoryStore()
     var categories: [TrackerCategory] {
         guard
@@ -33,11 +19,6 @@ final class TrackerCategoryStore: NSObject {
     }
     
     // MARK: - Private properties:
-    private var insertedIndexes: IndexSet?
-    private var deletedIndexes: IndexSet?
-    private var updatedIndexes: IndexSet?
-    private var moveIndexes: updateIndexes.Move?
-    
     private let context: NSManagedObjectContext
     private let trackerStore = TrackerStore.shared
     
@@ -95,7 +76,7 @@ final class TrackerCategoryStore: NSObject {
         saveContext()
     }
     
-    func createCoreDataCategory(with name: String) {
+    func createCoreDataCategory(with name: String) throws {
         let category = TrackerCategoryCoreData(context: context)
         category.name = name
         category.trackers = []
@@ -149,13 +130,8 @@ final class TrackerCategoryStore: NSObject {
 }
 
 // MARK: - CategoryCoreDataProtocol
-extension TrackerCategoryStore: CategoryCoreDataProtocol {
-    var numberOfSections: Int {
-        categories.count
-    }
-}
-
-// MARK: - CategoryCoreDataProtocol
 extension TrackerCategoryStore: NSFetchedResultsControllerDelegate {
-    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        delegate?.didUpdateCategories()
+    }
 }

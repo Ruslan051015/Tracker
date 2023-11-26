@@ -1,17 +1,8 @@
 import Foundation
 import UIKit
 
-protocol TrackerCreatingViewControllerDelegate: AnyObject {
-    func transitTracker(_ tracker: Tracker,and category: String,from: TrackerCreatingViewController)
-}
-
 final class HabitOrEventViewController: UIViewController {
-    // MARK: - Properties:
-    weak var delegate: HabitOrEventDelegate?
-    
     // MARK: - Private properties:
-    private let trackerStore = TrackerStore.shared
-    private let categoryStore = TrackerCategoryStore.shared
     private lazy var topTitle: UILabel = {
         let label = UILabel()
         label.text = "Cоздание трекера"
@@ -84,29 +75,12 @@ final class HabitOrEventViewController: UIViewController {
     // MARK: - Objc-Methods:
     @objc private func openHabitVC() {
         let viewToPresent = TrackerCreatingViewController(trackerType: .habit)
-        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
     
     @objc private func openEventVC() {
         let viewToPresent = TrackerCreatingViewController(trackerType: .event)
-        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
 }
 
-// MARK: - TrackerCreatingViewControllerDelegate:
-extension HabitOrEventViewController: TrackerCreatingViewControllerDelegate {
-    func transitTracker(_ tracker: Tracker, and category: String, from: TrackerCreatingViewController) {
-        do {
-            guard let CDCategory = try categoryStore.getCategoryWith(title: category) else {
-                throw CDErrors.getCoreDataCategoryError
-            }
-            let CDTracker = try trackerStore.createCoreDataTracker(from: tracker, with: CDCategory)
-        } catch {
-            print(CDErrors.creatingCoreDataTrackerError)
-        }
-        self.dismiss(animated: true)
-        delegate?.addTracker(tracker, and: category, from: self)
-    }
-}

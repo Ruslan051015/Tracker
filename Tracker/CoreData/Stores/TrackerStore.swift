@@ -62,8 +62,26 @@ final class TrackerStore: NSObject  {
         }
     }
     
-    func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws -> TrackerCoreData {
-        var newTracker = TrackerCoreData(context: context)
+    func updateTrackerRecord(for record: TrackerRecord) throws {
+        let request = TrackerCoreData.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id as CVarArg)
+        
+        guard let trackers = try? context.fetch(request) else {
+            print("Hе удалось выполнить запрос")
+            return
+        }
+        if let trackerCD = trackers.first {
+            let trackerRecord = TrackerRecordCoreData(context: context)
+            trackerRecord.recordID = record.id
+            trackerRecord.date = record.date
+            trackerCD.addToRecord(trackerRecord)
+            saveContext()
+        }
+    }
+    
+    func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws {
+        let newTracker = TrackerCoreData(context: context)
         newTracker.trackerID = tracker.id
         newTracker.name = tracker.name
         newTracker.color = tracker.color
@@ -72,8 +90,6 @@ final class TrackerStore: NSObject  {
         newTracker.category = category
         newTracker.record = []
         saveContext()
-        
-        return newTracker
     }
     
     func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {
@@ -93,30 +109,6 @@ final class TrackerStore: NSObject  {
             color: color,
             emoji: emoji)
     }
-    
-     func upadateTrackerRecord(for record: TrackerRecord) {
-        let request = TrackerCoreData.fetchRequest()
-        
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id as CVarArg)
-        
-        guard let trackers = try? context.fetch(request) else {
-            print("Yе удалось выполнить запрос")
-            return
-        }
-        if let trackerCD = trackers.first {
-            let trackerRecord = TrackerRecordCoreData(context: context)
-            trackerRecord.recordID = record.id
-            trackerRecord.date = record.date
-            trackerCD.addToRecord(trackerRecord)
-            saveContext()
-        }
-    }
-    
-    /* MARK: - TODO: In next sprints
-     func deleteTracker(_ tracker: TrackerCoreData) {
-     context.delete(tracker)
-     }
-     */
 }
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {
