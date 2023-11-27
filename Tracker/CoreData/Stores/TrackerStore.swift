@@ -3,7 +3,7 @@ import Foundation
 import CoreData
 
 protocol TrackerStoreDelegate: AnyObject {
-    func dudUpdateTrackers()
+    func didUpdateTrackers()
 }
 
 final class TrackerStore: NSObject  {
@@ -19,6 +19,8 @@ final class TrackerStore: NSObject  {
         return trackers
     }
     // MARK: - Private properties:
+    private var insertedIndexes: IndexSet?
+    private var deletedIndexes: IndexSet?
     private var context: NSManagedObjectContext
     private let recordStore = TrackerRecordStore.shared
     private lazy var trackersFRC: NSFetchedResultsController<TrackerCoreData> = {
@@ -85,16 +87,17 @@ final class TrackerStore: NSObject  {
         }
     }
     
-    func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws {
+    func createCoreDataTracker(from tracker: Tracker) throws -> TrackerCoreData {
         let newTracker = TrackerCoreData(context: context)
         newTracker.trackerID = tracker.id
         newTracker.name = tracker.name
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
         newTracker.schedule = tracker.schedule as? NSObject
-        newTracker.category = category
         newTracker.record = []
         saveContext()
+        
+        return newTracker
     }
     
     func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {
@@ -117,7 +120,25 @@ final class TrackerStore: NSObject  {
 }
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        print("Entered willchange method")
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let indexPath = newIndexPath {
+                insertedIndexes?.insert(indexPath.item)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                deletedIndexes?.insert(indexPath.item)
+            }
+        default:
+            break
+        }
+    }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        delegate?.dudUpdateTrackers()
+        delegate?.didUpdateTrackers()
     }
 }

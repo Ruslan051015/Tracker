@@ -198,6 +198,7 @@ final class TrackersViewController: UIViewController {
     
     @objc private func plusButtonTapped() {
         let viewToPresent = HabitOrEventViewController()
+        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
 }
@@ -252,9 +253,9 @@ extension TrackersViewController: UICollectionViewDataSource {
         let tracker = visibleCategories[indexPath.section].includedTrackers[indexPath.row]
         
         let isCompleted = completedTrackers.contains { record in
-            record.id == tracker.id && record.date.onlyDate() == datePicker.date.onlyDate()
+            tracker.id == record.id && record.date.onlyDate == datePicker.date.onlyDate
         }
-        let isEnabled = datePicker.date <= Date() || Date().onlyDate() == datePicker.date.onlyDate()
+        let isEnabled = datePicker.date <= Date() || Date().onlyDate == datePicker.date.onlyDate
         let completedDays = completedTrackers.filter { $0.id == tracker.id }.count
         
         cell.cellConfig(
@@ -282,19 +283,31 @@ extension TrackersViewController: UICollectionViewDataSource {
 // MARK: - TrackerCellDelegate:
 extension TrackersViewController: TrackerCellDelegate {
     func checkIfCompleted(for id: UUID, at indexPath: IndexPath) {
-        if let record = completedTrackers.first(where: { tracker in
-            tracker.id == id && tracker.date.onlyDate() == datePicker.date.onlyDate()
-        }) {
+        let record = TrackerRecord(id: id, date: Date())
+        if completedTrackers.contains(record) {
             recordStore.deleteRecord(record)
         } else {
             do {
-                let record = TrackerRecord(id: id, date: datePicker.date)
                 try trackerStore.updateTrackerRecord(for: record)
             } catch {
                 print(CDErrors.recordCoreDataCreatingError)
             }
         }
-        updateCompletedTrackers()
+        //        if let record = completedTrackers.first(where: { tracker in
+        //            tracker.id == id && tracker.date.onlyDate == datePicker.date.onlyDate
+        //        }) {
+        //            print(record.date.onlyDate)
+        //            print(indexPath)
+        //            recordStore.deleteRecord(record)
+        //        } else {
+        //            do {
+        //                let record = TrackerRecord(id: id, date: datePicker.date)
+        //                try trackerStore.updateTrackerRecord(for: record)
+        //            } catch {
+        //                print(CDErrors.recordCoreDataCreatingError)
+        //            }
+        //        }
+        //        updateCompletedTrackers()
         collectionView.reloadItems(at: [indexPath])
     }
 }
@@ -330,16 +343,41 @@ extension TrackersViewController: UISearchBarDelegate {
 extension TrackersViewController: CategoryStoreDelegate {
     func didUpdateCategories() {
         updateCategories()
+        updateCompletedTrackers()
         reloadVisibleCategories()
         collectionView.reloadData()
+        
     }
 }
 
 // MARK: - CategoryStoreDelegate:
 extension TrackersViewController: TrackerStoreDelegate {
-    func dudUpdateTrackers() {
+    func didUpdateTrackers() {
+        updateCategories()
         updateCompletedTrackers()
+        reloadVisibleCategories()
+        collectionView.reloadData()
     }
     
     
+}
+
+
+extension TrackersViewController: HabitOrEventVCDelegate {
+    func getData(with tracker: Tracker, and category: String) {
+        do {
+            if let CDCategory = try categoryStore.getCategoryWith(title: category) {
+               let CDTracker = try trackerStore.createCoreDataTracker(from: tracker)
+                CDCategory.addToTrackers(CDTracker)
+            } else {
+                try categoryStore.createCoreDataCategory(with: category)
+                if let newCDCategory = try categoryStore.getCategoryWith(title: category) {
+                    let CDTracker = try trackerStore.createCoreDataTracker(from: tracker)
+                    newCDCategory.addToTrackers(CDTracker)
+                }
+            }
+        } catch {
+            print(CDErrors.creatingCoreDataTrackerError)
+        }
+    }
 }

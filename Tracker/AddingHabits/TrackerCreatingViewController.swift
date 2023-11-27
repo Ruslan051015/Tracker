@@ -25,8 +25,13 @@ protocol CategoryViewControllerDelegate: AnyObject {
     func showSelectedCategory()
 }
 
+protocol TrackerCreatingDelegate: AnyObject {
+    func transitData(_ tracker: Tracker, and category: String)
+}
+
 final class TrackerCreatingViewController: UIViewController {
     // MARK: - Properties:
+    weak var delegate: TrackerCreatingDelegate?
     var trackerType: HabitOrEvent
     var selectedDays: [Weekday] = [] {
         didSet {
@@ -42,8 +47,6 @@ final class TrackerCreatingViewController: UIViewController {
     var trackerName: String = ""
     
     // MARK: - Private properties:
-    private let trackerStore = TrackerStore.shared
-    private let categoryStore = TrackerCategoryStore.shared
     private let emojies: [String] = ["🙂", "😻", "🌺", "🐶", "❤️", "😱",
                                      "😇", "😡", "🥶", "🤔", "🙌", "🍔",
                                      "🥦", "🏓", "🥇", "🎸", "🏝️", "😪"]
@@ -406,37 +409,21 @@ final class TrackerCreatingViewController: UIViewController {
         }
     }
     
-    private func createCoreDataTracker(from tracker: Tracker, and category: String) {
-        do {
-            if let CDCategory = try categoryStore.getCategoryWith(title: selectedCategory) {
-                try trackerStore.createCoreDataTracker(from: tracker, with: CDCategory)
-            } else {
-                try categoryStore.createCoreDataCategory(with: category)
-                if let newCDCategory = try categoryStore.getCategoryWith(title: selectedCategory) {
-                    try trackerStore.createCoreDataTracker(from: tracker, with: newCDCategory)
-                }
-            }
-            
-        } catch {
-            print(CDErrors.creatingCoreDataTrackerError)
-        }
-    }
-    
     // MARK: - Objc-Methods:
     @objc private func cancelButtonTapped() {
         self.view.window?.rootViewController?.dismiss(animated: true)
     }
     
     @objc private func createButtonTapped() {
+        var tracker: Tracker?
         if trackerType == .habit {
-            let tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays, color: selectedColor ?? .clear, emoji: selectedEmoji)
-            createCoreDataTracker(from: tracker, and: selectedCategory)
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays, color: selectedColor ?? .clear, emoji: selectedEmoji)
         } else if trackerType == .event {
-            let tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases, color: selectedColor ?? .clear, emoji: selectedEmoji)
-            createCoreDataTracker(from: tracker, and: selectedCategory)
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases, color: selectedColor ?? .clear, emoji: selectedEmoji)
         }
-       
-        self.view.window?.rootViewController?.dismiss(animated: true)
+        guard let tracker = tracker else { return }
+        self.dismiss(animated: true)
+        delegate?.transitData(tracker, and: selectedCategory)
     }
     
     @objc private func showCategories() {

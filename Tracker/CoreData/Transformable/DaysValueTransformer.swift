@@ -1,9 +1,9 @@
 import Foundation
 
-@objc
-final class DaysValueTransformer: ValueTransformer {
+@objc(DaysTransformer)
+final class DaysTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
-        NSData.self
+        NSArray.self
     }
     
     override class func allowsReverseTransformation() -> Bool {
@@ -21,6 +21,6 @@ final class DaysValueTransformer: ValueTransformer {
     }
     
     static func register() {
-        ValueTransformer.setValueTransformer(DaysValueTransformer(), forName: NSValueTransformerName(rawValue: String(describing: DaysValueTransformer.self)))
+        ValueTransformer.setValueTransformer(DaysTransformer(), forName: NSValueTransformerName(rawValue: String(describing: DaysTransformer.self)))
     }
 }

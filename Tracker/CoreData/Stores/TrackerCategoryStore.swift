@@ -132,6 +132,6 @@ final class TrackerCategoryStore: NSObject {
 // MARK: - CategoryCoreDataProtocol
 extension TrackerCategoryStore: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        delegate?.didUpdateCategories()
+//        delegate?.didUpdateCategories()
     }
 }
