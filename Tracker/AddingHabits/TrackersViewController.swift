@@ -274,7 +274,8 @@ extension TrackersViewController: UICollectionViewDataSource {
             tracker.id == record.id && record.date.sameDay(datePicker.date)
         }
         let isEnabled = datePicker.date.dayBefore(Date()) || Date().sameDay(datePicker.date)
-        let completedDays = completedTrackers.filter { $0.id == tracker.id }.count
+        let completedDays = recordStore.getNumberOfCompletionsForTracker(with: tracker.id)
+//        completedTrackers.filter { $0.id == tracker.id }.count
         
         cell.cellConfig(
             id: tracker.id,
@@ -301,7 +302,7 @@ extension TrackersViewController: UICollectionViewDataSource {
 // MARK: - TrackerCellDelegate:
 extension TrackersViewController: TrackerCellDelegate {
     func checkIfCompleted(for id: UUID, at indexPath: IndexPath) {
-        let record = TrackerRecord(id: id, date: Date())
+        let record = TrackerRecord(id: id, date: datePicker.date)
         let existingRecord = completedTrackers.first { $0.id == record.id && $0.date.sameDay(record.date) }
         if existingRecord != nil {
             recordStore.deleteRecord(record)

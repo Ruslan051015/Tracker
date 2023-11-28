@@ -67,7 +67,7 @@ final class TrackerRecordStore: NSObject {
         guard
             let recordID = recordCD.recordID,
             let date = recordCD.date else {
-            throw CDErrors.recordCoreDataCreatingError
+            throw CDErrors.creatingRecordFromCoreDataError
         }
         let trackerRecord = TrackerRecord(id: recordID, date: date)
         return trackerRecord
@@ -107,6 +107,28 @@ final class TrackerRecordStore: NSObject {
             return 0
         }
         return trackerRecords.map { $0.id == id }.count
+    }
+    
+    func getRecordFromCoreData(with id: UUID) -> [TrackerRecord] {
+        let request = TrackerRecordCoreData.fetchRequest()
+        request.predicate = NSPredicate(
+            format: "%K == %@",
+            #keyPath(TrackerRecordCoreData.recordID),
+            id as CVarArg)
+        
+        var recordsCD: [TrackerRecordCoreData]
+        do {
+            recordsCD = try context.fetch(request)
+        } catch {
+            fatalError("\(CDErrors.recordFetchingError)")
+        }
+        
+        guard let records = try? recordsCD.map({ try self.createTrackerRecord(from: $0)
+        }) else {
+            print("No records meeting the conditions")
+            return []
+        }
+        return records
     }
     
     // MARK: - Private Methods:

@@ -16,4 +16,6 @@ enum CDErrors: Error {
     case getCoreDataCategoryError
     case creatingCoreDataTrackerError
     case recordCoreDataCreatingError
+    case recordFetchingError
+    case creatingRecordFromCoreDataError
 }
