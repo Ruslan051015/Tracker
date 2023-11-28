@@ -3,7 +3,7 @@ import UIKit
 import CoreData
 
 protocol TrackerRecordDelegate: AnyObject {
-    func dudUpdateRecord()
+    func didUpdateRecord(for cellAt: IndexPath)
 }
 
 final class TrackerRecordStore: NSObject {
@@ -73,11 +73,11 @@ final class TrackerRecordStore: NSObject {
         return trackerRecord
     }
     
-    func addRecord(for tracker: Tracker) throws -> TrackerRecordCoreData {
+    func createCDTrackerRecord(from record: TrackerRecord) -> TrackerRecordCoreData {
         let newRecord = TrackerRecordCoreData(context: context)
-        newRecord.recordID = tracker.id
-        newRecord.date = Date()
-        saveContext()
+        newRecord.recordID = record.id
+        newRecord.date = record.date
+        
         return newRecord
     }
     

@@ -2,13 +2,18 @@ import UIKit
 import Foundation
 import CoreData
 
-protocol TrackerStoreDelegate: AnyObject {
+protocol TrackerDelegate: AnyObject {
     func didUpdateTrackers()
+}
+
+struct indexesToPass {
+    let insertedIndex: IndexPath
+    let updatedIndex: IndexPath
 }
 
 final class TrackerStore: NSObject  {
     // MARK: - Properties:
-    weak var delegate: TrackerStoreDelegate?
+    weak var delegate: TrackerDelegate?
     static let shared = TrackerStore()
     var trackers: [Tracker] {
         guard
@@ -19,8 +24,8 @@ final class TrackerStore: NSObject  {
         return trackers
     }
     // MARK: - Private properties:
-    private var insertedIndexes: IndexSet?
-    private var deletedIndexes: IndexSet?
+    private var insertedIndex: IndexPath?
+    private var updatedIndex: IndexPath?
     private var context: NSManagedObjectContext
     private let recordStore = TrackerRecordStore.shared
     private lazy var trackersFRC: NSFetchedResultsController<TrackerCoreData> = {
@@ -30,7 +35,7 @@ final class TrackerStore: NSObject  {
         let controller = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
-            sectionNameKeyPath: nil,
+            sectionNameKeyPath: #keyPath(TrackerCoreData.category.name),
             cacheName: nil)
         
         controller.delegate = self
@@ -69,35 +74,33 @@ final class TrackerStore: NSObject  {
         }
     }
     
-    func updateTrackerRecord(for record: TrackerRecord) throws {
+    func updateTrackerRecord(with record: TrackerRecord) throws {
+        
+        let newRecord = recordStore.createCDTrackerRecord(from: record)
         let request = TrackerCoreData.fetchRequest()
         
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id.uuidString)
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id as CVarArg)
         
         guard let trackers = try? context.fetch(request) else {
             print("Hе удалось выполнить запрос")
             return
         }
         if let trackerCD = trackers.first {
-            let trackerRecord = TrackerRecordCoreData(context: context)
-            trackerRecord.recordID = record.id
-            trackerRecord.date = record.date
-            trackerCD.addToRecord(trackerRecord)
+            trackerCD.addToRecord(newRecord)
             saveContext()
         }
     }
     
-    func createCoreDataTracker(from tracker: Tracker) throws -> TrackerCoreData {
+    func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws {
         let newTracker = TrackerCoreData(context: context)
         newTracker.trackerID = tracker.id
         newTracker.name = tracker.name
         newTracker.color = tracker.color
         newTracker.emoji = tracker.emoji
         newTracker.schedule = tracker.schedule as? NSObject
+        newTracker.category = category
         newTracker.record = []
         saveContext()
-        
-        return newTracker
     }
     
     func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {
@@ -121,18 +124,18 @@ final class TrackerStore: NSObject  {
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("Entered willchange method")
+        print("Entered willChange method")
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {
-                insertedIndexes?.insert(indexPath.item)
+                insertedIndex = indexPath
             }
-        case .delete:
+        case .update:
             if let indexPath = indexPath {
-                deletedIndexes?.insert(indexPath.item)
+                updatedIndex = indexPath
             }
         default:
             break
@@ -140,5 +143,11 @@ extension TrackerStore: NSFetchedResultsControllerDelegate {
     }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         delegate?.didUpdateTrackers()
+    }
+}
+
+extension TrackerStore {
+    func numberOfSections() -> Int {
+        trackersFRC.sections?.count ?? 0
     }
 }

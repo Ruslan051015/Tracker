@@ -2,18 +2,16 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol CategoryStoreDelegate: AnyObject {
+protocol TrackerCategoryDelegate: AnyObject {
     func didUpdateCategories()
 }
 
 final class TrackerCategoryStore: NSObject {
     // MARK: - Properties:
-    weak var delegate: CategoryStoreDelegate?
     static let shared = TrackerCategoryStore()
     var categories: [TrackerCategory] {
-        guard
-            let objects = self.categoryFRC.fetchedObjects,
-            let categories = try? objects.map({ try self.createCategoryFromCoreData($0) }) else { return []
+        let categoriesCD = getCategories()
+        guard let categories = try? categoriesCD.map({ try self.createCategoryFromCoreData($0) }) else { return []
         }
         return categories
     }
@@ -31,8 +29,6 @@ final class TrackerCategoryStore: NSObject {
             managedObjectContext: context,
             sectionNameKeyPath: nil,
             cacheName: nil)
-        
-        controller.delegate = self
         
         do {
             try controller.performFetch()
@@ -117,6 +113,19 @@ final class TrackerCategoryStore: NSObject {
         return stringArray
     }
     
+    func getCategories() -> [TrackerCategoryCoreData] {
+        let request = TrackerCategoryCoreData.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        var categoriesArray: [TrackerCategoryCoreData]?
+        do {
+            categoriesArray = try context.fetch(request)
+        } catch {
+            print("Не удалось получить категории")
+        }
+        guard let categories = categoriesArray else { fatalError("Could't create request")}
+        return categories
+    }
+    
     func getCategoryWith(title: String) throws -> TrackerCategoryCoreData? {
         let request = categoryFRC.fetchRequest
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCategoryCoreData.name), title)
@@ -129,9 +138,3 @@ final class TrackerCategoryStore: NSObject {
     }
 }
 
-// MARK: - CategoryCoreDataProtocol
-extension TrackerCategoryStore: NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        delegate?.didUpdateCategories()
-    }
-}
