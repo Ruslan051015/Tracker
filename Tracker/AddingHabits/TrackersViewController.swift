@@ -304,8 +304,9 @@ extension TrackersViewController: UICollectionViewDataSource {
 extension TrackersViewController: TrackerCellDelegate {
     func checkIfCompleted(for id: UUID) {
         if let index = completedTrackers.firstIndex(where: { $0.id == id && $0.date.sameDay(datePicker.date) }) {
+            let recordToDelete = completedTrackers[index]
             completedTrackers.remove(at: index)
-            try? recordStore.deleteRecordFromCD(with: id)
+            try? recordStore.deleteRecordFromCD(with: recordToDelete.id, and: recordToDelete.date)
         } else { completedTrackers.append(TrackerRecord(id: id, date: datePicker.date))
             do {
                 try trackerStore.updateTrackerRecord(with: TrackerRecord(id: id, date: datePicker.date))

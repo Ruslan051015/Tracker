@@ -62,10 +62,42 @@
             filePath = "Tracker/AddingHabits/TrackersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
             landmarkName = "didUpdateTrackers()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C7AE8217-1699-4763-97DA-220DBFB28D48 - 23bcf2c99402db9a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tracker.TrackersViewController.didUpdateTrackers() -&gt; ()"
+                  moduleName = "Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/AddingHabits/TrackersViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "349"
+                  endingLineNumber = "349"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "C7AE8217-1699-4763-97DA-220DBFB28D48 - 23bcf2c99402dbf5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tracker.TrackersViewController.didUpdateTrackers() -&gt; ()"
+                  moduleName = "Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/AddingHabits/TrackersViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "350"
+                  endingLineNumber = "350"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -82,6 +114,38 @@
             endingLineNumber = "305"
             landmarkName = "checkIfCompleted(for:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "92692347-3BB5-4F18-B5AA-CA52437F1820 - 770381310957e25a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tracker.TrackersViewController.checkIfCompleted(for: Foundation.UUID) -&gt; ()"
+                  moduleName = "Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/AddingHabits/TrackersViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  uuid = "92692347-3BB5-4F18-B5AA-CA52437F1820 - 770381310957e25a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tracker.TrackersViewController.checkIfCompleted(for: Foundation.UUID) -&gt; ()"
+                  moduleName = "Tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/AddingHabits/TrackersViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "492">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

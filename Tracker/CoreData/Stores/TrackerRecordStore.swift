@@ -65,11 +65,11 @@ final class TrackerRecordStore: NSObject {
         return newRecord
     }
     
-    func deleteRecordFromCD(with id: UUID) throws {
+    func deleteRecordFromCD(with id: UUID, and date: Date) throws {
         let request = TrackerRecordCoreData.fetchRequest()
         let trackersRecords = try context.fetch(request)
         let record = trackersRecords.first {
-            $0.recordID == id
+            $0.recordID == id && $0.date == date
         }
         
         if let recordToDelete = record {
