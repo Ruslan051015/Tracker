@@ -91,6 +91,8 @@ final class TrackersViewController: UIViewController {
         navBarSetup()
         reloadData()
         setupToHideKeyboardOnTapOnView()
+        print(completedTrackers)
+        print(visibleCategories)
     }
     
     // MARK: - Private methods:
@@ -274,8 +276,7 @@ extension TrackersViewController: UICollectionViewDataSource {
             tracker.id == record.id && record.date.sameDay(datePicker.date)
         }
         let isEnabled = datePicker.date.dayBefore(Date()) || Date().sameDay(datePicker.date)
-        let completedDays = recordStore.getNumberOfCompletionsForTracker(with: tracker.id)
-//        completedTrackers.filter { $0.id == tracker.id }.count
+        let completedDays = completedTrackers.filter { $0.id == tracker.id }.count
         
         cell.cellConfig(
             id: tracker.id,
@@ -302,13 +303,13 @@ extension TrackersViewController: UICollectionViewDataSource {
 // MARK: - TrackerCellDelegate:
 extension TrackersViewController: TrackerCellDelegate {
     func checkIfCompleted(for id: UUID, at indexPath: IndexPath) {
-        let record = TrackerRecord(id: id, date: datePicker.date)
-        let existingRecord = completedTrackers.first { $0.id == record.id && $0.date.sameDay(record.date) }
-        if existingRecord != nil {
-            recordStore.deleteRecord(record)
+        let records = recordStore.getRecordFromCoreData(with: id)
+        let recordToDelete = records.first { $0.id == id && $0.date.sameDay(datePicker.date) }
+        if let recordToDelete = recordToDelete {
+            recordStore.deleteRecord(recordToDelete)
         } else {
             do {
-                try trackerStore.updateTrackerRecord(with: record)
+                try trackerStore.updateTrackerRecord(with: TrackerRecord(id: id, date: Date()))
             } catch {
                 print(CDErrors.recordCoreDataCreatingError)
             }
@@ -368,15 +369,7 @@ extension TrackersViewController: TrackerDelegate {
     }
 }
 
-// MARK: - TrackersStoreDelegate:
-extension TrackersViewController: TrackerRecordDelegate {
-    func didUpdateRecord(for cellAt: IndexPath) {
-        updateCompletedTrackers()
-        collectionView.reloadItems(at: [cellAt])
-    }
-}
-
-
+// MARK: - HabitOrEventVCDelegate:
 extension TrackersViewController: HabitOrEventVCDelegate {
     func getData(with tracker: Tracker, and category: String) {
         do {

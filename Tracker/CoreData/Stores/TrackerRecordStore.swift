@@ -2,40 +2,24 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol TrackerRecordDelegate: AnyObject {
-    func didUpdateRecord(for cellAt: IndexPath)
-}
-
 final class TrackerRecordStore: NSObject {
     // MARK: - Properties:
     static let shared = TrackerRecordStore()
     var records: [TrackerRecord]? {
-        guard
-            let objects = self.recordFRC.fetchedObjects,
-            let fetchedRecords = try? objects.map({ try self.createTrackerRecord(from: $0) }) else { return []
+        var recordsFromCD: [TrackerRecord]?
+        do {
+            recordsFromCD = try getAllRecords()
+        } catch {
+            print("Couldn't fetch records: \(error.localizedDescription)")
+        }
+        guard let fetchedRecords = recordsFromCD else {
+            return []
         }
         return fetchedRecords
     }
     
     // MARK: - Private properties:
     private var context: NSManagedObjectContext
-    private lazy var recordFRC: NSFetchedResultsController<TrackerRecordCoreData> = {
-        let fetchRequest = TrackerRecordCoreData.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        
-        let controller = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: context,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        
-        do {
-            try controller.performFetch()
-        } catch {
-            print(error.localizedDescription)
-        }
-        return controller
-    }()
     
     // MARK: - Initializers:
     convenience override init() {
@@ -82,33 +66,9 @@ final class TrackerRecordStore: NSObject {
     }
     
     func deleteRecord(_ record: TrackerRecord) {
-        deleteRecordFromCD(with: record.id, and: record.date)
+        try? deleteRecordFromCD(with: record.id)
     }
-    
-    func checkIfTrackerCompleted(with trackerID: UUID, and date: Date) -> Bool {
-        let request = TrackerRecordCoreData.fetchRequest()
-        request.predicate = NSPredicate(
-            format: "%K == %@ AND %K == %@",
-            #keyPath(TrackerRecordCoreData.recordID),
-            trackerID as CVarArg,
-            #keyPath(TrackerRecordCoreData.date),
-            date as CVarArg)
-        
-        guard let trackersRecord = try? context.fetch(request) else {
-            print("Не удалось выполнить запрос списка трекеров")
-            return false
-        }
-        return !trackersRecord.isEmpty
-    }
-    
-    func getNumberOfCompletionsForTracker(with id: UUID) -> Int {
-        guard let trackerRecords = records else {
-            print("Записей нет")
-            return 0
-        }
-        return trackerRecords.map { $0.id == id }.count
-    }
-    
+  
     func getRecordFromCoreData(with id: UUID) -> [TrackerRecord] {
         let request = TrackerRecordCoreData.fetchRequest()
         request.predicate = NSPredicate(
@@ -132,23 +92,25 @@ final class TrackerRecordStore: NSObject {
     }
     
     // MARK: - Private Methods:
-    private func deleteRecordFromCD(with id: UUID, and date: Date) {
+    private func deleteRecordFromCD(with id: UUID) throws {
         let request = TrackerRecordCoreData.fetchRequest()
-        request.predicate = NSPredicate(
-            format: "%K == %@ AND %K == %@",
-            #keyPath(TrackerRecordCoreData.recordID),
-            id.uuidString,
-            #keyPath(TrackerRecordCoreData.date),
-            date as CVarArg)
-        
-        guard let trackersRecords = try? context.fetch(request) else {
-            print("Не удалось выполнить запрос")
-            return
+        let trackersRecords = try context.fetch(request)
+        let record = trackersRecords.first {
+            $0.recordID == id
         }
-        if let recordToDelete = trackersRecords.first {
+        
+        if let recordToDelete = record {
             context.delete(recordToDelete)
             saveContext()
         }
+    }
+    
+    private func getAllRecords() throws -> [TrackerRecord]? {
+        let request = TrackerRecordCoreData.fetchRequest()
+        let objects = try context.fetch(request)
+        let records = try objects.map { try self.createTrackerRecord(from: $0) }
+        
+        return records
     }
 }
 

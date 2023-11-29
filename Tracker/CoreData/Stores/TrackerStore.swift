@@ -75,7 +75,6 @@ final class TrackerStore: NSObject  {
     }
     
     func updateTrackerRecord(with record: TrackerRecord) throws {
-        
         let newRecord = recordStore.createCDTrackerRecord(from: record)
         let request = TrackerCoreData.fetchRequest()
         
