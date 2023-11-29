@@ -65,8 +65,17 @@ final class TrackerRecordStore: NSObject {
         return newRecord
     }
     
-    func deleteRecord(_ record: TrackerRecord) {
-        try? deleteRecordFromCD(with: record.id)
+    func deleteRecordFromCD(with id: UUID) throws {
+        let request = TrackerRecordCoreData.fetchRequest()
+        let trackersRecords = try context.fetch(request)
+        let record = trackersRecords.first {
+            $0.recordID == id
+        }
+        
+        if let recordToDelete = record {
+            context.delete(recordToDelete)
+            saveContext()
+        }
     }
   
     func getRecordFromCoreData(with id: UUID) -> [TrackerRecord] {
@@ -92,18 +101,7 @@ final class TrackerRecordStore: NSObject {
     }
     
     // MARK: - Private Methods:
-    private func deleteRecordFromCD(with id: UUID) throws {
-        let request = TrackerRecordCoreData.fetchRequest()
-        let trackersRecords = try context.fetch(request)
-        let record = trackersRecords.first {
-            $0.recordID == id
-        }
-        
-        if let recordToDelete = record {
-            context.delete(recordToDelete)
-            saveContext()
-        }
-    }
+    
     
     private func getAllRecords() throws -> [TrackerRecord]? {
         let request = TrackerRecordCoreData.fetchRequest()

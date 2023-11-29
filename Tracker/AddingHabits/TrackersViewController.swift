@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 protocol TrackerCellDelegate: AnyObject {
-    func checkIfCompleted(for id: UUID, at indexPath: IndexPath)
+    func checkIfCompleted(for id: UUID)
 }
 
 final class TrackersViewController: UIViewController {
@@ -21,6 +21,7 @@ final class TrackersViewController: UIViewController {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.datePickerMode = .date
+        picker.locale = Locale(identifier: "ru_RU")
         picker.tintColor = .YPBlue
         picker.calendar.firstWeekday = 2
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -285,8 +286,7 @@ extension TrackersViewController: UICollectionViewDataSource {
             emoji: tracker.emoji,
             isEnabled: isEnabled,
             isCompleted: isCompleted,
-            completedDays: completedDays,
-            indexPath: indexPath)
+            completedDays: completedDays)
         
         return cell
     }
@@ -302,34 +302,17 @@ extension TrackersViewController: UICollectionViewDataSource {
 
 // MARK: - TrackerCellDelegate:
 extension TrackersViewController: TrackerCellDelegate {
-    func checkIfCompleted(for id: UUID, at indexPath: IndexPath) {
-        let records = recordStore.getRecordFromCoreData(with: id)
-        let recordToDelete = records.first { $0.id == id && $0.date.sameDay(datePicker.date) }
-        if let recordToDelete = recordToDelete {
-            recordStore.deleteRecord(recordToDelete)
-        } else {
+    func checkIfCompleted(for id: UUID) {
+        if let index = completedTrackers.firstIndex(where: { $0.id == id && $0.date.sameDay(datePicker.date) }) {
+            completedTrackers.remove(at: index)
+            try? recordStore.deleteRecordFromCD(with: id)
+        } else { completedTrackers.append(TrackerRecord(id: id, date: datePicker.date))
             do {
-                try trackerStore.updateTrackerRecord(with: TrackerRecord(id: id, date: Date()))
+                try trackerStore.updateTrackerRecord(with: TrackerRecord(id: id, date: datePicker.date))
             } catch {
                 print(CDErrors.recordCoreDataCreatingError)
             }
         }
-        //        if let record = completedTrackers.first(where: { tracker in
-        //            tracker.id == id && tracker.date.onlyDate == datePicker.date.onlyDate
-        //        }) {
-        //            print(record.date.onlyDate)
-        //            print(indexPath)
-        //            recordStore.deleteRecord(record)
-        //        } else {
-        //            do {
-        //                let record = TrackerRecord(id: id, date: datePicker.date)
-        //                try trackerStore.updateTrackerRecord(for: record)
-        //            } catch {
-        //                print(CDErrors.recordCoreDataCreatingError)
-        //            }
-        //        }
-        //        updateCompletedTrackers()
-        collectionView.reloadItems(at: [indexPath])
     }
 }
 
