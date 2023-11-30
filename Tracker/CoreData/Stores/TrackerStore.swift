@@ -6,11 +6,6 @@ protocol TrackerDelegate: AnyObject {
     func didUpdateTrackers()
 }
 
-struct indexesToPass {
-    let insertedIndex: IndexPath
-    let updatedIndex: IndexPath
-}
-
 final class TrackerStore: NSObject  {
     // MARK: - Properties:
     weak var delegate: TrackerDelegate?
@@ -24,8 +19,6 @@ final class TrackerStore: NSObject  {
         return trackers
     }
     // MARK: - Private properties:
-    private var insertedIndex: IndexPath?
-    private var updatedIndex: IndexPath?
     private var context: NSManagedObjectContext
     private let recordStore = TrackerRecordStore.shared
     private var trackersFRC: NSFetchedResultsController<TrackerCoreData>!
@@ -42,6 +35,7 @@ final class TrackerStore: NSObject  {
     init(context: NSManagedObjectContext) {
         self.context = context
         super.init()
+        
         let fetchRequest = TrackerCoreData.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
@@ -113,31 +107,9 @@ final class TrackerStore: NSObject  {
             color: color,
             emoji: emoji)
     }
-    
-    func numberOfSections() -> Int {
-        return trackersFRC.sections?.count ?? 0
-    }
 }
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("Entered willChange method")
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            if let indexPath = newIndexPath {
-                insertedIndex = indexPath
-            }
-        case .update:
-            if let indexPath = indexPath {
-                updatedIndex = indexPath
-            }
-        default:
-            break
-        }
-    }
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         delegate?.didUpdateTrackers()
     }

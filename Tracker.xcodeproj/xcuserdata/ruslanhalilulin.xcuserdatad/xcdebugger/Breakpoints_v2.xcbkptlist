@@ -94,10 +94,10 @@
             filePath = "Tracker/CoreData/Stores/TrackerStore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "controllerDidChangeContent(_:)"
-            landmarkType = "7">
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "TrackerStore"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "BCB9F8B3-97CE-4F27-892A-A633A70C89A7 - aba1ba312c0c7960"
