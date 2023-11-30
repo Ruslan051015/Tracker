@@ -1,8 +1,8 @@
 import UIKit
 
-final class NewCategoryVC: UIViewController {
+final class NewCategoryViewController: UIViewController {
     // MARK: - Properties:
-    weak var delegate: NewCategoryVCProtocol?
+    weak var delegate: NewCategoryViewControllerProtocol?
     
     // MARK: - Private properties:
     private var categoryName: String = ""
@@ -102,7 +102,7 @@ final class NewCategoryVC: UIViewController {
     }
 }
     // MARK: - UITextFieldDelegate:
-    extension NewCategoryVC: UITextFieldDelegate {
+    extension NewCategoryViewController: UITextFieldDelegate {
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             textField.resignFirstResponder()
             return true

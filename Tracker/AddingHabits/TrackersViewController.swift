@@ -8,7 +8,7 @@ protocol TrackerCellDelegate: AnyObject {
 final class TrackersViewController: UIViewController {
     // MARK: - Properties:
     var currentDay: Int?
-    var categories: [TrackerCategory] = []//Mocks.trackers
+    var categories: [TrackerCategory] = []
     var visibleCategories: [TrackerCategory] = []
     var completedTrackers: [TrackerRecord] = []
     
@@ -138,7 +138,7 @@ final class TrackersViewController: UIViewController {
         }
     }
     
-    private func showOrHideStubs() {
+    private func showOrHideEmptyLabels() {
         if !visibleCategories.isEmpty {
             stubLabel.isHidden = true
             stubImageView.isHidden = true
@@ -174,7 +174,7 @@ final class TrackersViewController: UIViewController {
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
         collectionView.reloadData()
-        showOrHideStubs()
+        showOrHideEmptyLabels()
     }
     
     private func showCurrentDayCategories() {
@@ -195,7 +195,7 @@ final class TrackersViewController: UIViewController {
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
         collectionView.reloadData()
-        showOrHideStubs()
+        showOrHideEmptyLabels()
     }
     
     private func updateCategories() {
@@ -344,12 +344,12 @@ extension TrackersViewController: TrackerDelegate {
     func didUpdateTrackers() {
         updateCategories()
         updateCompletedTrackers()
-        showCurrentDayCategories()
+        reloadVisibleCategories()
     }
 }
 
-// MARK: - HabitOrEventVCDelegate:
-extension TrackersViewController: HabitOrEventVCDelegate {
+// MARK: - HabitOrEventViewControllerDelegate:
+extension TrackersViewController: HabitOrEventViewControllerDelegate {
     func getData(with tracker: Tracker, and category: String) {
         do {
             if let CDCategory = try categoryStore.getCategoryWith(title: category) {
@@ -357,6 +357,7 @@ extension TrackersViewController: HabitOrEventVCDelegate {
             }
         } catch {
             print(CDErrors.creatingCoreDataTrackerError)
+            //TODO: Add alert
         }
     }
 }

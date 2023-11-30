@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-protocol NewCategoryVCProtocol: AnyObject {
+protocol NewCategoryViewControllerProtocol: AnyObject {
     func reloadTable()
 }
 
@@ -85,7 +85,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         
         configureScreenItems()
         fetchCategoriesArray()
-        showOrHideStubs()
+        showOrHideEmptyLabels()
         
     }
     
@@ -127,7 +127,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         ])
     }
     // MARK: - Private methods:
-    private func showOrHideStubs() {
+    private func showOrHideEmptyLabels() {
         if !categories.isEmpty {
             stubLabel.isHidden = true
             stubImageView.isHidden = true
@@ -143,12 +143,12 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         categories = categoryStore.getCategoriesList()
     }
     
-    private func dismissCategoryVC() {
+    private func dismissCategoryViewController() {
         self.dismiss(animated: true)
     }
     
     @objc private func addButtonTapped() {
-        let viewToPresent = NewCategoryVC()
+        let viewToPresent = NewCategoryViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
@@ -204,7 +204,7 @@ extension CategoriesViewController: UITableViewDelegate {
         }
         delegate?.selectedCategory = selectedCategory
         delegate?.showSelectedCategory()
-        dismissCategoryVC()
+        dismissCategoryViewController()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -215,10 +215,10 @@ extension CategoriesViewController: UITableViewDelegate {
 }
 
 // MARK: - CategoriesViewControllerProtocol:
-extension CategoriesViewController: NewCategoryVCProtocol {
+extension CategoriesViewController: NewCategoryViewControllerProtocol {
     func reloadTable() {
         categories = categoryStore.getCategoriesList()
-        showOrHideStubs()
+        showOrHideEmptyLabels()
         tableView.reloadData()
     }
 }

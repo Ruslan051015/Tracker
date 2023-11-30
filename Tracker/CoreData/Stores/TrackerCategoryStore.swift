@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 import CoreData
 
@@ -11,7 +10,8 @@ final class TrackerCategoryStore: NSObject {
     static let shared = TrackerCategoryStore()
     var categories: [TrackerCategory] {
         let categoriesCD = getCategories()
-        guard let categories = try? categoriesCD.map({ try self.createCategoryFromCoreData($0) }) else { return []
+        guard let categories = try? categoriesCD.map({ try self.createCategoryFromCoreData($0) }) else {
+            return []
         }
         return categories
     }
@@ -33,7 +33,7 @@ final class TrackerCategoryStore: NSObject {
         do {
             try controller.performFetch()
         } catch {
-            print(error.localizedDescription)
+            print(CDErrors.categoryFetchedResultsControllerPerformFetchError)
         }
         return controller
     }()
@@ -67,7 +67,8 @@ final class TrackerCategoryStore: NSObject {
     func deleteCategory(_ model: TrackerCategoryCoreData) {
         guard let objectToDelete = categoryFRC.fetchedObjects?.first(where: { $0.name == model.name }) else {
             print("Не удалось найти категорию для удаления")
-            return }
+            return
+        }
         categoryFRC.managedObjectContext.delete(objectToDelete)
         saveContext()
     }

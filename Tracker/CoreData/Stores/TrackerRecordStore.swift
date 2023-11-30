@@ -101,8 +101,6 @@ final class TrackerRecordStore: NSObject {
     }
     
     // MARK: - Private Methods:
-    
-    
     private func getAllRecords() throws -> [TrackerRecord]? {
         let request = TrackerRecordCoreData.fetchRequest()
         let objects = try context.fetch(request)

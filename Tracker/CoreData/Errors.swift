@@ -1,10 +1,3 @@
-//
-//  Errors.swift
-//  Tracker
-//
-//  Created by Руслан Халилулин on 20.11.2023.
-//
-
 import Foundation
 
 enum CDErrors: Error {
@@ -18,4 +11,5 @@ enum CDErrors: Error {
     case recordCoreDataCreatingError
     case recordFetchingError
     case creatingRecordFromCoreDataError
+    case categoryFetchedResultsControllerPerformFetchError
 }

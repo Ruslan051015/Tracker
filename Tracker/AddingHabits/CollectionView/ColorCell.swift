@@ -7,20 +7,24 @@ final class ColorCell: UICollectionViewCell {
     let colorView = UIView()
     let selectionView = UIView()
     
-    // MARK: - Methods:
+    // MARK: - Initializers:
     override func prepareForReuse() {
         super.prepareForReuse()
         selectionView.isHidden = true
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupViews()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Private methods:
+    private func setupViews() {
         selectionView.isHidden = true
-        selectionView.translatesAutoresizingMaskIntoConstraints = false
-        colorView.translatesAutoresizingMaskIntoConstraints = false
-        
-        contentView.addSubview(colorView)
-        contentView.addSubview(selectionView)
-        
         selectionView.backgroundColor = .clear
         selectionView.layer.borderColor = colorView.backgroundColor?.cgColor
         selectionView.layer.cornerRadius = 8
@@ -28,6 +32,14 @@ final class ColorCell: UICollectionViewCell {
         selectionView.layer.borderWidth = 4
         colorView.layer.masksToBounds = true
         colorView.layer.cornerRadius = 8
+    }
+    
+    private func setupConstraints() {
+        selectionView.translatesAutoresizingMaskIntoConstraints = false
+        colorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(colorView)
+        contentView.addSubview(selectionView)
         
         NSLayoutConstraint.activate([
             selectionView.widthAnchor.constraint(equalToConstant: 52),
@@ -39,9 +51,5 @@ final class ColorCell: UICollectionViewCell {
             colorView.heightAnchor.constraint(equalToConstant: 40),
             colorView.widthAnchor.constraint(equalToConstant: 40)
         ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

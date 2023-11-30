@@ -12,7 +12,8 @@ final class TrackerStore: NSObject  {
     static let shared = TrackerStore()
     var trackers: [Tracker] {
         guard
-            let objects = self.trackersFRC.fetchedObjects,
+            let fetchedResultsController = self.trackersFetchedResultsController,
+            let objects = fetchedResultsController.fetchedObjects,
             let trackers = try? objects.map({ try createTrackerFromCoreData($0) }) else {
             return []
         }
@@ -21,7 +22,7 @@ final class TrackerStore: NSObject  {
     // MARK: - Private properties:
     private var context: NSManagedObjectContext
     private let recordStore = TrackerRecordStore.shared
-    private var trackersFRC: NSFetchedResultsController<TrackerCoreData>!
+    private var trackersFetchedResultsController: NSFetchedResultsController<TrackerCoreData>?
        
     // MARK: - Initializers:
     convenience override init() {
@@ -46,7 +47,7 @@ final class TrackerStore: NSObject  {
             cacheName: nil
         )
         controller.delegate = self
-        self.trackersFRC = controller
+        self.trackersFetchedResultsController = controller
         try? controller.performFetch()
     }
     
