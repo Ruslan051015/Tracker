@@ -28,26 +28,8 @@ final class TrackerStore: NSObject  {
     private var updatedIndex: IndexPath?
     private var context: NSManagedObjectContext
     private let recordStore = TrackerRecordStore.shared
-    private lazy var trackersFRC: NSFetchedResultsController<TrackerCoreData> = {
-        let fetchRequest = TrackerCoreData.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        let controller = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: context,
-            sectionNameKeyPath: #keyPath(TrackerCoreData.category.name),
-            cacheName: nil)
-        
-        controller.delegate = self
-        
-        do {
-            try controller.performFetch()
-        } catch {
-            print(error.localizedDescription)
-        }
-        return controller
-    }()
-    
+    private var trackersFRC: NSFetchedResultsController<TrackerCoreData>!
+       
     // MARK: - Initializers:
     convenience override init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -60,6 +42,18 @@ final class TrackerStore: NSObject  {
     init(context: NSManagedObjectContext) {
         self.context = context
         super.init()
+        let fetchRequest = TrackerCoreData.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        let controller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        controller.delegate = self
+        self.trackersFRC = controller
+        try? controller.performFetch()
     }
     
     // MARK: - CoreData Methods:
@@ -119,6 +113,10 @@ final class TrackerStore: NSObject  {
             color: color,
             emoji: emoji)
     }
+    
+    func numberOfSections() -> Int {
+        return trackersFRC.sections?.count ?? 0
+    }
 }
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {
@@ -145,8 +143,3 @@ extension TrackerStore: NSFetchedResultsControllerDelegate {
     }
 }
 
-extension TrackerStore {
-    func numberOfSections() -> Int {
-        trackersFRC.sections?.count ?? 0
-    }
-}

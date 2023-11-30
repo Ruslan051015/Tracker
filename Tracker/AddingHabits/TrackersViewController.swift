@@ -84,13 +84,13 @@ final class TrackersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
-        trackerStore.delegate = self
         
+        trackerStore.delegate = self
         updateCategories()
         updateCompletedTrackers()
+        showCurrentDayCategories()
         screenItemsSetup()
         navBarSetup()
-        reloadData()
         setupToHideKeyboardOnTapOnView()
     }
     
@@ -306,11 +306,8 @@ extension TrackersViewController: TrackerCellDelegate {
             completedTrackers.remove(at: index)
             try? recordStore.deleteRecordFromCD(with: recordToDelete.id, and: recordToDelete.date)
         } else { completedTrackers.append(TrackerRecord(id: id, date: datePicker.date))
-            do {
-                try trackerStore.updateTrackerRecord(with: TrackerRecord(id: id, date: datePicker.date))
-            } catch {
-                print(CDErrors.recordCoreDataCreatingError)
-            }
+                try? trackerStore.updateTrackerRecord(with: TrackerRecord(id: id, date: datePicker.date))
+            
         }
     }
 }
