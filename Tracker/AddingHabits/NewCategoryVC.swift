@@ -27,6 +27,7 @@ final class NewCategoryVC: UIViewController {
         field.textColor = .YPBlack
         field.delegate = self
         field.translatesAutoresizingMaskIntoConstraints = false
+        field.addTarget(self, action: #selector(textValueChanged), for: .editingChanged)
         
         return field
     }()
@@ -51,6 +52,7 @@ final class NewCategoryVC: UIViewController {
         setupScreenItems()
         textField.becomeFirstResponder()
         setupToHideKeyboardOnTapOnView()
+        doneButtonCondition()
     }
     
     // MARK: - Private methods:
@@ -76,6 +78,7 @@ final class NewCategoryVC: UIViewController {
         ])
     }
     
+    // MARK: - Objc-Mehtods:
     @objc private func doneButtonTapped() {
         do {
             try categoryStore.createCoreDataCategory(with: categoryName)
@@ -86,16 +89,26 @@ final class NewCategoryVC: UIViewController {
         delegate?.reloadTable()
         self.dismiss(animated: true)
     }
-}
-
-// MARK: - UITextFieldDelegate:
-extension NewCategoryVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    
+    private func doneButtonCondition() {
+        guard let currentText = textField.text else {
+            return
+        }
+        doneButton.isEnabled = !currentText.isEmpty
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        categoryName = textField.text ?? ""
+    @objc private func textValueChanged() {
+        doneButtonCondition()
     }
 }
+    // MARK: - UITextFieldDelegate:
+    extension NewCategoryVC: UITextFieldDelegate {
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+        }
+        
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            categoryName = textField.text ?? ""
+        }
+    }

@@ -14,8 +14,8 @@
             filePath = "Tracker/AddingHabits/TrackersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "reloadVisibleCategories()"
             landmarkType = "7">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "Tracker/AddingHabits/TrackersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "didUpdateTrackers()"
             landmarkType = "7">
             <Locations>
@@ -110,8 +110,8 @@
             filePath = "Tracker/AddingHabits/TrackersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "checkIfCompleted(for:)"
             landmarkType = "7">
             <Locations>
@@ -158,8 +158,8 @@
             filePath = "Tracker/AddingHabits/TrackersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "7">
          </BreakpointContent>

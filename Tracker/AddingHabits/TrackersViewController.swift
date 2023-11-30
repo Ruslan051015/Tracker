@@ -92,8 +92,6 @@ final class TrackersViewController: UIViewController {
         navBarSetup()
         reloadData()
         setupToHideKeyboardOnTapOnView()
-        print(completedTrackers)
-        print(visibleCategories)
     }
     
     // MARK: - Private methods:
@@ -237,7 +235,7 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        trackerStore.numberOfSections()
+        visibleCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
