@@ -10,15 +10,17 @@ final class TabBarViewController: UITabBarController {
     
     // MARK: - Private methods:
     private func setupTabs() {
-        let trackersNVC = UINavigationController(rootViewController: TrackersViewController())
-        let statsNVC = UINavigationController(rootViewController: StatisticsViewController())
+        let trackersNavigationViewController = UINavigationController(rootViewController: TrackersViewController())
+        let statsNavigationViewController = UINavigationController(rootViewController: StatisticsViewController())
         
-        trackersNVC.tabBarItem.title = "Трекеры"
-        trackersNVC.tabBarItem.image = UIImage(named: "record")
-        statsNVC.tabBarItem.title = "Статистика"
-        statsNVC.tabBarItem.image = UIImage(named: "statistics")
+        trackersNavigationViewController.tabBarItem.title = "Трекеры"
+        trackersNavigationViewController.tabBarItem.image = UIImage(named: "record")
+        statsNavigationViewController.tabBarItem.title = "Статистика"
+        statsNavigationViewController.tabBarItem.image = UIImage(named: "statistics")
         
-        self.setViewControllers([trackersNVC, statsNVC], animated: true)
+        self.setViewControllers(
+            [trackersNavigationViewController, statsNavigationViewController],
+            animated: true)
     }
     
     private func setTabBarsBorder() {

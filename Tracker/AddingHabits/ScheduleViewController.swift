@@ -56,7 +56,6 @@ final class ScheduleViewController: UIViewController {
         super.viewWillAppear(animated)
         
         selectedDays = delegate?.selectedDays ?? []
-        print(selectedDays)
     }
     
     override func viewDidLoad() {
@@ -93,10 +92,8 @@ final class ScheduleViewController: UIViewController {
     @objc private func switchToggled(_ sender: UISwitch) {
         if sender.isOn {
             selectedDays.append(Weekday.allCases[sender.tag])
-            print(selectedDays)
         } else {
             selectedDays.removeAll { $0 == Weekday.allCases[sender.tag] }
-            print(selectedDays)
         }
     }
     

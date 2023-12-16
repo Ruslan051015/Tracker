@@ -8,15 +8,21 @@ final class Mocks {
                 Tracker(
                     id: UUID(),
                     name: "Swift",
-                    schedule: [.Monday, .Tuesday, .Wednesday, .Friday, .Saturday, .Sunday]),
+                    schedule: [.Monday, .Tuesday, .Wednesday, .Friday, .Saturday, .Sunday],
+                    color: .YPColorSelection10,
+                    emoji: "👍🏻"),
                 Tracker(
                     id: UUID(),
                     name: "SwiftBook",
-                    schedule: [.Monday, .Tuesday, .Sunday]),
+                    schedule: [.Monday, .Tuesday, .Sunday],
+                    color: .YPColorSelection2,
+                    emoji: "🤘🏿"),
                 Tracker(
                     id: UUID(),
                     name: "Сomputer Science",
-                    schedule: [.Monday, .Tuesday,  .Saturday, .Sunday])
+                    schedule: [.Monday, .Tuesday,  .Saturday, .Sunday],
+                    color: .YPColorSelection3,
+                    emoji: "👋")
             ]),
         
         TrackerCategory(
@@ -25,11 +31,15 @@ final class Mocks {
                 Tracker(
                     id: UUID(),
                     name: "Gym",
-                    schedule: [.Monday, .Tuesday, .Wednesday, .Friday, .Sunday,]),
+                    schedule: [.Monday, .Tuesday, .Wednesday, .Friday, .Sunday,],
+                    color: .YPColorSelection6,
+                    emoji: "💪🏻"),
                 Tracker(
                     id: UUID(),
                     name: "Football",
-                    schedule: [.Wednesday])
+                    schedule: [.Wednesday],
+                    color: .YPColorSelection13,
+                    emoji: "⚽️")
             ])
     ]
 }
