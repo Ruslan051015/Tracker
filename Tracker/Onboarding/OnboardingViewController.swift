@@ -5,12 +5,17 @@ class OnboardingViewController: UIPageViewController {
     
     
     // MARK: - Private Properties:
-    
+    private lazy var pages: [UIViewController] = {
+        let firstPage = FirstPageViewController()
+        let secondPage = SecondPageViewController()
+        
+        return [firstPage, secondPage]
+    }()
     
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -20,7 +25,7 @@ class OnboardingViewController: UIPageViewController {
     // MARK: - Private Methods:
     
     
-
+    
     
 }
 // MARK: - Extensions:
