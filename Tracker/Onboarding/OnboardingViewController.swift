@@ -1,9 +1,6 @@
 import UIKit
 
 class OnboardingViewController: UIPageViewController {
-    // MARK: - Properties:
-    
-    
     // MARK: - Private Properties:
     private lazy var pages: [UIViewController] = {
         let firstPage = FirstPageViewController()
@@ -27,6 +24,12 @@ class OnboardingViewController: UIPageViewController {
     
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = pages.count
+        pageControl.currentPageIndicatorTintColor = .YPBlack
+        pageControl.pageIndicatorTintColor = .YPGray
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(pageControl)
         
         return pageControl
     }()
@@ -36,6 +39,8 @@ class OnboardingViewController: UIPageViewController {
         super.viewDidLoad()
         
         dataSource = self
+        delegate = self
+        
         setUpConstraints()
         
         if let first = pages.first {
@@ -58,14 +63,17 @@ class OnboardingViewController: UIPageViewController {
             wowButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             wowButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             wowButton.heightAnchor.constraint(equalToConstant: 60),
-            wowButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+            wowButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            
+            pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: wowButton.topAnchor, constant: -24)
         ])
     }
     
     
     
 }
-// MARK: - Extensions:
+// MARK: - UIPageViewControllerDataSource:
 extension OnboardingViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else  {
@@ -75,7 +83,7 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0 else {
-            return nil
+            return pages.last
         }
         
         return pages[previousIndex]
@@ -88,10 +96,18 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
         
         let nextIndex = viewControllerIndex + 1
         guard nextIndex < pages.count else {
-            return nil
+            return pages.first
         }
         return pages[nextIndex]
     }
-    
-    
+}
+
+// MARK: - UIPageViewControllerDelegate
+extension OnboardingViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let currentViewController = pageViewController.viewControllers?.first,
+           let currentIndex = pages.firstIndex(of: currentViewController) {
+            pageControl.currentPage = currentIndex
+        }
+    }
 }
