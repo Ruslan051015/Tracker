@@ -24,7 +24,7 @@
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" name="YPBlue"/>
                         <constraints>
-                            <constraint firstItem="2iO-03-0lM" firstAttribute="centerY" secondItem="Bcu-3y-fUS" secondAttribute="centerY" id="SWm-Ve-yFp"/>
+                            <constraint firstItem="2iO-03-0lM" firstAttribute="centerY" secondItem="Bcu-3y-fUS" secondAttribute="centerY" constant="0.16666666666668561" id="SWm-Ve-yFp"/>
                             <constraint firstItem="2iO-03-0lM" firstAttribute="centerX" secondItem="Bcu-3y-fUS" secondAttribute="centerX" id="SYO-s3-8eb"/>
                         </constraints>
                     </view>

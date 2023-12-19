@@ -17,6 +17,7 @@ class OnboardingViewController: UIPageViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(wowButtonTapped), for: .touchUpInside)
         self.view.addSubview(button)
         
         return button
@@ -70,8 +71,13 @@ class OnboardingViewController: UIPageViewController {
         ])
     }
     
-    
-    
+    // MARK: - Objc-Methods:
+    @objc private func wowButtonTapped() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Не удалось инициализировать AppDelegate")
+        }
+        appDelegate.window?.rootViewController = TabBarViewController()
+    }
 }
 // MARK: - UIPageViewControllerDataSource:
 extension OnboardingViewController: UIPageViewControllerDataSource {
