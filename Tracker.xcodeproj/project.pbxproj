@@ -151,6 +151,7 @@
 			children = (
 				4A8AF9372B3109B2000341A7 /* SpashViewController */,
 				4A41EEC62B2E049C00C6F97C /* Pages */,
+				4A41EEC42B2E047100C6F97C /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -190,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				4A41EEC32B2E043A00C6F97C /* Onboarding */,
-				4A41EEC42B2E047100C6F97C /* OnboardingViewController.swift */,
 				4A86C3FA2AD055E00079EF4B /* AddingHabits */,
 				4AAE91992AFFE981004E3C03 /* CoreData */,
 				4ABC6DA52AE4713800651AC0 /* Settings */,

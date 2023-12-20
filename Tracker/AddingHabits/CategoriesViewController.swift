@@ -123,7 +123,6 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
             addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             addButton.heightAnchor.constraint(equalToConstant: 60),
             addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            
         ])
     }
     // MARK: - Private methods:
