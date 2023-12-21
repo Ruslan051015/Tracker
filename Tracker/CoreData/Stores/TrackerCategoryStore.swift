@@ -11,8 +11,7 @@ final class TrackerCategoryStore: NSObject {
     static let shared = TrackerCategoryStore()
     var categories: [TrackerCategory] {
         guard
-            let fetchedResultsController = self.categoryfetchedResultsController,
-            let categoriesCD = fetchedResultsController.fetchedObjects,
+            let categoriesCD = categoryFetchedResultsController.fetchedObjects,
             let categories = try? categoriesCD.map({
                 try self.createCategoryFromCoreData($0)
             }) else {
@@ -24,8 +23,20 @@ final class TrackerCategoryStore: NSObject {
     // MARK: - Private properties:
     private let context: NSManagedObjectContext
     private let trackerStore = TrackerStore.shared
-    
-    private var categoryfetchedResultsController: NSFetchedResultsController<TrackerCategoryCoreData>?
+    private lazy var categoryFetchedResultsController: NSFetchedResultsController<TrackerCategoryCoreData> = {
+        let fetchRequest = TrackerCategoryCoreData.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        let controller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        controller.delegate = self
+        try? controller.performFetch()
+        
+        return controller
+    }()
     
     // MARK: - Initializers:
     convenience override init() {
@@ -39,17 +50,6 @@ final class TrackerCategoryStore: NSObject {
     init(context: NSManagedObjectContext) {
         self.context = context
         super.init()
-        let fetchRequest = TrackerCategoryCoreData.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        let controller = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: context,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        controller.delegate = self
-        self.categoryfetchedResultsController = controller
-        try? controller.performFetch()
     }
     
     // MARK: - CoreData Methods:
@@ -66,12 +66,13 @@ final class TrackerCategoryStore: NSObject {
     
     func deleteCategory(_ model: TrackerCategoryCoreData) {
         guard
-            let frc = categoryfetchedResultsController,
-            let objectToDelete = frc.fetchedObjects?.first(where: { $0.name == model.name }) else {
+            let objectToDelete = categoryFetchedResultsController.fetchedObjects?.first(where: {
+                $0.name == model.name
+            }) else {
             print("Не удалось найти категорию для удаления")
             return
         }
-        frc.managedObjectContext.delete(objectToDelete)
+        categoryFetchedResultsController.managedObjectContext.delete(objectToDelete)
         saveContext()
     }
     
@@ -117,8 +118,7 @@ final class TrackerCategoryStore: NSObject {
     }
     
     func getCategoryWith(title: String) throws -> TrackerCategoryCoreData? {
-        guard let frc = categoryfetchedResultsController else { return nil }
-        let request = frc.fetchRequest
+        let request = TrackerCategoryCoreData.fetchRequest()
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCategoryCoreData.name), title)
         do {
             let category = try context.fetch(request)

@@ -20,6 +20,7 @@ final class CategoryViewModel: NSObject {
     }
 }
 
+// MARK: - TrackerCategoryDelegate
 extension CategoryViewModel: TrackerCategoryDelegate {
     func updateCategories() {
         categories = categoryStore.categories

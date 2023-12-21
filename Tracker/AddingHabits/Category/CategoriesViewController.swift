@@ -145,7 +145,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
             stubImageView.isHidden = false
         }
     }
-  
+    
     private func dismissCategoryViewController() {
         self.dismiss(animated: true)
     }

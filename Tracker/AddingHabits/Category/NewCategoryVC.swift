@@ -96,14 +96,14 @@ final class NewCategoryViewController: UIViewController {
         doneButtonCondition()
     }
 }
-    // MARK: - UITextFieldDelegate:
-    extension NewCategoryViewController: UITextFieldDelegate {
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-        }
-        
-        func textFieldDidEndEditing(_ textField: UITextField) {
-            categoryName = textField.text ?? ""
-        }
+// MARK: - UITextFieldDelegate:
+extension NewCategoryViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        categoryName = textField.text ?? ""
+    }
+}
