@@ -1,9 +1,6 @@
 import UIKit
 
-final class NewCategoryViewController: UIViewController {
-    // MARK: - Properties:
-    weak var delegate: NewCategoryViewControllerProtocol?
-    
+final class NewCategoryViewController: UIViewController {    
     // MARK: - Private properties:
     private var categoryName: String = ""
     private let categoryStore = TrackerCategoryStore.shared
@@ -78,15 +75,13 @@ final class NewCategoryViewController: UIViewController {
         ])
     }
     
-    // MARK: - Objc-Mehtods:
+    // MARK: - Objc-Methods:
     @objc private func doneButtonTapped() {
         do {
             try categoryStore.createCoreDataCategory(with: categoryName)
         } catch {
             print(CDErrors.creatingCoreDataCategoryError)
         }
-        
-        delegate?.reloadTable()
         self.dismiss(animated: true)
     }
     
@@ -101,14 +96,14 @@ final class NewCategoryViewController: UIViewController {
         doneButtonCondition()
     }
 }
-    // MARK: - UITextFieldDelegate:
-    extension NewCategoryViewController: UITextFieldDelegate {
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-        }
-        
-        func textFieldDidEndEditing(_ textField: UITextField) {
-            categoryName = textField.text ?? ""
-        }
+// MARK: - UITextFieldDelegate:
+extension NewCategoryViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        categoryName = textField.text ?? ""
+    }
+}

@@ -306,7 +306,7 @@ extension TrackersViewController: TrackerCellDelegate {
             completedTrackers.remove(at: index)
             try? recordStore.deleteRecordFromCD(with: recordToDelete.id, and: recordToDelete.date)
         } else { completedTrackers.append(TrackerRecord(id: id, date: datePicker.date))
-                try? trackerStore.updateTrackerRecord(with: TrackerRecord(id: id, date: datePicker.date))
+            try? trackerStore.updateTrackerRecord(with: TrackerRecord(id: id, date: datePicker.date))
             
         }
     }

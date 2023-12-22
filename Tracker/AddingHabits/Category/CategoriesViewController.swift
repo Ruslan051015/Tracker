@@ -1,17 +1,13 @@
 import Foundation
 import UIKit
 
-protocol NewCategoryViewControllerProtocol: AnyObject {
-    func reloadTable()
-}
-
 final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Properties:
     weak var delegate: CategoryViewControllerDelegate?
-    var categories: [String] = []
     var selectedCategory: String = ""
     
     // MARK: - Private properties:
+    private let viewModel: CategoryViewModel
     private let categoryStore = TrackerCategoryStore.shared
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -84,12 +80,24 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         view.backgroundColor = .YPWhite
         
         configureScreenItems()
-        fetchCategoriesArray()
         showOrHideEmptyLabels()
         
+        viewModel.onChange = { [weak self] in
+            guard let self else { return }
+            self.showOrHideEmptyLabels()
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Methods:
+    init() {
+        viewModel = CategoryViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     private func configureScreenItems() {
         view.addSubview(topTitle)
         view.addSubview(tableView)
@@ -123,12 +131,11 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
             addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             addButton.heightAnchor.constraint(equalToConstant: 60),
             addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            
         ])
     }
     // MARK: - Private methods:
     private func showOrHideEmptyLabels() {
-        if !categories.isEmpty {
+        if !viewModel.categories.isEmpty {
             stubLabel.isHidden = true
             stubImageView.isHidden = true
             tableView.isHidden = false
@@ -139,37 +146,32 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func fetchCategoriesArray() {
-        categories = categoryStore.getCategoriesList()
-    }
-    
     private func dismissCategoryViewController() {
         self.dismiss(animated: true)
     }
     
     @objc private func addButtonTapped() {
         let viewToPresent = NewCategoryViewController()
-        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
 }
 // MARK: - UITableViewDataSource:
 extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categories.count
+        viewModel.categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = categories[indexPath.row]
+        cell.textLabel?.text = viewModel.categories[indexPath.row].name
         cell.backgroundColor = .YPBackground
         cell.selectionStyle = .none
         cell.layer.masksToBounds = true
-        if categories.count == 1 {
+        if viewModel.categories.count == 1 {
             cell.layer.cornerRadius = 16
             cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1000)
-        } else if indexPath.row == categories.count - 1 {
+        } else if indexPath.row == viewModel.categories.count - 1 {
             cell.layer.cornerRadius = 16
             cell.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1000)
@@ -214,11 +216,3 @@ extension CategoriesViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - CategoriesViewControllerProtocol:
-extension CategoriesViewController: NewCategoryViewControllerProtocol {
-    func reloadTable() {
-        categories = categoryStore.getCategoriesList()
-        showOrHideEmptyLabels()
-        tableView.reloadData()
-    }
-}
