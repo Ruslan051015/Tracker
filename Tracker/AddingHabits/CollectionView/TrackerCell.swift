@@ -85,13 +85,17 @@ class TrackerCell: UICollectionViewCell {
                     isEnabled: Bool,
                     isCompleted: Bool,
                     completedDays: Int) {
+        let numberOfCompletedDays = completedDays
+        let daysString = NSLocalizedString("completedDays", comment: "")
+        let localizedString = String.localizedStringWithFormat(daysString, numberOfCompletedDays)
+        
         self.trackerID = id
         self.trackerNameLabel.text = name
         self.topView.backgroundColor = color
         self.emojiLabel.text = emoji
         self.plusButton.backgroundColor = color
         self.plusButton.isEnabled = isEnabled
-        self.daysCounterLabel.text = "\(completedDays.days())"
+        self.daysCounterLabel.text = localizedString
         self.isCompleted = isCompleted
         
         let image = isCompleted ? doneImage : plusImage
