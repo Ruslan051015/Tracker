@@ -39,6 +39,7 @@
 		4A8846FE2B0BAB3B000376BE /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8846FD2B0BAB3B000376BE /* Errors.swift */; };
 		4A8AF9392B3109C5000341A7 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AF9382B3109C5000341A7 /* SplashViewController.swift */; };
 		4A8AF93B2B310A73000341A7 /* FirstLaunchStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AF93A2B310A73000341A7 /* FirstLaunchStorage.swift */; };
+		4A8ED2242B51B5F5000E1CCA /* Localizible.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A8ED2232B51B5F5000E1CCA /* Localizible.strings */; };
 		4AAE91982AFFE97A004E3C03 /* TrackerModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE91962AFFE97A004E3C03 /* TrackerModels.xcdatamodeld */; };
 		4AC401A12AEBFB8B009858DA /* NewCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC401A02AEBFB8B009858DA /* NewCategoryVC.swift */; };
 		4AC8312F2AD5D98E00F0DDE4 /* enumForSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8312E2AD5D98E00F0DDE4 /* enumForSections.swift */; };
@@ -109,6 +110,7 @@
 		4A8846FD2B0BAB3B000376BE /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		4A8AF9382B3109C5000341A7 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		4A8AF93A2B310A73000341A7 /* FirstLaunchStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchStorage.swift; sourceTree = "<group>"; };
+		4A8ED2232B51B5F5000E1CCA /* Localizible.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizible.strings; sourceTree = "<group>"; };
 		4AAE91972AFFE97A004E3C03 /* TrackerModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackerModels.xcdatamodel; sourceTree = "<group>"; };
 		4AC401A02AEBFB8B009858DA /* NewCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryVC.swift; sourceTree = "<group>"; };
 		4AC8312E2AD5D98E00F0DDE4 /* enumForSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumForSections.swift; sourceTree = "<group>"; };
@@ -314,6 +316,22 @@
 			path = SpashViewController;
 			sourceTree = "<group>";
 		};
+		4A8ED2212B51ADDB000E1CCA /* Dict */ = {
+			isa = PBXGroup;
+			children = (
+				4ACAB4DA2B4854D200F112AD /* Localizable.stringsdict */,
+			);
+			path = Dict;
+			sourceTree = "<group>";
+		};
+		4A8ED2222B51B5E0000E1CCA /* String */ = {
+			isa = PBXGroup;
+			children = (
+				4A8ED2232B51B5F5000E1CCA /* Localizible.strings */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
 		4AAE91992AFFE981004E3C03 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,7 +364,8 @@
 		4AD2527D2B48472B008E176C /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				4ACAB4DA2B4854D200F112AD /* Localizable.stringsdict */,
+				4A8ED2222B51B5E0000E1CCA /* String */,
+				4A8ED2212B51ADDB000E1CCA /* Dict */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -457,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ACAB4D82B4854D200F112AD /* Localizable.stringsdict in Resources */,
+				4A8ED2242B51B5F5000E1CCA /* Localizible.strings in Resources */,
 				4A8181372ACF53DF00A3B9DF /* LaunchScreen.storyboard in Resources */,
 				4A5AD1D62ACEF2F7000E826B /* Assets.xcassets in Resources */,
 			);
