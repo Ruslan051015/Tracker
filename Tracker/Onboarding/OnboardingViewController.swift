@@ -11,7 +11,7 @@ class OnboardingViewController: UIPageViewController {
     
     private lazy var wowButton: UIButton = {
         let button  = UIButton(type: .system)
-        button.setTitle("Вот это технологии!", for: .normal)
+        button.setTitle(L10n.Button.wowTechnology, for: .normal)
         button.backgroundColor = .YPBlack
         button.tintColor = .YPWhite
         button.layer.masksToBounds = true
@@ -41,7 +41,7 @@ class OnboardingViewController: UIPageViewController {
         
         dataSource = self
         delegate = self
-        
+
         setUpConstraints()
         
         if let first = pages.first {

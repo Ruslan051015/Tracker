@@ -23,7 +23,7 @@ class FirstPageViewController: UIViewController {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "Отслеживайте только \nто, что хотите"
+        label.text = L10n.Title.firstPage
         label.numberOfLines = 2
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .center
@@ -60,10 +60,5 @@ class FirstPageViewController: UIViewController {
             
         ])
     }
-    
-    
-    
-    
-    
 }
-// MARK: - Extensions:
+

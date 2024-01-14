@@ -4,7 +4,7 @@ class StatisticsViewController: UIViewController {
     // MARK: - Private properties:
     private lazy var stubLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        label.text = "Анализировать пока нечего"
+        label.text = L10n.Title.noDataToAnalyze
         label.textColor = .YPBlack
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textAlignment = .center
@@ -48,7 +48,7 @@ class StatisticsViewController: UIViewController {
     
     private func setupNavBar() {
         if let navBar = navigationController?.navigationBar {
-            title = "Статистика"
+            title = L10n.Title.statistics
             navBar.prefersLargeTitles = true
         }
     }

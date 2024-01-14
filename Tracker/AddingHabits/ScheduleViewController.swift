@@ -14,7 +14,7 @@ final class ScheduleViewController: UIViewController {
     
     private lazy var topTitle: UILabel = {
         let label = UILabel()
-        label.text = "Расписание"
+        label.text = L10n.Title.schedule
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ final class ScheduleViewController: UIViewController {
         button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Готово", for: .normal)
+        button.setTitle(L10n.Button.done, for: .normal)
         button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         
         return button
@@ -129,16 +129,16 @@ extension ScheduleViewController: UITableViewDataSource {
         switchView.onTintColor = .YPBlue
         switchView.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
         cell.accessoryView = switchView
-        cell.textLabel?.text = Weekday.allCases[indexPath.row].rawValue
+        cell.textLabel?.text = Weekday.allCases[indexPath.row].localizedName
         cell.backgroundColor = .clear
         cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         if indexPath.row == 6 {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10000)
         }
-        let item = Weekday.allCases[indexPath.row].rawValue
+        let item = Weekday.allCases[indexPath.row].localizedName
         
         for day in selectedDays {
-            if day.rawValue == item {
+            if day.localizedName == item {
                 switchView.isOn = true
             }
         }

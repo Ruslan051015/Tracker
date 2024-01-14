@@ -13,8 +13,7 @@ extension String {
                 self,
                 tableName: source.rawValue,
                 bundle: bundle,
-                value: notFoundValue,
+                value: "",
                 comment: comment)
         }
-    
 }

@@ -21,7 +21,6 @@ final class TrackersViewController: UIViewController {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.datePickerMode = .date
-        picker.locale = Locale(identifier: "ru_RU")
         picker.tintColor = .YPBlue
         picker.calendar.firstWeekday = 2
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +35,7 @@ final class TrackersViewController: UIViewController {
         let bar = UISearchBar()
         bar.delegate = self
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.placeholder = "Поиск"
+        bar.placeholder = L10n.Title.search
         bar.backgroundColor = .clear
         bar.searchBarStyle = .minimal
         bar.searchTextField.clearButtonMode = .never
@@ -66,7 +65,7 @@ final class TrackersViewController: UIViewController {
     
     private lazy var stubLabel: UILabel = {
         let label = UILabel()
-        label.text = "Что будем отслеживать?"
+        label.text = L10n.Title.emptyTrackersStub
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
         label.numberOfLines = 2
@@ -84,7 +83,7 @@ final class TrackersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
-        
+       
         trackerStore.delegate = self
         updateCategories()
         updateCompletedTrackers()
@@ -126,7 +125,7 @@ final class TrackersViewController: UIViewController {
     
     private func navBarSetup() {
         if let navigationBar = navigationController?.navigationBar {
-            title = "Трекеры"
+            title = L10n.Title.trackers
             navigationBar.prefersLargeTitles = true
             
             let rightButton = UIBarButtonItem(customView: datePicker)
