@@ -14,7 +14,7 @@ final class ScheduleViewController: UIViewController {
     
     private lazy var topTitle: UILabel = {
         let label = UILabel()
-        label.text = L10n.Title.schedule
+        label.text = L10n.Localizable.Title.schedule
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ final class ScheduleViewController: UIViewController {
         button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(L10n.Button.done, for: .normal)
+        button.setTitle(L10n.Localizable.Button.done, for: .normal)
         button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         
         return button

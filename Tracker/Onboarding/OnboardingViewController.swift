@@ -11,7 +11,7 @@ class OnboardingViewController: UIPageViewController {
     
     private lazy var wowButton: UIButton = {
         let button  = UIButton(type: .system)
-        button.setTitle(L10n.Button.wowTechnology, for: .normal)
+        button.setTitle(L10n.Localizable.Button.wowTechnology, for: .normal)
         button.backgroundColor = .YPBlack
         button.tintColor = .YPWhite
         button.layer.masksToBounds = true

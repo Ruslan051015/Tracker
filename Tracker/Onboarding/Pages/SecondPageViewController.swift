@@ -22,7 +22,7 @@ class SecondPageViewController: UIViewController {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = L10n.Title.secondPage
+        label.text = L10n.Localizable.Title.secondPage
         label.numberOfLines = 2
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .center

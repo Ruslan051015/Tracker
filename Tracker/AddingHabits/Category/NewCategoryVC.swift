@@ -7,7 +7,7 @@ final class NewCategoryViewController: UIViewController {
     
     private lazy var topTitle: UILabel = {
         let label = UILabel()
-        label.text = L10n.Title.newCategory
+        label.text = L10n.Localizable.Title.newCategory
         label.textColor = .YPBlack
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +17,7 @@ final class NewCategoryViewController: UIViewController {
     }()
     
     private lazy var textField: CustomUITextField = {
-        let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: L10n.Title.enterCategory)
+        let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: L10n.Localizable.Title.enterCategory)
         field.layer.masksToBounds = true
         field.layer.cornerRadius = 16
         field.backgroundColor = .YPBackground
@@ -31,7 +31,7 @@ final class NewCategoryViewController: UIViewController {
     
     private lazy var doneButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(L10n.Button.done, for: .normal)
+        button.setTitle(L10n.Localizable.Button.done, for: .normal)
         button.tintColor = .YPWhite
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16

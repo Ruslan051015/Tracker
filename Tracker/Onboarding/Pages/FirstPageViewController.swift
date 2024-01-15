@@ -23,7 +23,7 @@ class FirstPageViewController: UIViewController {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = L10n.Title.firstPage
+        label.text = L10n.Localizable.Title.firstPage
         label.numberOfLines = 2
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .center

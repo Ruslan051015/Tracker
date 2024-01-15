@@ -407,7 +407,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A5AD1F32ACEF2F7000E826B /* Build configuration list for PBXNativeTarget "Tracker" */;
 			buildPhases = (
-				4A796D6A2B546414002E013E /* Swiftgen */,
+				4AAD69B62B54AFFE00C826A2 /* Swiftgen */,
 				4A5AD1C52ACEF2F6000E826B /* Sources */,
 				4A5AD1C62ACEF2F6000E826B /* Frameworks */,
 				4A5AD1C72ACEF2F6000E826B /* Resources */,
@@ -532,7 +532,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4A796D6A2B546414002E013E /* Swiftgen */ = {
+		4AAD69B62B54AFFE00C826A2 /* Swiftgen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -548,7 +548,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+			shellScript = "if /opt/homebrew/bin/swiftgen >/dev/null; then\n  /opt/homebrew/bin/swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

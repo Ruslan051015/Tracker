@@ -8,9 +8,9 @@ enum HabitOrEvent {
     var titleText: String {
         switch self {
         case .habit:
-            return L10n.Title.newHabit
+            return L10n.Localizable.Title.newHabit
         case .event:
-            return L10n.Title.newEvent
+            return L10n.Localizable.Title.newEvent
         }
     }
 }
@@ -99,7 +99,7 @@ final class TrackerCreatingViewController: UIViewController {
     }()
     
     private lazy var textField: CustomUITextField = {
-        let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: L10n.Field.enterTrackerName)
+        let field = CustomUITextField(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 41), placeholder: L10n.Localizable.Field.enterTrackerName)
         field.backgroundColor = .YPBackground
         field.textColor = .YPBlack
         field.delegate = self
@@ -114,7 +114,7 @@ final class TrackerCreatingViewController: UIViewController {
         label.font = .systemFont(ofSize: 17, weight: .regular)
         label.textColor = .YPRed
         label.textAlignment = .center
-        label.text = L10n.Field.lettersLimit
+        label.text = L10n.Localizable.Field.lettersLimit
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -129,7 +129,7 @@ final class TrackerCreatingViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.masksToBounds = true
         button.contentEdgeInsets = UIEdgeInsets(top: 0,left: 16,bottom: 0,right: 0)
-        button.setTitle(L10n.Title.category, for: .normal)
+        button.setTitle(L10n.Localizable.Title.category, for: .normal)
         button.addTarget(self, action: #selector(showCategories), for: .touchUpInside)
         if trackerType == .habit{
             button.layer.cornerRadius = 16
@@ -188,7 +188,7 @@ final class TrackerCreatingViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentEdgeInsets = UIEdgeInsets(top: 0,left: 16,bottom: 0,right: 0)
         button.addTarget(self, action: #selector(scheduleButtonTapped), for: .touchUpInside)
-        button.setTitle(L10n.Title.schedule, for: .normal)
+        button.setTitle(L10n.Localizable.Title.schedule, for: .normal)
         
         return button
     }()
@@ -235,14 +235,14 @@ final class TrackerCreatingViewController: UIViewController {
         button.layer.borderColor = UIColor.YPRed.cgColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
-        button.setTitle(L10n.Button.cancel, for: .normal)
+        button.setTitle(L10n.Localizable.Button.cancel, for: .normal)
         
         return button
     }()
     
     private lazy var createButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(L10n.Button.create, for: .normal)
+        button.setTitle(L10n.Localizable.Button.create, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.tintColor = .YPWhite
         button.backgroundColor = .YPGray
@@ -452,18 +452,18 @@ extension TrackerCreatingViewController: ScheduleViewControllerDelegate {
             scheduleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         
-        let weekDays: [String] = [L10n.Day.monday, L10n.Day.tuesday, L10n.Day.wednesday, L10n.Day.thursday, L10n.Day.friday]
-        let weekEnd: [String] = [L10n.Day.saturday, L10n.Day.sunday]
-        let week: [String] = [L10n.Day.monday, L10n.Day.tuesday, L10n.Day.wednesday, L10n.Day.thursday, L10n.Day.friday, L10n.Day.saturday, L10n.Day.sunday]
+        let weekDays: [String] = [L10n.Localizable.Day.monday, L10n.Localizable.Day.tuesday, L10n.Localizable.Day.wednesday, L10n.Localizable.Day.thursday, L10n.Localizable.Day.friday]
+        let weekEnd: [String] = [L10n.Localizable.Day.saturday, L10n.Localizable.Day.sunday]
+        let week: [String] = [L10n.Localizable.Day.monday, L10n.Localizable.Day.tuesday, L10n.Localizable.Day.wednesday, L10n.Localizable.Day.thursday, L10n.Localizable.Day.friday, L10n.Localizable.Day.saturday, L10n.Localizable.Day.sunday]
         
         let selectedDaysRawValues = selectedDays.map { $0.localizedName }
         
         if weekDays.allSatisfy(selectedDaysRawValues.contains(_:)) && weekDays.count == selectedDaysRawValues.count {
-            selectedDaysLabel.text = L10n.Day.weekDays
+            selectedDaysLabel.text = L10n.Localizable.Day.weekDays
         } else if weekEnd.allSatisfy(selectedDaysRawValues.contains(_:)) && weekEnd.count == selectedDays.count {
-            selectedDaysLabel.text = L10n.Day.weekEnd
+            selectedDaysLabel.text = L10n.Localizable.Day.weekEnd
         } else if week.allSatisfy(selectedDaysRawValues.contains(_:)) {
-            selectedDaysLabel.text = L10n.Day.allDays
+            selectedDaysLabel.text = L10n.Localizable.Day.allDays
         } else {
             selectedDaysLabel.text = selectedDays.map { $0.shortName }.joined(separator: ", ")
         }
@@ -556,9 +556,9 @@ extension TrackerCreatingViewController: UICollectionViewDataSource {
         
         switch indexPath.section {
         case sectionsEnum.emojiCell.rawValue:
-            headerView.titleLabel.text = L10n.Title.emoji
+            headerView.titleLabel.text = L10n.Localizable.Title.emoji
         case sectionsEnum.colorCell.rawValue:
-            headerView.titleLabel.text = L10n.Title.color
+            headerView.titleLabel.text = L10n.Localizable.Title.color
         default:
             headerView.titleLabel.text = "1"
         }

@@ -35,7 +35,7 @@ final class TrackersViewController: UIViewController {
         let bar = UISearchBar()
         bar.delegate = self
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.placeholder = L10n.Title.search
+        bar.placeholder = L10n.Localizable.Title.search
         bar.backgroundColor = .clear
         bar.searchBarStyle = .minimal
         bar.searchTextField.clearButtonMode = .never
@@ -65,7 +65,7 @@ final class TrackersViewController: UIViewController {
     
     private lazy var stubLabel: UILabel = {
         let label = UILabel()
-        label.text = L10n.Title.emptyTrackersStub
+        label.text = L10n.Localizable.Title.emptyTrackersStub
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
         label.numberOfLines = 2
@@ -125,7 +125,7 @@ final class TrackersViewController: UIViewController {
     
     private func navBarSetup() {
         if let navigationBar = navigationController?.navigationBar {
-            title = L10n.Title.trackers
+            title = L10n.Localizable.Title.trackers
             navigationBar.prefersLargeTitles = true
             
             let rightButton = UIBarButtonItem(customView: datePicker)

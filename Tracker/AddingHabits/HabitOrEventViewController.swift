@@ -12,7 +12,7 @@ final class HabitOrEventViewController: UIViewController {
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
         let label = UILabel()
-        label.text = L10n.Title.trackerCreating
+        label.text = L10n.Localizable.Title.trackerCreating
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
         label.textAlignment = .center
@@ -29,7 +29,7 @@ final class HabitOrEventViewController: UIViewController {
         button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(L10n.Title.habit, for: .normal)
+        button.setTitle(L10n.Localizable.Title.habit, for: .normal)
         button.addTarget(self, action: #selector(openHabitViewController), for: .touchUpInside)
         
         return button
@@ -43,7 +43,7 @@ final class HabitOrEventViewController: UIViewController {
         button.layer.cornerRadius = 16
         button.backgroundColor = .YPBlack
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(L10n.Title.event, for: .normal)
+        button.setTitle(L10n.Localizable.Title.event, for: .normal)
         button.addTarget(self, action: #selector(openEventViewController), for: .touchUpInside)
         
         return button

@@ -11,7 +11,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     private let categoryStore = TrackerCategoryStore.shared
     private lazy var topTitle: UILabel = {
         let label = UILabel()
-        label.text = L10n.Title.category
+        label.text = L10n.Localizable.Title.category
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +21,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(L10n.Title.addCategory, for: .normal)
+        button.setTitle(L10n.Localizable.Title.addCategory, for: .normal)
         button.tintColor = .YPWhite
         button.frame.size = CGSize(width: 335, height: 60)
         button.layer.masksToBounds = true
@@ -60,7 +60,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     
     private lazy var stubLabel: UILabel = {
         let label = UILabel()
-        label.text = L10n.Title.emptyCategories
+        label.text = L10n.Localizable.Title.emptyCategories
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
         label.numberOfLines = 2
