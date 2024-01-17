@@ -17,6 +17,7 @@ final class ScheduleViewController: UIViewController {
         label.text = L10n.Localizable.Title.schedule
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label

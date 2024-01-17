@@ -36,6 +36,7 @@ final class TrackersViewController: UIViewController {
         bar.delegate = self
         bar.translatesAutoresizingMaskIntoConstraints = false
         bar.placeholder = L10n.Localizable.Title.search
+        bar.backgroundImage = .none
         bar.backgroundColor = .clear
         bar.searchBarStyle = .minimal
         bar.searchTextField.clearButtonMode = .never
@@ -48,6 +49,7 @@ final class TrackersViewController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collection.delegate = self
         collection.dataSource = self
+        collection.backgroundColor = .YPWhite
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(TrackerCell.self, forCellWithReuseIdentifier: TrackerCell.reuseID)
         collection.register(SupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SupplementaryView.reuseId)
