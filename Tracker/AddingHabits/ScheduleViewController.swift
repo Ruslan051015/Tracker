@@ -65,7 +65,7 @@ final class ScheduleViewController: UIViewController {
         view.backgroundColor = .YPWhite
         configureScreenItems()
     }
-    
+   
     // MARK: - Private methods:
     private func configureScreenItems() {
         view.addSubview(topTitle)
