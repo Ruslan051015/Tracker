@@ -5,7 +5,10 @@ import UIKit
 extension UIColor {
     static var YPBackground: UIColor { UIColor(named:"YPBackground") ?? #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1) }
     static var YPBlack: UIColor { UIColor(named:"YPBlack") ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) }
+    static var YPOnlyBlack: UIColor { UIColor(named:"YPOnlyBlack") ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) }
+    static var YPBlackGray: UIColor { UIColor(named:"YPBlackGray") ?? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) }
     static var YPBlue: UIColor { UIColor(named:"YPBlue") ?? #colorLiteral(red: 0.2695594132, green: 0.5159891248, blue: 1, alpha: 1) }
+    static var YPGrayGray: UIColor { UIColor(named:"YPGray&Gray") ?? #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1) }
     static var YPColorSelection1: UIColor { UIColor(named:"YPColorSelection1") ?? #colorLiteral(red: 1, green: 0.2304438651, blue: 0, alpha: 1) }
     static var YPColorSelection2: UIColor { UIColor(named:"YPColorSelection2") ?? #colorLiteral(red: 1, green: 0.4682334661, blue: 0.1666698456, alpha: 1)}
     static var YPColorSelection3: UIColor { UIColor(named:"YPColorSelection3") ?? #colorLiteral(red: 0.2105123997, green: 0.4191511273, blue: 1, alpha: 1)}
@@ -28,4 +31,6 @@ extension UIColor {
     static var YPLightGray: UIColor { UIColor(named:"YPLightGray") ?? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) }
     static var YPRed: UIColor { UIColor(named:"YPRed") ?? #colorLiteral(red: 1, green: 0.3748272061, blue: 0.25904724, alpha: 1) }
     static var YPWhite: UIColor { UIColor(named:"YPWhite") ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) }
+    static var YPOnlyWhite: UIColor { UIColor(named:"YPOnlyWhite") ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) }
+    static var YPSwitchColorGray: UIColor { UIColor(named:"YPSwitchColor") ?? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) }
 }

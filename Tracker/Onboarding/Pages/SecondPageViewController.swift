@@ -27,7 +27,7 @@ class SecondPageViewController: UIViewController {
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .YPWhite
+        label.textColor = .YPOnlyWhite
         self.view.addSubview(label)
         
         return label

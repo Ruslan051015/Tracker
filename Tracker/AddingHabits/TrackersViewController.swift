@@ -37,7 +37,8 @@ final class TrackersViewController: UIViewController {
         bar.translatesAutoresizingMaskIntoConstraints = false
         bar.placeholder = L10n.Localizable.Title.search
         bar.backgroundImage = .none
-        bar.backgroundColor = .clear
+        bar.backgroundColor = .none
+        bar.searchTextField.backgroundColor = .YPLightGray
         bar.searchBarStyle = .minimal
         bar.searchTextField.clearButtonMode = .never
         bar.updateHeight(height: 36)
@@ -94,7 +95,7 @@ final class TrackersViewController: UIViewController {
         navBarSetup()
         setupToHideKeyboardOnTapOnView()
     }
-    
+
     // MARK: - Private methods:
     private func screenItemsSetup() {
         self.view.addSubview(searchBar)

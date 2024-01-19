@@ -128,6 +128,10 @@ extension ScheduleViewController: UITableViewDataSource {
         let switchView = UISwitch(frame: .zero)
         switchView.tag = indexPath.row
         switchView.onTintColor = .YPBlue
+        switchView.tintColor = .YPSwitchColorGray
+        switchView.layer.cornerRadius = switchView.frame.height / 2.0
+        switchView.backgroundColor = .YPSwitchColorGray
+        switchView.clipsToBounds = true
         switchView.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
         cell.accessoryView = switchView
         cell.textLabel?.text = Weekday.allCases[indexPath.row].localizedName

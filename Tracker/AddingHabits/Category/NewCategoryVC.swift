@@ -32,10 +32,8 @@ final class NewCategoryViewController: UIViewController {
     private lazy var doneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(L10n.Localizable.Button.done, for: .normal)
-        button.tintColor = .YPWhite
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
-        button.backgroundColor = .YPBlack
         button.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -90,6 +88,13 @@ final class NewCategoryViewController: UIViewController {
             return
         }
         doneButton.isEnabled = !currentText.isEmpty
+        if doneButton.isEnabled {
+            doneButton.backgroundColor = .YPBlack
+            doneButton.tintColor = .YPWhite
+        } else {
+            doneButton.backgroundColor = .YPGrayGray
+            doneButton.tintColor = .YPOnlyWhite
+        }
     }
     
     @objc private func textValueChanged() {

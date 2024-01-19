@@ -82,7 +82,7 @@ final class TrackerCreatingViewController: UIViewController {
         scroll.isMultipleTouchEnabled = true
         scroll.isScrollEnabled = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.decelerationRate = .init(rawValue: 1)
+        scroll.decelerationRate = .init(rawValue: 0.5)
         
         return scroll
     }()
@@ -144,7 +144,7 @@ final class TrackerCreatingViewController: UIViewController {
     private lazy var selectedCategoryLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = .YPGray
+        label.textColor = .YPGrayGray
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -152,7 +152,7 @@ final class TrackerCreatingViewController: UIViewController {
     
     private lazy var dividerLine: UIView = {
         let divider = UIView()
-        divider.backgroundColor = .YPGray
+        divider.backgroundColor = .lightGray
         divider.translatesAutoresizingMaskIntoConstraints = false
         
         return divider
@@ -196,7 +196,7 @@ final class TrackerCreatingViewController: UIViewController {
     private lazy var selectedDaysLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = .YPGray
+        label.textColor = .YPGrayGray
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -244,8 +244,6 @@ final class TrackerCreatingViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle(L10n.Localizable.Button.create, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        button.tintColor = .YPWhite
-        button.backgroundColor = .YPGray
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -404,8 +402,10 @@ final class TrackerCreatingViewController: UIViewController {
         }
         if createButton.isEnabled {
             createButton.backgroundColor = .YPBlack
+            createButton.tintColor = .YPWhite
         } else {
-            createButton.backgroundColor = .YPGray
+            createButton.backgroundColor = .YPGrayGray
+            createButton.tintColor = .YPOnlyWhite
         }
     }
     
