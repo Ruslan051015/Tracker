@@ -22,6 +22,9 @@ final class TrackersViewController: UIViewController {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
         picker.datePickerMode = .date
+        picker.layer.backgroundColor = UIColor.PickerColor.cgColor
+        picker.layer.cornerRadius = 8
+        picker.layer.masksToBounds = true
         picker.tintColor = .YPBlue
         picker.calendar.firstWeekday = 2
         picker.translatesAutoresizingMaskIntoConstraints = false
