@@ -17,6 +17,7 @@ final class TrackersViewController: UIViewController {
     private let categoryStore = TrackerCategoryStore.shared
     private let recordStore = TrackerRecordStore.shared
     private let params = GeometricParams(cellCount: 2, leftInset: 16, rightInset: 16, cellSpacing: 9)
+    private let yandexMetrica = YandexMetrica()
     private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
@@ -218,6 +219,8 @@ final class TrackersViewController: UIViewController {
     }
     
     @objc private func plusButtonTapped() {
+        yandexMetrica.sendReport(about: "click", and: "add_track", on: "Main")
+        
         let viewToPresent = HabitOrEventViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)

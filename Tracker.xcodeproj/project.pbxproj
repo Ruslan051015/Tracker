@@ -277,7 +277,6 @@
 		4A5AD1CB2ACEF2F6000E826B /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				4A0903762B5C1EEC00DEBD6F /* Service */,
 				4A41EEC32B2E043A00C6F97C /* Onboarding */,
 				4A86C3FA2AD055E00079EF4B /* AddingHabits */,
 				4AAE91992AFFE981004E3C03 /* CoreData */,
@@ -285,6 +284,7 @@
 				4A81813A2ACF5F2600A3B9DF /* Models */,
 				4A8181392ACF5EFD00A3B9DF /* TabBar */,
 				4A532E192B52F771003C5930 /* Resources */,
+				4A0903762B5C1EEC00DEBD6F /* Service */,
 				4A5AD1D52ACEF2F7000E826B /* Assets.xcassets */,
 				4A5AD1DA2ACEF2F7000E826B /* Info.plist */,
 				4A21EF4C2AD1AB3D00BD40DB /* CustomTextField.swift */,
