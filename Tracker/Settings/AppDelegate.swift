@@ -4,6 +4,7 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Properties:
+    let yandexMetrica = YandexMetrica.shared
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TrackerModels")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -18,18 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Methods:
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        YandexMetrica().initialize()
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = SplashViewController() 
         window?.makeKeyAndVisible()
         DaysTransformer.register()
         ColorTransformer.register()
         
+        YandexMetrica().initialize()
+        
         return true
     }
-    
-    
+ 
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        yandexMetrica.sendReport(about: Reports.Events.close, and: nil, on: Reports.Screens.appDelegate)
+    }
+ 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        yandexMetrica.sendReport(about: Reports.Events.open, and: nil, on: Reports.Screens.appDelegate)
+    }
 }
 
