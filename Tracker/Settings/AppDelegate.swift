@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Methods:
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        YandexMetrica().initialize()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = SplashViewController() 
         window?.makeKeyAndVisible()
