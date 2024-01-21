@@ -2,11 +2,15 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
     // MARK: - Private properties:
-    private var completedTrackersCount: Int? = 1 {
+    private var bestPeriodCount: Int? = 1
+    private var idealDaysCount: Int? = 2
+    private var averageValueCount: Int? = 3
+    private var completedTrackersCount: Int? = 4 {
         didSet {
             showOrHideEmptyLabels()
         }
     }
+    
     private lazy var stubLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
         label.text = L10n.Localizable.Title.noDataToAnalyze
@@ -45,7 +49,6 @@ class StatisticsViewController: UIViewController {
         gradientView.backgroundColor = .clear
         gradientView.layer.cornerRadius = 16
         gradientView.layer.masksToBounds = true
-        gradientView.layer.borderWidth = 1
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
         return gradientView
@@ -61,12 +64,21 @@ class StatisticsViewController: UIViewController {
         return label
     }()
     
+    private lazy var bestPeriodCounter: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 34)
+        label.textColor = .YPBlack
+        label.text = String(bestPeriodCount ?? 0)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     private lazy var idealDaysView: UIView = {
         let gradientView = UIView()
         gradientView.backgroundColor = .clear
         gradientView.layer.cornerRadius = 16
         gradientView.layer.masksToBounds = true
-        gradientView.layer.borderWidth = 1
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
         return gradientView
@@ -82,22 +94,41 @@ class StatisticsViewController: UIViewController {
         return label
     }()
     
+    private lazy var idealDaysCounter: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 34)
+        label.textColor = .YPBlack
+        label.text = String(idealDaysCount ?? 0)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     private lazy var completedTrackersView: UIView = {
         let gradientView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 343, height: 90)))
         gradientView.backgroundColor = .clear
         gradientView.layer.cornerRadius = 16
         gradientView.layer.masksToBounds = true
-        gradientView.layer.borderWidth = 1
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
         return gradientView
     }()
     
-    private lazy var completedDaysLabel: UILabel = {
+    private lazy var completedTrackersLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
         label.text = L10n.Localizable.Title.completedTrackers
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var completedTrackersCounter: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 34)
+        label.textColor = .YPBlack
+        label.text = String(completedTrackersCount ?? 0)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -108,7 +139,6 @@ class StatisticsViewController: UIViewController {
         gradientView.backgroundColor = .clear
         gradientView.layer.cornerRadius = 16
         gradientView.layer.masksToBounds = true
-        gradientView.layer.borderWidth = 1
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
         return gradientView
@@ -124,11 +154,22 @@ class StatisticsViewController: UIViewController {
         return label
     }()
     
+    private lazy var averageValueCounter: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 34)
+        label.textColor = .YPBlack
+        label.text = String(averageValueCount ?? 0)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     // MARK: - LifeCycle:
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        completedTrackersView.addGradientBorder(colors: [UIColor(hex: "#007BFA"), UIColor(hex: "#46E69D"), UIColor(hex: "#FD4C49")], width: 1)
+        addGradientsToViews()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
@@ -144,9 +185,13 @@ class StatisticsViewController: UIViewController {
         self.view.addSubview(stubImage)
         self.view.addSubview(stackView)
         bestPeriodView.addSubview(bestPeriodLabel)
+        bestPeriodView.addSubview(bestPeriodCounter)
         idealDaysView.addSubview(idealDaysLabel)
-        completedTrackersView.addSubview(completedDaysLabel)
+        idealDaysView.addSubview(idealDaysCounter)
+        completedTrackersView.addSubview(completedTrackersLabel)
+        completedTrackersView.addSubview(completedTrackersCounter)
         averageValueView.addSubview(averageDaysLabel)
+        averageValueView.addSubview(averageValueCounter)
         stackView.addArrangedSubview(bestPeriodView)
         stackView.addArrangedSubview(idealDaysView)
         stackView.addArrangedSubview(completedTrackersView)
@@ -180,12 +225,31 @@ class StatisticsViewController: UIViewController {
             idealDaysLabel.leadingAnchor.constraint(equalTo: idealDaysView.leadingAnchor, constant: 12),
             idealDaysLabel.bottomAnchor.constraint(equalTo: idealDaysView.bottomAnchor, constant: -12),
             idealDaysLabel.trailingAnchor.constraint(equalTo: idealDaysView.trailingAnchor, constant: -12),
-            completedDaysLabel.leadingAnchor.constraint(equalTo: completedTrackersView.leadingAnchor, constant: 12),
-            completedDaysLabel.bottomAnchor.constraint(equalTo: completedTrackersView.bottomAnchor, constant: -12),
-            completedDaysLabel.trailingAnchor.constraint(equalTo: completedTrackersView.trailingAnchor, constant: -12),
+            completedTrackersLabel.leadingAnchor.constraint(equalTo: completedTrackersView.leadingAnchor, constant: 12),
+            completedTrackersLabel.bottomAnchor.constraint(equalTo: completedTrackersView.bottomAnchor, constant: -12),
+            completedTrackersLabel.trailingAnchor.constraint(equalTo: completedTrackersView.trailingAnchor, constant: -12),
             averageDaysLabel.leadingAnchor.constraint(equalTo: averageValueView.leadingAnchor, constant: 12),
             averageDaysLabel.bottomAnchor.constraint(equalTo: averageValueView.bottomAnchor, constant: -12),
             averageDaysLabel.trailingAnchor.constraint(equalTo: averageValueView.trailingAnchor, constant: -12),
+            
+            
+            bestPeriodCounter.leadingAnchor.constraint(equalTo: bestPeriodView.leadingAnchor, constant: 12),
+            bestPeriodCounter.trailingAnchor.constraint(equalTo: bestPeriodView.trailingAnchor, constant: -12),
+            bestPeriodCounter.topAnchor.constraint(equalTo: bestPeriodView.topAnchor, constant: 12),
+            bestPeriodCounter.bottomAnchor.constraint(equalTo: bestPeriodView.bottomAnchor, constant: -37),
+            idealDaysCounter.leadingAnchor.constraint(equalTo: idealDaysView.leadingAnchor, constant: 12),
+            idealDaysCounter.trailingAnchor.constraint(equalTo: idealDaysView.trailingAnchor, constant: -12),
+            idealDaysCounter.topAnchor.constraint(equalTo: idealDaysView.topAnchor, constant: 12),
+            idealDaysCounter.bottomAnchor.constraint(equalTo: idealDaysView.bottomAnchor, constant: -37),
+            completedTrackersCounter.leadingAnchor.constraint(equalTo: completedTrackersView.leadingAnchor, constant: 12),
+            completedTrackersCounter.trailingAnchor.constraint(equalTo: completedTrackersView.trailingAnchor, constant: -12),
+            completedTrackersCounter.topAnchor.constraint(equalTo: completedTrackersView.topAnchor, constant: 12),
+            completedTrackersCounter.bottomAnchor.constraint(equalTo: completedTrackersView.bottomAnchor, constant: -37),
+            averageValueCounter.leadingAnchor.constraint(equalTo: averageValueView.leadingAnchor, constant: 12),
+            averageValueCounter.trailingAnchor.constraint(equalTo: averageValueView.trailingAnchor, constant: -12),
+            averageValueCounter.topAnchor.constraint(equalTo: averageValueView.topAnchor, constant: 12),
+            averageValueCounter.bottomAnchor.constraint(equalTo: averageValueView.bottomAnchor, constant: -37),
+            
             
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 206),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -205,11 +269,18 @@ class StatisticsViewController: UIViewController {
         if completedTrackersCount == nil {
             stubImage.isHidden = false
             stubLabel.isHidden = false
-            completedTrackersView.isHidden = true
+            stackView.isHidden = true
         } else if completedTrackersCount != nil {
             stubImage.isHidden = true
             stubLabel.isHidden = true
-            completedTrackersView.isHidden = false
+            stackView.isHidden = false
         }
+    }
+    
+    private func addGradientsToViews() {
+        bestPeriodView.addGradientBorder(colors: [UIColor(hex: "#FD4C49"), UIColor(hex: "#46E69D"), UIColor(hex: "#007BFA")], width: 2)
+        idealDaysView.addGradientBorder(colors: [UIColor(hex: "#FD4C49"), UIColor(hex: "#46E69D"), UIColor(hex: "#007BFA")], width: 2)
+        completedTrackersView.addGradientBorder(colors: [UIColor(hex: "#FD4C49"), UIColor(hex: "#46E69D"), UIColor(hex: "#007BFA")], width: 2)
+        averageValueView.addGradientBorder(colors: [UIColor(hex: "#FD4C49"), UIColor(hex: "#46E69D"), UIColor(hex: "#007BFA")], width: 2)
     }
 }

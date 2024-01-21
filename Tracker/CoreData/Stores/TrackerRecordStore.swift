@@ -2,8 +2,13 @@ import Foundation
 import UIKit
 import CoreData
 
+protocol TrackerRecordDelegate: AnyObject {
+    func didUpdateStatistics()
+}
+
 final class TrackerRecordStore: NSObject {
     // MARK: - Properties:
+    weak var delegate: TrackerRecordDelegate?
     static let shared = TrackerRecordStore()
     var records: [TrackerRecord]? {
         var recordsFromCD: [TrackerRecord]?
