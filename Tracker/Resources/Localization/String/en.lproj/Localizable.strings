@@ -12,6 +12,10 @@
 "title.schedule" = "Schedule";
 "title.emoji" = "Emoji";
 "title.color" = "Color";
+"title.bestPeriod" = "Best period";
+"title.idealDays" = "Ideal days";
+"title.completedTrackers" = "Trackers completed";
+"title.averageValue" = "Average value";
 "title.addCategory" = "Add category";
 "title.emptyCategories" = "Habits and events can \nbe combined by meaning";
 "title.newCategory" = "New category";

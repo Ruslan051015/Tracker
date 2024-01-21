@@ -51,6 +51,16 @@ class StatisticsViewController: UIViewController {
         return gradientView
     }()
     
+    private lazy var bestPeriodLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .YPBlack
+        label.text = L10n.Localizable.Title.bestPeriod
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     private lazy var idealDaysView: UIView = {
         let gradientView = UIView()
         gradientView.backgroundColor = .clear
@@ -60,6 +70,16 @@ class StatisticsViewController: UIViewController {
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
         return gradientView
+    }()
+    
+    private lazy var idealDaysLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .YPBlack
+        label.text = L10n.Localizable.Title.idealDays
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
     }()
     
     private lazy var completedTrackersView: UIView = {
@@ -73,6 +93,16 @@ class StatisticsViewController: UIViewController {
         return gradientView
     }()
     
+    private lazy var completedDaysLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .YPBlack
+        label.text = L10n.Localizable.Title.completedTrackers
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     private lazy var averageValueView: UIView = {
         let gradientView = UIView()
         gradientView.backgroundColor = .clear
@@ -82,6 +112,16 @@ class StatisticsViewController: UIViewController {
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         
         return gradientView
+    }()
+    
+    private lazy var averageDaysLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .YPBlack
+        label.text = L10n.Localizable.Title.averageValue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
     }()
     
     // MARK: - LifeCycle:
@@ -103,6 +143,10 @@ class StatisticsViewController: UIViewController {
         self.view.addSubview(stubLabel)
         self.view.addSubview(stubImage)
         self.view.addSubview(stackView)
+        bestPeriodView.addSubview(bestPeriodLabel)
+        idealDaysView.addSubview(idealDaysLabel)
+        completedTrackersView.addSubview(completedDaysLabel)
+        averageValueView.addSubview(averageDaysLabel)
         stackView.addArrangedSubview(bestPeriodView)
         stackView.addArrangedSubview(idealDaysView)
         stackView.addArrangedSubview(completedTrackersView)
@@ -129,6 +173,19 @@ class StatisticsViewController: UIViewController {
             averageValueView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             averageValueView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             averageValueView.heightAnchor.constraint(equalToConstant: 90),
+            
+            bestPeriodLabel.leadingAnchor.constraint(equalTo: bestPeriodView.leadingAnchor, constant: 12),
+            bestPeriodLabel.bottomAnchor.constraint(equalTo: bestPeriodView.bottomAnchor, constant: -12),
+            bestPeriodLabel.trailingAnchor.constraint(equalTo: bestPeriodView.trailingAnchor, constant: -12),
+            idealDaysLabel.leadingAnchor.constraint(equalTo: idealDaysView.leadingAnchor, constant: 12),
+            idealDaysLabel.bottomAnchor.constraint(equalTo: idealDaysView.bottomAnchor, constant: -12),
+            idealDaysLabel.trailingAnchor.constraint(equalTo: idealDaysView.trailingAnchor, constant: -12),
+            completedDaysLabel.leadingAnchor.constraint(equalTo: completedTrackersView.leadingAnchor, constant: 12),
+            completedDaysLabel.bottomAnchor.constraint(equalTo: completedTrackersView.bottomAnchor, constant: -12),
+            completedDaysLabel.trailingAnchor.constraint(equalTo: completedTrackersView.trailingAnchor, constant: -12),
+            averageDaysLabel.leadingAnchor.constraint(equalTo: averageValueView.leadingAnchor, constant: 12),
+            averageDaysLabel.bottomAnchor.constraint(equalTo: averageValueView.bottomAnchor, constant: -12),
+            averageDaysLabel.trailingAnchor.constraint(equalTo: averageValueView.trailingAnchor, constant: -12),
             
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 206),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),

@@ -12,6 +12,10 @@
 "title.schedule" = "Расписание";
 "title.emoji" = "Emoji";
 "title.color" = "Цвет";
+"title.bestPeriod" = "Лучший период";
+"title.idealDays" = "Идеальные дни";
+"title.completedTrackers" = "Трекеров завершено";
+"title.averageValue" = "Среднее значение";
 "title.addCategory" = "Добавить категорию";
 "title.emptyCategories" = "Привычки и события можно \nобъединить по смыслу";
 "title.newCategory" = "Новая категория";

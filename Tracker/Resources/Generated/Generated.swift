@@ -72,10 +72,16 @@ internal enum L10n {
     internal enum Title {
       /// Добавить категорию
       internal static let addCategory = L10n.tr("Localizable", "title.addCategory", fallback: "Добавить категорию")
+      /// Среднее значение
+      internal static let averageValue = L10n.tr("Localizable", "title.averageValue", fallback: "Среднее значение")
+      /// Лучший период
+      internal static let bestPeriod = L10n.tr("Localizable", "title.bestPeriod", fallback: "Лучший период")
       /// Категория
       internal static let category = L10n.tr("Localizable", "title.category", fallback: "Категория")
       /// Цвет
       internal static let color = L10n.tr("Localizable", "title.color", fallback: "Цвет")
+      /// Трекеров завершено
+      internal static let completedTrackers = L10n.tr("Localizable", "title.completedTrackers", fallback: "Трекеров завершено")
       /// Emoji
       internal static let emoji = L10n.tr("Localizable", "title.emoji", fallback: "Emoji")
       /// Привычки и события можно 
@@ -92,6 +98,8 @@ internal enum L10n {
       internal static let firstPage = L10n.tr("Localizable", "title.firstPage", fallback: "Отслеживайте только \nто, что хотите")
       /// Привычка
       internal static let habit = L10n.tr("Localizable", "title.habit", fallback: "Привычка")
+      /// Идеальные дни
+      internal static let idealDays = L10n.tr("Localizable", "title.idealDays", fallback: "Идеальные дни")
       /// Новая категория
       internal static let newCategory = L10n.tr("Localizable", "title.newCategory", fallback: "Новая категория")
       /// Новое событие

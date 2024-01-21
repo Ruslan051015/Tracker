@@ -12,6 +12,10 @@
 "title.schedule" = "行程";
 "title.emoji" = "這是";
 "title.color" = "顏色";
+"title.bestPeriod" = "最佳時期";
+"title.idealDays" = "理想的日子";
+"title.completedTrackers" = "追蹤器已完成";
+"title.averageValue" = "平均值";
 "title.addCategory" = "新增類別";
 "title.emptyCategories" = "習慣和事件可以透 \n過意義結合起來";
 "title.newCategory" = "新類別";
