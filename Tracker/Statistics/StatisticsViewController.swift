@@ -2,14 +2,11 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
     // MARK: - Private properties:
-    private var bestPeriodCount: Int? = 1
+    private let viewModel: StatisticsViewModel
+    private var bestPeriodCount: Int?
     private var idealDaysCount: Int? = 2
-    private var averageValueCount: Int? = 3
-    private var completedTrackersCount: Int? = 4 {
-        didSet {
-            showOrHideEmptyLabels()
-        }
-    }
+    private var averageValueCount: Int?
+    private var completedTrackersCount: Int?
     
     private lazy var stubLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
@@ -37,7 +34,6 @@ class StatisticsViewController: UIViewController {
         stack.alignment = .center
         stack.distribution = .fillEqually
         stack.spacing = 12
-        stack.isLayoutMarginsRelativeArrangement = true
         stack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
         stack.translatesAutoresizingMaskIntoConstraints = false
         
@@ -144,7 +140,7 @@ class StatisticsViewController: UIViewController {
         return gradientView
     }()
     
-    private lazy var averageDaysLabel: UILabel = {
+    private lazy var averageValueLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
@@ -174,12 +170,27 @@ class StatisticsViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
         
-        showOrHideEmptyLabels()
         setupNavBar()
+        updateLabelsValues()
         setupUI()
+        viewModel.onChange = { [weak self] in
+            guard let self = self else { return }
+            updateLabelsValues()
+            self.showOrHideEmptyLabels()
+        }
+        showOrHideEmptyLabels()
     }
     
     // MARK: - Private methods:
+    init() {
+        viewModel = StatisticsViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupUI() {
         self.view.addSubview(stubLabel)
         self.view.addSubview(stubImage)
@@ -190,7 +201,7 @@ class StatisticsViewController: UIViewController {
         idealDaysView.addSubview(idealDaysCounter)
         completedTrackersView.addSubview(completedTrackersLabel)
         completedTrackersView.addSubview(completedTrackersCounter)
-        averageValueView.addSubview(averageDaysLabel)
+        averageValueView.addSubview(averageValueLabel)
         averageValueView.addSubview(averageValueCounter)
         stackView.addArrangedSubview(bestPeriodView)
         stackView.addArrangedSubview(idealDaysView)
@@ -228,9 +239,9 @@ class StatisticsViewController: UIViewController {
             completedTrackersLabel.leadingAnchor.constraint(equalTo: completedTrackersView.leadingAnchor, constant: 12),
             completedTrackersLabel.bottomAnchor.constraint(equalTo: completedTrackersView.bottomAnchor, constant: -12),
             completedTrackersLabel.trailingAnchor.constraint(equalTo: completedTrackersView.trailingAnchor, constant: -12),
-            averageDaysLabel.leadingAnchor.constraint(equalTo: averageValueView.leadingAnchor, constant: 12),
-            averageDaysLabel.bottomAnchor.constraint(equalTo: averageValueView.bottomAnchor, constant: -12),
-            averageDaysLabel.trailingAnchor.constraint(equalTo: averageValueView.trailingAnchor, constant: -12),
+            averageValueLabel.leadingAnchor.constraint(equalTo: averageValueView.leadingAnchor, constant: 12),
+            averageValueLabel.bottomAnchor.constraint(equalTo: averageValueView.bottomAnchor, constant: -12),
+            averageValueLabel.trailingAnchor.constraint(equalTo: averageValueView.trailingAnchor, constant: -12),
             
             
             bestPeriodCounter.leadingAnchor.constraint(equalTo: bestPeriodView.leadingAnchor, constant: 12),
@@ -266,11 +277,15 @@ class StatisticsViewController: UIViewController {
     }
     
     private func showOrHideEmptyLabels() {
-        if completedTrackersCount == nil {
+        if completedTrackersCount == nil  {
             stubImage.isHidden = false
             stubLabel.isHidden = false
             stackView.isHidden = true
-        } else if completedTrackersCount != nil {
+        } else if completedTrackersCount == 0 {
+            stubImage.isHidden = false
+            stubLabel.isHidden = false
+            stackView.isHidden = true
+        } else {
             stubImage.isHidden = true
             stubLabel.isHidden = true
             stackView.isHidden = false
@@ -282,5 +297,14 @@ class StatisticsViewController: UIViewController {
         idealDaysView.addGradientBorder(colors: [UIColor(hex: "#FD4C49"), UIColor(hex: "#46E69D"), UIColor(hex: "#007BFA")], width: 2)
         completedTrackersView.addGradientBorder(colors: [UIColor(hex: "#FD4C49"), UIColor(hex: "#46E69D"), UIColor(hex: "#007BFA")], width: 2)
         averageValueView.addGradientBorder(colors: [UIColor(hex: "#FD4C49"), UIColor(hex: "#46E69D"), UIColor(hex: "#007BFA")], width: 2)
+    }
+    
+    private func updateLabelsValues() {
+        completedTrackersCount = viewModel.records.count
+        completedTrackersCounter.text = "\(completedTrackersCount ?? 0)"
+        bestPeriodCount = viewModel.bestPeriodNumber()
+        bestPeriodCounter.text = "\(bestPeriodCount ?? 0)"
+        averageValueCount = viewModel.averageValue()
+        averageValueCounter.text = "\(averageValueCount ?? 0)"
     }
 }
