@@ -6,6 +6,7 @@ final class CategoryViewModel: NSObject {
     
     // MARK: - Private Properties:
     private let categoryStore = TrackerCategoryStore.shared
+    private let trackersStore = TrackerStore.shared
     private(set) var categories = [TrackerCategory]() {
         didSet {
             onChange?()
@@ -17,6 +18,18 @@ final class CategoryViewModel: NSObject {
         super.init()
         categoryStore.delegate = self
         categories = categoryStore.categories
+    }
+    
+    func deleteCategory(_ title: String) {
+        let trackers = categories.first { $0.name == title }?.includedTrackers
+        trackers?.forEach({ trackersStore.deleteTracker($0) })
+        if let categoryToDelete = try? categoryStore.getCategoryWith(title: title) {
+            categoryStore.deleteCategory(categoryToDelete)
+            print("Successfully deleted category")
+        } else {
+            print("Нет категорий для удаления")
+            return
+        }
     }
 }
 

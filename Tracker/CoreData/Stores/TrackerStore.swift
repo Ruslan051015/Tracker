@@ -108,6 +108,21 @@ final class TrackerStore: NSObject  {
             color: color,
             emoji: emoji)
     }
+    
+    func deleteTracker(_ model: Tracker) {
+        let id = model.id
+        let request = TrackerCoreData.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), id as CVarArg)
+        
+        guard let trackers = try? context.fetch(request) else {
+            print("Не удалось выполнить запрос")
+            return
+        }
+        if let tracker = trackers.first {
+            context.delete(tracker)
+            saveContext()
+        }
+    }
 }
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {

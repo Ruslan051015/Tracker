@@ -220,8 +220,13 @@ extension CategoriesViewController: UITableViewDelegate {
             let action1 = UIAction(title: "Редактировать", image: nil, handler: { action in
                 print("Edit pressed")
             })
-            let action2 = UIAction(title: "Удалить") { action in
-                print("Delete pressed")
+            let action2 = UIAction(title: "Удалить") { [weak self] action in
+                guard
+                    let self = self,
+                    let path = tableView.indexPathForRow(at: point),
+                    let cell = tableView.cellForRow(at: path) else { return }
+                let categoryToDelete = cell.textLabel?.text ?? ""
+                self.viewModel.deleteCategory(categoryToDelete)
             }
             return UIMenu(children: [action1, action2])
         }
