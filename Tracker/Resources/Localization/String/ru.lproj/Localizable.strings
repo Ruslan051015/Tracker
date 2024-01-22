@@ -22,6 +22,11 @@
 "title.enterCategory" = "Введите название категории";
 "title.habit" = "Привычка";
 "title.event" = "Нерегулярное событие";
+"title.alertTitle" = "Эта категория точно не нужна?";
+"title.alertMessage" = "Трекеры, относящиеся к данной категории также будут удалены";
+"button.editTitle" = "Редактировать";
+"button.alertFirstButtonText" = "Удалить";
+"button.alertSecondButtonText" = "Отменить";
 "button.wowTechnology" = "Вот это технологии!";
 "button.done" = "Готово";
 "button.cancel" = "Отменить";

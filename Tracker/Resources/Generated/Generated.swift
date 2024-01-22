@@ -16,12 +16,18 @@ internal enum L10n {
   }
   internal enum Localizable {
     internal enum Button {
+      /// Удалить
+      internal static let alertFirstButtonText = L10n.tr("Localizable", "button.alertFirstButtonText", fallback: "Удалить")
+      /// Отменить
+      internal static let alertSecondButtonText = L10n.tr("Localizable", "button.alertSecondButtonText", fallback: "Отменить")
       /// Отменить
       internal static let cancel = L10n.tr("Localizable", "button.cancel", fallback: "Отменить")
       /// Cоздать
       internal static let create = L10n.tr("Localizable", "button.create", fallback: "Cоздать")
       /// Готово
       internal static let done = L10n.tr("Localizable", "button.done", fallback: "Готово")
+      /// Редактировать
+      internal static let editTitle = L10n.tr("Localizable", "button.editTitle", fallback: "Редактировать")
       /// Вот это технологии!
       internal static let wowTechnology = L10n.tr("Localizable", "button.wowTechnology", fallback: "Вот это технологии!")
     }
@@ -72,6 +78,10 @@ internal enum L10n {
     internal enum Title {
       /// Добавить категорию
       internal static let addCategory = L10n.tr("Localizable", "title.addCategory", fallback: "Добавить категорию")
+      /// Трекеры, относящиеся к данной категории также будут удалены
+      internal static let alertMessage = L10n.tr("Localizable", "title.alertMessage", fallback: "Трекеры, относящиеся к данной категории также будут удалены")
+      /// Эта категория точно не нужна?
+      internal static let alertTitle = L10n.tr("Localizable", "title.alertTitle", fallback: "Эта категория точно не нужна?")
       /// Среднее значение
       internal static let averageValue = L10n.tr("Localizable", "title.averageValue", fallback: "Среднее значение")
       /// Лучший период

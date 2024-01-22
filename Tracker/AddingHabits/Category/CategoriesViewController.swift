@@ -7,6 +7,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     var selectedCategory: String = ""
     
     // MARK: - Private properties:
+    private var alertPresenter: AlertPresenterProtocol?
     private let viewModel: CategoryViewModel
     private let categoryStore = TrackerCategoryStore.shared
     private lazy var topTitle: UILabel = {
@@ -79,6 +80,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = .YPWhite
         
+        alertPresenter = AlertPresenter(delegate: self)
         configureScreenItems()
         showOrHideEmptyLabels()
         
@@ -93,6 +95,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     init() {
         viewModel = CategoryViewModel()
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -150,11 +153,21 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true)
     }
     
+    private func showDeleteAlert(for category: String) {
+        let alertModel = AlertModel(title: L10n.Localizable.Title.alertTitle, message: L10n.Localizable.Title.alertMessage, firstButtonText: L10n.Localizable.Button.alertFirstButtonText, secondButtonText: L10n.Localizable.Button.alertSecondButtonText) { [weak self] in
+            guard let self = self else { return }
+            viewModel.deleteCategory(category)
+        }
+        alertPresenter?.showAlert(model: alertModel)
+    }
+    
+    // MARK: - Objc-Methods:
     @objc private func addButtonTapped() {
         let viewToPresent = NewCategoryViewController()
         self.present(viewToPresent, animated: true)
     }
 }
+
 // MARK: - UITableViewDataSource:
 extension CategoriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -217,17 +230,18 @@ extension CategoriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions in
-            let action1 = UIAction(title: "Редактировать", image: nil, handler: { action in
+            let action1 = UIAction(title: L10n.Localizable.Button.editTitle, image: nil, handler: { action in
                 print("Edit pressed")
             })
-            let action2 = UIAction(title: "Удалить") { [weak self] action in
+            let action2 = UIAction(title: L10n.Localizable.Button.alertFirstButtonText, attributes: .destructive) { [weak self] action in
                 guard
                     let self = self,
                     let path = tableView.indexPathForRow(at: point),
                     let cell = tableView.cellForRow(at: path) else { return }
                 let categoryToDelete = cell.textLabel?.text ?? ""
-                self.viewModel.deleteCategory(categoryToDelete)
+                self.showDeleteAlert(for: categoryToDelete)
             }
+            
             return UIMenu(children: [action1, action2])
         }
         return configuration

@@ -22,6 +22,11 @@
 "title.enterCategory" = "Enter category name";
 "title.habit" = "Habit";
 "title.event" = "Irregular event";
+"title.alertTitle" = "Are you sure this category is not needed?";
+"title.alertMessage" = "Trackers belonging to this category will also be deleted";
+"button.editTitle" = "Edit";
+"button.alertFirstButtonText" = "Delete";
+"button.alertSecondButtonText" = "Cancel";
 "button.wowTechnology" = "Now, that's technology!";
 "button.done" = "Done";
 "button.cancel" = "Cancel";
