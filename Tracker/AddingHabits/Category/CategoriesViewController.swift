@@ -214,5 +214,18 @@ extension CategoriesViewController: UITableViewDelegate {
         cell?.accessoryView = .none
         selectedCategory = ""
     }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions in
+            let action1 = UIAction(title: "Редактировать", image: nil, handler: { action in
+                print("Edit pressed")
+            })
+            let action2 = UIAction(title: "Удалить") { action in
+                print("Delete pressed")
+            }
+            return UIMenu(children: [action1, action2])
+        }
+        return configuration
+    }
 }
 
