@@ -20,6 +20,12 @@ final class TrackerCategoryStore: NSObject {
         return categories
     }
     
+    var pinnedTrackers: [Tracker] {
+        let trackers = categories.flatMap { $0.includedTrackers }
+        let pinnedTrackers = trackers.filter { $0.isPinned }
+        return pinnedTrackers
+    }
+    
     // MARK: - Private properties:
     private let context: NSManagedObjectContext
     private let trackerStore = TrackerStore.shared

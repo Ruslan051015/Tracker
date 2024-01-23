@@ -26,6 +26,10 @@ internal enum L10n {
       internal static let done = L10n.tr("Localizable", "button.done", fallback: "Готово")
       /// Редактировать
       internal static let editTitle = L10n.tr("Localizable", "button.editTitle", fallback: "Редактировать")
+      /// Закрепить
+      internal static let pinTitle = L10n.tr("Localizable", "button.pinTitle", fallback: "Закрепить")
+      /// Открепить
+      internal static let unpinTitle = L10n.tr("Localizable", "button.unpinTitle", fallback: "Открепить")
       /// Вот это технологии!
       internal static let wowTechnology = L10n.tr("Localizable", "button.wowTechnology", fallback: "Вот это технологии!")
     }

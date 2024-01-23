@@ -417,9 +417,9 @@ final class TrackerCreatingViewController: UIViewController {
     @objc private func createButtonTapped() {
         var tracker: Tracker?
         if trackerType == .habit {
-            tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays, color: selectedColor ?? .clear, emoji: selectedEmoji)
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays, color: selectedColor ?? .clear, emoji: selectedEmoji, isPinned: false)
         } else if trackerType == .event {
-            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases, color: selectedColor ?? .clear, emoji: selectedEmoji)
+            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases, color: selectedColor ?? .clear, emoji: selectedEmoji, isPinned: false)
         }
         guard let tracker = tracker else { return }
         self.dismiss(animated: true)

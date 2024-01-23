@@ -10,19 +10,22 @@ final class Mocks {
                     name: "Swift",
                     schedule: [.Monday, .Tuesday, .Wednesday, .Friday, .Saturday, .Sunday],
                     color: .YPColorSelection10,
-                    emoji: "👍🏻"),
+                    emoji: "👍🏻",
+                    isPinned: true),
                 Tracker(
                     id: UUID(),
                     name: "SwiftBook",
                     schedule: [.Monday, .Tuesday, .Sunday],
                     color: .YPColorSelection2,
-                    emoji: "🤘🏿"),
+                    emoji: "🤘🏿",
+                    isPinned: true),
                 Tracker(
                     id: UUID(),
                     name: "Сomputer Science",
                     schedule: [.Monday, .Tuesday,  .Saturday, .Sunday],
                     color: .YPColorSelection3,
-                    emoji: "👋")
+                    emoji: "👋",
+                    isPinned: false)
             ]),
         
         TrackerCategory(
@@ -33,13 +36,15 @@ final class Mocks {
                     name: "Gym",
                     schedule: [.Monday, .Tuesday, .Wednesday, .Friday, .Sunday,],
                     color: .YPColorSelection6,
-                    emoji: "💪🏻"),
+                    emoji: "💪🏻",
+                    isPinned: true),
                 Tracker(
                     id: UUID(),
                     name: "Football",
                     schedule: [.Wednesday],
                     color: .YPColorSelection13,
-                    emoji: "⚽️")
+                    emoji: "⚽️",
+                    isPinned: false)
             ])
     ]
 }

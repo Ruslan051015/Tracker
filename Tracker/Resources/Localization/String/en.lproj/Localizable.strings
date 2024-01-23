@@ -27,6 +27,8 @@
 "title.alertMessage" = "Trackers belonging to this category will also be deleted";
 "title.deleteTrackerTitle" = "Are you sure you want to delete the tracker?";
 "button.editTitle" = "Edit";
+"button.pinTitle" = "Pin";
+"button.unpinTitle" = "Unpin";
 "button.delete" = "Delete";
 "button.wowTechnology" = "Now, that's technology!";
 "button.done" = "Done";

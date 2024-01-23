@@ -237,6 +237,10 @@ final class TrackersViewController: UIViewController {
         alertPresenter?.showAlert(model: alertModel)
     }
     
+    private func pinTracker(_ tracker: Tracker) {
+        trackerStore.pinTrackerCoreData(tracker)
+    }
+    
     // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged() {
         reloadVisibleCategories()
@@ -255,15 +259,20 @@ final class TrackersViewController: UIViewController {
 extension TrackersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let configuration = UIContextMenuConfiguration(identifier: indexPath as NSCopying, actionProvider:  { actions in
-            let action1 = UIAction(title: "Закрепить", handler: { [weak self] _ in
-                self?.collectionView.reloadData()
+            let tracker = self.visibleCategories[indexPath.section].includedTrackers[indexPath.row]
+            let pinTitle = tracker.isPinned ? L10n.Localizable.Button.unpinTitle : L10n.Localizable.Button.pinTitle
+            let pinAction = UIAction(title: pinTitle, handler: { [weak self] _ in
+                guard let self else { return }
+                
+                self.pinTracker(tracker)
             })
             
-            let action2 = UIAction(title: L10n.Localizable.Button.editTitle, handler: { [weak self] _ in
-                self?.collectionView.reloadData()
+            let editAction = UIAction(title: L10n.Localizable.Button.editTitle, handler: { [weak self] _ in
+                guard let self else { return }
+                
             })
             
-            let action3 = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive, handler: { [weak self] _ in
+            let deleteAction = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive, handler: { [weak self] _ in
                 guard let cell = collectionView.cellForItem(at: indexPath) as? TrackerCell else {
                     return
                 }
@@ -271,7 +280,7 @@ extension TrackersViewController: UICollectionViewDelegate {
                 self?.showDeleteAlert(for: trackersID)
                 
             })
-            let contextMenu = UIMenu(children: [action1, action2, action3])
+            let contextMenu = UIMenu(children: [pinAction, editAction, deleteAction])
             return contextMenu
         })
         return configuration
@@ -343,6 +352,7 @@ extension TrackersViewController: UICollectionViewDataSource {
         }
         let isEnabled = datePicker.date.dayBefore(Date()) || Date().sameDay(datePicker.date)
         let completedDays = completedTrackers.filter { $0.id == tracker.id }.count
+        let isPinned = tracker.isPinned
         
         cell.cellConfig(
             id: tracker.id,
@@ -351,7 +361,8 @@ extension TrackersViewController: UICollectionViewDataSource {
             emoji: tracker.emoji,
             isEnabled: isEnabled,
             isCompleted: isCompleted,
-            completedDays: completedDays)
+            completedDays: completedDays,
+            isPinned: isPinned)
         
         return cell
     }

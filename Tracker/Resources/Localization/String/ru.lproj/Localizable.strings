@@ -27,6 +27,8 @@
 "title.alertMessage" = "Трекеры, относящиеся к данной категории также будут удалены";
 "title.deleteTrackerTitle" = "Уверены что хотите удалить трекер?";
 "button.editTitle" = "Редактировать";
+"button.pinTitle" = "Закрепить";
+"button.unpinTitle" = "Открепить";
 "button.delete" = "Удалить";
 "button.wowTechnology" = "Вот это технологии!";
 "button.done" = "Готово";

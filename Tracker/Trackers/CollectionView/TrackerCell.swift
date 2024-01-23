@@ -103,7 +103,8 @@ class TrackerCell: UICollectionViewCell {
                     emoji: String,
                     isEnabled: Bool,
                     isCompleted: Bool,
-                    completedDays: Int) {
+                    completedDays: Int,
+                    isPinned: Bool) {
         let numberOfCompletedDays = completedDays
         let daysString = NSLocalizedString("completedDays", comment: "")
         let localizedString = String.localizedStringWithFormat(daysString, numberOfCompletedDays)
@@ -116,6 +117,7 @@ class TrackerCell: UICollectionViewCell {
         self.plusButton.isEnabled = isEnabled
         self.daysCounterLabel.text = localizedString
         self.isCompleted = isCompleted
+        self.isPinned = isPinned
         
         let image = isCompleted ? doneImage : plusImage
         plusButton.setImage(image, for: .normal)
