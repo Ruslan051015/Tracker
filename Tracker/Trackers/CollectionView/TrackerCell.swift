@@ -4,6 +4,7 @@ class TrackerCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseID = "TrackersCell"
     weak var delegate: TrackerCellDelegate?
+    var isPinned: Bool = false
     public var preview: UIView {
         return topView
     }
@@ -44,6 +45,17 @@ class TrackerCell: UICollectionViewCell {
         label.textColor = .YPWhite
         
         return label
+    }()
+    
+    private lazy var pinnedImageView: UIImageView = {
+        let pinnedImage = UIImage(named: "pin")
+        let imageView = UIImageView(image: pinnedImage)
+        imageView.layer.backgroundColor = UIColor.clear.cgColor
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        
+        
+        return imageView
     }()
     
     private lazy var bottomView: UIView = {
@@ -108,6 +120,8 @@ class TrackerCell: UICollectionViewCell {
         let image = isCompleted ? doneImage : plusImage
         plusButton.setImage(image, for: .normal)
         plusButton.alpha = isCompleted ? 0.3 : 1
+        
+        showOrHidePinImage()
     }
     // MARK: - Private methods:
     private func configureCell() {
@@ -122,6 +136,7 @@ class TrackerCell: UICollectionViewCell {
         contentView.addSubview(bottomView)
         topView.addSubview(emojiLabel)
         topView.addSubview(trackerNameLabel)
+        topView.addSubview(pinnedImageView)
         bottomView.addSubview(daysCounterLabel)
         bottomView.addSubview(plusButton)
         
@@ -137,6 +152,10 @@ class TrackerCell: UICollectionViewCell {
             trackerNameLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -12),
             trackerNameLabel.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 12),
             trackerNameLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -12),
+            pinnedImageView.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -4),
+            pinnedImageView.topAnchor.constraint(equalTo: topView.topAnchor, constant: 12),
+            pinnedImageView.widthAnchor.constraint(equalToConstant: 24),
+            pinnedImageView.heightAnchor.constraint(equalToConstant: 24),
             
             bottomView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             bottomView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
@@ -151,6 +170,14 @@ class TrackerCell: UICollectionViewCell {
             plusButton.widthAnchor.constraint(equalToConstant: 34),
             plusButton.heightAnchor.constraint(equalToConstant: 34)
         ])
+    }
+    
+    private func showOrHidePinImage() {
+        if isPinned {
+            pinnedImageView.isHidden = false
+        } else {
+            pinnedImageView.isHidden = true
+        }
     }
     
     // MARK: - Objc-Methods:
