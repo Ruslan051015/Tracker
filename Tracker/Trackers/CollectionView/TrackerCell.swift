@@ -4,6 +4,10 @@ class TrackerCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseID = "TrackersCell"
     weak var delegate: TrackerCellDelegate?
+    public var preview: UIView {
+        return topView
+    }
+    
     // MARK: - Private properties:
     private var isCompleted: Bool = false
     private var trackerID: UUID? = nil

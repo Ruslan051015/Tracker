@@ -26,8 +26,7 @@
 "title.alertTitle" = "您確定不需要這個類別嗎";
 "title.alertMessage" = "屬於此類別的追蹤器也將被刪除";
 "button.editTitle" = "編輯";
-"button.alertFirstButtonText" = "刪除";
-"button.alertSecondButtonText" = "取消";
+"button.delete" = "刪除";
 "button.wowTechnology" = "這就是技術！";
 "button.done" = "準備好";
 "button.cancel" = "取消";

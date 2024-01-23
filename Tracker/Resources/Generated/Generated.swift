@@ -16,14 +16,12 @@ internal enum L10n {
   }
   internal enum Localizable {
     internal enum Button {
-      /// Удалить
-      internal static let alertFirstButtonText = L10n.tr("Localizable", "button.alertFirstButtonText", fallback: "Удалить")
-      /// Отменить
-      internal static let alertSecondButtonText = L10n.tr("Localizable", "button.alertSecondButtonText", fallback: "Отменить")
       /// Отменить
       internal static let cancel = L10n.tr("Localizable", "button.cancel", fallback: "Отменить")
       /// Cоздать
       internal static let create = L10n.tr("Localizable", "button.create", fallback: "Cоздать")
+      /// Удалить
+      internal static let delete = L10n.tr("Localizable", "button.delete", fallback: "Удалить")
       /// Готово
       internal static let done = L10n.tr("Localizable", "button.done", fallback: "Готово")
       /// Редактировать

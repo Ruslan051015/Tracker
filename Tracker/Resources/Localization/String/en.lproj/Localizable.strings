@@ -26,8 +26,7 @@
 "title.alertTitle" = "Are you sure this category is not needed?";
 "title.alertMessage" = "Trackers belonging to this category will also be deleted";
 "button.editTitle" = "Edit";
-"button.alertFirstButtonText" = "Delete";
-"button.alertSecondButtonText" = "Cancel";
+"button.delete" = "Delete";
 "button.wowTechnology" = "Now, that's technology!";
 "button.done" = "Done";
 "button.cancel" = "Cancel";

@@ -156,7 +156,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func showDeleteAlert(for category: String) {
-        let alertModel = AlertModel(title: L10n.Localizable.Title.alertTitle, message: L10n.Localizable.Title.alertMessage, firstButtonText: L10n.Localizable.Button.alertFirstButtonText, secondButtonText: L10n.Localizable.Button.alertSecondButtonText) { [weak self] in
+        let alertModel = AlertModel(title: L10n.Localizable.Title.alertTitle, message: L10n.Localizable.Title.alertMessage, firstButtonText: L10n.Localizable.Button.delete, secondButtonText: L10n.Localizable.Button.cancel) { [weak self] in
             guard let self = self else { return }
             viewModel.deleteCategory(category)
         }
@@ -242,7 +242,7 @@ extension CategoriesViewController: UITableViewDelegate {
                 self.present(viewToPresent, animated: true)
             }
             
-            let action2 = UIAction(title: L10n.Localizable.Button.alertFirstButtonText, attributes: .destructive) { [weak self] action in
+            let action2 = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive) { [weak self] action in
                 guard
                     let self = self,
                     let path = tableView.indexPathForRow(at: point),

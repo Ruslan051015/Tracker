@@ -209,6 +209,7 @@
 		4A015DE42B5D591E00A03DB2 /* Trackers */ = {
 			isa = PBXGroup;
 			children = (
+				4A7D47152ADC7B5E00A8CE1F /* CollectionView */,
 				4AE8CC612AE01CC500D7A628 /* TrackersViewController.swift */,
 			);
 			path = Trackers;
@@ -421,7 +422,6 @@
 				4A21EF4A2AD1A21B00BD40DB /* TrackerCreatingViewController.swift */,
 				4A015DE52B5D593600A03DB2 /* Schedule */,
 				4A5139A52B334E6300AC1D2B /* Category */,
-				4A7D47152ADC7B5E00A8CE1F /* CollectionView */,
 			);
 			path = AddingHabits;
 			sourceTree = "<group>";

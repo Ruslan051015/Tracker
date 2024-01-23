@@ -241,6 +241,37 @@ final class TrackersViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate:
+extension TrackersViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let configuration = UIContextMenuConfiguration(identifier: indexPath as NSCopying, actionProvider:  { actions in
+            let action1 = UIAction(title: "Закрепить", handler: { [weak self] _ in
+                self?.collectionView.reloadData()
+            })
+            let action2 = UIAction(title: L10n.Localizable.Button.editTitle, handler: { [weak self] _ in
+                self?.collectionView.reloadData()
+            })
+            let action3 = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive, handler: { [weak self] _ in
+                self?.collectionView.reloadData()
+            })
+            let contextMenu = UIMenu(children: [action1, action2, action3])
+            return contextMenu
+        })
+        return configuration
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        guard let indexPath = configuration.identifier as? IndexPath else { return nil}
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TrackerCell else {
+            return nil
+        }
+        let previewView = cell.preview
+        let targetedPreview = UITargetedPreview(view: previewView)
+        
+        return targetedPreview
+    }
+}
+
 // MARK: - UICollectionViewDelegateFlowLayout:
 extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
