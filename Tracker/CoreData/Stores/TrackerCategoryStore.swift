@@ -83,6 +83,17 @@ final class TrackerCategoryStore: NSObject {
         saveContext()
     }
     
+    func update(categoryName: String, with newName: String) {
+        guard let categoryToUpdate = categoryFetchedResultsController.fetchedObjects?.first(where: {
+            $0.name == categoryName
+        }) else {
+            print("не удалось найти категорию для обновления")
+            return
+        }
+        categoryToUpdate.name = newName
+        saveContext()
+    }
+    
     func createCategoryFromCoreData(_ model: TrackerCategoryCoreData) throws -> TrackerCategory {
         guard let name = model.name else {
             throw CDErrors.categoryTitleError

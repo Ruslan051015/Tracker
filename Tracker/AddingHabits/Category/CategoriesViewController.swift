@@ -163,7 +163,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Objc-Methods:
     @objc private func addButtonTapped() {
-        let viewToPresent = NewCategoryViewController()
+        let viewToPresent = NewCategoryViewController(eventType: .Creating)
         self.present(viewToPresent, animated: true)
     }
 }
@@ -230,9 +230,16 @@ extension CategoriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions in
-            let action1 = UIAction(title: L10n.Localizable.Button.editTitle, image: nil, handler: { action in
-                print("Edit pressed")
-            })
+            let action1 = UIAction(title: L10n.Localizable.Button.editTitle) { action in
+                guard
+                    let path = tableView.indexPathForRow(at: point),
+                    let cell = tableView.cellForRow(at: path) else { return }
+                let editingCategoryName = cell.textLabel?.text ?? ""
+                let viewToPresent = NewCategoryViewController(eventType: .Editing)
+                viewToPresent.editingCategoryName = editingCategoryName
+                self.present(viewToPresent, animated: true)
+            }
+            
             let action2 = UIAction(title: L10n.Localizable.Button.alertFirstButtonText, attributes: .destructive) { [weak self] action in
                 guard
                     let self = self,

@@ -1,13 +1,31 @@
 import UIKit
 
-final class NewCategoryViewController: UIViewController {    
+enum eventType {
+    case Creating
+    case Editing
+}
+
+final class NewCategoryViewController: UIViewController {
+    // MARK: - Properties:
+    static let didChangeCategoryName = Notification.Name(rawValue: "DidChangeCategoryName")
+    var editingCategoryName: String?
+    
     // MARK: - Private properties:
+    private let eventType: eventType
     private var categoryName: String = ""
     private let categoryStore = TrackerCategoryStore.shared
+    private var controllerTitle: String {
+        switch eventType {
+        case .Creating:
+            return L10n.Localizable.Title.newCategory
+        case .Editing:
+            return L10n.Localizable.Title.editingCategory
+        }
+    }
     
     private lazy var topTitle: UILabel = {
         let label = UILabel()
-        label.text = L10n.Localizable.Title.newCategory
+        label.text = controllerTitle
         label.textColor = .YPBlack
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,9 +66,23 @@ final class NewCategoryViewController: UIViewController {
         textField.becomeFirstResponder()
         setupToHideKeyboardOnTapOnView()
         doneButtonCondition()
+        
+        if eventType == .Editing {
+            textField.text = editingCategoryName
+        }
     }
     
     // MARK: - Private methods:
+    init(eventType: eventType) {
+        self.eventType = eventType
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupScreenItems() {
         self.view.addSubview(topTitle)
         self.view.addSubview(textField)
@@ -73,16 +105,6 @@ final class NewCategoryViewController: UIViewController {
         ])
     }
     
-    // MARK: - Objc-Methods:
-    @objc private func doneButtonTapped() {
-        do {
-            try categoryStore.createCoreDataCategory(with: categoryName)
-        } catch {
-            print(CDErrors.creatingCoreDataCategoryError)
-        }
-        self.dismiss(animated: true)
-    }
-    
     private func doneButtonCondition() {
         guard let currentText = textField.text else {
             return
@@ -96,6 +118,24 @@ final class NewCategoryViewController: UIViewController {
             doneButton.tintColor = .YPOnlyWhite
         }
     }
+    
+    // MARK: - Objc-Methods:
+    @objc private func doneButtonTapped() {
+        if eventType == .Creating {
+            do {
+                try categoryStore.createCoreDataCategory(with: categoryName)
+            } catch {
+                print(CDErrors.creatingCoreDataCategoryError)
+            }
+        } else if eventType == .Editing {
+            guard let editingCategoryName = editingCategoryName else { return }
+            categoryStore.update(categoryName: editingCategoryName, with: categoryName)
+        }
+        NotificationCenter.default.post(name: NewCategoryViewController.didChangeCategoryName, object: self)
+        self.dismiss(animated: true)
+    }
+    
+    
     
     @objc private func textValueChanged() {
         doneButtonCondition()

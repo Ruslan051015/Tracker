@@ -13,6 +13,7 @@ final class TrackersViewController: UIViewController {
     var completedTrackers: [TrackerRecord] = []
     
     // MARK: - Private properties:
+    private var newCategoryVCObserver: NSObjectProtocol?
     private let trackerStore = TrackerStore.shared
     private let categoryStore = TrackerCategoryStore.shared
     private let recordStore = TrackerRecordStore.shared
@@ -98,6 +99,16 @@ final class TrackersViewController: UIViewController {
         screenItemsSetup()
         navBarSetup()
         setupToHideKeyboardOnTapOnView()
+        
+        newCategoryVCObserver = NotificationCenter.default.addObserver(
+            forName: NewCategoryViewController.didChangeCategoryName,
+            object: nil,
+            queue: .main
+            ) { [weak self] _ in
+                guard let self else { return }
+                updateCategories()
+                showCurrentDayCategories()
+            }
     }
 
     // MARK: - Private methods:

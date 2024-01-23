@@ -19,6 +19,7 @@
 "title.addCategory" = "Добавить категорию";
 "title.emptyCategories" = "Привычки и события можно \nобъединить по смыслу";
 "title.newCategory" = "Новая категория";
+"title.editingCategory" = "Редактирование категории";
 "title.enterCategory" = "Введите название категории";
 "title.habit" = "Привычка";
 "title.event" = "Нерегулярное событие";
