@@ -29,9 +29,7 @@ final class CategoryViewModel: NSObject {
         trackers.forEach { try? recordStore.deleteAllRecordFromCD(for: $0.id) }
         if let categoryToDelete = try? categoryStore.getCategoryWith(title: title) {
             categoryStore.deleteCategory(categoryToDelete)
-            print("Successfully deleted category")
         } else {
-            print("Нет категорий для удаления")
             return
         }
     }
@@ -42,6 +40,4 @@ extension CategoryViewModel: TrackerCategoryDelegate {
     func updateCategories() {
         categories = categoryStore.categories
     }
-    
-    
 }

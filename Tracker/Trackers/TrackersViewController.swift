@@ -91,7 +91,7 @@ final class TrackersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
-       
+        
         trackerStore.delegate = self
         updateCategories()
         updateCompletedTrackers()
@@ -104,13 +104,13 @@ final class TrackersViewController: UIViewController {
             forName: NewCategoryViewController.didChangeCategoryName,
             object: nil,
             queue: .main
-            ) { [weak self] _ in
-                guard let self else { return }
-                updateCategories()
-                showCurrentDayCategories()
-            }
+        ) { [weak self] _ in
+            guard let self else { return }
+            updateCategories()
+            showCurrentDayCategories()
+        }
     }
-
+    
     // MARK: - Private methods:
     private func screenItemsSetup() {
         self.view.addSubview(searchBar)

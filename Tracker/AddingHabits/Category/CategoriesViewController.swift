@@ -101,6 +101,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     private func configureScreenItems() {
         view.addSubview(topTitle)
         view.addSubview(tableView)
@@ -136,6 +137,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
             addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
         ])
     }
+    
     // MARK: - Private methods:
     private func showOrHideEmptyLabels() {
         if !viewModel.categories.isEmpty {

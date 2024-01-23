@@ -78,7 +78,6 @@ final class NewCategoryViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -135,12 +134,11 @@ final class NewCategoryViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    
-    
     @objc private func textValueChanged() {
         doneButtonCondition()
     }
 }
+
 // MARK: - UITextFieldDelegate:
 extension NewCategoryViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
