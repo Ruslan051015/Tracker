@@ -25,6 +25,7 @@
 "title.event" = "Нерегулярное событие";
 "title.alertTitle" = "Эта категория точно не нужна?";
 "title.alertMessage" = "Трекеры, относящиеся к данной категории также будут удалены";
+"title.deleteTrackerTitle" = "Уверены что хотите удалить трекер?";
 "button.editTitle" = "Редактировать";
 "button.delete" = "Удалить";
 "button.wowTechnology" = "Вот это технологии!";

@@ -25,6 +25,7 @@
 "title.event" = "不定期活動";
 "title.alertTitle" = "您確定不需要這個類別嗎";
 "title.alertMessage" = "屬於此類別的追蹤器也將被刪除";
+"title.deleteTrackerTitle" = "您確定要刪除追蹤器嗎?";
 "button.editTitle" = "編輯";
 "button.delete" = "刪除";
 "button.wowTechnology" = "這就是技術！";

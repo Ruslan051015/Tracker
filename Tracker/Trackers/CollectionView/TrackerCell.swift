@@ -7,6 +7,9 @@ class TrackerCell: UICollectionViewCell {
     public var preview: UIView {
         return topView
     }
+    public var id: UUID? {
+        return trackerID ?? nil
+    }
     
     // MARK: - Private properties:
     private var isCompleted: Bool = false

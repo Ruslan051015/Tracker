@@ -90,6 +90,8 @@ internal enum L10n {
       internal static let color = L10n.tr("Localizable", "title.color", fallback: "Цвет")
       /// Трекеров завершено
       internal static let completedTrackers = L10n.tr("Localizable", "title.completedTrackers", fallback: "Трекеров завершено")
+      /// Уверены что хотите удалить трекер?
+      internal static let deleteTrackerTitle = L10n.tr("Localizable", "title.deleteTrackerTitle", fallback: "Уверены что хотите удалить трекер?")
       /// Редактирование категории
       internal static let editingCategory = L10n.tr("Localizable", "title.editingCategory", fallback: "Редактирование категории")
       /// Emoji

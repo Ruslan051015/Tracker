@@ -13,6 +13,7 @@ final class TrackersViewController: UIViewController {
     var completedTrackers: [TrackerRecord] = []
     
     // MARK: - Private properties:
+    private var alertPresenter: AlertPresenterProtocol?
     private var newCategoryVCObserver: NSObjectProtocol?
     private let trackerStore = TrackerStore.shared
     private let categoryStore = TrackerCategoryStore.shared
@@ -92,6 +93,7 @@ final class TrackersViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .YPWhite
         
+        alertPresenter = AlertPresenter(delegate: self)
         trackerStore.delegate = self
         updateCategories()
         updateCompletedTrackers()
@@ -227,6 +229,14 @@ final class TrackersViewController: UIViewController {
         }
     }
     
+    private func showDeleteAlert(for trackerID: UUID) {
+        let alertModel = AlertModel(title: L10n.Localizable.Title.deleteTrackerTitle, message: nil, firstButtonText: L10n.Localizable.Button.delete, secondButtonText: L10n.Localizable.Button.cancel) { [weak self] in
+            guard let self = self else { return }
+            
+        }
+        alertPresenter?.showAlert(model: alertModel)
+    }
+    
     // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged() {
         reloadVisibleCategories()
@@ -248,11 +258,18 @@ extension TrackersViewController: UICollectionViewDelegate {
             let action1 = UIAction(title: "Закрепить", handler: { [weak self] _ in
                 self?.collectionView.reloadData()
             })
+            
             let action2 = UIAction(title: L10n.Localizable.Button.editTitle, handler: { [weak self] _ in
                 self?.collectionView.reloadData()
             })
+            
             let action3 = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive, handler: { [weak self] _ in
-                self?.collectionView.reloadData()
+                guard let cell = collectionView.cellForItem(at: indexPath) as? TrackerCell else {
+                    return
+                }
+                guard let trackersID = cell.id else { return }
+                self?.showDeleteAlert(for: trackersID)
+                
             })
             let contextMenu = UIMenu(children: [action1, action2, action3])
             return contextMenu

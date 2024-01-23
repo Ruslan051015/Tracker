@@ -25,6 +25,7 @@
 "title.event" = "Irregular event";
 "title.alertTitle" = "Are you sure this category is not needed?";
 "title.alertMessage" = "Trackers belonging to this category will also be deleted";
+"title.deleteTrackerTitle" = "Are you sure you want to delete the tracker?";
 "button.editTitle" = "Edit";
 "button.delete" = "Delete";
 "button.wowTechnology" = "Now, that's technology!";
