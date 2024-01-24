@@ -120,8 +120,8 @@ internal enum L10n {
       internal static let idealDays = L10n.tr("Localizable", "title.idealDays", fallback: "Идеальные дни")
       /// Новая категория
       internal static let newCategory = L10n.tr("Localizable", "title.newCategory", fallback: "Новая категория")
-      /// Новое событие
-      internal static let newEvent = L10n.tr("Localizable", "title.newEvent", fallback: "Новое событие")
+      /// Новое нерегулярное событие
+      internal static let newEvent = L10n.tr("Localizable", "title.newEvent", fallback: "Новое нерегулярное событие")
       /// Новая привычка
       internal static let newHabit = L10n.tr("Localizable", "title.newHabit", fallback: "Новая привычка")
       /// Анализировать пока нечего

@@ -6,7 +6,7 @@
 "title.statistics" = "Статистика";
 "title.noDataToAnalyze" = "Анализировать пока нечего";
 "title.newHabit" = "Новая привычка";
-"title.newEvent" = "Новое событие";
+"title.newEvent" = "Новое нерегулярное событие";
 "title.trackerCreating" = "Cоздание трекера";
 "title.category" = "Категория";
 "title.schedule" = "Расписание";

@@ -6,7 +6,7 @@
 "title.statistics" = "Statistics";
 "title.noDataToAnalyze" = "Nothing to analyze yet";
 "title.newHabit" = "New habit";
-"title.newEvent" = "New event";
+"title.newEvent" = "New irregular event";
 "title.trackerCreating" = "Creating a tracker";
 "title.category" = "Category";
 "title.schedule" = "Schedule";

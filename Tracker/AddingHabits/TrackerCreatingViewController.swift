@@ -49,6 +49,7 @@ final class TrackerCreatingViewController: UIViewController {
     // MARK: - Private properties:
     private let trackerStore = TrackerStore.shared
     private let categoryStore = TrackerCategoryStore.shared
+    private let recordStrore = TrackerRecordStore.shared
     private let emojies: [String] = ["🙂", "😻", "🌺", "🐶", "❤️", "😱",
                                      "😇", "😡", "🥶", "🤔", "🙌", "🍔",
                                      "🥦", "🏓", "🥇", "🎸", "🏝️", "😪"]
@@ -66,8 +67,6 @@ final class TrackerCreatingViewController: UIViewController {
     
     private var selectedEmojiIndexPath: IndexPath?
     private var selectedColorIndexPath: IndexPath?
-    private var completedDaysCounter: Int?
-    
     private var selectedEmoji: String = "" {
         didSet {
             createButtonCondition()
@@ -92,7 +91,7 @@ final class TrackerCreatingViewController: UIViewController {
     
     private lazy var topTitle: UILabel = {
         let label = UILabel()
-        label.text = trackerType.titleText
+        label.text = editingTracker == nil ? trackerType.titleText : L10n.Localizable.Title.habitEditing
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .YPBlack
@@ -102,6 +101,7 @@ final class TrackerCreatingViewController: UIViewController {
     }()
     
     private lazy var completedDaysLabel: UILabel = {
+        let completedDaysCounter = recordStrore.records?.filter({ $0.id == editingTracker?.id }).count
         let counter = UILabel()
         counter.font = .boldSystemFont(ofSize: 32)
         counter.textColor = .YPBlack
@@ -340,9 +340,9 @@ final class TrackerCreatingViewController: UIViewController {
 
         var constraints = [
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
-            topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            topTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 68),
+            topTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -66),
             topTitle.heightAnchor.constraint(equalToConstant: 22),
-            topTitle.widthAnchor.constraint(equalToConstant: 149),
             
             completedDaysLabel.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
             completedDaysLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
