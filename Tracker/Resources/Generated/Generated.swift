@@ -79,6 +79,16 @@ internal enum L10n {
       /// Ограничение 38 символов
       internal static let lettersLimit = L10n.tr("Localizable", "field.lettersLimit", fallback: "Ограничение 38 символов")
     }
+    internal enum Filter {
+      /// Все трекеры
+      internal static let allTrackersTitle = L10n.tr("Localizable", "filter.allTrackersTitle", fallback: "Все трекеры")
+      /// Завершенные
+      internal static let completedTrackersTitle = L10n.tr("Localizable", "filter.completedTrackersTitle", fallback: "Завершенные")
+      /// Не завершенные
+      internal static let notCompletedTitle = L10n.tr("Localizable", "filter.notCompletedTitle", fallback: "Не завершенные")
+      /// Трекеры на сегодня
+      internal static let todayTrackersTitle = L10n.tr("Localizable", "filter.todayTrackersTitle", fallback: "Трекеры на сегодня")
+    }
     internal enum Title {
       /// Добавить категорию
       internal static let addCategory = L10n.tr("Localizable", "title.addCategory", fallback: "Добавить категорию")

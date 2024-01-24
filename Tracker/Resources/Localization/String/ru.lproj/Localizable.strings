@@ -29,6 +29,10 @@
 "title.deleteTrackerTitle" = "Уверены что хотите удалить трекер?";
 "title.pinnedTitle" = "Закрепленные";
 "title.notFoundTitle" = "Ничего не найдено";
+"filter.allTrackersTitle" = "Все трекеры";
+"filter.todayTrackersTitle" = "Трекеры на сегодня";
+"filter.completedTrackersTitle" = "Завершенные";
+"filter.notCompletedTitle" = "Не завершенные";
 "button.saveTitle" = "Сохранить";
 "button.editTitle" = "Редактировать";
 "button.pinTitle" = "Закрепить";

@@ -12,6 +12,8 @@
 		4A07C3CD2AF91E2D001BD9B7 /* GeometricParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A07C3CC2AF91E2D001BD9B7 /* GeometricParams.swift */; };
 		4A0903782B5C1EF500DEBD6F /* YandexMetrica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0903772B5C1EF500DEBD6F /* YandexMetrica.swift */; };
 		4A110AF82B5AB30000B3A363 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 4A110AF72B5AB30000B3A363 /* SnapshotTesting */; };
+		4A16797C2B61BA4000488289 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16797B2B61BA4000488289 /* FiltersViewController.swift */; };
+		4A16797E2B61BA6D00488289 /* FiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16797D2B61BA6D00488289 /* FiltersModel.swift */; };
 		4A21EF4B2AD1A21B00BD40DB /* TrackerCreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21EF4A2AD1A21B00BD40DB /* TrackerCreatingViewController.swift */; };
 		4A21EF4D2AD1AB3D00BD40DB /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21EF4C2AD1AB3D00BD40DB /* CustomTextField.swift */; };
 		4A40E1172AE1D4D000E52FB9 /* TrackerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A40E1162AE1D4D000E52FB9 /* TrackerCell.swift */; };
@@ -94,6 +96,8 @@
 		4A015DE92B5D5D9000A03DB2 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		4A07C3CC2AF91E2D001BD9B7 /* GeometricParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometricParams.swift; sourceTree = "<group>"; };
 		4A0903772B5C1EF500DEBD6F /* YandexMetrica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMetrica.swift; sourceTree = "<group>"; };
+		4A16797B2B61BA4000488289 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		4A16797D2B61BA6D00488289 /* FiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersModel.swift; sourceTree = "<group>"; };
 		4A2102582B54505500E18A45 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-HK"; path = "zh-HK.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		4A21EF4A2AD1A21B00BD40DB /* TrackerCreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCreatingViewController.swift; sourceTree = "<group>"; };
 		4A21EF4C2AD1AB3D00BD40DB /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -209,7 +213,11 @@
 		4A015DE42B5D591E00A03DB2 /* Trackers */ = {
 			isa = PBXGroup;
 			children = (
+				4A16797A2B61BA2F00488289 /* Filters */,
+				4A86C3FA2AD055E00079EF4B /* AddingHabits */,
 				4A7D47152ADC7B5E00A8CE1F /* CollectionView */,
+				4A015DE62B5D595700A03DB2 /* Statistics */,
+				4A8181392ACF5EFD00A3B9DF /* TabBar */,
 				4AE8CC612AE01CC500D7A628 /* TrackersViewController.swift */,
 			);
 			path = Trackers;
@@ -238,6 +246,14 @@
 				4A0903772B5C1EF500DEBD6F /* YandexMetrica.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		4A16797A2B61BA2F00488289 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				4A16797B2B61BA4000488289 /* FiltersViewController.swift */,
+			);
+			path = Filters;
 			sourceTree = "<group>";
 		};
 		4A21025E2B545CE300E18A45 /* Generated */ = {
@@ -314,14 +330,11 @@
 			isa = PBXGroup;
 			children = (
 				4A776CC62B5F25D0003A7D1B /* AlertPresenter */,
-				4A015DE62B5D595700A03DB2 /* Statistics */,
-				4A015DE42B5D591E00A03DB2 /* Trackers */,
 				4A41EEC32B2E043A00C6F97C /* Onboarding */,
-				4A86C3FA2AD055E00079EF4B /* AddingHabits */,
+				4A015DE42B5D591E00A03DB2 /* Trackers */,
 				4AAE91992AFFE981004E3C03 /* CoreData */,
 				4ABC6DA52AE4713800651AC0 /* Settings */,
 				4A81813A2ACF5F2600A3B9DF /* Models */,
-				4A8181392ACF5EFD00A3B9DF /* TabBar */,
 				4A532E192B52F771003C5930 /* Resources */,
 				4A0903762B5C1EEC00DEBD6F /* Service */,
 				4A5AD1D52ACEF2F7000E826B /* Assets.xcassets */,
@@ -411,6 +424,7 @@
 				4A07C3CC2AF91E2D001BD9B7 /* GeometricParams.swift */,
 				4A65C2952B5C370300B015E5 /* ReportModels.swift */,
 				4A776CC92B5F2655003A7D1B /* AlertModel.swift */,
+				4A16797D2B61BA6D00488289 /* FiltersModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -779,11 +793,13 @@
 				4A81813E2ACF5F6700A3B9DF /* TrackerCategory.swift in Sources */,
 				4A015DE82B5D59BE00A03DB2 /* StatisticsViewModel.swift in Sources */,
 				4A8846FE2B0BAB3B000376BE /* Errors.swift in Sources */,
+				4A16797E2B61BA6D00488289 /* FiltersModel.swift in Sources */,
 				4A5AD1CD2ACEF2F6000E826B /* AppDelegate.swift in Sources */,
 				4A8AF93B2B310A73000341A7 /* FirstLaunchStorage.swift in Sources */,
 				4A8846FC2B0B8470000376BE /* ColorTransformer.swift in Sources */,
 				4A21EF4D2AD1AB3D00BD40DB /* CustomTextField.swift in Sources */,
 				4A5139A72B334E8300AC1D2B /* CategoryViewModel.swift in Sources */,
+				4A16797C2B61BA4000488289 /* FiltersViewController.swift in Sources */,
 				4A796D692B546230002E013E /* Generated.swift in Sources */,
 				4A5EB1882AE5B25000E941B1 /* Date + Extension.swift in Sources */,
 				4A81E5442AD841F800CF1260 /* CategoriesViewController.swift in Sources */,
