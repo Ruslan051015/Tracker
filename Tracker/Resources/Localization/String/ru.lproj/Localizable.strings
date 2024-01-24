@@ -28,6 +28,7 @@
 "title.alertMessage" = "Трекеры, относящиеся к данной категории также будут удалены";
 "title.deleteTrackerTitle" = "Уверены что хотите удалить трекер?";
 "title.pinnedTitle" = "Закрепленные";
+"title.notFoundTitle" = "Ничего не найдено";
 "button.saveTitle" = "Сохранить";
 "button.editTitle" = "Редактировать";
 "button.pinTitle" = "Закрепить";

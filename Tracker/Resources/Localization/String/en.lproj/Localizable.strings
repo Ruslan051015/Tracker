@@ -28,6 +28,7 @@
 "title.alertMessage" = "Trackers belonging to this category will also be deleted";
 "title.deleteTrackerTitle" = "Are you sure you want to delete the tracker?";
 "title.pinnedTitle" = "Pinned";
+"title.notFoundTitle" = "Nothing found";
 "button.saveTitle" = "Save";
 "button.editTitle" = "Edit";
 "button.pinTitle" = "Pin";

@@ -156,6 +156,8 @@ final class TrackerStore: NSObject  {
         trackerToUpdate.schedule = updatedTracker.schedule as? NSObject
         trackerToUpdate.emoji = updatedTracker.emoji
         trackerToUpdate.color = updatedTracker.color
+        
+        saveContext()
     }
 }
 

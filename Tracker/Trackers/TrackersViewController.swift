@@ -20,6 +20,7 @@ final class TrackersViewController: UIViewController {
     private let recordStore = TrackerRecordStore.shared
     private let params = GeometricParams(cellCount: 2, leftInset: 16, rightInset: 16, cellSpacing: 9)
     private let yandexMetrica = YandexMetrica.shared
+    private var isSearching: Bool = false
     private lazy var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.preferredDatePickerStyle = .compact
@@ -65,8 +66,7 @@ final class TrackersViewController: UIViewController {
     }()
     
     private lazy var stubImageView: UIImageView = {
-        let image = UIImage(named: "starLight")
-        let imageView = UIImageView(image: image)
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
@@ -74,7 +74,6 @@ final class TrackersViewController: UIViewController {
     
     private lazy var stubLabel: UILabel = {
         let label = UILabel()
-        label.text = L10n.Localizable.Title.emptyTrackersStub
         label.font = .systemFont(ofSize: 12, weight: .medium)
         label.textColor = .YPBlack
         label.numberOfLines = 2
@@ -185,6 +184,11 @@ final class TrackersViewController: UIViewController {
         }
     }
     
+    private func configureEmptyLabels() {
+        stubImageView.image = isSearching ? UIImage(named: "notFound") : UIImage(named: "starLight")
+        stubLabel.text = isSearching ? L10n.Localizable.Title.notFoundTitle : L10n.Localizable.Title.emptyTrackersStub
+    }
+    
     private func reloadVisibleCategories() {
         activityIndicator.startAnimating()
         let filterText = (searchBar.searchTextField.text ?? "").lowercased()
@@ -223,7 +227,7 @@ final class TrackersViewController: UIViewController {
             }
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
-        
+        configureEmptyLabels()
         collectionView.reloadData()
         activityIndicator.stopAnimating()
         showOrHideEmptyLabels()
@@ -412,23 +416,31 @@ extension TrackersViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
     }
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            isSearching = false
+        } else {
+            isSearching = true
+        }
+        reloadVisibleCategories()
+    }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        guard let text = searchBar.text else { return }
+        guard let text = searchBar.searchTextField.text else { return }
+        isSearching = text.isEmpty ? false : true
         if text.isEmpty {
             searchBar.showsCancelButton = false
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
         searchBar.text = nil
         searchBar.showsCancelButton = false
         reloadVisibleCategories()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        reloadVisibleCategories()
         searchBar.resignFirstResponder()
         searchBar.showsCancelButton = false
     }

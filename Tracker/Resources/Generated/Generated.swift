@@ -128,6 +128,8 @@ internal enum L10n {
       internal static let newHabit = L10n.tr("Localizable", "title.newHabit", fallback: "Новая привычка")
       /// Анализировать пока нечего
       internal static let noDataToAnalyze = L10n.tr("Localizable", "title.noDataToAnalyze", fallback: "Анализировать пока нечего")
+      /// Ничего не найдено
+      internal static let notFoundTitle = L10n.tr("Localizable", "title.notFoundTitle", fallback: "Ничего не найдено")
       /// Закрепленные
       internal static let pinnedTitle = L10n.tr("Localizable", "title.pinnedTitle", fallback: "Закрепленные")
       /// Расписание

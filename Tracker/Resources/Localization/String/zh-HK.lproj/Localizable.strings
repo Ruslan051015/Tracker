@@ -29,6 +29,7 @@
 "title.deleteTrackerTitle" = "您確定要刪除追蹤器嗎?";
 "title.pinnedTitle" = "已固定";
 "button.saveTitle" = "科赫拉尼塔";
+"title.notFoundTitle" = "什麼都沒找到";
 "button.editTitle" = "編輯";
 "button.pinTitle" = "別針";
 "button.unpinTitle" = "取消固定";
