@@ -13,6 +13,10 @@ enum HabitOrEvent {
             return L10n.Localizable.Title.newEvent
         }
     }
+    
+    var editingTitle: String {
+        return L10n.Localizable.Title.habitEditing
+    }
 }
 
 protocol ScheduleViewControllerDelegate: AnyObject {
@@ -39,6 +43,7 @@ final class TrackerCreatingViewController: UIViewController {
             createButtonCondition()
         }
     }
+    var editingTracker: Tracker?
     var trackerName: String = ""
     
     // MARK: - Private properties:
@@ -61,6 +66,7 @@ final class TrackerCreatingViewController: UIViewController {
     
     private var selectedEmojiIndexPath: IndexPath?
     private var selectedColorIndexPath: IndexPath?
+    private var completedDaysCounter: Int?
     
     private var selectedEmoji: String = "" {
         didSet {
@@ -93,6 +99,17 @@ final class TrackerCreatingViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    private lazy var completedDaysLabel: UILabel = {
+        let counter = UILabel()
+        counter.font = .boldSystemFont(ofSize: 32)
+        counter.textColor = .YPBlack
+        counter.textAlignment = .center
+        counter.text = "\(completedDaysCounter?.days() ?? 0.days())"
+        counter.translatesAutoresizingMaskIntoConstraints = false
+        
+        return counter
     }()
     
     private lazy var textField: CustomUITextField = {
@@ -250,6 +267,16 @@ final class TrackerCreatingViewController: UIViewController {
     }()
     
     // MARK: - LifeCycle:
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let emojiIndexPath = emojies.firstIndex(where: { $0 == selectedEmoji }) else { return }
+        selectedEmojiIndexPath = IndexPath(row: emojiIndexPath, section: 0)
+        
+        guard let colorIndexPath = colors.firstIndex(where: { $0.isEqual(selectedColor) }) else {
+            return
+        }
+        selectedColorIndexPath = IndexPath(row: colorIndexPath, section: 1)
+    }
     override func viewDidLoad() {
         view.backgroundColor = .YPWhite
         super.viewDidLoad()
@@ -259,6 +286,7 @@ final class TrackerCreatingViewController: UIViewController {
         setupConstraints()
         textField.becomeFirstResponder()
         createButtonCondition()
+        setupEditingTrackerUI()
     }
     
     // MARK: - Methods:
@@ -276,6 +304,7 @@ final class TrackerCreatingViewController: UIViewController {
         self.view.addSubview(topTitle)
         self.view.addSubview(scrollView)
         self.view.addSubview(stackView)
+        self.view.addSubview(completedDaysLabel)
         
         scrollView.addSubview(textField)
         scrollView.addSubview(categoryButton)
@@ -307,13 +336,20 @@ final class TrackerCreatingViewController: UIViewController {
             collectionViewTopConstraint = collectionView.topAnchor.constraint(equalTo: scheduleButton.bottomAnchor, constant: 32)
         }
         
+        let topInset: CGFloat = editingTracker != nil ? 116 : 38
+
         var constraints = [
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             topTitle.heightAnchor.constraint(equalToConstant: 22),
             topTitle.widthAnchor.constraint(equalToConstant: 149),
             
-            scrollView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
+            completedDaysLabel.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: 38),
+            completedDaysLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            completedDaysLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            completedDaysLabel.heightAnchor.constraint(equalToConstant: 38),
+            
+            scrollView.topAnchor.constraint(equalTo: topTitle.bottomAnchor, constant: topInset),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: stackView.topAnchor),
@@ -389,6 +425,21 @@ final class TrackerCreatingViewController: UIViewController {
     
     private func hideLimitLabel() {
         limitationLabel.removeFromSuperview()
+    }
+    
+    private func setupEditingTrackerUI() {
+        if let editingTracker = editingTracker {
+            completedDaysLabel.isEnabled = false
+            textField.text = editingTracker.name
+            selectedDays = editingTracker.schedule ?? []
+            selectedEmoji = editingTracker.emoji
+            selectedColor = editingTracker.color
+            
+            showSelectedDays()
+            showSelectedCategory()
+        } else {
+            completedDaysLabel.isHidden = true
+        }
     }
     
     private func createButtonCondition() {

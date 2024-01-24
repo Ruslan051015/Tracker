@@ -20,6 +20,7 @@
 "title.emptyCategories" = "習慣和事件可以透 \n過意義結合起來";
 "title.newCategory" = "新類別";
 "title.editingCategory" = "編輯類別";
+"title.habitEditing" = "編輯習慣";
 "title.enterCategory" = "輸入類別名稱";
 "title.habit" = "習慣";
 "title.event" = "不定期活動";

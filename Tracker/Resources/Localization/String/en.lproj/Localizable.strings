@@ -20,6 +20,7 @@
 "title.emptyCategories" = "Habits and events can \nbe combined by meaning";
 "title.newCategory" = "New category";
 "title.editingCategory" = "Editing a category";
+"title.habitEditing" = "Habit editing";
 "title.enterCategory" = "Enter category name";
 "title.habit" = "Habit";
 "title.event" = "Irregular event";

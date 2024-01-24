@@ -114,6 +114,8 @@ internal enum L10n {
       internal static let firstPage = L10n.tr("Localizable", "title.firstPage", fallback: "Отслеживайте только \nто, что хотите")
       /// Привычка
       internal static let habit = L10n.tr("Localizable", "title.habit", fallback: "Привычка")
+      /// Редактирование привычки
+      internal static let habitEditing = L10n.tr("Localizable", "title.habitEditing", fallback: "Редактирование привычки")
       /// Идеальные дни
       internal static let idealDays = L10n.tr("Localizable", "title.idealDays", fallback: "Идеальные дни")
       /// Новая категория
