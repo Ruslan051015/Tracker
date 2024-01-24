@@ -274,7 +274,6 @@ extension TrackersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let configuration = UIContextMenuConfiguration(identifier: indexPath as NSCopying, actionProvider:  { actions in
             let tracker = self.visibleCategories[indexPath.section].includedTrackers[indexPath.row]
-            let categoryName = self.visibleCategories[indexPath.section].name
             let pinTitle = tracker.isPinned ? L10n.Localizable.Button.unpinTitle : L10n.Localizable.Button.pinTitle
             let pinAction = UIAction(title: pinTitle, handler: { [weak self] _ in
                 guard let self else { return }
@@ -284,11 +283,13 @@ extension TrackersViewController: UICollectionViewDelegate {
             
             let editAction = UIAction(title: L10n.Localizable.Button.editTitle, handler: { [weak self] _ in
                 guard let self else { return }
-                let viewToPresent = TrackerCreatingViewController(trackerType: .habit)
-                viewToPresent.editingTracker = tracker
-                viewToPresent.selectedCategory = categoryName
-                self.present(viewToPresent, animated: true)
-                
+                if let categoryName = categoryStore.categories.first(where: { $0.includedTrackers.contains { $0.name == tracker.name } })?.name {
+                    let viewToPresent = TrackerCreatingViewController(trackerType: .habit)
+                    viewToPresent.editingTracker = tracker
+                    viewToPresent.selectedCategory = categoryName
+                    print(categoryName)
+                    self.present(viewToPresent, animated: true)
+                }
             })
             
             let deleteAction = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive, handler: { [weak self] _ in

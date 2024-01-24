@@ -255,8 +255,9 @@ final class TrackerCreatingViewController: UIViewController {
     }()
     
     private lazy var createButton: UIButton = {
+        let title = editingTracker == nil ? L10n.Localizable.Button.create : L10n.Localizable.Button.saveTitle
         let button = UIButton(type: .system)
-        button.setTitle(L10n.Localizable.Button.create, for: .normal)
+        button.setTitle(title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
@@ -337,7 +338,7 @@ final class TrackerCreatingViewController: UIViewController {
         }
         
         let topInset: CGFloat = editingTracker != nil ? 116 : 38
-
+        
         var constraints = [
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 68),
@@ -481,12 +482,20 @@ final class TrackerCreatingViewController: UIViewController {
                 //TODO: Add alert
             }
         } else {
+            var categoryCD: TrackerCategoryCoreData?
+            do {
+                categoryCD = try categoryStore.getCategoryWith(title: selectedCategory)
+            } catch {
+                print(CDErrors.getCoreDataCategoryError)
+            }
+            
             guard
                 let editingTracker,
-            let selectedColor,
-            let selectedEmoji  else { return }
+                let selectedColor,
+                let categoryCD,
+                let selectedEmoji  else { return }
             let updatedTracker = Tracker(id: editingTracker.id, name: trackerName, schedule: selectedDays, color: selectedColor, emoji: selectedEmoji, isPinned: editingTracker.isPinned)
-            
+            trackerStore.updateTracker(updatedTracker, with: categoryCD)
         }
         self.view.window?.rootViewController?.dismiss(animated: true)
     }
