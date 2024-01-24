@@ -26,6 +26,7 @@
 "title.alertTitle" = "您確定不需要這個類別嗎";
 "title.alertMessage" = "屬於此類別的追蹤器也將被刪除";
 "title.deleteTrackerTitle" = "您確定要刪除追蹤器嗎?";
+"title.pinnedTitle" = "已固定";
 "button.editTitle" = "編輯";
 "button.pinTitle" = "別針";
 "button.unpinTitle" = "取消固定";

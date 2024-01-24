@@ -84,6 +84,14 @@ final class TrackersViewController: UIViewController {
         return label
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.color = .YPOnlyBlack
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return indicator
+    }()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -97,7 +105,7 @@ final class TrackersViewController: UIViewController {
         trackerStore.delegate = self
         updateCategories()
         updateCompletedTrackers()
-        showCurrentDayCategories()
+        reloadVisibleCategories()
         screenItemsSetup()
         navBarSetup()
         setupToHideKeyboardOnTapOnView()
@@ -109,7 +117,7 @@ final class TrackersViewController: UIViewController {
         ) { [weak self] _ in
             guard let self else { return }
             updateCategories()
-            showCurrentDayCategories()
+            reloadVisibleCategories()
         }
     }
     
@@ -119,6 +127,7 @@ final class TrackersViewController: UIViewController {
         self.view.addSubview(collectionView)
         self.view.addSubview(stubImageView)
         self.view.addSubview(stubLabel)
+        self.view.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -139,7 +148,12 @@ final class TrackersViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 34),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            activityIndicator.heightAnchor.constraint(equalToConstant: 51),
+            activityIndicator.widthAnchor.constraint(equalToConstant: 51)
         ])
     }
     
@@ -168,15 +182,30 @@ final class TrackersViewController: UIViewController {
             stubImageView.isHidden = false
         }
     }
-    
-    private func reloadData() {
-        datePickerValueChanged()
-    }
-    
+ 
     private func reloadVisibleCategories() {
+        activityIndicator.startAnimating()
         let filterText = (searchBar.searchTextField.text ?? "").lowercased()
         let component = Calendar.current.component(.weekday, from: datePicker.date)
+        
+        let pinnedTrackers = categories.flatMap { category in
+                category.includedTrackers.filter { $0.isPinned }
+            }
+        let pinnedCategory = TrackerCategory(name: L10n.Localizable.Title.pinnedTitle, includedTrackers: pinnedTrackers)
         currentDay = component
+        let restCategories: [TrackerCategory] = categories.compactMap { category in
+            let trackers = category.includedTrackers.filter { !$0.isPinned }
+            if trackers.isEmpty {
+                return nil
+            }
+            return TrackerCategory(name: category.name, includedTrackers: trackers)
+        }
+        if pinnedTrackers.isEmpty {
+            categories = restCategories
+        } else {
+            categories = [pinnedCategory] + restCategories
+
+        }
         
         visibleCategories = categories.compactMap { category in
             let trackers = category.includedTrackers.filter { tracker in
@@ -192,31 +221,12 @@ final class TrackersViewController: UIViewController {
             }
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
+
         collectionView.reloadData()
+        activityIndicator.stopAnimating()
         showOrHideEmptyLabels()
     }
-    
-    private func showCurrentDayCategories() {
-        let component = Calendar.current.component(.weekday, from: datePicker.date)
-        currentDay = component
-        
-        visibleCategories = categories.compactMap { category in
-            let trackers = category.includedTrackers.filter { tracker in
-                let dateCondition = tracker.schedule?.contains { weekDay in
-                    weekDay.calendarNumber == currentDay
-                } == true
-                return dateCondition
-            }
-            
-            if trackers.isEmpty {
-                return nil
-            }
-            return TrackerCategory(name: category.name, includedTrackers: trackers)
-        }
-        collectionView.reloadData()
-        showOrHideEmptyLabels()
-    }
-    
+   
     private func updateCategories() {
         categories = categoryStore.categories
     }
