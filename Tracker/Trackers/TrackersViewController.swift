@@ -244,7 +244,10 @@ final class TrackersViewController: UIViewController {
     private func showDeleteAlert(for tracker: Tracker) {
         let alertModel = AlertModel(title: L10n.Localizable.Title.deleteTrackerTitle, message: nil, firstButtonText: L10n.Localizable.Button.delete, secondButtonText: L10n.Localizable.Button.cancel) { [weak self] in
             guard let self = self else { return }
+            self.activityIndicator.startAnimating()
             self.trackerStore.deleteTracker(tracker)
+            self.recordStore.deleteAllRecordFromCD(for: tracker.id)
+            self.activityIndicator.stopAnimating()
         }
         alertPresenter?.showAlert(model: alertModel)
     }
@@ -262,7 +265,6 @@ final class TrackersViewController: UIViewController {
         yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.addTrack, on: Reports.Screens.mainScreen)
         
         let viewToPresent = HabitOrEventViewController()
-        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
 }
@@ -435,16 +437,3 @@ extension TrackersViewController: TrackerDelegate {
     }
 }
 
-// MARK: - HabitOrEventViewControllerDelegate:
-extension TrackersViewController: HabitOrEventViewControllerDelegate {
-    func getData(with tracker: Tracker, and category: String) {
-        do {
-            if let CDCategory = try categoryStore.getCategoryWith(title: category) {
-                try trackerStore.createCoreDataTracker(from: tracker, with: CDCategory)
-            }
-        } catch {
-            print(CDErrors.creatingCoreDataTrackerError)
-            //TODO: Add alert
-        }
-    }
-}

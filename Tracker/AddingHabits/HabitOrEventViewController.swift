@@ -1,14 +1,7 @@
 import Foundation
 import UIKit
 
-protocol HabitOrEventViewControllerDelegate: AnyObject {
-    func getData(with tracker: Tracker, and category: String)
-}
-
 final class HabitOrEventViewController: UIViewController {
-    // MARK: - Properties:
-    weak var delegate: HabitOrEventViewControllerDelegate?
-    
     // MARK: - Private properties:
     private lazy var topTitle: UILabel = {
         let label = UILabel()
@@ -83,21 +76,12 @@ final class HabitOrEventViewController: UIViewController {
     // MARK: - Objc-Methods:
     @objc private func openHabitViewController() {
         let viewToPresent = TrackerCreatingViewController(trackerType: .habit)
-        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
     
     @objc private func openEventViewController() {
         let viewToPresent = TrackerCreatingViewController(trackerType: .event)
-        viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
-    }
-}
-
-extension HabitOrEventViewController: TrackerCreatingDelegate {
-    func transitData(_ tracker: Tracker, and category: String) {
-        self.dismiss(animated: true)
-        delegate?.getData(with: tracker, and: category)
     }
 }
 

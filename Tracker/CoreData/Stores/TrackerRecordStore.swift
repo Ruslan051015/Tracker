@@ -94,10 +94,13 @@ final class TrackerRecordStore: NSObject {
         }
     }
     
-    func deleteAllRecordFromCD(for id: UUID) throws {
+    func deleteAllRecordFromCD(for id: UUID) {
         let request = TrackerRecordCoreData.fetchRequest()
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerRecordCoreData.recordID), id as CVarArg)
-        let trackersRecords = try context.fetch(request)
+        guard let trackersRecords = try? context.fetch(request) else {
+            print("Не удалось выполнить запрос")
+            return
+        }
         
         trackersRecords.forEach {
             context.delete($0)
@@ -121,7 +124,7 @@ final class TrackerRecordStore: NSObject {
         
         guard let records = try? recordsCD.map({ try self.createTrackerRecord(from: $0)
         }) else {
-            print("No records meeting the conditions")
+            print("Нет записей удовлетворяющих условию")
             return []
         }
         return records

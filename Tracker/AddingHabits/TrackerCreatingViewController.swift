@@ -25,13 +25,8 @@ protocol CategoryViewControllerDelegate: AnyObject {
     func showSelectedCategory()
 }
 
-protocol TrackerCreatingDelegate: AnyObject {
-    func transitData(_ tracker: Tracker, and category: String)
-}
-
 final class TrackerCreatingViewController: UIViewController {
     // MARK: - Properties:
-    weak var delegate: TrackerCreatingDelegate?
     var trackerType: HabitOrEvent
     var selectedDays: [Weekday] = [] {
         didSet {
@@ -47,6 +42,8 @@ final class TrackerCreatingViewController: UIViewController {
     var trackerName: String = ""
     
     // MARK: - Private properties:
+    private let trackerStore = TrackerStore.shared
+    private let categoryStore = TrackerCategoryStore.shared
     private let emojies: [String] = ["🙂", "😻", "🌺", "🐶", "❤️", "😱",
                                      "😇", "😡", "🥶", "🤔", "🙌", "🍔",
                                      "🥦", "🏓", "🥇", "🎸", "🏝️", "😪"]
@@ -422,8 +419,15 @@ final class TrackerCreatingViewController: UIViewController {
             tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases, color: selectedColor ?? .clear, emoji: selectedEmoji, isPinned: false)
         }
         guard let tracker = tracker else { return }
-        self.dismiss(animated: true)
-        delegate?.transitData(tracker, and: selectedCategory)
+        do {
+            if let CDCategory = try categoryStore.getCategoryWith(title: selectedCategory) {
+                try trackerStore.createCoreDataTracker(from: tracker, with: CDCategory)
+            }
+        } catch {
+            print(CDErrors.creatingCoreDataTrackerError)
+            //TODO: Add alert
+        }
+        self.view.window?.rootViewController?.dismiss(animated: true)
     }
     
     @objc private func showCategories() {
