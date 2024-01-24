@@ -27,6 +27,7 @@
 "title.alertTitle" = "您確定不需要這個類別嗎";
 "title.alertMessage" = "屬於此類別的追蹤器也將被刪除";
 "title.deleteTrackerTitle" = "您確定要刪除追蹤器嗎?";
+"filter.filtersTitle" = "過濾器";
 "title.pinnedTitle" = "已固定";
 "filter.allTrackersTitle" = "所有追蹤器";
 "filter.todayTrackersTitle" = "今天的追蹤器";

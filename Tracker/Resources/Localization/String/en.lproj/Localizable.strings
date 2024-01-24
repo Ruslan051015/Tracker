@@ -29,6 +29,7 @@
 "title.deleteTrackerTitle" = "Are you sure you want to delete the tracker?";
 "title.pinnedTitle" = "Pinned";
 "title.notFoundTitle" = "Nothing found";
+"filter.filtersTitle" = "Filters";
 "filter.allTrackersTitle" = "All trackers";
 "filter.todayTrackersTitle" = "Trackers for today";
 "filter.completedTrackersTitle" = "Completed";

@@ -84,6 +84,8 @@ internal enum L10n {
       internal static let allTrackersTitle = L10n.tr("Localizable", "filter.allTrackersTitle", fallback: "Все трекеры")
       /// Завершенные
       internal static let completedTrackersTitle = L10n.tr("Localizable", "filter.completedTrackersTitle", fallback: "Завершенные")
+      /// Фильтры
+      internal static let filtersTitle = L10n.tr("Localizable", "filter.filtersTitle", fallback: "Фильтры")
       /// Не завершенные
       internal static let notCompletedTitle = L10n.tr("Localizable", "filter.notCompletedTitle", fallback: "Не завершенные")
       /// Трекеры на сегодня

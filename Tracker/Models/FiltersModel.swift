@@ -1,6 +1,6 @@
 import Foundation
 
-enum Folters: String, CaseIterable {
+enum Filters: CaseIterable {
     case allTrackers
     case todayTrackers
     case completedTrackers
