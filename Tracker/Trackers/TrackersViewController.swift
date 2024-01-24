@@ -86,7 +86,10 @@ final class TrackersViewController: UIViewController {
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.color = .YPOnlyBlack
+        indicator.color = .YPBlack
+        indicator.backgroundColor = .YPGray
+        indicator.layer.cornerRadius = 8
+        indicator.layer.masksToBounds = true
         indicator.translatesAutoresizingMaskIntoConstraints = false
         
         return indicator
@@ -109,7 +112,6 @@ final class TrackersViewController: UIViewController {
         screenItemsSetup()
         navBarSetup()
         setupToHideKeyboardOnTapOnView()
-        
         newCategoryVCObserver = NotificationCenter.default.addObserver(
             forName: NewCategoryViewController.didChangeCategoryName,
             object: nil,
@@ -127,7 +129,7 @@ final class TrackersViewController: UIViewController {
         self.view.addSubview(collectionView)
         self.view.addSubview(stubImageView)
         self.view.addSubview(stubLabel)
-        self.view.addSubview(activityIndicator)
+        collectionView.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -150,8 +152,8 @@ final class TrackersViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             activityIndicator.heightAnchor.constraint(equalToConstant: 51),
             activityIndicator.widthAnchor.constraint(equalToConstant: 51)
         ])
@@ -182,15 +184,15 @@ final class TrackersViewController: UIViewController {
             stubImageView.isHidden = false
         }
     }
- 
+    
     private func reloadVisibleCategories() {
         activityIndicator.startAnimating()
         let filterText = (searchBar.searchTextField.text ?? "").lowercased()
         let component = Calendar.current.component(.weekday, from: datePicker.date)
         
         let pinnedTrackers = categories.flatMap { category in
-                category.includedTrackers.filter { $0.isPinned }
-            }
+            category.includedTrackers.filter { $0.isPinned }
+        }
         let pinnedCategory = TrackerCategory(name: L10n.Localizable.Title.pinnedTitle, includedTrackers: pinnedTrackers)
         currentDay = component
         let restCategories: [TrackerCategory] = categories.compactMap { category in
@@ -204,7 +206,7 @@ final class TrackersViewController: UIViewController {
             categories = restCategories
         } else {
             categories = [pinnedCategory] + restCategories
-
+            
         }
         
         visibleCategories = categories.compactMap { category in
@@ -221,12 +223,12 @@ final class TrackersViewController: UIViewController {
             }
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
-
+        
         collectionView.reloadData()
         activityIndicator.stopAnimating()
         showOrHideEmptyLabels()
     }
-   
+    
     private func updateCategories() {
         categories = categoryStore.categories
     }
@@ -239,10 +241,10 @@ final class TrackersViewController: UIViewController {
         }
     }
     
-    private func showDeleteAlert(for trackerID: UUID) {
+    private func showDeleteAlert(for tracker: Tracker) {
         let alertModel = AlertModel(title: L10n.Localizable.Title.deleteTrackerTitle, message: nil, firstButtonText: L10n.Localizable.Button.delete, secondButtonText: L10n.Localizable.Button.cancel) { [weak self] in
             guard let self = self else { return }
-            
+            self.trackerStore.deleteTracker(tracker)
         }
         alertPresenter?.showAlert(model: alertModel)
     }
@@ -283,11 +285,8 @@ extension TrackersViewController: UICollectionViewDelegate {
             })
             
             let deleteAction = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive, handler: { [weak self] _ in
-                guard let cell = collectionView.cellForItem(at: indexPath) as? TrackerCell else {
-                    return
-                }
-                guard let trackersID = cell.id else { return }
-                self?.showDeleteAlert(for: trackersID)
+                guard let self else { return }
+                self.showDeleteAlert(for: tracker)
                 
             })
             let contextMenu = UIMenu(children: [pinAction, editAction, deleteAction])
