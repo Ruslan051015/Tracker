@@ -67,7 +67,7 @@ final class TrackerCreatingViewController: UIViewController {
     
     private var selectedEmojiIndexPath: IndexPath?
     private var selectedColorIndexPath: IndexPath?
-    private var selectedEmoji: String = "" {
+    private var selectedEmoji: String? {
         didSet {
             createButtonCondition()
         }
@@ -434,6 +434,7 @@ final class TrackerCreatingViewController: UIViewController {
             selectedDays = editingTracker.schedule ?? []
             selectedEmoji = editingTracker.emoji
             selectedColor = editingTracker.color
+            trackerName = editingTracker.name
             
             showSelectedDays()
             showSelectedCategory()
@@ -444,9 +445,9 @@ final class TrackerCreatingViewController: UIViewController {
     
     private func createButtonCondition() {
         if trackerType == .habit {
-            createButton.isEnabled = !selectedDays.isEmpty && textField.text?.isEmpty == false && !selectedCategory.isEmpty && !selectedEmoji.isEmpty && selectedColor != nil
+            createButton.isEnabled = !selectedDays.isEmpty && textField.text?.isEmpty == false && !selectedCategory.isEmpty && selectedEmoji != nil && selectedColor != nil
         } else if trackerType == .event {
-            createButton.isEnabled = textField.text?.isEmpty == false && !selectedCategory.isEmpty && !selectedEmoji.isEmpty && selectedColor != nil
+            createButton.isEnabled = textField.text?.isEmpty == false && !selectedCategory.isEmpty && selectedEmoji != nil && selectedColor != nil
         }
         if createButton.isEnabled {
             createButton.backgroundColor = .YPBlack
@@ -464,19 +465,28 @@ final class TrackerCreatingViewController: UIViewController {
     
     @objc private func createButtonTapped() {
         var tracker: Tracker?
-        if trackerType == .habit {
-            tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays, color: selectedColor ?? .clear, emoji: selectedEmoji, isPinned: false)
-        } else if trackerType == .event {
-            tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases, color: selectedColor ?? .clear, emoji: selectedEmoji, isPinned: false)
-        }
-        guard let tracker = tracker else { return }
-        do {
-            if let CDCategory = try categoryStore.getCategoryWith(title: selectedCategory) {
-                try trackerStore.createCoreDataTracker(from: tracker, with: CDCategory)
+        if editingTracker == nil {
+            if trackerType == .habit {
+                tracker = Tracker(id: UUID(), name: trackerName, schedule: selectedDays, color: selectedColor ?? .clear, emoji: selectedEmoji ?? "", isPinned: false)
+            } else if trackerType == .event {
+                tracker = Tracker(id: UUID(), name: trackerName, schedule: Weekday.allCases, color: selectedColor ?? .clear, emoji: selectedEmoji ?? "", isPinned: false)
             }
-        } catch {
-            print(CDErrors.creatingCoreDataTrackerError)
-            //TODO: Add alert
+            guard let tracker = tracker else { return }
+            do {
+                if let CDCategory = try categoryStore.getCategoryWith(title: selectedCategory) {
+                    try trackerStore.createCoreDataTracker(from: tracker, with: CDCategory)
+                }
+            } catch {
+                print(CDErrors.creatingCoreDataTrackerError)
+                //TODO: Add alert
+            }
+        } else {
+            guard
+                let editingTracker,
+            let selectedColor,
+            let selectedEmoji  else { return }
+            let updatedTracker = Tracker(id: editingTracker.id, name: trackerName, schedule: selectedDays, color: selectedColor, emoji: selectedEmoji, isPinned: editingTracker.isPinned)
+            
         }
         self.view.window?.rootViewController?.dismiss(animated: true)
     }

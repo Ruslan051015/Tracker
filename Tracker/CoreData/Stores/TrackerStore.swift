@@ -144,6 +144,19 @@ final class TrackerStore: NSObject  {
             saveContext()
         }
     }
+    
+    func updateTracker(_ updatedTracker: Tracker, with category: TrackerCategoryCoreData) {
+        guard let trackerToUpdate = trackersFetchedResultsController?.fetchedObjects?.first(where: { $0.trackerID == updatedTracker.id
+        }) else {
+            print("Нет трекера для обновления")
+            return
+        }
+        trackerToUpdate.name = updatedTracker.name
+        trackerToUpdate.category = category
+        trackerToUpdate.schedule = updatedTracker.schedule as? NSObject
+        trackerToUpdate.emoji = updatedTracker.emoji
+        trackerToUpdate.color = updatedTracker.color
+    }
 }
 
 extension TrackerStore: NSFetchedResultsControllerDelegate {

@@ -26,7 +26,7 @@ final class CategoryViewModel: NSObject {
             return
         }
         trackers.forEach({ trackersStore.deleteTracker($0) })
-        trackers.forEach { try? recordStore.deleteAllRecordFromCD(for: $0.id) }
+        trackers.forEach { recordStore.deleteAllRecordFromCD(for: $0.id) }
         if let categoryToDelete = try? categoryStore.getCategoryWith(title: title) {
             categoryStore.deleteCategory(categoryToDelete)
         } else {

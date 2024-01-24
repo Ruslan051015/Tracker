@@ -121,7 +121,7 @@ final class TrackerCategoryStore: NSObject {
         return category
     }
     
-    func getCategories() -> [TrackerCategoryCoreData] {
+    func getCategories() throws -> [TrackerCategoryCoreData] {
         let request = TrackerCategoryCoreData.fetchRequest()
         request.returnsObjectsAsFaults = false
         var categoriesArray: [TrackerCategoryCoreData]?
