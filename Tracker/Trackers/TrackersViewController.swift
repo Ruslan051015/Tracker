@@ -13,6 +13,7 @@ final class TrackersViewController: UIViewController {
     var completedTrackers: [TrackerRecord] = []
     
     // MARK: - Private properties:
+    private var selectedFilter: Filters = .allTrackers
     private var alertPresenter: AlertPresenterProtocol?
     private var newCategoryVCObserver: NSObjectProtocol?
     private let trackerStore = TrackerStore.shared
@@ -283,6 +284,9 @@ final class TrackersViewController: UIViewController {
     
     // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged() {
+        if selectedFilter == .todayTrackers {
+            selectedFilter = .allTrackers
+        }
         reloadVisibleCategories()
     }
     
@@ -295,8 +299,8 @@ final class TrackersViewController: UIViewController {
     
     @objc private func filtersButtonTapped() {
         let viewToPresent = FiltersViewController()
-//        viewToPresent.delegate = self
-//        viewToPresent.selectedFilter =
+        viewToPresent.delegate = self
+        viewToPresent.selectedFilter = self.selectedFilter
         present(viewToPresent, animated: true)
     }
 }
@@ -483,3 +487,23 @@ extension TrackersViewController: TrackerDelegate {
     }
 }
 
+// MARK: - FiltersViewControllerDelegate
+extension TrackersViewController: FiltersViewControllerDelegate {
+    func selectedFilter(_ filter: Filters) {
+        selectedFilter = filter
+        switch filter {
+        case .allTrackers:
+            filtersButton.setTitleColor(.YPOnlyWhite, for: .normal)
+        case .todayTrackers:
+            filtersButton.setTitleColor(.YPOnlyWhite, for: .normal)
+            datePicker.date = Date()
+            datePickerValueChanged()
+        case .completedTrackers:
+            reloadVisibleCategories()
+        case .notCompletedTrackers:
+            reloadVisibleCategories()
+        }
+    }
+    
+    
+}

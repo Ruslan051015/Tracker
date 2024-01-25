@@ -8,7 +8,7 @@ protocol FiltersViewControllerDelegate: AnyObject {
 final class FiltersViewController: UIViewController {
     // MARK: - Properties:
     weak var delegate: FiltersViewControllerDelegate?
-    var selectedFilter: Filters? = .allTrackers
+    var selectedFilter: Filters?
     
     // MARK: - Private Properties:
     private let filters: [Filters] = Filters.allCases
