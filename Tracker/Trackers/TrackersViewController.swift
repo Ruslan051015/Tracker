@@ -94,7 +94,7 @@ final class TrackersViewController: UIViewController {
         
         return indicator
     }()
-
+    
     private lazy var filtersButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(L10n.Localizable.Filter.filtersTitle, for: .normal)
@@ -135,6 +135,7 @@ final class TrackersViewController: UIViewController {
             updateCategories()
             reloadVisibleCategories()
         }
+        showOrHideFiltersButton(depending: visibleCategories)
     }
     
     // MARK: - Private methods:
@@ -237,6 +238,8 @@ final class TrackersViewController: UIViewController {
             categories = [pinnedCategory] + restCategories
         }
         
+        showOrHideFiltersButton(depending: categories)
+        
         let filteredCategories: [TrackerCategory] = categories.compactMap { category in
             let trackers = category.includedTrackers.filter { tracker in
                 let textCondition = filterText.isEmpty || tracker.name.lowercased().contains(filterText)
@@ -245,12 +248,9 @@ final class TrackersViewController: UIViewController {
                 } == true
                 return textCondition && dateCondition
             }
-            
             if trackers.isEmpty {
-                filtersButton.isHidden = true
                 return nil
             }
-            filtersButton.isHidden = false
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
         
@@ -289,6 +289,7 @@ final class TrackersViewController: UIViewController {
         } else {
             visibleCategories = filteredCategories
         }
+        configureOverScroll(cellCount: visibleCategories.flatMap({ $0.includedTrackers }).count)
         configureEmptyLabels()
         collectionView.reloadData()
         activityIndicator.stopAnimating()
@@ -321,13 +322,34 @@ final class TrackersViewController: UIViewController {
     private func pinTracker(_ tracker: Tracker) {
         trackerStore.pinTrackerCoreData(tracker)
     }
-   
+    
+    private func configureOverScroll(cellCount: Int) {
+        let cellHeight: CGFloat = 148
+        let headerHeight: CGFloat = 23
+        let buttonHeight: CGFloat = 50
+        let contentHeight = cellHeight * CGFloat(cellCount) + headerHeight * CGFloat(cellCount)
+        let availableSpace = collectionView.frame.height
+        let difference = availableSpace - contentHeight
+        if difference <= CGFloat(10) {
+            collectionView.contentInset.bottom = buttonHeight
+            collectionView.alwaysBounceVertical = true
+        } else {
+            collectionView.contentInset.bottom = 0
+            collectionView.alwaysBounceVertical = false
+        }
+    }
+    
+    private func showOrHideFiltersButton(depending category: [TrackerCategory]) {
+        filtersButton.isHidden = category.isEmpty ? true : false
+    }
+    
     // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged() {
         if selectedFilter == .todayTrackers {
             selectedFilter = .allTrackers
         }
         reloadVisibleCategories()
+        showOrHideFiltersButton(depending: visibleCategories)
     }
     
     @objc private func plusButtonTapped() {
