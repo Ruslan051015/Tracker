@@ -247,14 +247,16 @@ final class TrackersViewController: UIViewController {
             }
             
             if trackers.isEmpty {
+                filtersButton.isHidden = true
                 return nil
             }
+            filtersButton.isHidden = false
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
         
         if selectedFilter == .completedTrackers {
             filtersButton.setTitleColor(.YPRed, for: .normal)
-            let filteredCategories: [TrackerCategory] = categories.compactMap { category in
+            let completedCategories: [TrackerCategory] = filteredCategories.compactMap { category in
                 let filteredTrackers = category.includedTrackers.filter { tracker in
                     let idExists = completedTrackers.contains { record in
                         return record.id == tracker.id && record.date.sameDay(datePicker.date)
@@ -267,10 +269,10 @@ final class TrackersViewController: UIViewController {
                     return nil
                 }
             }
-            visibleCategories = filteredCategories
+            visibleCategories = completedCategories
         } else if selectedFilter == .notCompletedTrackers {
             filtersButton.setTitleColor(.YPRed, for: .normal)
-            let filteredCategories: [TrackerCategory] = categories.compactMap { category in
+            let notCompletedCategories: [TrackerCategory] = filteredCategories.compactMap { category in
                 let filteredTrackers = category.includedTrackers.filter { tracker in
                     let idNotExists = !completedTrackers.contains { record in
                         return record.id == tracker.id && record.date.sameDay(datePicker.date)
@@ -283,7 +285,7 @@ final class TrackersViewController: UIViewController {
                     return nil
                 }
             }
-            visibleCategories = filteredCategories
+            visibleCategories = notCompletedCategories
         } else {
             visibleCategories = filteredCategories
         }
@@ -319,7 +321,7 @@ final class TrackersViewController: UIViewController {
     private func pinTracker(_ tracker: Tracker) {
         trackerStore.pinTrackerCoreData(tracker)
     }
-    
+   
     // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged() {
         if selectedFilter == .todayTrackers {
