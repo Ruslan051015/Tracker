@@ -195,6 +195,7 @@ final class TrackersViewController: UIViewController {
     }
     
     private func showOrHideEmptyLabels() {
+        configureEmptyLabels()
         if !visibleCategories.isEmpty {
             stubLabel.isHidden = true
             stubImageView.isHidden = true
@@ -207,8 +208,13 @@ final class TrackersViewController: UIViewController {
     }
     
     private func configureEmptyLabels() {
-        stubImageView.image = isSearching ? UIImage(named: "notFound") : UIImage(named: "starLight")
-        stubLabel.text = isSearching ? L10n.Localizable.Title.notFoundTitle : L10n.Localizable.Title.emptyTrackersStub
+        if visibleCategories.isEmpty && (filterStorage.filter == .notCompletedTrackers || filterStorage.filter == .completedTrackers) || isSearching {
+            stubImageView.image = UIImage(named: "notFound")
+            stubLabel.text = L10n.Localizable.Title.notFoundTitle
+        } else {
+            stubImageView.image = UIImage(named: "starLight")
+            stubLabel.text = L10n.Localizable.Title.emptyTrackersStub
+        }
     }
     
     private func reloadVisibleCategories() {
