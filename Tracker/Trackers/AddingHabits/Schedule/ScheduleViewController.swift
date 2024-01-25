@@ -28,6 +28,7 @@ final class ScheduleViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.backgroundColor = .YPBackground
+        table.separatorColor = .YPGrayGray
         table.allowsSelection = false
         table.layer.masksToBounds = true
         table.layer.cornerRadius = 16

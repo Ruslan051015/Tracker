@@ -46,7 +46,7 @@ final class TrackersViewController: UIViewController {
         bar.placeholder = L10n.Localizable.Title.search
         bar.backgroundImage = .none
         bar.backgroundColor = .none
-        bar.searchTextField.backgroundColor = .YPLightGray
+        bar.searchTextField.backgroundColor = .SearchBarColor
         bar.searchBarStyle = .minimal
         bar.searchTextField.clearButtonMode = .never
         bar.updateHeight(height: 36)

@@ -10,6 +10,8 @@ struct Reports {
     struct Screens {
         static let mainScreen = "Main"
         static let appDelegate = "AppDelegate"
+        static let category = "CategoriesScreen"
+        static let schedule = "ScheduleScreen"
     }
     
     struct Items {

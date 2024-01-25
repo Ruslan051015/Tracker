@@ -7,6 +7,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     var selectedCategory: String = ""
     
     // MARK: - Private properties:
+    private let yandexMetrica = YandexMetrica.shared
     private var alertPresenter: AlertPresenterProtocol?
     private let viewModel: CategoryViewModel
     private let categoryStore = TrackerCategoryStore.shared
@@ -40,6 +41,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         table.layer.cornerRadius = 16
         table.separatorStyle = .singleLine
         table.backgroundColor = .clear
+        table.separatorColor = .YPGrayGray
         table.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         table.showsVerticalScrollIndicator = false
         table.allowsMultipleSelection = false
@@ -237,21 +239,23 @@ extension CategoriesViewController: UITableViewDelegate {
             guard let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else {
                 return UIMenu()
             }
-            let action1 = UIAction(title: L10n.Localizable.Button.editTitle) { [weak self] action in
+            let editAction = UIAction(title: L10n.Localizable.Button.editTitle) { [weak self] action in
                 guard let self = self else { return }
+                yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.edit, on: Reports.Screens.category)
                 let editingCategoryName = cell.getCellTextLabelText()
                 let viewToPresent = NewCategoryViewController(eventType: .Editing)
                 viewToPresent.editingCategoryName = editingCategoryName
                 self.present(viewToPresent, animated: true)
             }
             
-            let action2 = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive) { [weak self] action in
+            let deleteAction = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive) { [weak self] action in
                 guard let self = self else { return }
+                yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.delete, on: Reports.Screens.category)
                 let categoryToDelete = cell.getCellTextLabelText()
                 self.showDeleteAlert(for: categoryToDelete)
             }
             
-            return UIMenu(children: [action1, action2])
+            return UIMenu(children: [editAction, deleteAction])
         }
         return configuration
     }

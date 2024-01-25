@@ -47,6 +47,7 @@ final class TrackerCreatingViewController: UIViewController {
     var trackerName: String = ""
     
     // MARK: - Private properties:
+    private let yandexMetrica = YandexMetrica.shared
     private let trackerStore = TrackerStore.shared
     private let categoryStore = TrackerCategoryStore.shared
     private let recordStrore = TrackerRecordStore.shared
@@ -479,7 +480,6 @@ final class TrackerCreatingViewController: UIViewController {
                 }
             } catch {
                 print(CDErrors.creatingCoreDataTrackerError)
-                //TODO: Add alert
             }
         } else {
             var categoryCD: TrackerCategoryCoreData?
@@ -501,12 +501,14 @@ final class TrackerCreatingViewController: UIViewController {
     }
     
     @objc private func showCategories() {
+        yandexMetrica.sendReport(about: Reports.Events.open, and: nil, on: Reports.Screens.category)
         let viewToPresent = CategoriesViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
     
     @objc private func scheduleButtonTapped() {
+        yandexMetrica.sendReport(about: Reports.Events.open, and: nil, on: Reports.Screens.schedule)
         let viewToPresent = ScheduleViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)

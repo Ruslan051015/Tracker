@@ -34,6 +34,7 @@ extension UIColor {
     static var YPOnlyWhite: UIColor { UIColor(named:"YPOnlyWhite") ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) }
     static var YPSwitchColorGray: UIColor { UIColor(named:"YPSwitchColor") ?? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) }
     static var PickerColor: UIColor { UIColor(named:"PickerColor") ?? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) }
+    static var SearchBarColor: UIColor { UIColor(named:"SearchBarColor") ?? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) }
 }
 
 extension UIColor {
