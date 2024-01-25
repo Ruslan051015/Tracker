@@ -234,22 +234,20 @@ extension CategoriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { actions in
-            let action1 = UIAction(title: L10n.Localizable.Button.editTitle) { action in
-                guard
-                    let path = tableView.indexPathForRow(at: point),
-                    let cell = tableView.cellForRow(at: path) else { return }
-                let editingCategoryName = cell.textLabel?.text ?? ""
+            guard let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else {
+                return UIMenu()
+            }
+            let action1 = UIAction(title: L10n.Localizable.Button.editTitle) { [weak self] action in
+                guard let self = self else { return }
+                let editingCategoryName = cell.getCellTextLabelText()
                 let viewToPresent = NewCategoryViewController(eventType: .Editing)
                 viewToPresent.editingCategoryName = editingCategoryName
                 self.present(viewToPresent, animated: true)
             }
             
             let action2 = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive) { [weak self] action in
-                guard
-                    let self = self,
-                    let path = tableView.indexPathForRow(at: point),
-                    let cell = tableView.cellForRow(at: path) else { return }
-                let categoryToDelete = cell.textLabel?.text ?? ""
+                guard let self = self else { return }
+                let categoryToDelete = cell.getCellTextLabelText()
                 self.showDeleteAlert(for: categoryToDelete)
             }
             
