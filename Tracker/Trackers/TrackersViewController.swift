@@ -13,7 +13,7 @@ final class TrackersViewController: UIViewController {
     var completedTrackers: [TrackerRecord] = []
     
     // MARK: - Private properties:
-    private var selectedFilter: Filters = .allTrackers
+    private var filterStorage = FilterStorage()
     private var alertPresenter: AlertPresenterProtocol?
     private var newCategoryVCObserver: NSObjectProtocol?
     private let trackerStore = TrackerStore.shared
@@ -135,7 +135,6 @@ final class TrackersViewController: UIViewController {
             updateCategories()
             reloadVisibleCategories()
         }
-        showOrHideFiltersButton(depending: visibleCategories)
     }
     
     // MARK: - Private methods:
@@ -238,8 +237,6 @@ final class TrackersViewController: UIViewController {
             categories = [pinnedCategory] + restCategories
         }
         
-        showOrHideFiltersButton(depending: categories)
-        
         let filteredCategories: [TrackerCategory] = categories.compactMap { category in
             let trackers = category.includedTrackers.filter { tracker in
                 let textCondition = filterText.isEmpty || tracker.name.lowercased().contains(filterText)
@@ -254,7 +251,7 @@ final class TrackersViewController: UIViewController {
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
         
-        if selectedFilter == .completedTrackers {
+        if filterStorage.filter == .completedTrackers {
             filtersButton.setTitleColor(.YPRed, for: .normal)
             let completedCategories: [TrackerCategory] = filteredCategories.compactMap { category in
                 let filteredTrackers = category.includedTrackers.filter { tracker in
@@ -270,7 +267,7 @@ final class TrackersViewController: UIViewController {
                 }
             }
             visibleCategories = completedCategories
-        } else if selectedFilter == .notCompletedTrackers {
+        } else if filterStorage.filter == .notCompletedTrackers {
             filtersButton.setTitleColor(.YPRed, for: .normal)
             let notCompletedCategories: [TrackerCategory] = filteredCategories.compactMap { category in
                 let filteredTrackers = category.includedTrackers.filter { tracker in
@@ -311,6 +308,7 @@ final class TrackersViewController: UIViewController {
     private func showDeleteAlert(for tracker: Tracker) {
         let alertModel = AlertModel(title: L10n.Localizable.Title.deleteTrackerTitle, message: nil, firstButtonText: L10n.Localizable.Button.delete, secondButtonText: L10n.Localizable.Button.cancel) { [weak self] in
             guard let self = self else { return }
+            yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.delete, on: Reports.Screens.mainScreen)
             self.activityIndicator.startAnimating()
             self.trackerStore.deleteTracker(tracker)
             self.recordStore.deleteAllRecordFromCD(for: tracker.id)
@@ -340,16 +338,15 @@ final class TrackersViewController: UIViewController {
     }
     
     private func showOrHideFiltersButton(depending category: [TrackerCategory]) {
-        filtersButton.isHidden = category.isEmpty ? true : false
+        filtersButton.isHidden = category.isEmpty && (filterStorage.filter == .allTrackers || filterStorage.filter == .todayTrackers)
     }
     
     // MARK: - Objc-Methods:
     @objc private func datePickerValueChanged() {
-        if selectedFilter == .todayTrackers {
-            selectedFilter = .allTrackers
+        if filterStorage.filter == .todayTrackers {
+            filterStorage.filter = .allTrackers
         }
         reloadVisibleCategories()
-        showOrHideFiltersButton(depending: visibleCategories)
     }
     
     @objc private func plusButtonTapped() {
@@ -360,9 +357,10 @@ final class TrackersViewController: UIViewController {
     }
     
     @objc private func filtersButtonTapped() {
+        yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.filter, on: Reports.Screens.mainScreen)
         let viewToPresent = FiltersViewController()
         viewToPresent.delegate = self
-        viewToPresent.selectedFilter = self.selectedFilter
+        viewToPresent.selectedFilter = filterStorage.filter
         present(viewToPresent, animated: true)
     }
 }
@@ -382,6 +380,7 @@ extension TrackersViewController: UICollectionViewDelegate {
             let editAction = UIAction(title: L10n.Localizable.Button.editTitle, handler: { [weak self] _ in
                 guard let self else { return }
                 if let categoryName = categoryStore.categories.first(where: { $0.includedTrackers.contains { $0.name == tracker.name } })?.name {
+                    yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.edit, on: Reports.Screens.mainScreen)
                     let viewToPresent = TrackerCreatingViewController(trackerType: .habit)
                     viewToPresent.editingTracker = tracker
                     viewToPresent.selectedCategory = categoryName
@@ -426,7 +425,8 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        visibleCategories.count
+        showOrHideFiltersButton(depending: visibleCategories)
+        return visibleCategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -494,6 +494,7 @@ extension TrackersViewController: UICollectionViewDataSource {
 // MARK: - TrackerCellDelegate:
 extension TrackersViewController: TrackerCellDelegate {
     func checkIfCompleted(for id: UUID) {
+        yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.track, on: Reports.Screens.mainScreen)
         if let index = completedTrackers.firstIndex(where: { $0.id == id && $0.date.sameDay(datePicker.date) }) {
             let recordToDelete = completedTrackers[index]
             completedTrackers.remove(at: index)
@@ -552,7 +553,7 @@ extension TrackersViewController: TrackerDelegate {
 // MARK: - FiltersViewControllerDelegate
 extension TrackersViewController: FiltersViewControllerDelegate {
     func selectedFilter(_ filter: Filters) {
-        selectedFilter = filter
+        filterStorage.filter = filter
         switch filter {
         case .allTrackers:
             filtersButton.setTitleColor(.YPOnlyWhite, for: .normal)

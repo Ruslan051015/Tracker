@@ -4,7 +4,7 @@ class StatisticsViewController: UIViewController {
     // MARK: - Private properties:
     private let viewModel: StatisticsViewModel
     private var bestPeriodCount: Int?
-    private var idealDaysCount: Int? = 2
+    private var idealDaysCount: Int? = 0
     private var averageValueCount: Int?
     private var completedTrackersCount: Int?
     
