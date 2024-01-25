@@ -47,6 +47,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         table.delegate = self
         table.dataSource = self
         table.allowsMultipleSelection = false
+        table.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.reuseIdentifier)
         
         return table
     }()
@@ -74,12 +75,13 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     // MARK: - LifeCycle:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        selectedCategory = delegate?.selectedCategory ?? ""
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .YPWhite
         
+        selectedCategory = delegate?.selectedCategory ?? ""
         alertPresenter = AlertPresenter(delegate: self)
         configureScreenItems()
         showOrHideEmptyLabels()
@@ -108,9 +110,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(addButton)
         view.addSubview(stubImageView)
         view.addSubview(stubLabel)
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
+                
         NSLayoutConstraint.activate([
             topTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 39),
             topTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -177,9 +177,11 @@ extension CategoriesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = viewModel.categories[indexPath.row].name
-        cell.backgroundColor = .YPBackground
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.reuseIdentifier) as? CategoryTableViewCell else {
+            return UITableViewCell()
+        }
+        let categoryName = viewModel.categories[indexPath.row].name
+        let checkMarkStatus = selectedCategory != categoryName
         cell.selectionStyle = .none
         cell.layer.masksToBounds = true
         if viewModel.categories.count == 1 {
@@ -194,9 +196,7 @@ extension CategoriesViewController: UITableViewDataSource {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
             cell.layer.cornerRadius = 0
         }
-        if selectedCategory == cell.textLabel?.text {
-            cell.accessoryView = UIImageView(image: UIImage(named: "checkmark"))
-        }
+        cell.configureCell(categoryName: categoryName, checkmarkStatus: checkMarkStatus)
         
         return cell
     }
@@ -209,24 +209,26 @@ extension CategoriesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        let checkmark = UIImage(named: "checkmark")
-        if cell?.accessoryView != .none {
-            cell?.accessoryView = .none
-            selectedCategory = ""
-        } else {
-            cell?.accessoryView = UIImageView(image: checkmark)
-            cell?.accessoryView?.bounds = CGRect(x: 0, y: 0, width: 14.3, height: 14.2)
-            selectedCategory = cell?.textLabel?.text ?? ""
+        guard let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else {
+            return
         }
+        
+        let isHidden = false
+        cell.setCheckMark(isHiden: isHidden)
+        selectedCategory = cell.getCellTextLabelText()
+        
         delegate?.selectedCategory = selectedCategory
         delegate?.showSelectedCategory()
         dismissCategoryViewController()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryView = .none
+        guard let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else {
+            return
+        }
+        
+        let isHidden = false
+        cell.setCheckMark(isHiden: isHidden)
         selectedCategory = ""
     }
     
