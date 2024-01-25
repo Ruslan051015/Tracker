@@ -1,21 +1,21 @@
 import UIKit
 
-class FiltersTableViewCell: UITableViewCell {
+final class FiltersTableViewCell: UITableViewCell {
     // MARK: - Properties:
-    static let reuseID = "FiltersCellID"
+    static let reuseIdentifier = "FiltersCellID"
     
     // MARK: - Private properties:
     private lazy var cellTitleLabel: UILabel = {
         let title = UILabel()
-        title.font = .systemFont(ofSize: 17, weight: .regular)
-        title.textColor = .YPBlue
+        title.font = .systemFont(ofSize: 17)
+        title.textColor = .YPBlack
         title.translatesAutoresizingMaskIntoConstraints = false
         
         return title
     }()
     
     private lazy var checkMark: UIImageView = {
-        let image = UIImage(named: "checkmark")
+        let image = UIImage(systemName: "checkmark")
         let imageView = UIImageView()
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +26,8 @@ class FiltersTableViewCell: UITableViewCell {
     // MARK: - LifeCycle:
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .YPBackground
+        self.selectionStyle = .none
         configureCellUI()
     }
     

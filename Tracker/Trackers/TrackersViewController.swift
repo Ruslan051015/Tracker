@@ -93,6 +93,20 @@ final class TrackersViewController: UIViewController {
         
         return indicator
     }()
+
+    private lazy var filtersButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(L10n.Localizable.Filter.filtersTitle, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .regular)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        button.backgroundColor = .YPBlue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.YPOnlyWhite, for: .normal)
+        button.addTarget(self, action: #selector(filtersButtonTapped), for: .touchUpInside)
+        
+        return button
+    }()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -128,6 +142,7 @@ final class TrackersViewController: UIViewController {
         self.view.addSubview(collectionView)
         self.view.addSubview(stubImageView)
         self.view.addSubview(stubLabel)
+        self.view.addSubview(filtersButton)
         collectionView.addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
@@ -154,7 +169,13 @@ final class TrackersViewController: UIViewController {
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             activityIndicator.heightAnchor.constraint(equalToConstant: 51),
-            activityIndicator.widthAnchor.constraint(equalToConstant: 51)
+            activityIndicator.widthAnchor.constraint(equalToConstant: 51),
+            
+            filtersButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 131),
+            filtersButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -130),
+            filtersButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            filtersButton.heightAnchor.constraint(equalToConstant: 50)
+            
         ])
     }
     
@@ -270,6 +291,13 @@ final class TrackersViewController: UIViewController {
         
         let viewToPresent = HabitOrEventViewController()
         self.present(viewToPresent, animated: true)
+    }
+    
+    @objc private func filtersButtonTapped() {
+        let viewToPresent = FiltersViewController()
+//        viewToPresent.delegate = self
+//        viewToPresent.selectedFilter =
+        present(viewToPresent, animated: true)
     }
 }
 

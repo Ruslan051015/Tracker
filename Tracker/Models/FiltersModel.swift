@@ -1,6 +1,6 @@
 import Foundation
 
-enum Filters: CaseIterable {
+enum Filters: String, CaseIterable {
     case allTrackers
     case todayTrackers
     case completedTrackers

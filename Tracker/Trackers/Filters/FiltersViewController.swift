@@ -8,7 +8,7 @@ protocol FiltersViewControllerDelegate: AnyObject {
 final class FiltersViewController: UIViewController {
     // MARK: - Properties:
     weak var delegate: FiltersViewControllerDelegate?
-    var selectedFilter: Filters?
+    var selectedFilter: Filters? = .allTrackers
     
     // MARK: - Private Properties:
     private let filters: [Filters] = Filters.allCases
@@ -27,7 +27,6 @@ final class FiltersViewController: UIViewController {
         let table = UITableView()
         table.layer.cornerRadius = 16
         table.layer.masksToBounds = true
-        table.backgroundColor = .YPBackground
         table.isScrollEnabled = false
         table.isMultipleTouchEnabled = false
         table.separatorStyle = .singleLine
@@ -36,7 +35,7 @@ final class FiltersViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.showsVerticalScrollIndicator = false
         table.alwaysBounceVertical = true
-        table.register(UITableViewCell.self, forCellReuseIdentifier: FiltersTableViewCell.reuseID)
+        table.register(FiltersTableViewCell.self, forCellReuseIdentifier: FiltersTableViewCell.reuseIdentifier)
         table.delegate = self
         table.dataSource = self
         
@@ -46,7 +45,7 @@ final class FiltersViewController: UIViewController {
     // MARK: - LifeCycle:
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .YPBackground
+        self.view.backgroundColor = .YPWhite
         configureUI()
     }
     
@@ -57,9 +56,9 @@ final class FiltersViewController: UIViewController {
     private func configureUI() {
         view.addSubview(titleLabel)
         view.addSubview(filtersTable)
-        
+
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 78),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 26),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             titleLabel.heightAnchor.constraint(equalToConstant: 22),
@@ -79,11 +78,12 @@ extension FiltersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FiltersTableViewCell.reuseID) as? FiltersTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FiltersTableViewCell.reuseIdentifier) as? FiltersTableViewCell else {
+            print("Unable to dequeue cell with identifier: \(FiltersTableViewCell.reuseIdentifier)")
             return UITableViewCell()
         }
         let filterName = filters[indexPath.row].name
-        let checkmarkStatus = filterName == selectedFilter?.name
+        let checkmarkStatus = filterName != selectedFilter?.name
         cell.configureCell(filtersName: filterName, checkmarkStatus: checkmarkStatus)
         
         if indexPath.row == filters.count - 1 {
