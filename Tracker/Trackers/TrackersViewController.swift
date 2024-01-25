@@ -221,21 +221,23 @@ final class TrackersViewController: UIViewController {
         }
         let pinnedCategory = TrackerCategory(name: L10n.Localizable.Title.pinnedTitle, includedTrackers: pinnedTrackers)
         currentDay = component
+        
         let restCategories: [TrackerCategory] = categories.compactMap { category in
             let trackers = category.includedTrackers.filter { !$0.isPinned }
+            
             if trackers.isEmpty {
                 return nil
             }
             return TrackerCategory(name: category.name, includedTrackers: trackers)
         }
+        
         if pinnedTrackers.isEmpty {
             categories = restCategories
         } else {
             categories = [pinnedCategory] + restCategories
-            
         }
         
-        visibleCategories = categories.compactMap { category in
+        let filteredCategories: [TrackerCategory] = categories.compactMap { category in
             let trackers = category.includedTrackers.filter { tracker in
                 let textCondition = filterText.isEmpty || tracker.name.lowercased().contains(filterText)
                 let dateCondition = tracker.schedule?.contains { weekDay in
@@ -248,6 +250,42 @@ final class TrackersViewController: UIViewController {
                 return nil
             }
             return TrackerCategory(name: category.name, includedTrackers: trackers)
+        }
+        
+        if selectedFilter == .completedTrackers {
+            filtersButton.setTitleColor(.YPRed, for: .normal)
+            let filteredCategories: [TrackerCategory] = categories.compactMap { category in
+                let filteredTrackers = category.includedTrackers.filter { tracker in
+                    let idExists = completedTrackers.contains { record in
+                        return record.id == tracker.id && record.date.sameDay(datePicker.date)
+                    }
+                    return idExists
+                }
+                if !filteredTrackers.isEmpty {
+                    return TrackerCategory(name: category.name, includedTrackers: filteredTrackers)
+                } else {
+                    return nil
+                }
+            }
+            visibleCategories = filteredCategories
+        } else if selectedFilter == .notCompletedTrackers {
+            filtersButton.setTitleColor(.YPRed, for: .normal)
+            let filteredCategories: [TrackerCategory] = categories.compactMap { category in
+                let filteredTrackers = category.includedTrackers.filter { tracker in
+                    let idNotExists = !completedTrackers.contains { record in
+                        return record.id == tracker.id && record.date.sameDay(datePicker.date)
+                    }
+                    return idNotExists
+                }
+                if !filteredTrackers.isEmpty {
+                    return TrackerCategory(name: category.name, includedTrackers: filteredTrackers)
+                } else {
+                    return nil
+                }
+            }
+            visibleCategories = filteredCategories
+        } else {
+            visibleCategories = filteredCategories
         }
         configureEmptyLabels()
         collectionView.reloadData()
@@ -494,16 +532,15 @@ extension TrackersViewController: FiltersViewControllerDelegate {
         switch filter {
         case .allTrackers:
             filtersButton.setTitleColor(.YPOnlyWhite, for: .normal)
+            reloadVisibleCategories()
         case .todayTrackers:
             filtersButton.setTitleColor(.YPOnlyWhite, for: .normal)
             datePicker.date = Date()
-            datePickerValueChanged()
+            reloadVisibleCategories()
         case .completedTrackers:
             reloadVisibleCategories()
         case .notCompletedTrackers:
             reloadVisibleCategories()
         }
     }
-    
-    
 }
