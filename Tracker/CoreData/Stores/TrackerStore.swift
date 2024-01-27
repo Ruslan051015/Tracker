@@ -68,7 +68,6 @@ final class TrackerStore: NSObject  {
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), tracker.id as CVarArg)
         
         guard let trackerCD = try? context.fetch(request) else {
-            print("Hе удалось выполнить запрос")
             return
         }
         if let trackerToPin = trackerCD.first {
@@ -88,7 +87,6 @@ final class TrackerStore: NSObject  {
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id as CVarArg)
         
         guard let trackers = try? context.fetch(request) else {
-            print("Hе удалось выполнить запрос")
             return
         }
         if let trackerCD = trackers.first {
@@ -97,18 +95,20 @@ final class TrackerStore: NSObject  {
         }
     }
     
-    func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws {
-        let newTracker = TrackerCoreData(context: context)
-        newTracker.trackerID = tracker.id
-        newTracker.name = tracker.name
-        newTracker.color = tracker.color
-        newTracker.emoji = tracker.emoji
-        newTracker.schedule = tracker.schedule as? NSObject
-        newTracker.category = category
-        newTracker.record = []
-        newTracker.pin = tracker.isPinned
-        saveContext()
-    }
+    func createCoreDataTracker(
+        from tracker: Tracker,
+        with category: TrackerCategoryCoreData) throws {
+            let newTracker = TrackerCoreData(context: context)
+            newTracker.trackerID = tracker.id
+            newTracker.name = tracker.name
+            newTracker.color = tracker.color
+            newTracker.emoji = tracker.emoji
+            newTracker.schedule = tracker.schedule as? NSObject
+            newTracker.category = category
+            newTracker.record = []
+            newTracker.pin = tracker.isPinned
+            saveContext()
+        }
     
     func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {
         guard
@@ -117,7 +117,6 @@ final class TrackerStore: NSObject  {
             let color = model.value(forKey: "color") as? UIColor,
             let emoji = model.emoji,
             let schedule = model.schedule as? [Weekday] else {
-            print("Не удалось получить данные из БД")
             throw CDErrors.creatingTrackerFromModelError
         }
         let isPinned = model.pin
@@ -136,7 +135,6 @@ final class TrackerStore: NSObject  {
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), id as CVarArg)
         
         guard let trackers = try? context.fetch(request) else {
-            print("Не удалось выполнить запрос")
             return
         }
         if let tracker = trackers.first {
@@ -148,7 +146,6 @@ final class TrackerStore: NSObject  {
     func updateTracker(_ updatedTracker: Tracker, with category: TrackerCategoryCoreData) {
         guard let trackerToUpdate = trackersFetchedResultsController?.fetchedObjects?.first(where: { $0.trackerID == updatedTracker.id
         }) else {
-            print("Нет трекера для обновления")
             return
         }
         trackerToUpdate.name = updatedTracker.name

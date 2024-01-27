@@ -1,6 +1,6 @@
 import UIKit
 
-class OnboardingViewController: UIPageViewController {
+final class OnboardingViewController: UIPageViewController {
     // MARK: - Private Properties:
     private lazy var pages: [UIViewController] = {
         let firstPage = FirstPageViewController()

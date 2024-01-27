@@ -1,6 +1,6 @@
 import UIKit
 
-class StatisticsViewController: UIViewController {
+final class StatisticsViewController: UIViewController {
     // MARK: - Private properties:
     private let viewModel: StatisticsViewModel
     private var bestPeriodCount: Int?
@@ -101,7 +101,7 @@ class StatisticsViewController: UIViewController {
     }()
     
     private lazy var completedTrackersView: UIView = {
-        let gradientView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 343, height: 90)))
+        let gradientView = UIView()
         gradientView.backgroundColor = .clear
         gradientView.layer.cornerRadius = 16
         gradientView.layer.masksToBounds = true
@@ -191,23 +191,21 @@ class StatisticsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func addSubviews() {
+        [stubLabel, stubImage, stackView].forEach { self.view.addSubview($0) }
+        [bestPeriodLabel, bestPeriodCounter].forEach { bestPeriodView.addSubview($0) }
+        [idealDaysLabel, idealDaysCounter].forEach { idealDaysView.addSubview($0) }
+        [completedTrackersLabel, completedTrackersCounter].forEach { completedTrackersView.addSubview($0)
+        }
+        [averageValueLabel, averageValueCounter].forEach {
+            averageValueView.addSubview($0)
+        }
+        [bestPeriodView, idealDaysView, completedTrackersView, averageValueView].forEach { stackView.addArrangedSubview($0)
+        }
+    }
+    
     private func setupUI() {
-        self.view.addSubview(stubLabel)
-        self.view.addSubview(stubImage)
-        self.view.addSubview(stackView)
-        bestPeriodView.addSubview(bestPeriodLabel)
-        bestPeriodView.addSubview(bestPeriodCounter)
-        idealDaysView.addSubview(idealDaysLabel)
-        idealDaysView.addSubview(idealDaysCounter)
-        completedTrackersView.addSubview(completedTrackersLabel)
-        completedTrackersView.addSubview(completedTrackersCounter)
-        averageValueView.addSubview(averageValueLabel)
-        averageValueView.addSubview(averageValueCounter)
-        stackView.addArrangedSubview(bestPeriodView)
-        stackView.addArrangedSubview(idealDaysView)
-        stackView.addArrangedSubview(completedTrackersView)
-        stackView.addArrangedSubview(averageValueView)
-        
+        addSubviews()
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
@@ -219,16 +217,12 @@ class StatisticsViewController: UIViewController {
             
             bestPeriodView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             bestPeriodView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            bestPeriodView.heightAnchor.constraint(equalToConstant: 90),
             idealDaysView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             idealDaysView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            idealDaysView.heightAnchor.constraint(equalToConstant: 90),
             completedTrackersView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             completedTrackersView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            completedTrackersView.heightAnchor.constraint(equalToConstant: 90),
             averageValueView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             averageValueView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            averageValueView.heightAnchor.constraint(equalToConstant: 90),
             
             bestPeriodLabel.leadingAnchor.constraint(equalTo: bestPeriodView.leadingAnchor, constant: 12),
             bestPeriodLabel.bottomAnchor.constraint(equalTo: bestPeriodView.bottomAnchor, constant: -12),
@@ -242,7 +236,6 @@ class StatisticsViewController: UIViewController {
             averageValueLabel.leadingAnchor.constraint(equalTo: averageValueView.leadingAnchor, constant: 12),
             averageValueLabel.bottomAnchor.constraint(equalTo: averageValueView.bottomAnchor, constant: -12),
             averageValueLabel.trailingAnchor.constraint(equalTo: averageValueView.trailingAnchor, constant: -12),
-            
             
             bestPeriodCounter.leadingAnchor.constraint(equalTo: bestPeriodView.leadingAnchor, constant: 12),
             bestPeriodCounter.trailingAnchor.constraint(equalTo: bestPeriodView.trailingAnchor, constant: -12),

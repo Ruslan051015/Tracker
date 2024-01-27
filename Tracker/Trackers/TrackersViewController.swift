@@ -314,7 +314,7 @@ final class TrackersViewController: UIViewController {
     private func showDeleteAlert(for tracker: Tracker) {
         let alertModel = AlertModel(title: L10n.Localizable.Title.deleteTrackerTitle, message: nil, firstButtonText: L10n.Localizable.Button.delete, secondButtonText: L10n.Localizable.Button.cancel) { [weak self] in
             guard let self = self else { return }
-            yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.delete, on: Reports.Screens.mainScreen)
+            yandexMetrica.sendReport(about: Analytics.Events.click, and: Analytics.Items.delete, on: Analytics.Screens.mainScreen)
             self.activityIndicator.startAnimating()
             self.trackerStore.deleteTracker(tracker)
             self.recordStore.deleteAllRecordFromCD(for: tracker.id)
@@ -356,14 +356,14 @@ final class TrackersViewController: UIViewController {
     }
     
     @objc private func plusButtonTapped() {
-        yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.addTrack, on: Reports.Screens.mainScreen)
+        yandexMetrica.sendReport(about: Analytics.Events.click, and: Analytics.Items.addTrack, on: Analytics.Screens.mainScreen)
         
         let viewToPresent = HabitOrEventViewController()
         self.present(viewToPresent, animated: true)
     }
     
     @objc private func filtersButtonTapped() {
-        yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.filter, on: Reports.Screens.mainScreen)
+        yandexMetrica.sendReport(about: Analytics.Events.click, and: Analytics.Items.filter, on: Analytics.Screens.mainScreen)
         let viewToPresent = FiltersViewController()
         viewToPresent.delegate = self
         viewToPresent.selectedFilter = filterStorage.filter
@@ -386,7 +386,7 @@ extension TrackersViewController: UICollectionViewDelegate {
             let editAction = UIAction(title: L10n.Localizable.Button.editTitle, handler: { [weak self] _ in
                 guard let self else { return }
                 if let categoryName = categoryStore.categories.first(where: { $0.includedTrackers.contains { $0.name == tracker.name } })?.name {
-                    yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.edit, on: Reports.Screens.mainScreen)
+                    yandexMetrica.sendReport(about: Analytics.Events.click, and: Analytics.Items.edit, on: Analytics.Screens.mainScreen)
                     let viewToPresent = TrackerCreatingViewController(trackerType: .habit)
                     viewToPresent.editingTracker = tracker
                     viewToPresent.selectedCategory = categoryName
@@ -500,7 +500,7 @@ extension TrackersViewController: UICollectionViewDataSource {
 // MARK: - TrackerCellDelegate:
 extension TrackersViewController: TrackerCellDelegate {
     func checkIfCompleted(for id: UUID) {
-        yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.track, on: Reports.Screens.mainScreen)
+        yandexMetrica.sendReport(about: Analytics.Events.click, and: Analytics.Items.track, on: Analytics.Screens.mainScreen)
         if let index = completedTrackers.firstIndex(where: { $0.id == id && $0.date.sameDay(datePicker.date) }) {
             let recordToDelete = completedTrackers[index]
             completedTrackers.remove(at: index)

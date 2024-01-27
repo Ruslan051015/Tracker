@@ -75,7 +75,6 @@ final class TrackerCategoryStore: NSObject {
             let objectToDelete = categoryFetchedResultsController.fetchedObjects?.first(where: {
                 $0.name == model.name
             }) else {
-            print("Не удалось найти категорию для удаления")
             return
         }
         categoryFetchedResultsController.managedObjectContext.delete(objectToDelete)
@@ -89,16 +88,17 @@ final class TrackerCategoryStore: NSObject {
         saveContext()
     }
     
-    func update(categoryName: String, with newName: String) {
-        guard let categoryToUpdate = categoryFetchedResultsController.fetchedObjects?.first(where: {
-            $0.name == categoryName
-        }) else {
-            print("не удалось найти категорию для обновления")
-            return
+    func update(
+        categoryName: String,
+        with newName: String) {
+            guard let categoryToUpdate = categoryFetchedResultsController.fetchedObjects?.first(where: {
+                $0.name == categoryName
+            }) else {
+                return
+            }
+            categoryToUpdate.name = newName
+            saveContext()
         }
-        categoryToUpdate.name = newName
-        saveContext()
-    }
     
     func createCategoryFromCoreData(_ model: TrackerCategoryCoreData) throws -> TrackerCategory {
         guard let name = model.name else {

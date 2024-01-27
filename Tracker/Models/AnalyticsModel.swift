@@ -1,6 +1,6 @@
 import Foundation
 
-struct Reports {
+struct Analytics {
     struct Events {
         static let open = "open"
         static let close = "close"

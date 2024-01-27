@@ -1,8 +1,8 @@
 import UIKit
 
-enum eventType {
-    case Creating
-    case Editing
+enum EventType {
+    case creating
+    case editing
 }
 
 final class NewCategoryViewController: UIViewController {
@@ -11,14 +11,14 @@ final class NewCategoryViewController: UIViewController {
     var editingCategoryName: String?
     
     // MARK: - Private properties:
-    private let eventType: eventType
+    private let eventType: EventType
     private var categoryName: String = ""
     private let categoryStore = TrackerCategoryStore.shared
     private var controllerTitle: String {
         switch eventType {
-        case .Creating:
+        case .creating:
             return L10n.Localizable.Title.newCategory
-        case .Editing:
+        case .editing:
             return L10n.Localizable.Title.editingCategory
         }
     }
@@ -67,13 +67,13 @@ final class NewCategoryViewController: UIViewController {
         setupToHideKeyboardOnTapOnView()
         doneButtonCondition()
         
-        if eventType == .Editing {
+        if eventType == .editing {
             textField.text = editingCategoryName
         }
     }
     
     // MARK: - Private methods:
-    init(eventType: eventType) {
+    init(eventType: EventType) {
         self.eventType = eventType
         super.init(nibName: nil, bundle: nil)
     }
@@ -120,13 +120,13 @@ final class NewCategoryViewController: UIViewController {
     
     // MARK: - Objc-Methods:
     @objc private func doneButtonTapped() {
-        if eventType == .Creating {
+        if eventType == .creating {
             do {
                 try categoryStore.createCoreDataCategory(with: categoryName)
             } catch {
                 print(CDErrors.creatingCoreDataCategoryError)
             }
-        } else if eventType == .Editing {
+        } else if eventType == .editing {
             guard let editingCategoryName = editingCategoryName else { return }
             categoryStore.update(categoryName: editingCategoryName, with: categoryName)
         }

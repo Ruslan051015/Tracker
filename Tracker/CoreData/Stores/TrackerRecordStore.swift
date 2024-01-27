@@ -98,7 +98,6 @@ final class TrackerRecordStore: NSObject {
         let request = TrackerRecordCoreData.fetchRequest()
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerRecordCoreData.recordID), id as CVarArg)
         guard let trackersRecords = try? context.fetch(request) else {
-            print("Не удалось выполнить запрос")
             return
         }
         
@@ -144,8 +143,6 @@ extension TrackerRecordStore: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         if let delegate = delegate {
             delegate.didUpdateStatistics()
-        } else {
-            print("Delegate is nil")
         }
     }
 }

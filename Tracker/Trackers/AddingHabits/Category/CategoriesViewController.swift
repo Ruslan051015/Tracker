@@ -167,7 +167,7 @@ final class CategoriesViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Objc-Methods:
     @objc private func addButtonTapped() {
-        let viewToPresent = NewCategoryViewController(eventType: .Creating)
+        let viewToPresent = NewCategoryViewController(eventType: .creating)
         self.present(viewToPresent, animated: true)
     }
 }
@@ -241,16 +241,16 @@ extension CategoriesViewController: UITableViewDelegate {
             }
             let editAction = UIAction(title: L10n.Localizable.Button.editTitle) { [weak self] action in
                 guard let self = self else { return }
-                yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.edit, on: Reports.Screens.category)
+                yandexMetrica.sendReport(about: Analytics.Events.click, and: Analytics.Items.edit, on: Analytics.Screens.category)
                 let editingCategoryName = cell.getCellTextLabelText()
-                let viewToPresent = NewCategoryViewController(eventType: .Editing)
+                let viewToPresent = NewCategoryViewController(eventType: .editing)
                 viewToPresent.editingCategoryName = editingCategoryName
                 self.present(viewToPresent, animated: true)
             }
             
             let deleteAction = UIAction(title: L10n.Localizable.Button.delete, attributes: .destructive) { [weak self] action in
                 guard let self = self else { return }
-                yandexMetrica.sendReport(about: Reports.Events.click, and: Reports.Items.delete, on: Reports.Screens.category)
+                yandexMetrica.sendReport(about: Analytics.Events.click, and: Analytics.Items.delete, on: Analytics.Screens.category)
                 let categoryToDelete = cell.getCellTextLabelText()
                 self.showDeleteAlert(for: categoryToDelete)
             }

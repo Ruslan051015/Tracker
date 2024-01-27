@@ -501,14 +501,14 @@ final class TrackerCreatingViewController: UIViewController {
     }
     
     @objc private func showCategories() {
-        yandexMetrica.sendReport(about: Reports.Events.open, and: nil, on: Reports.Screens.category)
+        yandexMetrica.sendReport(about: Analytics.Events.open, and: nil, on: Analytics.Screens.category)
         let viewToPresent = CategoriesViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
     }
     
     @objc private func scheduleButtonTapped() {
-        yandexMetrica.sendReport(about: Reports.Events.open, and: nil, on: Reports.Screens.schedule)
+        yandexMetrica.sendReport(about: Analytics.Events.open, and: nil, on: Analytics.Screens.schedule)
         let viewToPresent = ScheduleViewController()
         viewToPresent.delegate = self
         self.present(viewToPresent, animated: true)
@@ -593,9 +593,9 @@ extension TrackerCreatingViewController: UITextFieldDelegate {
 extension TrackerCreatingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case sectionsEnum.emojiCell.rawValue:
+        case SectionsEnum.emojiCell.rawValue:
             return emojies.count
-        case sectionsEnum.colorCell.rawValue:
+        case SectionsEnum.colorCell.rawValue:
             return colors.count
         default: return 0
         }
@@ -603,7 +603,7 @@ extension TrackerCreatingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-        case sectionsEnum.emojiCell.rawValue:
+        case SectionsEnum.emojiCell.rawValue:
             guard let emojiCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmojiCell.reuseIdentifier, for: indexPath) as? EmojiCell else { return UICollectionViewCell()}
             emojiCell.emojiLabel.text = emojies[indexPath.row]
             if selectedEmojiIndexPath == indexPath {
@@ -612,7 +612,7 @@ extension TrackerCreatingViewController: UICollectionViewDataSource {
             }
             return emojiCell
             
-        case sectionsEnum.colorCell.rawValue:
+        case SectionsEnum.colorCell.rawValue:
             guard let colorCell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.reuseIdentifier, for: indexPath) as? ColorCell else { return UICollectionViewCell()}
             colorCell.colorView.backgroundColor = colors[indexPath.row]
             if selectedColorIndexPath == indexPath {
@@ -631,9 +631,9 @@ extension TrackerCreatingViewController: UICollectionViewDataSource {
         headerView.titleLabel.font = .boldSystemFont(ofSize: 19)
         
         switch indexPath.section {
-        case sectionsEnum.emojiCell.rawValue:
+        case SectionsEnum.emojiCell.rawValue:
             headerView.titleLabel.text = L10n.Localizable.Title.emoji
-        case sectionsEnum.colorCell.rawValue:
+        case SectionsEnum.colorCell.rawValue:
             headerView.titleLabel.text = L10n.Localizable.Title.color
         default:
             headerView.titleLabel.text = "1"
@@ -685,7 +685,7 @@ extension TrackerCreatingViewController: UICollectionViewDelegateFlowLayout {
 extension TrackerCreatingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
-        case sectionsEnum.emojiCell.rawValue:
+        case SectionsEnum.emojiCell.rawValue:
             if selectedEmojiIndexPath == indexPath {
                 selectedEmojiIndexPath = nil
                 selectedEmoji = ""
@@ -693,7 +693,7 @@ extension TrackerCreatingViewController: UICollectionViewDelegate {
                 selectedEmojiIndexPath = indexPath
             }
             collectionView.reloadData()
-        case sectionsEnum.colorCell.rawValue:
+        case SectionsEnum.colorCell.rawValue:
             if selectedColorIndexPath == indexPath {
                 selectedColorIndexPath = nil
                 selectedColor = nil

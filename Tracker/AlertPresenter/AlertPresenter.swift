@@ -15,12 +15,19 @@ final class AlertPresenter: AlertPresenterProtocol {
     }
     
     func showAlert(model: AlertModel) {
-        let alert = UIAlertController(title: model.title, message: model.message, preferredStyle: .actionSheet)
+        let alert = UIAlertController(
+            title: model.title,
+            message: model.message,
+            preferredStyle: .actionSheet)
         
-        let firstAction = UIAlertAction(title: model.firstButtonText, style: .destructive) { _ in
-            model.firstCompletion()
-        }
-        let secondAction = UIAlertAction(title: model.secondButtonText, style: .cancel)
+        let firstAction = UIAlertAction(
+            title: model.firstButtonText,
+            style: .destructive) { _ in
+                model.firstCompletion()
+            }
+        let secondAction = UIAlertAction(
+            title: model.secondButtonText,
+            style: .cancel)
         
         alert.addAction(firstAction)
         alert.addAction(secondAction)

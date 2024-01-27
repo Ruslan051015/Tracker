@@ -1,6 +1,6 @@
 import UIKit
 
-class TrackerCell: UICollectionViewCell {
+final class TrackerCell: UICollectionViewCell {
     // MARK: - Properties:
     static let reuseID = "TrackersCell"
     weak var delegate: TrackerCellDelegate?
@@ -53,7 +53,6 @@ class TrackerCell: UICollectionViewCell {
         imageView.layer.backgroundColor = UIColor.clear.cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .white
-        
         
         return imageView
     }()
@@ -123,7 +122,7 @@ class TrackerCell: UICollectionViewCell {
         plusButton.setImage(image, for: .normal)
         plusButton.alpha = isCompleted ? 0.3 : 1
         
-        showOrHidePinImage()
+        pinnedImageView.isHidden = !isPinned
     }
     // MARK: - Private methods:
     private func configureCell() {
@@ -172,14 +171,6 @@ class TrackerCell: UICollectionViewCell {
             plusButton.widthAnchor.constraint(equalToConstant: 34),
             plusButton.heightAnchor.constraint(equalToConstant: 34)
         ])
-    }
-    
-    private func showOrHidePinImage() {
-        if isPinned {
-            pinnedImageView.isHidden = false
-        } else {
-            pinnedImageView.isHidden = true
-        }
     }
     
     // MARK: - Objc-Methods:
