@@ -2,24 +2,27 @@ import Foundation
 import UIKit
 import CoreData
 
+protocol TrackerRecordDelegate: AnyObject {
+    func didUpdateStatistics()
+}
+
 final class TrackerRecordStore: NSObject {
     // MARK: - Properties:
+    weak var delegate: TrackerRecordDelegate?
     static let shared = TrackerRecordStore()
     var records: [TrackerRecord]? {
-        var recordsFromCD: [TrackerRecord]?
-        do {
-            recordsFromCD = try getAllRecords()
-        } catch {
-            print("Couldn't fetch records: \(error.localizedDescription)")
-        }
-        guard let fetchedRecords = recordsFromCD else {
+        guard
+            let fetchedResultController = self.recordsFetchedResultsController,
+            let objects = fetchedResultController.fetchedObjects,
+            let records = try? objects.map({ try createTrackerRecord(from: $0) }) else {
             return []
         }
-        return fetchedRecords
+        return records
     }
     
     // MARK: - Private properties:
     private var context: NSManagedObjectContext
+    private var recordsFetchedResultsController: NSFetchedResultsController<TrackerRecordCoreData>?
     
     // MARK: - Initializers:
     convenience override init() {
@@ -33,6 +36,19 @@ final class TrackerRecordStore: NSObject {
     init(context: NSManagedObjectContext) {
         self.context = context
         super.init()
+        
+        let fetchRequest = TrackerRecordCoreData.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "recordID", ascending: false)]
+        
+        let controller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        controller.delegate = self
+        self.recordsFetchedResultsController = controller
+        try? controller.performFetch()
     }
     
     // MARK: - Methods:
@@ -77,7 +93,20 @@ final class TrackerRecordStore: NSObject {
             saveContext()
         }
     }
-  
+    
+    func deleteAllRecordFromCD(for id: UUID) {
+        let request = TrackerRecordCoreData.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerRecordCoreData.recordID), id as CVarArg)
+        guard let trackersRecords = try? context.fetch(request) else {
+            return
+        }
+        
+        trackersRecords.forEach {
+            context.delete($0)
+        }
+        saveContext()
+    }
+    
     func getRecordFromCoreData(with id: UUID) -> [TrackerRecord] {
         let request = TrackerRecordCoreData.fetchRequest()
         request.predicate = NSPredicate(
@@ -94,14 +123,14 @@ final class TrackerRecordStore: NSObject {
         
         guard let records = try? recordsCD.map({ try self.createTrackerRecord(from: $0)
         }) else {
-            print("No records meeting the conditions")
+            print("Нет записей удовлетворяющих условию")
             return []
         }
         return records
     }
     
     // MARK: - Private Methods:
-    private func getAllRecords() throws -> [TrackerRecord]? {
+    func getAllRecords() throws -> [TrackerRecord]? {
         let request = TrackerRecordCoreData.fetchRequest()
         let objects = try context.fetch(request)
         let records = try objects.map { try self.createTrackerRecord(from: $0) }
@@ -110,4 +139,10 @@ final class TrackerRecordStore: NSObject {
     }
 }
 
-
+extension TrackerRecordStore: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if let delegate = delegate {
+            delegate.didUpdateStatistics()
+        }
+    }
+}

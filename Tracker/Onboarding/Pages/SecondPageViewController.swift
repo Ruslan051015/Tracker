@@ -1,6 +1,6 @@
 import UIKit
 
-class SecondPageViewController: UIViewController {
+final class SecondPageViewController: UIViewController {
     // MARK: - Private Properties:
     private let image = UIImage(named: "secondScreen")
     private lazy var imageView: UIImageView = {
@@ -22,12 +22,12 @@ class SecondPageViewController: UIViewController {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "Даже если это \nне литры воды и йога"
+        label.text = L10n.Localizable.Title.secondPage
         label.numberOfLines = 2
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .YPWhite
+        label.textColor = .YPOnlyWhite
         self.view.addSubview(label)
         
         return label

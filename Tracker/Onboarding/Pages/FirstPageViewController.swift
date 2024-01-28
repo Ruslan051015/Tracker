@@ -1,6 +1,6 @@
 import UIKit
 
-class FirstPageViewController: UIViewController {
+final class FirstPageViewController: UIViewController {
     // MARK: - Private Properties:
     private lazy var imageView: UIImageView = {
         let image = UIImage(named: "firstScreen")
@@ -23,12 +23,12 @@ class FirstPageViewController: UIViewController {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "Отслеживайте только \nто, что хотите"
+        label.text = L10n.Localizable.Title.firstPage
         label.numberOfLines = 2
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .YPWhite
+        label.textColor = .YPOnlyWhite
         self.view.addSubview(label)
         
         return label
@@ -60,10 +60,5 @@ class FirstPageViewController: UIViewController {
             
         ])
     }
-    
-    
-    
-    
-    
 }
-// MARK: - Extensions:
+

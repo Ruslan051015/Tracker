@@ -20,6 +20,12 @@ final class TrackerCategoryStore: NSObject {
         return categories
     }
     
+    var pinnedTrackers: [Tracker] {
+        let trackers = categories.flatMap { $0.includedTrackers }
+        let pinnedTrackers = trackers.filter { $0.isPinned }
+        return pinnedTrackers
+    }
+    
     // MARK: - Private properties:
     private let context: NSManagedObjectContext
     private let trackerStore = TrackerStore.shared
@@ -69,7 +75,6 @@ final class TrackerCategoryStore: NSObject {
             let objectToDelete = categoryFetchedResultsController.fetchedObjects?.first(where: {
                 $0.name == model.name
             }) else {
-            print("Не удалось найти категорию для удаления")
             return
         }
         categoryFetchedResultsController.managedObjectContext.delete(objectToDelete)
@@ -82,6 +87,18 @@ final class TrackerCategoryStore: NSObject {
         category.trackers = []
         saveContext()
     }
+    
+    func update(
+        categoryName: String,
+        with newName: String) {
+            guard let categoryToUpdate = categoryFetchedResultsController.fetchedObjects?.first(where: {
+                $0.name == categoryName
+            }) else {
+                return
+            }
+            categoryToUpdate.name = newName
+            saveContext()
+        }
     
     func createCategoryFromCoreData(_ model: TrackerCategoryCoreData) throws -> TrackerCategory {
         guard let name = model.name else {
@@ -104,7 +121,7 @@ final class TrackerCategoryStore: NSObject {
         return category
     }
     
-    func getCategories() -> [TrackerCategoryCoreData] {
+    func getCategories() throws -> [TrackerCategoryCoreData] {
         let request = TrackerCategoryCoreData.fetchRequest()
         request.returnsObjectsAsFaults = false
         var categoriesArray: [TrackerCategoryCoreData]?

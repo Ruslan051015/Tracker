@@ -63,6 +63,23 @@ final class TrackerStore: NSObject  {
         }
     }
     
+    func pinTrackerCoreData(_ tracker: Tracker) {
+        let request = TrackerCoreData.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), tracker.id as CVarArg)
+        
+        guard let trackerCD = try? context.fetch(request) else {
+            return
+        }
+        if let trackerToPin = trackerCD.first {
+            if trackerToPin.pin == false {
+                trackerToPin.pin = true
+            } else if trackerToPin.pin == true {
+                trackerToPin.pin = false
+            }
+            saveContext()
+        }
+    }
+    
     func updateTrackerRecord(with record: TrackerRecord) throws {
         let newRecord = recordStore.createCDTrackerRecord(from: record)
         let request = TrackerCoreData.fetchRequest()
@@ -70,7 +87,6 @@ final class TrackerStore: NSObject  {
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id as CVarArg)
         
         guard let trackers = try? context.fetch(request) else {
-            print("Hе удалось выполнить запрос")
             return
         }
         if let trackerCD = trackers.first {
@@ -79,17 +95,20 @@ final class TrackerStore: NSObject  {
         }
     }
     
-    func createCoreDataTracker(from tracker: Tracker, with category: TrackerCategoryCoreData) throws {
-        let newTracker = TrackerCoreData(context: context)
-        newTracker.trackerID = tracker.id
-        newTracker.name = tracker.name
-        newTracker.color = tracker.color
-        newTracker.emoji = tracker.emoji
-        newTracker.schedule = tracker.schedule as? NSObject
-        newTracker.category = category
-        newTracker.record = []
-        saveContext()
-    }
+    func createCoreDataTracker(
+        from tracker: Tracker,
+        with category: TrackerCategoryCoreData) throws {
+            let newTracker = TrackerCoreData(context: context)
+            newTracker.trackerID = tracker.id
+            newTracker.name = tracker.name
+            newTracker.color = tracker.color
+            newTracker.emoji = tracker.emoji
+            newTracker.schedule = tracker.schedule as? NSObject
+            newTracker.category = category
+            newTracker.record = []
+            newTracker.pin = tracker.isPinned
+            saveContext()
+        }
     
     func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {
         guard
@@ -98,15 +117,44 @@ final class TrackerStore: NSObject  {
             let color = model.value(forKey: "color") as? UIColor,
             let emoji = model.emoji,
             let schedule = model.schedule as? [Weekday] else {
-            print("Не удалось получить данные из БД")
             throw CDErrors.creatingTrackerFromModelError
         }
+        let isPinned = model.pin
         return Tracker(
             id: id,
             name: name,
             schedule: schedule,
             color: color,
-            emoji: emoji)
+            emoji: emoji,
+            isPinned: isPinned)
+    }
+    
+    func deleteTracker(_ model: Tracker) {
+        let id = model.id
+        let request = TrackerCoreData.fetchRequest()
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), id as CVarArg)
+        
+        guard let trackers = try? context.fetch(request) else {
+            return
+        }
+        if let tracker = trackers.first {
+            context.delete(tracker)
+            saveContext()
+        }
+    }
+    
+    func updateTracker(_ updatedTracker: Tracker, with category: TrackerCategoryCoreData) {
+        guard let trackerToUpdate = trackersFetchedResultsController?.fetchedObjects?.first(where: { $0.trackerID == updatedTracker.id
+        }) else {
+            return
+        }
+        trackerToUpdate.name = updatedTracker.name
+        trackerToUpdate.category = category
+        trackerToUpdate.schedule = updatedTracker.schedule as? NSObject
+        trackerToUpdate.emoji = updatedTracker.emoji
+        trackerToUpdate.color = updatedTracker.color
+        
+        saveContext()
     }
 }
 
