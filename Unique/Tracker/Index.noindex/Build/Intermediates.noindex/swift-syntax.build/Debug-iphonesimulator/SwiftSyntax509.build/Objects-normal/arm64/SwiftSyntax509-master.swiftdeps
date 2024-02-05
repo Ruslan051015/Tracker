@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "524acb7d148080d2ca5271fcdb9de3e60b3202f9465220e5e755e336f5b80127"
+build_start_time: [1706975453, 293604000]
+build_end_time: [1706975453, 335882000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax509/Empty.swift"
+  : [1706467477, 745630940]

@@ -1,0 +1,74 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42597c82d54d0ba858a8aee7f52f0d1af7"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd4254aaebeb2ddb26dcc4f782cc3b6f5393"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd4294df82b996875b8c44e6173ed9636d07"
+    },
+    {
+      "guid" : "9756c3b0eb965cbc2d3ca295824d0ed96ec15a96aa01196bdde9dc1c3f9622c5"
+    },
+    {
+      "guid" : "9756c3b0eb965cbc2d3ca295824d0ed90defcbd9acfd16cb37e07f9d88d273e4"
+    },
+    {
+      "guid" : "9756c3b0eb965cbc2d3ca295824d0ed9ae2fd91f83bb214815b28af4b334e217"
+    }
+  ],
+  "containerPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker.xcworkspace",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator17.2",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Products",
+      "derivedDataPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique",
+      "indexDataStoreFolderPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/PrecompiledHeaders",
+      "indexRegularBuildIntermediatesPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex",
+      "indexRegularBuildProductsPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Products",
+      "pchPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

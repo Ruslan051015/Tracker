@@ -1,0 +1,12 @@
+{
+  "" : {
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntaxMacrosTestSupport.build/Objects-normal/arm64/SwiftSyntaxMacrosTestSupport-master.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntaxMacrosTestSupport.build/Objects-normal/arm64/SwiftSyntaxMacrosTestSupport-master.dia",
+    "emit-module-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntaxMacrosTestSupport.build/Objects-normal/arm64/SwiftSyntaxMacrosTestSupport-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntaxMacrosTestSupport.build/Objects-normal/arm64/SwiftSyntaxMacrosTestSupport-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftSyntaxMacrosTestSupport.build/Objects-normal/arm64/SwiftSyntaxMacrosTestSupport-master.swiftdeps"
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacrosTestSupport/Assertions.swift" : {
+
+  }
+}

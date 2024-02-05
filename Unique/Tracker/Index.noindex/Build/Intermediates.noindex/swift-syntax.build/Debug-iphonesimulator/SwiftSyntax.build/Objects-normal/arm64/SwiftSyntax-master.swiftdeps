@@ -1,0 +1,105 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "3249ad7358b559b0b8377484ce4b5e01aff50df3cd1526f72aa85ac0067d965d"
+build_start_time: [1706975454, 866832000]
+build_end_time: [1706975454, 880585000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/AbsolutePosition.swift"
+  : !dirty [1706467477, 721360060]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Assert.swift"
+  : !dirty [1706467477, 721434311]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/BumpPtrAllocator.swift"
+  : !dirty [1706467477, 721672693]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/CommonAncestor.swift"
+  : !dirty [1706467477, 721890282]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Convenience.swift"
+  : !dirty [1706467477, 721989368]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/MemoryLayout.swift"
+  : !dirty [1706467477, 727663848]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/MissingNodeInitializers.swift"
+  : !dirty [1706467477, 727735850]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Raw/RawSyntax.swift"
+  : !dirty [1706467477, 728081651]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Raw/RawSyntaxLayoutView.swift"
+  : !dirty [1706467477, 728232113]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Raw/RawSyntaxNodeProtocol.swift"
+  : !dirty [1706467477, 728319699]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Raw/RawSyntaxTokenView.swift"
+  : !dirty [1706467477, 728396826]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SourceLength.swift"
+  : !dirty [1706467477, 728499162]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SourceLocation.swift"
+  : !dirty [1706467477, 728598164]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SourcePresence.swift"
+  : !dirty [1706467477, 728701834]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SwiftSyntaxCompatibility.swift"
+  : !dirty [1706467477, 728769002]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Syntax.swift"
+  : !dirty [1706467477, 728926881]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SyntaxArena.swift"
+  : !dirty [1706467477, 729011133]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SyntaxChildren.swift"
+  : !dirty [1706467477, 729163929]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SyntaxCollection.swift"
+  : !dirty [1706467477, 729330350]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SyntaxData.swift"
+  : !dirty [1706467477, 729597607]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SyntaxText.swift"
+  : !dirty [1706467477, 729726110]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/SyntaxTreeViewMode.swift"
+  : !dirty [1706467477, 729796612]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/TokenDiagnostic.swift"
+  : !dirty [1706467477, 729879656]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/TokenSyntax.swift"
+  : !dirty [1706467477, 730004826]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Trivia.swift"
+  : !dirty [1706467477, 730108120]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/Utils.swift"
+  : !dirty [1706467477, 730193914]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/ChildNameForKeyPath.swift"
+  : !dirty [1706467477, 730868431]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/Keyword.swift"
+  : !dirty [1706467477, 731062478]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/RenamedChildrenCompatibility.swift"
+  : !dirty [1706467477, 731539991]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/RenamedNodesCompatibility.swift"
+  : !dirty [1706467477, 731703495]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxAnyVisitor.swift"
+  : !dirty [1706467477, 732838816]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxBaseNodes.swift"
+  : !dirty [1706467477, 733290036]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxCollections.swift"
+  : !dirty [1706467477, 733452207]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxEnum.swift"
+  : !dirty [1706467477, 733541501]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxKind.swift"
+  : !dirty [1706467477, 733622128]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxRewriter.swift"
+  : !dirty [1706467477, 733818050]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxTraits.swift"
+  : !dirty [1706467477, 734124641]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxTransform.swift"
+  : !dirty [1706467477, 734363439]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/SyntaxVisitor.swift"
+  : !dirty [1706467477, 734548611]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/TokenKind.swift"
+  : !dirty [1706467477, 734660738]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/Tokens.swift"
+  : !dirty [1706467477, 734790450]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/TriviaPieces.swift"
+  : !dirty [1706467477, 735014956]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/raw/RawSyntaxNodes.swift"
+  : !dirty [1706467477, 736264447]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/raw/RawSyntaxValidation.swift"
+  : !dirty [1706467477, 736992424]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/syntaxNodes/SyntaxDeclNodes.swift"
+  : !dirty [1706467477, 741054904]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/syntaxNodes/SyntaxExprNodes.swift"
+  : !dirty [1706467477, 741436581]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/syntaxNodes/SyntaxNodes.swift"
+  : !dirty [1706467477, 741849259]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/syntaxNodes/SyntaxPatternNodes.swift"
+  : !dirty [1706467477, 743153251]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/syntaxNodes/SyntaxStmtNodes.swift"
+  : !dirty [1706467477, 743770975]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntax/generated/syntaxNodes/SyntaxTypeNodes.swift"
+  : !dirty [1706467477, 743959021]

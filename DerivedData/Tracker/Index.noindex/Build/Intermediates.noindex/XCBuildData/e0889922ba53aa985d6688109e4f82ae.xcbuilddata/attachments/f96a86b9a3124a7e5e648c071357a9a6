@@ -1,0 +1,102 @@
+{
+  "" : {
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphoneos/SnapshotTesting.build/Objects-normal/arm64/SnapshotTesting-master.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphoneos/SnapshotTesting.build/Objects-normal/arm64/SnapshotTesting-master.dia",
+    "emit-module-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphoneos/SnapshotTesting.build/Objects-normal/arm64/SnapshotTesting-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphoneos/SnapshotTesting.build/Objects-normal/arm64/SnapshotTesting-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphoneos/SnapshotTesting.build/Objects-normal/arm64/SnapshotTesting-master.swiftdeps"
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/AssertSnapshot.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Async.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/Internal.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/PlistEncoder.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/String+SpecialCharacters.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/View.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/XCTAttachment.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Diff.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Diffing.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Extensions/Wait.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Internal/Deprecations.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/Any.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/CALayer.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/CaseIterable.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/CGPath.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/Data.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/Encodable.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/NSBezierPath.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/NSImage.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/NSView.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/NSViewController.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/SceneKit.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/SpriteKit.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/String.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/SwiftUIView.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/UIBezierPath.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/UIImage.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/UIView.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/UIViewController.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/URLRequest.swift" : {
+
+  }
+}

@@ -6,7 +6,7 @@ final class FilterStorage {
         get {
             Filters(rawValue: UserDefaults.standard.string(forKey: "selectedFilter") ?? "") ?? .allTrackers
         }
-        set{
+        set {
             UserDefaults.standard.set(newValue.rawValue, forKey: "selectedFilter")
         }
     }

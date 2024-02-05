@@ -1,0 +1,33 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "a1a02ee86baac0d54b038789d903057c2c6881e55005acce44b4c639f25d3a56"
+build_start_time: [1706975455, 518105000]
+build_end_time: [1706975455, 521674000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/AbstractSourceLocation.swift"
+  : !dirty [1706467477, 749809007]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroExpansionContext.swift"
+  : !dirty [1706467477, 749986470]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/AccessorMacro.swift"
+  : !dirty [1706467477, 750109223]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/AttachedMacro.swift"
+  : !dirty [1706467477, 750212642]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/CodeItemMacro.swift"
+  : !dirty [1706467477, 750301770]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/DeclarationMacro.swift"
+  : !dirty [1706467477, 750374397]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/ExpressionMacro.swift"
+  : !dirty [1706467477, 750447857]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/ExtensionMacro.swift"
+  : !dirty [1706467477, 750528984]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/FreestandingMacro.swift"
+  : !dirty [1706467477, 750589611]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/Macro+Format.swift"
+  : !dirty [1706467477, 750656362]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/Macro.swift"
+  : !dirty [1706467477, 750734572]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/MemberAttributeMacro.swift"
+  : !dirty [1706467477, 750808200]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/MemberMacro.swift"
+  : !dirty [1706467477, 750880618]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacros/MacroProtocols/PeerMacro.swift"
+  : !dirty [1706467477, 750958662]

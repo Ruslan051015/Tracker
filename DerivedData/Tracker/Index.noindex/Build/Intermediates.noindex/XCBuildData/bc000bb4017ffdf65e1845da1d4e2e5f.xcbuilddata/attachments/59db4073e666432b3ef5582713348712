@@ -1,0 +1,48 @@
+{
+  "" : {
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParserDiagnostics.build/Objects-normal/arm64/SwiftParserDiagnostics-master.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParserDiagnostics.build/Objects-normal/arm64/SwiftParserDiagnostics-master.dia",
+    "emit-module-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParserDiagnostics.build/Objects-normal/arm64/SwiftParserDiagnostics-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParserDiagnostics.build/Objects-normal/arm64/SwiftParserDiagnostics-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftParserDiagnostics.build/Objects-normal/arm64/SwiftParserDiagnostics-master.swiftdeps"
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/DiagnosticExtensions.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/generated/ChildNameForDiagnostics.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/generated/SyntaxKindNameForDiagnostics.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/generated/TokenNameForDiagnostics.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/LexerDiagnosticMessages.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/MissingNodesError.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/MissingTokenError.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/MultiLineStringLiteralDiagnosticsGenerator.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/ParseDiagnosticsGenerator.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/ParserDiagnosticMessages.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/PresenceUtils.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/SyntaxExtensions.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/Utils.swift" : {
+
+  }
+}

@@ -9,6 +9,3 @@ struct Tracker {
     let emoji: String
     let isPinned: Bool
 }
-
-
-

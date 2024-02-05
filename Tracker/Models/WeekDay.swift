@@ -8,7 +8,7 @@ enum Weekday: CaseIterable, Codable {
     case friday
     case saturday
     case sunday
-    
+
     var calendarNumber: Int {
         switch self {
         case .monday:
@@ -27,7 +27,7 @@ enum Weekday: CaseIterable, Codable {
             return 1
         }
     }
-    
+
     var dayNumber: Int {
         switch self {
         case .monday:
@@ -46,7 +46,7 @@ enum Weekday: CaseIterable, Codable {
             return 7
         }
     }
-    
+
     var localizedName: String {
         switch self {
         case .monday:

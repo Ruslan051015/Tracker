@@ -1,0 +1,36 @@
+{
+  "" : {
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/_SwiftSyntaxTestSupport.build/Objects-normal/arm64/_SwiftSyntaxTestSupport-master.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/_SwiftSyntaxTestSupport.build/Objects-normal/arm64/_SwiftSyntaxTestSupport-master.dia",
+    "emit-module-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/_SwiftSyntaxTestSupport.build/Objects-normal/arm64/_SwiftSyntaxTestSupport-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/_SwiftSyntaxTestSupport.build/Objects-normal/arm64/_SwiftSyntaxTestSupport-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/_SwiftSyntaxTestSupport.build/Objects-normal/arm64/_SwiftSyntaxTestSupport-master.swiftdeps"
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/AssertEqualWithDiff.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/IncrementalParseTestUtils.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/LocationMarkers.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/String+TrimmingTrailingWhitespace.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/Syntax+Assertions.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/SyntaxCollection+AtIndex.swift.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/SyntaxComparison.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/SyntaxProtocol+Initializer.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/TestUtils.swift" : {
+
+  }
+}

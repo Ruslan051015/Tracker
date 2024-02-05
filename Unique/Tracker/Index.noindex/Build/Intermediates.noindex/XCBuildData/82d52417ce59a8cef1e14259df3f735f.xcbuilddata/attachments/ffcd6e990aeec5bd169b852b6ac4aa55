@@ -1,0 +1,30 @@
+{
+  "" : {
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftDiagnostics.build/Objects-normal/arm64/SwiftDiagnostics-master.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftDiagnostics.build/Objects-normal/arm64/SwiftDiagnostics-master.dia",
+    "emit-module-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftDiagnostics.build/Objects-normal/arm64/SwiftDiagnostics-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftDiagnostics.build/Objects-normal/arm64/SwiftDiagnostics-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Index.noindex/Build/Intermediates.noindex/swift-syntax.build/Debug-iphonesimulator/SwiftDiagnostics.build/Objects-normal/arm64/SwiftDiagnostics-master.swiftdeps"
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftDiagnostics/Convenience.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftDiagnostics/Diagnostic.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftDiagnostics/DiagnosticsFormatter.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftDiagnostics/FixIt.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftDiagnostics/GroupedDiagnostics.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftDiagnostics/Message.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftDiagnostics/Note.swift" : {
+
+  }
+}

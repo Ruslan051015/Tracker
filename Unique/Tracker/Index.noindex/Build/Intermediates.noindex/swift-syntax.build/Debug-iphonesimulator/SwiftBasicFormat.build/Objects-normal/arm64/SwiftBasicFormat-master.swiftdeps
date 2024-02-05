@@ -1,0 +1,13 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "48502ad09f50aba493b9ba2c152cc6efe8cdc96089cbdf7fefb8eaa31e7c994c"
+build_start_time: [1706975454, 875019000]
+build_end_time: [1706975454, 931238000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftBasicFormat/BasicFormat.swift"
+  : [1706467477, 700041381]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftBasicFormat/Syntax+Extensions.swift"
+  : [1706467477, 700370431]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftBasicFormat/SyntaxProtocol+Formatted.swift"
+  : [1706467477, 700430891]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftBasicFormat/Trivia+FormatExtensions.swift"
+  : [1706467477, 700494976]

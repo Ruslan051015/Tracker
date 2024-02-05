@@ -11,5 +11,4 @@ enum CDErrors: Error {
     case recordCoreDataCreatingError
     case recordFetchingError
     case creatingRecordFromCoreDataError
-    case categoryFetchedResultsControllerPerformFetchError
 }

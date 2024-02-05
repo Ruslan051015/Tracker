@@ -1,0 +1,598 @@
+{
+  "" : {
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker-master.dia",
+    "emit-module-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker-master.swiftdeps"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/Date + Extension.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Date + Extension.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Date + Extension.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Date + Extension.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Date + Extension.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Date + Extension.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Date + Extension.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Date + Extension.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Date + Extension~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/Int + Extension.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Int + Extension.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Int + Extension.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Int + Extension.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Int + Extension.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Int + Extension.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Int + Extension.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Int + Extension.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Int + Extension~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UIColor + Extension.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIColor + Extension.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIColor + Extension.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIColor + Extension.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIColor + Extension.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIColor + Extension.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIColor + Extension.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIColor + Extension.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIColor + Extension~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UIImage + Extension.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIImage + Extension.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIImage + Extension.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIImage + Extension.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIImage + Extension.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIImage + Extension.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIImage + Extension.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIImage + Extension.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIImage + Extension~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UISearchBar + Extension.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UISearchBar + Extension.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UISearchBar + Extension.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UISearchBar + Extension.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UISearchBar + Extension.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UISearchBar + Extension.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UISearchBar + Extension.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UISearchBar + Extension.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UISearchBar + Extension~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UIView + Extension.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIView + Extension.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIView + Extension.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIView + Extension.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIView + Extension.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIView + Extension.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIView + Extension.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIView + Extension.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIView + Extension~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UIViewController + Extension.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIViewController + Extension.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIViewController + Extension.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIViewController + Extension.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIViewController + Extension.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIViewController + Extension.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIViewController + Extension.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIViewController + Extension.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UIViewController + Extension~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/AlertPresenter/AlertPresenter.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertPresenter.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertPresenter.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertPresenter.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertPresenter.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertPresenter.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertPresenter.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertPresenter.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertPresenter~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Errors.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Errors.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Errors.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Errors.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Errors.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Errors.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Errors.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Errors.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Errors~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Stores/TrackerCategoryStore.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryStore.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryStore.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryStore.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryStore.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryStore.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryStore.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryStore.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryStore~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Stores/TrackerRecordStore.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordStore.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordStore.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordStore.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordStore.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordStore.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordStore.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordStore.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordStore~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Stores/TrackerStore.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerStore.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerStore.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerStore.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerStore.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerStore.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerStore.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerStore.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerStore~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Transformable/ColorTransformer.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorTransformer.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorTransformer.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorTransformer.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorTransformer.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorTransformer.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorTransformer.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorTransformer.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorTransformer~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Transformable/DaysValueTransformer.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/DaysValueTransformer.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/DaysValueTransformer.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/DaysValueTransformer.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/DaysValueTransformer.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/DaysValueTransformer.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/DaysValueTransformer.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/DaysValueTransformer.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/DaysValueTransformer~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CustomTextField.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CustomTextField.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CustomTextField.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CustomTextField.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CustomTextField.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CustomTextField.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CustomTextField.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CustomTextField.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CustomTextField~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/AlertModel.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertModel.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertModel.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertModel.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertModel.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertModel.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertModel.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertModel.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AlertModel~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/AnalyticsModel.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AnalyticsModel.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AnalyticsModel.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AnalyticsModel.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AnalyticsModel.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AnalyticsModel.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AnalyticsModel.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AnalyticsModel.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AnalyticsModel~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/FiltersModel.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersModel.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersModel.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersModel.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersModel.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersModel.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersModel.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersModel.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersModel~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/GeometricParams.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeometricParams.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeometricParams.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeometricParams.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeometricParams.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeometricParams.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeometricParams.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeometricParams.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeometricParams~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/MockModel.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/MockModel.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/MockModel.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/MockModel.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/MockModel.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/MockModel.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/MockModel.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/MockModel.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/MockModel~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/Tracker.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Tracker~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/TrackerCategory.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategory.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategory.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategory.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategory.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategory.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategory.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategory.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategory~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/TrackerRecord.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecord.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecord.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecord.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecord.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecord.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecord.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecord.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecord~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/WeekDay.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/WeekDay.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/WeekDay.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/WeekDay.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/WeekDay.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/WeekDay.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/WeekDay.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/WeekDay.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/WeekDay~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/OnboardingViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/OnboardingViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/OnboardingViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/OnboardingViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/OnboardingViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/OnboardingViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/OnboardingViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/OnboardingViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/OnboardingViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/Pages/FirstPageViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstPageViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstPageViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstPageViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstPageViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstPageViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstPageViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstPageViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstPageViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/Pages/SecondPageViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SecondPageViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SecondPageViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SecondPageViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SecondPageViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SecondPageViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SecondPageViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SecondPageViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SecondPageViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/SpashViewController/FirstLaunchStorage.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstLaunchStorage.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstLaunchStorage.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstLaunchStorage.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstLaunchStorage.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstLaunchStorage.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstLaunchStorage.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstLaunchStorage.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FirstLaunchStorage~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/SpashViewController/SplashViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SplashViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SplashViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SplashViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SplashViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SplashViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SplashViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SplashViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SplashViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Resources/Generated/Generated.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Generated.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Generated.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Generated.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Generated.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Generated.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Generated.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Generated.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/Generated~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Service/YandexMetrica.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/YandexMetrica.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/YandexMetrica.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/YandexMetrica.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/YandexMetrica.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/YandexMetrica.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/YandexMetrica.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/YandexMetrica.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/YandexMetrica~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Settings/AppDelegate.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AppDelegate.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AppDelegate.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AppDelegate.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AppDelegate.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/AppDelegate~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Category/CategoriesViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoriesViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoriesViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoriesViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoriesViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoriesViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoriesViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoriesViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoriesViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Category/CategoryTableViewCell.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryTableViewCell.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryTableViewCell.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryTableViewCell.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryTableViewCell.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryTableViewCell.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryTableViewCell.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryTableViewCell.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryTableViewCell~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Category/CategoryViewModel.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryViewModel.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryViewModel.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryViewModel.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryViewModel.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryViewModel.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryViewModel.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryViewModel.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/CategoryViewModel~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Category/NewCategoryViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/NewCategoryViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/NewCategoryViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/NewCategoryViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/NewCategoryViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/NewCategoryViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/NewCategoryViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/NewCategoryViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/NewCategoryViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/HabitOrEventViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/HabitOrEventViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/HabitOrEventViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/HabitOrEventViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/HabitOrEventViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/HabitOrEventViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/HabitOrEventViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/HabitOrEventViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/HabitOrEventViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Schedule/ScheduleViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ScheduleViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ScheduleViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ScheduleViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ScheduleViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ScheduleViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ScheduleViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ScheduleViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ScheduleViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/TrackerCreatingViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCreatingViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCreatingViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCreatingViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCreatingViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCreatingViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCreatingViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCreatingViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCreatingViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/ColorCell.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorCell.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorCell.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorCell.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorCell.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorCell.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorCell.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorCell.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/ColorCell~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/EmojiCell.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/EmojiCell.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/EmojiCell.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/EmojiCell.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/EmojiCell.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/EmojiCell.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/EmojiCell.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/EmojiCell.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/EmojiCell~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/enumForSections.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/enumForSections.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/enumForSections.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/enumForSections.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/enumForSections.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/enumForSections.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/enumForSections.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/enumForSections.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/enumForSections~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/SupplementaryView.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SupplementaryView.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SupplementaryView.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SupplementaryView.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SupplementaryView.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SupplementaryView.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SupplementaryView.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SupplementaryView.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/SupplementaryView~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/TrackerCell.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCell.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCell.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCell.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCell.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCell.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCell.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCell.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCell~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Filters/FiltersTableViewCell.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersTableViewCell.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersTableViewCell.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersTableViewCell.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersTableViewCell.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersTableViewCell.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersTableViewCell.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersTableViewCell.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersTableViewCell~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Filters/FiltersViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/FiltersViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Filters/UserDefaults.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UserDefaults.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UserDefaults.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UserDefaults.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UserDefaults.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UserDefaults.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UserDefaults.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UserDefaults.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/UserDefaults~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Statistics/StatisticsViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Statistics/StatisticsViewModel.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewModel.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewModel.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewModel.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewModel.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewModel.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewModel.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewModel.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/StatisticsViewModel~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/TabBar/TabBarViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TabBarViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TabBarViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TabBarViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TabBarViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TabBarViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TabBarViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TabBarViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TabBarViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/TrackersViewController.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackersViewController.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackersViewController.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackersViewController.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackersViewController.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackersViewController.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackersViewController.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackersViewController.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackersViewController~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCategoryCoreData+CoreDataClass.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataClass.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataClass.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataClass.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataClass.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataClass.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCategoryCoreData+CoreDataProperties.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataProperties.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataProperties.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataProperties.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCategoryCoreData+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCoreData+CoreDataClass.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataClass.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataClass.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataClass.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataClass.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataClass.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCoreData+CoreDataProperties.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataProperties.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataProperties.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataProperties.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerCoreData+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerModels+CoreDataModel.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerModels+CoreDataModel.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerModels+CoreDataModel.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerModels+CoreDataModel.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerModels+CoreDataModel.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerModels+CoreDataModel.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerModels+CoreDataModel.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerModels+CoreDataModel.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerModels+CoreDataModel~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerRecordCoreData+CoreDataClass.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataClass.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataClass.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataClass.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataClass.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataClass.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerRecordCoreData+CoreDataProperties.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataProperties.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataProperties.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataProperties.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataProperties.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/TrackerRecordCoreData+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

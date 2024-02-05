@@ -1,0 +1,155 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "PACKAGE-TARGET:SwiftBasicFormat"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftCompilerPlugin"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftCompilerPluginMessageHandling"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftDiagnostics"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftIDEUtils"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftOperators"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftParser"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftParserDiagnostics"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftRefactor"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftSyntax"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftSyntax509"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftSyntaxBuilder"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftSyntaxMacroExpansion"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftSyntaxMacros"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:SwiftSyntaxMacrosTestSupport"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:_SwiftSyntaxTestSupport"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftBasicFormat"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftCompilerPlugin"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftCompilerPluginMessageHandling"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftDiagnostics"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftIDEUtils"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftOperators"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftParser"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftParserDiagnostics"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftRefactor"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftSyntax"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftSyntaxBuilder"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftSyntaxMacroExpansion"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftSyntaxMacros"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SwiftSyntaxMacrosTestSupport"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:InlineSnapshotTesting"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:InlineSnapshotTesting"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:SnapshotTesting"
+    }
+  ],
+  "containerPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker.xcworkspace",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator17.2",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Products",
+      "derivedDataPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/PrecompiledHeaders",
+      "indexRegularBuildIntermediatesPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Build/Intermediates.noindex",
+      "indexRegularBuildProductsPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Build/Products",
+      "pchPath" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

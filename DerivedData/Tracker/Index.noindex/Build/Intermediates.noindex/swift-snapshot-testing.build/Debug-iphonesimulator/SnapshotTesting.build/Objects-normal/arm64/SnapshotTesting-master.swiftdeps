@@ -1,0 +1,67 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "083cd633b18e7b8ee9d067170e3b9c4b39b1db160e2bf4bd0b0021b47ac4c612"
+build_start_time: [1706975318, 76918000]
+build_end_time: [1706975324, 599435000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/AssertSnapshot.swift"
+  : [1706467477, 371397928]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Async.swift"
+  : [1706467477, 371468888]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/Internal.swift"
+  : [1706467477, 371556599]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/PlistEncoder.swift"
+  : [1706467477, 371762271]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/String+SpecialCharacters.swift"
+  : [1706467477, 371842315]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/View.swift"
+  : [1706467477, 371932859]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Common/XCTAttachment.swift"
+  : [1706467477, 372025903]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Diff.swift"
+  : [1706467477, 372103696]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Diffing.swift"
+  : [1706467477, 372165615]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Extensions/Wait.swift"
+  : [1706467477, 372608210]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Internal/Deprecations.swift"
+  : [1706467477, 372737338]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting.swift"
+  : [1706467477, 372821673]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/Any.swift"
+  : [1706467477, 372948094]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/CALayer.swift"
+  : [1706467477, 373042471]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/CGPath.swift"
+  : [1706467477, 373131848]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/CaseIterable.swift"
+  : [1706467477, 373204725]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/Data.swift"
+  : [1706467477, 373266018]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/Encodable.swift"
+  : [1706467477, 373329187]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/NSBezierPath.swift"
+  : [1706467477, 373411855]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/NSImage.swift"
+  : [1706467477, 373509941]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/NSView.swift"
+  : [1706467477, 373593694]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/NSViewController.swift"
+  : [1706467477, 373663695]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/SceneKit.swift"
+  : [1706467477, 373738489]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/SpriteKit.swift"
+  : [1706467477, 373797490]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/String.swift"
+  : [1706467477, 373857700]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/SwiftUIView.swift"
+  : [1706467477, 373916577]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/UIBezierPath.swift"
+  : [1706467477, 373991996]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/UIImage.swift"
+  : [1706467477, 374081331]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/UIView.swift"
+  : [1706467477, 374141083]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/UIViewController.swift"
+  : [1706467477, 374207210]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/SnapshotTesting/Snapshotting/URLRequest.swift"
+  : [1706467477, 374283295]

@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "9bc0cac5e46bb7549b896ba95e8ac017920cd4e20d58f68fe50f0eb9ddb13bc8"
+build_start_time: [1706975449, 858095000]
+build_end_time: [1706975452, 841934000]
+inputs:
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/TrackerTests/TrackerTests.swift": [1706467685, 121688137]

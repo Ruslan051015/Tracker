@@ -1,0 +1,8 @@
+Target dependency graph (4 targets)
+Target 'Tracker' in project 'Tracker'
+➜ Implicit dependency on target 'Pods-Tracker' in project 'Pods' via file 'Pods_Tracker.framework' in build phase 'Link Binary'
+Target 'Pods-Tracker' in project 'Pods'
+➜ Explicit dependency on target 'SwiftLint' in project 'Pods'
+➜ Explicit dependency on target 'YandexMobileMetrica' in project 'Pods'
+Target 'YandexMobileMetrica' in project 'Pods' (no dependencies)
+Target 'SwiftLint' in project 'Pods' (no dependencies)

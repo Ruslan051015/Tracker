@@ -5,7 +5,7 @@ enum Filters: String, CaseIterable {
     case todayTrackers
     case completedTrackers
     case notCompletedTrackers
-    
+
     var name: String {
         switch self {
         case .allTrackers:

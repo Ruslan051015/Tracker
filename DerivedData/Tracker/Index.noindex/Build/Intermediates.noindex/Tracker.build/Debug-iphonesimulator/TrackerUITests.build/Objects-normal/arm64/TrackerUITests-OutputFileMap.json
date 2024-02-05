@@ -1,0 +1,15 @@
+{
+  "" : {
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/TrackerUITests.build/Objects-normal/arm64/TrackerUITests-master.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/TrackerUITests.build/Objects-normal/arm64/TrackerUITests-master.dia",
+    "emit-module-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/TrackerUITests.build/Objects-normal/arm64/TrackerUITests-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/TrackerUITests.build/Objects-normal/arm64/TrackerUITests-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/TrackerUITests.build/Objects-normal/arm64/TrackerUITests-master.swiftdeps"
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/TrackerUITests/TrackerUITests.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/TrackerUITests/TrackerUITestsLaunchTests.swift" : {
+
+  }
+}

@@ -6,14 +6,14 @@ struct Analytics {
         static let close = "close"
         static let click = "click"
     }
-    
+
     struct Screens {
         static let mainScreen = "Main"
         static let appDelegate = "AppDelegate"
         static let category = "CategoriesScreen"
         static let schedule = "ScheduleScreen"
     }
-    
+
     struct Items {
         static let addTrack = "add_track"
         static let track = "track"

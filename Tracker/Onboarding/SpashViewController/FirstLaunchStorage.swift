@@ -11,10 +11,10 @@ final class FirstLaunchStorage {
             userDefaults.setValue(newValue, forKey: "firstLaunch")
         }
     }
-    
+
     // MARK: - Private properties:
     private var userDefaults = UserDefaults.standard
-    
+
     // MARK: - Methods:
     func cleanUserDefaults() {
         let domain = Bundle.main.bundleIdentifier!
@@ -23,4 +23,3 @@ final class FirstLaunchStorage {
         print(Array(UserDefaults.standard.dictionaryRepresentation().keys))
     }
 }
-

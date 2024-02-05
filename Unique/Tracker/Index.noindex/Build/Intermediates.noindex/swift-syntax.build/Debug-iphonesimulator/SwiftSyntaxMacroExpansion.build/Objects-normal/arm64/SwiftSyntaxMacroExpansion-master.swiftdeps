@@ -1,0 +1,19 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "fec8255d5303b92974da420d9b3e95da5b13dfce0336928ef1564dc5ea0765a4"
+build_start_time: [1706975457, 780552000]
+build_end_time: [1706975457, 785402000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacroExpansion/BasicMacroExpansionContext.swift"
+  : !dirty [1706467477, 748719520]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacroExpansion/FunctionParameterUtils.swift"
+  : !dirty [1706467477, 748876816]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacroExpansion/IndentationUtils.swift"
+  : !dirty [1706467477, 748955401]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacroExpansion/MacroExpansion.swift"
+  : !dirty [1706467477, 749182074]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacroExpansion/MacroExpansionDiagnosticMessages.swift"
+  : !dirty [1706467477, 749266909]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacroExpansion/MacroReplacement.swift"
+  : !dirty [1706467477, 749381579]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxMacroExpansion/MacroSystem.swift"
+  : !dirty [1706467477, 749676545]

@@ -6,7 +6,7 @@ protocol TrackerDelegate: AnyObject {
     func didUpdateTrackers()
 }
 
-final class TrackerStore: NSObject  {
+final class TrackerStore: NSObject {
     // MARK: - Properties:
     weak var delegate: TrackerDelegate?
     static let shared = TrackerStore()
@@ -23,7 +23,7 @@ final class TrackerStore: NSObject  {
     private var context: NSManagedObjectContext
     private let recordStore = TrackerRecordStore.shared
     private var trackersFetchedResultsController: NSFetchedResultsController<TrackerCoreData>?
-    
+
     // MARK: - Initializers:
     convenience override init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -32,14 +32,14 @@ final class TrackerStore: NSObject  {
         let context = appDelegate.persistentContainer.viewContext
         self.init(context: context)
     }
-    
+
     init(context: NSManagedObjectContext) {
         self.context = context
         super.init()
-        
+
         let fetchRequest = TrackerCoreData.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
+
         let controller = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
@@ -50,7 +50,7 @@ final class TrackerStore: NSObject  {
         self.trackersFetchedResultsController = controller
         try? controller.performFetch()
     }
-    
+
     // MARK: - CoreData Methods:
     func saveContext() {
         if context.hasChanges {
@@ -62,11 +62,11 @@ final class TrackerStore: NSObject  {
             }
         }
     }
-    
+
     func pinTrackerCoreData(_ tracker: Tracker) {
         let request = TrackerCoreData.fetchRequest()
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), tracker.id as CVarArg)
-        
+
         guard let trackerCD = try? context.fetch(request) else {
             return
         }
@@ -79,13 +79,13 @@ final class TrackerStore: NSObject  {
             saveContext()
         }
     }
-    
+
     func updateTrackerRecord(with record: TrackerRecord) throws {
         let newRecord = recordStore.createCDTrackerRecord(from: record)
         let request = TrackerCoreData.fetchRequest()
-        
+
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), record.id as CVarArg)
-        
+
         guard let trackers = try? context.fetch(request) else {
             return
         }
@@ -94,7 +94,7 @@ final class TrackerStore: NSObject  {
             saveContext()
         }
     }
-    
+
     func createCoreDataTracker(
         from tracker: Tracker,
         with category: TrackerCategoryCoreData) throws {
@@ -109,7 +109,7 @@ final class TrackerStore: NSObject  {
             newTracker.pin = tracker.isPinned
             saveContext()
         }
-    
+
     func createTrackerFromCoreData(_ model: TrackerCoreData) throws -> Tracker {
         guard
             let id = model.trackerID,
@@ -128,12 +128,12 @@ final class TrackerStore: NSObject  {
             emoji: emoji,
             isPinned: isPinned)
     }
-    
+
     func deleteTracker(_ model: Tracker) {
         let id = model.id
         let request = TrackerCoreData.fetchRequest()
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(TrackerCoreData.trackerID), id as CVarArg)
-        
+
         guard let trackers = try? context.fetch(request) else {
             return
         }
@@ -142,7 +142,7 @@ final class TrackerStore: NSObject  {
             saveContext()
         }
     }
-    
+
     func updateTracker(_ updatedTracker: Tracker, with category: TrackerCategoryCoreData) {
         guard let trackerToUpdate = trackersFetchedResultsController?.fetchedObjects?.first(where: { $0.trackerID == updatedTracker.id
         }) else {
@@ -153,7 +153,7 @@ final class TrackerStore: NSObject  {
         trackerToUpdate.schedule = updatedTracker.schedule as? NSObject
         trackerToUpdate.emoji = updatedTracker.emoji
         trackerToUpdate.color = updatedTracker.color
-        
+
         saveContext()
     }
 }
@@ -163,4 +163,3 @@ extension TrackerStore: NSFetchedResultsControllerDelegate {
         delegate?.didUpdateTrackers()
     }
 }
-

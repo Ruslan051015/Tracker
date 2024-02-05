@@ -1,7 +1,5 @@
 import Foundation
 
-import Foundation
-
 final class Mocks {
     static var trackers: [TrackerCategory] = [
         TrackerCategory(
@@ -24,19 +22,19 @@ final class Mocks {
                 Tracker(
                     id: UUID(),
                     name: "Сomputer Science",
-                    schedule: [.monday, .tuesday,  .saturday, .sunday],
+                    schedule: [.monday, .tuesday, .saturday, .sunday],
                     color: .YPColorSelection3,
                     emoji: "👋",
                     isPinned: false)
             ]),
-        
+
         TrackerCategory(
             name: "Sport",
             includedTrackers: [
                 Tracker(
                     id: UUID(),
                     name: "Gym",
-                    schedule: [.monday, .tuesday, .wednesday, .friday, .sunday,],
+                    schedule: [.monday, .tuesday, .wednesday, .friday, .sunday ],
                     color: .YPColorSelection6,
                     emoji: "💪🏻",
                     isPinned: true),

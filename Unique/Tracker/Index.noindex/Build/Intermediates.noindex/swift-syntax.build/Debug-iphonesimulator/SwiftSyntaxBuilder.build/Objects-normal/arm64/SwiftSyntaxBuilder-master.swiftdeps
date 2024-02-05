@@ -1,0 +1,33 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "ba297641c85b126b7b29d89957b38b7beffbc5d02f8d978f81c534bcb3acb8c4"
+build_start_time: [1706975455, 391085000]
+build_end_time: [1706975455, 397257000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/ConvenienceInitializers.swift"
+  : !dirty [1706467477, 745869238]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/DeclSyntaxParseable.swift"
+  : !dirty [1706467477, 745959532]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/Indenter.swift"
+  : !dirty [1706467477, 746165746]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/ResultBuilderExtensions.swift"
+  : !dirty [1706467477, 746615216]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/SwiftSyntaxBuilderCompatibility.swift"
+  : !dirty [1706467477, 746672634]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/Syntax+StringInterpolation.swift"
+  : !dirty [1706467477, 746919598]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/SyntaxNodeWithBody.swift"
+  : !dirty [1706467477, 747064727]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/SyntaxParsable+ExpressibleByStringInterpolation.swift"
+  : !dirty [1706467477, 747136479]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/ValidatingSyntaxNodes.swift"
+  : !dirty [1706467477, 747199106]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/WithTrailingCommaSyntax+EnsuringTrailingComma.swift"
+  : !dirty [1706467477, 747256941]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/generated/BuildableNodes.swift"
+  : !dirty [1706467477, 747428445]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/generated/RenamedChildrenBuilderCompatibility.swift"
+  : !dirty [1706467477, 747676077]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/generated/ResultBuilders.swift"
+  : !dirty [1706467477, 748081712]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftSyntaxBuilder/generated/SyntaxExpressibleByStringInterpolationConformances.swift"
+  : !dirty [1706467477, 748520390]

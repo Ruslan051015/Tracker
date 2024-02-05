@@ -1,0 +1,15 @@
+{
+  "" : {
+    "dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master.d",
+    "diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master.dia",
+    "emit-module-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master-emit-module.dia",
+    "swift-dependencies" : "/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/DerivedData/Tracker/Index.noindex/Build/Intermediates.noindex/swift-snapshot-testing.build/Debug-iphonesimulator/InlineSnapshotTesting.build/Objects-normal/arm64/InlineSnapshotTesting-master.swiftdeps"
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/InlineSnapshotTesting/AssertInlineSnapshot.swift" : {
+
+  },
+  "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-snapshot-testing?ysclid=lrkorx5r21761881213/Sources/InlineSnapshotTesting/Exports.swift" : {
+
+  }
+}

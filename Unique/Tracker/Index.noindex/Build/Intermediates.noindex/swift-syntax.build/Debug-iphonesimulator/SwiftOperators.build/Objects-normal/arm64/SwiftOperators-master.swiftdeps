@@ -1,0 +1,25 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "8e6437b11d3fb04979a42c932211f6f5ccd6972b89894615e6aabccdfc47521e"
+build_start_time: [1706975455, 512128000]
+build_end_time: [1706975455, 516958000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/Operator.swift"
+  : !dirty [1706467477, 702583239]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/OperatorError+Diagnostics.swift"
+  : !dirty [1706467477, 702641532]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/OperatorError.swift"
+  : !dirty [1706467477, 702695658]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/OperatorTable+Defaults.swift"
+  : !dirty [1706467477, 702839204]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/OperatorTable+Folding.swift"
+  : !dirty [1706467477, 702958832]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/OperatorTable+Semantics.swift"
+  : !dirty [1706467477, 703065043]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/OperatorTable.swift"
+  : !dirty [1706467477, 703141670]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/PrecedenceGraph.swift"
+  : !dirty [1706467477, 703213338]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/PrecedenceGroup.swift"
+  : !dirty [1706467477, 703308424]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftOperators/SyntaxSynthesis.swift"
+  : !dirty [1706467477, 703674184]

@@ -1,0 +1,17 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "5d9a87a6a08c52058e5006ad897861b97c6441ec3a5e7c4daa2d022387e8c4f2"
+build_start_time: [1706975457, 780876000]
+build_end_time: [1706975457, 782032000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftCompilerPluginMessageHandling/CompilerPluginMessageHandler.swift"
+  : !dirty [1706467477, 700826443]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftCompilerPluginMessageHandling/Diagnostics.swift"
+  : !dirty [1706467477, 700899820]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftCompilerPluginMessageHandling/Macros.swift"
+  : !dirty [1706467477, 701032532]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftCompilerPluginMessageHandling/PluginMacroExpansionContext.swift"
+  : !dirty [1706467477, 701119367]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftCompilerPluginMessageHandling/PluginMessageCompatibility.swift"
+  : !dirty [1706467477, 701201953]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftCompilerPluginMessageHandling/PluginMessages.swift"
+  : !dirty [1706467477, 701432042]

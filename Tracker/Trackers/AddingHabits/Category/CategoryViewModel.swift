@@ -3,7 +3,7 @@ import Foundation
 final class CategoryViewModel: NSObject {
     // MARK: - Properties:
     var onChange: (() -> Void)?
-    
+
     // MARK: - Private Properties:
     private let categoryStore = TrackerCategoryStore.shared
     private let trackersStore = TrackerStore.shared
@@ -13,14 +13,14 @@ final class CategoryViewModel: NSObject {
             onChange?()
         }
     }
-    
+
     // MARK: - Methods:
     override init() {
         super.init()
         categoryStore.delegate = self
         categories = categoryStore.categories
     }
-    
+
     func deleteCategory(_ title: String) {
         guard let trackers = categories.first(where: { $0.name == title })?.includedTrackers else {
             return

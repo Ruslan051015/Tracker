@@ -1,0 +1,31 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "0b61c9f4e0497b02b4d42b8d79e4256cc2b05540a5ad5e88b233b208e56fdc48"
+build_start_time: [1706975455, 74433000]
+build_end_time: [1706975455, 176667000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/DiagnosticExtensions.swift"
+  : [1706467477, 713799738]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/LexerDiagnosticMessages.swift"
+  : [1706467477, 713943450]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/MissingNodesError.swift"
+  : [1706467477, 714315002]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/MissingTokenError.swift"
+  : [1706467477, 714437546]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/MultiLineStringLiteralDiagnosticsGenerator.swift"
+  : [1706467477, 714518215]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/ParseDiagnosticsGenerator.swift"
+  : [1706467477, 714713304]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/ParserDiagnosticMessages.swift"
+  : [1706467477, 714829265]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/PresenceUtils.swift"
+  : [1706467477, 714906600]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/SyntaxExtensions.swift"
+  : [1706467477, 715010853]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/Utils.swift"
+  : [1706467477, 715096689]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/generated/ChildNameForDiagnostics.swift"
+  : [1706467477, 715218400]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/generated/SyntaxKindNameForDiagnostics.swift"
+  : [1706467477, 715993379]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/SwiftParserDiagnostics/generated/TokenNameForDiagnostics.swift"
+  : [1706467477, 716064130]

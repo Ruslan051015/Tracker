@@ -2,8 +2,8 @@ import Foundation
 
 final class StatisticsViewModel: NSObject {
     // MARK: - Properties:
-    var onChange: (()-> Void)?
-    
+    var onChange: (() -> Void)?
+
     // MARK: - Private Properties:
     private let recordStore = TrackerRecordStore.shared
     private(set) var records: [TrackerRecord] = [] {
@@ -11,14 +11,14 @@ final class StatisticsViewModel: NSObject {
             onChange?()
         }
     }
-    
+
     // MARK: - Methods:
     override init() {
         super.init()
         recordStore.delegate = self
         records = recordStore.records ?? []
     }
-    
+
     func bestPeriodNumber() -> Int {
         var counter: [UUID: Int] = [:]
         for element in records {
@@ -33,7 +33,7 @@ final class StatisticsViewModel: NSObject {
         }
         return counter.values.max() ?? 1
     }
-    
+
     func averageValue() -> Int {
         if !records.isEmpty {
             let groupedByDate = Dictionary(grouping: records) { Calendar.current.startOfDay(for: $0.date) }

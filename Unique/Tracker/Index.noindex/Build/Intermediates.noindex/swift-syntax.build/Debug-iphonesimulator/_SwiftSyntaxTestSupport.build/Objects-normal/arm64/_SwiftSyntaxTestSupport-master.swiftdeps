@@ -1,0 +1,23 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "e69f099ca9b742c0326ba899b3169caa9e9a0e7f4a724696625cdf5477dee633"
+build_start_time: [1706975456, 695068000]
+build_end_time: [1706975456, 696809000]
+inputs:
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/AssertEqualWithDiff.swift"
+  : !dirty [1706467477, 752187652]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/IncrementalParseTestUtils.swift"
+  : !dirty [1706467477, 752281446]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/LocationMarkers.swift"
+  : !dirty [1706467477, 752383240]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/String+TrimmingTrailingWhitespace.swift"
+  : !dirty [1706467477, 752643997]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/Syntax+Assertions.swift"
+  : !dirty [1706467477, 752746875]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/SyntaxCollection+AtIndex.swift.swift"
+  : !dirty [1706467477, 752955339]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/SyntaxComparison.swift"
+  : !dirty [1706467477, 753041924]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/SyntaxProtocol+Initializer.swift"
+  : !dirty [1706467477, 753146760]
+  ? "/Users/ruslanhalilulin/Library/Developer/Xcode/DerivedData/Tracker-hjapbkhfwstuswbpjxiaoubprqan/SourcePackages/checkouts/swift-syntax/Sources/_SwiftSyntaxTestSupport/TestUtils.swift"
+  : !dirty [1706467477, 753243763]

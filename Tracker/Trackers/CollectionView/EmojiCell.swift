@@ -15,7 +15,7 @@ final class EmojiCell: UICollectionViewCell {
         super.init(frame: frame)
         selectionView.translatesAutoresizingMaskIntoConstraints = false
         emojiLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         selectionView.backgroundColor = .clear
         selectionView.layer.masksToBounds = true
         selectionView.layer.cornerRadius = 16
@@ -23,7 +23,7 @@ final class EmojiCell: UICollectionViewCell {
 
         contentView.addSubview(selectionView)
         selectionView.addSubview(emojiLabel)
-        
+
         NSLayoutConstraint.activate([
             selectionView.widthAnchor.constraint(equalToConstant: 52),
             selectionView.heightAnchor.constraint(equalToConstant: 52),
@@ -31,7 +31,7 @@ final class EmojiCell: UICollectionViewCell {
             emojiLabel.centerYAnchor.constraint(equalTo: selectionView.centerYAnchor)
         ])
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

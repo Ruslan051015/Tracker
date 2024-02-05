@@ -1,0 +1,59 @@
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/AnalyticsModel.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/Pages/SecondPageViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UIColor\ +\ Extension.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Filters/UserDefaults.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/AlertModel.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UIImage\ +\ Extension.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UISearchBar\ +\ Extension.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Stores/TrackerStore.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/TrackerCategory.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Statistics/StatisticsViewModel.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Errors.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/FiltersModel.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Filters/FiltersTableViewCell.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/MockModel.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Settings/AppDelegate.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/SpashViewController/FirstLaunchStorage.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Transformable/ColorTransformer.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CustomTextField.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Category/CategoryViewModel.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Filters/FiltersViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Resources/Generated/Generated.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/Date\ +\ Extension.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Category/CategoriesViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Category/NewCategoryViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/enumForSections.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/TrackerRecord.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/TabBar/TabBarViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Schedule/ScheduleViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/TrackerCell.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UIView\ +\ Extension.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/WeekDay.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/Statistics/StatisticsViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/EmojiCell.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/Category/CategoryTableViewCell.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/ColorCell.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Stores/TrackerRecordStore.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/Pages/FirstPageViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/AlertPresenter/AlertPresenter.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Transformable/DaysValueTransformer.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/HabitOrEventViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/Tracker.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/TrackersViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/Int\ +\ Extension.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Helpers/UIViewController\ +\ Extension.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Service/YandexMetrica.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/CoreData/Stores/TrackerCategoryStore.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/SpashViewController/SplashViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Models/GeometricParams.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Onboarding/OnboardingViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/CollectionView/SupplementaryView.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Tracker/Trackers/AddingHabits/TrackerCreatingViewController.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCategoryCoreData+CoreDataClass.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCategoryCoreData+CoreDataProperties.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCoreData+CoreDataClass.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerCoreData+CoreDataProperties.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerRecordCoreData+CoreDataClass.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerRecordCoreData+CoreDataProperties.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/CoreDataGenerated/TrackerModels/TrackerModels+CoreDataModel.swift
+/Users/ruslanhalilulin/Desktop/Yandex.praktikum/Tracker/Unique/Tracker/Build/Intermediates.noindex/Tracker.build/Debug-iphonesimulator/Tracker.build/DerivedSources/GeneratedAssetSymbols.swift

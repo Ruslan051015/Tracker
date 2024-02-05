@@ -1,0 +1,10 @@
+function_parameter_count:
+- 10 # warning
+- 15 # error
+disabled_rules:
+- trailing_whitespace
+- line_length
+- type_body_length
+- file_length
+- function_body_length
+- deployment_target

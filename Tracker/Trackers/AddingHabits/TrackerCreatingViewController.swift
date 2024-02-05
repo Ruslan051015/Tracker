@@ -143,10 +143,10 @@ final class TrackerCreatingViewController: UIViewController {
         button.backgroundColor = .YPBackground
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.masksToBounds = true
-        button.contentEdgeInsets = UIEdgeInsets(top: 0,left: 16,bottom: 0,right: 0)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         button.setTitle(L10n.Localizable.Title.category, for: .normal)
         button.addTarget(self, action: #selector(showCategories), for: .touchUpInside)
-        if trackerType == .habit{
+        if trackerType == .habit {
             button.layer.cornerRadius = 16
             button.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         } else {
@@ -201,7 +201,7 @@ final class TrackerCreatingViewController: UIViewController {
         button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         button.backgroundColor = .YPBackground
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets = UIEdgeInsets(top: 0,left: 16,bottom: 0,right: 0)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         button.addTarget(self, action: #selector(scheduleButtonTapped), for: .touchUpInside)
         button.setTitle(L10n.Localizable.Title.schedule, for: .normal)
         
@@ -408,7 +408,7 @@ final class TrackerCreatingViewController: UIViewController {
                 selectedDaysLabel.leadingAnchor.constraint(equalTo: scheduleButton.leadingAnchor, constant: 16),
                 selectedDaysLabel.topAnchor.constraint(equalTo: scheduleButton.topAnchor, constant: 39),
                 selectedDaysLabel.trailingAnchor.constraint(equalTo: scheduleButton.trailingAnchor, constant: -56),
-                selectedDaysLabel.heightAnchor.constraint(equalToConstant: 22),
+                selectedDaysLabel.heightAnchor.constraint(equalToConstant: 22)
             ]
         }
         NSLayoutConstraint.activate(constraints)
@@ -627,7 +627,7 @@ extension TrackerCreatingViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseId, for: indexPath) as! SupplementaryView
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SupplementaryView.reuseId, for: indexPath) as? SupplementaryView else { return UICollectionReusableView() }
         headerView.titleLabel.font = .boldSystemFont(ofSize: 19)
         
         switch indexPath.section {
@@ -705,7 +705,5 @@ extension TrackerCreatingViewController: UICollectionViewDelegate {
         default:
             break
         }
-        
-        
     }
 }
